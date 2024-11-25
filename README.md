@@ -4,7 +4,7 @@
 
 ## 直播源调用地址
 - 国内M3U [每日更新](https://ghproxy.net/raw.githubusercontent.com/gclgg/IPTV/refs/heads/main/live.m3u)
-- 国内TXT [每日更新][(https://ghproxy.net/raw.githubusercontent.com/gclgg/IPTV/refs/heads/main/live.txt)]
+- 国内TXT [每日更新](https://ghproxy.net/raw.githubusercontent.com/gclgg/IPTV/refs/heads/main/live.txt)
 
 #
 ![image](/image/Screenshot_2024-07-24-21-20-39-458_com.github.tvbox.osc.tk.jpg)
