@@ -3,22 +3,16 @@ ip_version_priority = "ipv6"
 source_urls = [
     "https://iptv.b2og.com/txt/fmml_ipv6.txt"
     "https://live.fanmingming.com/tv/m3u/ipv6.m3u",
-    "https://raw.github.com/yuanzl77/IPTV/main/直播/央视频道.txt",
     “https://live.zbds.top/tv/iptv6.txt”,
     "https://live.zbds.top/tv/iptv6.m3u",
-    "http://120.79.4.185/new/mdlive.txt",
     "https://live.zbds.top/tv/iptv4.txt"，
     "https://live.zbds.top/tv/iptv4.m3u",
-    "http://175.178.251.183:6689/aktvlive.txt",
-    "https://raw.github.com/Fairy8o/IPTV/main/PDX-V4.txt",
-    "https://raw.github.com/Fairy8o/IPTV/main/PDX-V6.txt",
+    "https://gitee.com/gclgg/gcl/raw/master/tv.txt"
     "https://live.zhoujie218.top/tv/iptv6.txt",
     "https://live.zhoujie218.top/tv/iptv4.txt",
     "https://www.mytvsuper.xyz/m3u/Live.m3u",
     "https://tv.youdu.fan:666/live/",
-    "http://ww.weidonglong.com/dsj.txt",
     "http://xhztv.top/zbc.txt",
-    "https://raw.github.com/qingwen07/awesome-iptv/main/tvbox_live_all.txt",
     "https://raw.github.com/Guovin/TV/gd/output/result.txt",
     "http://home.jundie.top:81/Cat/tv/live.txt",
     "https://raw.github.com/vbskycn/iptv/master/tv/hd.txt",
