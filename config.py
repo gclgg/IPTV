@@ -54,10 +54,14 @@ announcements = [
     {
         "channel": "公告",
         "entries": [
-            {"name": "更新日期"}
-         ]
+            {"name": "请阅读", "url": "https://liuliuliu.tv/api/channels/1997/stream", "logo": "https://gitee.com/gclgg/gcl/raw/master/16.jpg"},
+            {"name": "yuanzl77.github.io", "url": "https://liuliuliu.tv/api/channels/233/stream", "logo": "https://gitee.com/gclgg/gcl/raw/master/16.jpg"},
+            {"name": "更新日期", "url": "https://gitlab.com/lr77/IPTV/-/raw/main/%E4%B8%BB%E8%A7%92.mp4", "logo": "https://gitee.com/gclgg/gcl/raw/master/16.jpg"},
+            {"name": None, "url": "https://gitlab.com/lr77/IPTV/-/raw/main/%E8%B5%B7%E9%A3%8E%E4%BA%86.mp4", "logo": "https://gitee.com/gclgg/gcl/raw/master/16.jpg"}
+        ]
     }
 ]
+
 
 epg_urls = [
     "https://live.fanmingming.com/e.xml",
