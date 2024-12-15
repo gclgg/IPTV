@@ -1,5 +1,5 @@
 公告,#genre#
-请阅读,https://www.bilibili.com/video/BV18x4y1g7GQ?t=15.0
+请阅读,https://gitee.com/gclgg/gcl/raw/master/11.mp4
 更新日期,https://gitlab.com/lr77/IPTV/-/raw/main/%E4%B8%BB%E8%A7%92.mp4
 2024-12-15,https://gitlab.com/lr77/IPTV/-/raw/main/%E8%B5%B7%E9%A3%8E%E4%BA%86.mp4
 央视频道,#genre#
