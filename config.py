@@ -54,7 +54,7 @@ announcements = [
     {
         "channel": "公告",
         "entries": [
-            {"name": "请阅读", "url": "https://www.bilibili.com/video/BV18x4y1g7GQ?t=15.0", "logo": "https://gitee.com/gclgg/gcl/raw/master/16.jpg"},
+            {"name": "请阅读", "url": "https://gitee.com/gclgg/gcl/raw/master/11.mp4", "logo": "https://gitee.com/gclgg/gcl/raw/master/16.jpg"},
             {"name": "更新日期", "url": "https://gitlab.com/lr77/IPTV/-/raw/main/%E4%B8%BB%E8%A7%92.mp4", "logo": "https://gitee.com/gclgg/gcl/raw/master/16.jpg"},
             {"name": None, "url": "https://gitlab.com/lr77/IPTV/-/raw/main/%E8%B5%B7%E9%A3%8E%E4%BA%86.mp4", "logo": "https://gitee.com/gclgg/gcl/raw/master/16.jpg"}
         ]
