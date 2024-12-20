@@ -23,7 +23,8 @@ jobs:
     
       - name: Push to Gitee
         run: |
-          remote_repo="https://GITEE_gclgg:GITEE_g950428@gitee.com/gclgg/IPTV.git"
+          
+          remote_repo="https://${GITEE_gclgg}:${GITEE_g950428}@gitee.com/gclgg/IPTV.git"
         
           git remote add gitee "${remote_repo}"
           git show-ref # useful for debugging
