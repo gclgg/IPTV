@@ -1,4 +1,4 @@
-name: Sync-To-Gitee-and-Coding
+name: Sync-To-Gitee
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
       - name: Clone
         run: |
           git init
-          git remote add origin https://github.com/${GITHUB_REPOSITORY}.git
+          git remote add origin https://github.com/gclgg/IPTV.git
           git fetch --all
           for branch in `git branch -a | grep remotes | grep -v HEAD`; do
             git branch --track ${branch##*/} $branch
