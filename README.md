@@ -3,7 +3,7 @@
 > 声明: 所有播放源均收集于互联网，仅供测试研究学习，`不得商用!`
 
 ## 直播源调用地址
-- 国内M3U [每三日更新](https://gh.xxooo.cf/https://raw.githubusercontent.com/gclgg/IPTV/refs/heads/main/live.m3u)
+- 国内M3U [每三日更新](https://raw.githubusercontent.com/gclgg/IPTV/refs/heads/main/live.m3u)
 
 ## IPV6优势
 1. 更低的延迟: IPv6协议在一些方面能提供更低的延迟，这对于实时视频流的播放体验很重要，可以减少视频缓冲和加载时间。
