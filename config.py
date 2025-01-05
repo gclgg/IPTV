@@ -4,7 +4,7 @@ source_urls = [
     "https://live.fanmingming.com/tv/m3u/ipv6.m3u",
     "https://gitee.com/gclgg/gcl/raw/master/tv.m3u",
     "https://xcbox.xyz/xc/xc.txt",
-    "https://aktv.top/live.m3u",
+    "http://aktv.top/live.m3u",
     "https://raw.githubusercontent.com/yuanzl77/IPTV/main/直播/央视频道.txt",
     "http://120.79.4.185/new/mdlive.txt",
     "https://raw.githubusercontent.com/Fairy8o/IPTV/main/PDX-V4.txt",
