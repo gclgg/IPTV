@@ -55,7 +55,7 @@ announcements = [
     {
         "channel": "公告",
         "entries": [
-            {"name": "更新日期", "url": "http://223.105.252.60/PLTV/3/224/3221228527/1.m3u8?icpid=3&from=1&hms_devid=6885", "logo": "https://gitee.com/gclgg/gcl/raw/master/16.jpg"},
+            {"name": "更新日期", "url": "https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4", "logo": "https://gitee.com/gclgg/gcl/raw/master/16.jpg"},
             {"name": None, "url": "https://gitlab.com/lr77/IPTV/-/raw/main/%E8%B5%B7%E9%A3%8E%E4%BA%86.mp4", "logo": "https://gitee.com/gclgg/gcl/raw/master/16.jpg"}
         ]
     }
