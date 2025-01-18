@@ -1,4 +1,4 @@
-ip_version_priority = "ipv6"
+ip_version_priority = "ipv4"
 
 source_urls = [
     "https://live.fanmingming.com/tv/m3u/ipv6.m3u",
