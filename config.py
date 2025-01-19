@@ -3,6 +3,7 @@ ip_version_priority = "ipv4"
 source_urls = [
     "https://tv.iill.top/m3u/Gather",
     "https://6758.kstore.space/666.txt",
+    "https://gitee.com/zhang988/ipv6/blob/master/IPV6",
     "http://aktv.top/live.m3u",
     "https://live.fanmingming.com/tv/m3u/ipv6.m3u",
     "https://raw.githubusercontent.com/YanG-1989/m3u/refs/heads/main/Gather.m3u",
