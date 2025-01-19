@@ -1,9 +1,10 @@
 ip_version_priority = "ipv4"
 
 source_urls = [
-    "https://live.fanmingming.com/tv/m3u/ipv6.m3u",
+    "https://tv.iill.top/m3u/Gather",
     "https://6758.kstore.space/666.txt",
     "http://aktv.top/live.m3u",
+    "https://live.fanmingming.com/tv/m3u/ipv6.m3u",
     "https://raw.githubusercontent.com/YanG-1989/m3u/refs/heads/main/Gather.m3u",
     "https://raw.githubusercontent.com/yuanzl77/IPTV/main/直播/央视频道.txt",
     "https://raw.githubusercontent.com/Fairy8o/IPTV/main/PDX-V4.txt",
