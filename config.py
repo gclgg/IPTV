@@ -1,6 +1,7 @@
 ip_version_priority = "ipv4"
 
 source_urls = [
+    "https://gitee.com/gclgg/iptv-sources/raw/gh-pages/fmml_ipv6.m3u",
     "https://tv.iill.top/m3u/Gather",
     "https://6758.kstore.space/666.txt",
     "https://gitee.com/zhang988/ipv6/blob/master/IPV6",
