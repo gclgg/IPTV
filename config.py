@@ -1,7 +1,7 @@
 ip_version_priority = "ipv4"
 
 source_urls = [
-     "https://www.freetv.top/migu.m3u",
+     "https://raw.githubusercontent.com/ssili126/tv/refs/heads/main/itvlist.m3u",
      "https://raw.githubusercontent.com/YanG-1989/m3u/refs/heads/main/Gather.m3u",
      "https://6758.kstore.space/666.txt",
     "http://aktv.top/live.m3u",
