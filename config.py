@@ -1,4 +1,4 @@
-ip_version_priority = "ipv4"
+ip_version_priority = "ipv6"
 
 source_urls = [
      "https://raw.githubusercontent.com/ssili126/tv/refs/heads/main/itvlist.m3u",
