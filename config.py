@@ -6,6 +6,7 @@ source_urls = [
      "https://raw.githubusercontent.com/ssili126/tv/refs/heads/main/itvlist.m3u",
      "https://raw.githubusercontent.com/YanG-1989/m3u/refs/heads/main/Gather.m3u",
      "http://aktv.top/live.m3u",
+     "https://fm1077.serv00.net/SmartTV.m3u",
     "https://raw.githubusercontent.com/yuanzl77/IPTV/main/直播/央视频道.txt",
     "https://raw.githubusercontent.com/Fairy8o/IPTV/main/PDX-V4.txt",
     "https://live.zhoujie218.top/tv/iptv4.txt",
