@@ -1,4 +1,4 @@
-#EXTM3U x-tvg-url="http://epg.51zmt.top:8000/e.xml","http://epg.51zmt.top:8000/cc.xml ","http://epg.aptvapp.com/xml","https://epg.pw/xmltv/epg_CN.xml","https://epg.pw/xmltv/epg_HK.xml","https://epg.pw/xmltv/epg_TW.xml"
+#EXTM3U x-tvg-url="http://epg.51zmt.top:8000/cc.xml ","http://epg.aptvapp.com/xml","https://epg.pw/xmltv/epg_CN.xml","https://epg.pw/xmltv/epg_HK.xml","https://epg.pw/xmltv/epg_TW.xml"
 #EXTM3U
 #EXTINF:-1 tvg-id="1" tvg-name="更新日期" tvg-logo="https://gitee.com/gclgg/gcl/raw/master/16.jpg" group-title="公告",更新日期
 https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
