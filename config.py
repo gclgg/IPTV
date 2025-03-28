@@ -1,4 +1,4 @@
-ip_version_priority = "ipv6,ipv4"
+ip_version_priority = "ipv6"
 
 source_urls = [
      "https://6758.kstore.space/666.txt",
