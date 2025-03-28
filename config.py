@@ -1,10 +1,28 @@
 ip_version_priority = "ipv6"
 
 source_urls = [
-     "https://6758.kstore.space/666.txt",
+     "http://aktv.space/live.m3u",
+     "https://gitlab.com/aptv/1/-/raw/main/hbyd.m3u",
+     "https://gitee.com/gclgg/gcl/blob/master/tv0.txt",
+     "https://raw.githubusercontent.com/Guovin/iptv-database/master/result.txt",
+     "https://raw.githubusercontent.com/iptv-org/iptv/gh-pages/countries/cn.m3u",
+     "https://raw.githubusercontent.com/iptv-org/iptv/master/streams/cn.m3u",
+     "https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv6.m3u",
+     "https://raw.githubusercontent.com/kimwang1978/collect-tv-txt/main/merged_output.txt",
+     "https://raw.githubusercontent.com/xzw832/cmys/main/S_CCTV.txt",
+     "https://raw.githubusercontent.com/xzw832/cmys/main/S_weishi.txt",
+     "https://raw.githubusercontent.com/asdjkl6/tv/tv/.m3u/整套直播源/测试/整套直播源/l.txt",
+     "https://raw.githubusercontent.com/asdjkl6/tv/tv/.m3u/整套直播源/测试/整套直播源/kk.txt",
+     "https://raw.githubusercontent.com/yuanzl77/IPTV/master/live.txt",
+     "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u",
+     "https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt",
+     "https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt",
+     "https://raw.githubusercontent.com/YueChan/Live/main/APTV.m3u",
+     "https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u"
+   
+{ "https://6758.kstore.space/666.txt",
      "https://raw.githubusercontent.com/ssili126/tv/refs/heads/main/itvlist.m3u",
      "https://raw.githubusercontent.com/YanG-1989/m3u/refs/heads/main/Gather.m3u",
-     "http://aktv.top/live.m3u",
      "https://fm1077.serv00.net/SmartTV.m3u",
     "https://raw.githubusercontent.com/yuanzl77/IPTV/main/直播/央视频道.txt",
     "https://raw.githubusercontent.com/Fairy8o/IPTV/main/PDX-V4.txt",
@@ -28,7 +46,7 @@ source_urls = [
     "https://raw.githubusercontent.com/PizazzGY/TVBox_warehouse/main/live.txt",
     "https://fm1077.serv00.net/SmartTV.m3u",
     "https://raw.githubusercontent.com/ssili126/tv/main/itvlist.txt",
-    "https://raw.githubusercontent.com/kimwang1978/collect-tv-txt/main/merged_output.txt"
+    "https://raw.githubusercontent.com/kimwang1978/collect-tv-txt/main/merged_output.txt"}
 ]
 
 url_blacklist = [
