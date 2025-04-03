@@ -6,9 +6,8 @@ source_urls = [
      "https://gitee.com/gclgg/gcl/blob/master/tv0.txt",
      "https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv6.m3u",
      "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u",
-     "https://6758.kstore.space/666.txt",
-     "https://gitee.com/gclgg/gcl/raw/master/kzb.py"
-     ]
+     "https://6758.kstore.space/666.txt"
+      ]
 
 url_blacklist = [
     "epg.pw/stream/",
