@@ -1,4 +1,4 @@
-ip_version_priority = "ipv6"
+ip_version_priority = "ipv4"
 
 source_urls = [
      "http://aktv.space/live.m3u",
