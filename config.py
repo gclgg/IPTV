@@ -1,7 +1,7 @@
 ip_version_priority = "ipv4"
 
 source_urls = [
-     "http://aktv.space/live.m3u",
+     "https://raw.githubusercontent.com/cqshushu/tvjk/master/gt.txt",
      "https://gitlab.com/aptv/1/-/raw/main/hbyd.m3u",
      "https://gitee.com/gclgg/gcl/blob/master/tv0.txt",
      "https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv6.m3u",
