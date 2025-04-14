@@ -1,4 +1,4 @@
-📺央视频道,#genre#
+央视频道,#genre#
 CCTV1,
 CCTV2,
 CCTV3,
@@ -14,17 +14,17 @@ CCTV11,
 CCTV12,
 CCTV13,
 
-☘️湖北频道,#genre#
+湖北频道,#genre#
 湖北经视
 武汉新闻综合
 
-🌊港·澳·台,#genre#
+港·澳·台,#genre#
 凤凰中文,
 凤凰资讯,
 凤凰香港,
 凤凰卫视,
 
-🎬影视频道,#genre#
+影视频道,#genre#
 CHC动作电影,
 CHC高清电影,
 CHC家庭影院,
