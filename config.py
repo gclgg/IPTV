@@ -5,8 +5,10 @@ source_urls = [
      "https://gitlab.com/aptv/1/-/raw/main/hbyd.m3u",
      "https://6758.kstore.space/666.txt",
      "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u",
-     "https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt"
+     "https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt",
+     "https://raw.githubusercontent.com/gclgg/IPTV/refs/heads/main/%E7%9B%B4%E6%92%AD/ipv6.txt"
      ]
+
 
 url_blacklist = [
     "epg.pw/stream/",
