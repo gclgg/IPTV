@@ -1,4 +1,4 @@
-ip_version_priority = "ipv4"
+ip_version_priority = "ipv6"
 
 source_urls = [
      "https://gitee.com/gclgg/gcl/blob/master/tv0.txt",
