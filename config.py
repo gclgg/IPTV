@@ -7,6 +7,9 @@ source_urls = [
      "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u",
      "https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt",
      "https://raw.githubusercontent.com/gclgg/IPTV/refs/heads/main/%E7%9B%B4%E6%92%AD/ipv6.txt"
+     "https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv6.m3u",
+     "https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.1.txt",
+     "https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.txt"
      ]
 
 
