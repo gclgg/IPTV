@@ -1,7 +1,7 @@
-ip_version_priority = "ipv6"
+ip_version_priority = "ipv4"
 
 source_urls = [
-     "https://gitee.com/gclgg/gcl/blob/master/tv0.txt",
+     "https://gitee.com/gclgg/gcl/raw/master/tv.m3u",
      "https://gitlab.com/aptv/1/-/raw/main/hbyd.m3u",
      "https://6758.kstore.space/666.txt",
      "https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv6.m3u",
