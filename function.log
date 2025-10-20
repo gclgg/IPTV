@@ -1,30 +1,30 @@
-2025-10-20 05:15:58,237 - INFO - url: https://gitee.com/gclgg/gcl/raw/master/tv.m3u 获取成功，判断为m3u格式
-2025-10-20 05:15:58,238 - INFO - url: https://gitee.com/gclgg/gcl/raw/master/tv.m3u 爬取成功✅，包含频道分类: 央视, 港澳台
-2025-10-20 05:15:58,615 - INFO - url: https://gitlab.com/aptv/1/-/raw/main/hbyd.m3u 获取成功，判断为m3u格式
-2025-10-20 05:15:58,616 - INFO - url: https://gitlab.com/aptv/1/-/raw/main/hbyd.m3u 爬取成功✅，包含频道分类: 央视, 卫视, 教育, 湖北, 影视, 央视数字, 数字, 浙江
-2025-10-20 05:15:59,127 - ERROR - url: https://6758.kstore.space/666.txt 爬取失败❌, Error: 404 Client Error:  for url: https://6758.kstore.space/666.txt
-2025-10-20 05:15:59,265 - INFO - url: https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv6.m3u 获取成功，判断为m3u格式
-2025-10-20 05:15:59,267 - INFO - url: https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv6.m3u 爬取成功✅，包含频道分类: 央视频道, 备用频道, 卫视频道, 央卫备用, 数字频道, 港澳台频道, 港澳台AKTV, 动画频道, IHOT频道, NewTV频道, 百事通, 咪咕直播, 电影频道, 电视剧频道, 埋堆堆频道, 点播电影, 北京频道, 地方频道, 春晚频道, 国际频道
-2025-10-20 05:15:59,395 - ERROR - url: https://raw.githubusercontent.com/Ftindy/IPTV-URL/main/IPTV.m3u 爬取失败❌, Error: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/Ftindy/IPTV-URL/main/IPTV.m3u
-2025-10-20 05:15:59,520 - INFO - url: https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u 获取成功，判断为m3u格式
-2025-10-20 05:15:59,520 - INFO - url: https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u 爬取成功✅，包含频道分类: 央视频道, 卫视频道, 浙江频道, 内蒙频道
-2025-10-20 05:15:59,773 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt 获取成功，判断为txt格式
-2025-10-20 05:15:59,774 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt 爬取成功✅，包含频道分类: 地方频道, 更新时间
-2025-10-20 05:15:59,980 - ERROR - url: https://raw.githubusercontent.com/gclgg/IPTV/refs/heads/main/%E7%9B%B4%E6%92%AD/ipv6.txthttps://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv6.m3u 爬取失败❌, Error: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/gclgg/IPTV/refs/heads/main/%25E7%259B%25B4%25E6%2592%25AD/ipv6.txthttps:/raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv6.m3u
-2025-10-20 05:16:00,120 - ERROR - url: https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.1.txt 爬取失败❌, Error: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.1.txt
-2025-10-20 05:16:00,266 - INFO - url: https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.txt 获取成功，判断为txt格式
-2025-10-20 05:16:00,268 - INFO - url: https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.txt 爬取成功✅，包含频道分类: 更新时间, 央视频道, 卫视频道, 数字频道, 湾湾节点, 影视轮播, 游戏赛事
-2025-10-20 05:16:00,430 - INFO - url: https://raw.githubusercontent.com/asdjkl6/tv/tv/.m3u/整套直播源/测试/整套直播源/l.txt 获取成功，判断为txt格式
-2025-10-20 05:16:00,433 - INFO - url: https://raw.githubusercontent.com/asdjkl6/tv/tv/.m3u/整套直播源/测试/整套直播源/l.txt 爬取成功✅，包含频道分类: 💥 央视, 💥 卫视, 💥 浙江, 💥 体育, 💥 ip.tv, 💥 Y//Y, 💥 斗鱼, 💥 虎牙, 💥 iH.ot, 💥 数字, 💥 港闽
-2025-10-20 05:16:00,659 - INFO - url: https://raw.githubusercontent.com/asdjkl6/tv/tv/.m3u/整套直播源/测试/整套直播源/kk.txt 获取成功，判断为txt格式
-2025-10-20 05:16:00,661 - INFO - url: https://raw.githubusercontent.com/asdjkl6/tv/tv/.m3u/整套直播源/测试/整套直播源/kk.txt 爬取成功✅，包含频道分类: 🇨🇳 低调, 🇨🇳 央视, 🇨🇳 卫视, 🇨🇳 NEWTV, 🇨🇳 IHOT, 🇨🇳 咪咕, 🇨🇳 Y Y, 🇨🇳 剧场, 🇨🇳 体育, 🇨🇳 埋堆, 🇨🇳 斗鱼, 虎牙, 🇨🇳 港台, 🇨🇳 D J
-2025-10-20 05:16:00,784 - ERROR - url: https://raw.githubusercontent.com/fanming/live/main/tv/m3u/ipv6.m3u 爬取失败❌, Error: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/fanming/live/main/tv/m3u/ipv6.m3u
-2025-10-20 05:16:00,868 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt 获取成功，判断为txt格式
-2025-10-20 05:16:00,868 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt 爬取成功✅，包含频道分类: 地方频道, 更新时间
-2025-10-20 05:16:00,990 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt 获取成功，判断为txt格式
-2025-10-20 05:16:00,994 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt 爬取成功✅，包含频道分类: 央视频道, 卫视频道, 电影频道, 数字频道, 儿童频道, 地方频道, 纪录频道, 体育频道, 解说频道, 音乐频道, 春晚频道, 直播中国, 更新时间
-2025-10-20 05:16:01,129 - ERROR - url: https://raw.githubusercontent.com/yuechan/live/main/aptv.m3u 爬取失败❌, Error: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/yuechan/live/main/aptv.m3u
-2025-10-20 05:16:01,667 - INFO - url: https://live.izbds.com/tv/iptv6.txt 获取成功，判断为txt格式
-2025-10-20 05:16:01,667 - INFO - url: https://live.izbds.com/tv/iptv6.txt 爬取成功✅，包含频道分类: 地方频道, 更新时间
-2025-10-20 05:16:01,899 - INFO - url: https://live.izbds.com/tv/iptv4.txt 获取成功，判断为txt格式
-2025-10-20 05:16:01,902 - INFO - url: https://live.izbds.com/tv/iptv4.txt 爬取成功✅，包含频道分类: 央视频道, 卫视频道, 电影频道, 数字频道, 儿童频道, 地方频道, 纪录频道, 体育频道, 解说频道, 音乐频道, 春晚频道, 直播中国, 更新时间
+2025-10-20 18:21:35,454 - INFO - url: https://gitee.com/gclgg/gcl/raw/master/tv.m3u 获取成功，判断为m3u格式
+2025-10-20 18:21:35,454 - INFO - url: https://gitee.com/gclgg/gcl/raw/master/tv.m3u 爬取成功✅，包含频道分类: 央视, 港澳台
+2025-10-20 18:21:35,559 - INFO - url: https://gitlab.com/aptv/1/-/raw/main/hbyd.m3u 获取成功，判断为m3u格式
+2025-10-20 18:21:35,559 - INFO - url: https://gitlab.com/aptv/1/-/raw/main/hbyd.m3u 爬取成功✅，包含频道分类: 央视, 卫视, 教育, 湖北, 影视, 央视数字, 数字, 浙江
+2025-10-20 18:21:36,141 - ERROR - url: https://6758.kstore.space/666.txt 爬取失败❌, Error: 404 Client Error:  for url: https://6758.kstore.space/666.txt
+2025-10-20 18:21:36,181 - INFO - url: https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv6.m3u 获取成功，判断为m3u格式
+2025-10-20 18:21:36,183 - INFO - url: https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv6.m3u 爬取成功✅，包含频道分类: 央视频道, 备用频道, 卫视频道, 央卫备用, 数字频道, 港澳台频道, 港澳台AKTV, 动画频道, IHOT频道, NewTV频道, 百事通, 咪咕直播, 电影频道, 电视剧频道, 埋堆堆频道, 点播电影, 北京频道, 地方频道, 春晚频道, 国际频道
+2025-10-20 18:21:36,254 - ERROR - url: https://raw.githubusercontent.com/Ftindy/IPTV-URL/main/IPTV.m3u 爬取失败❌, Error: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/Ftindy/IPTV-URL/main/IPTV.m3u
+2025-10-20 18:21:36,287 - INFO - url: https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u 获取成功，判断为m3u格式
+2025-10-20 18:21:36,288 - INFO - url: https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u 爬取成功✅，包含频道分类: 央视频道, 卫视频道, 浙江频道, 内蒙频道
+2025-10-20 18:21:36,319 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt 获取成功，判断为txt格式
+2025-10-20 18:21:36,320 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt 爬取成功✅，包含频道分类: 地方频道, 体育频道, 更新时间
+2025-10-20 18:21:36,525 - ERROR - url: https://raw.githubusercontent.com/gclgg/IPTV/refs/heads/main/%E7%9B%B4%E6%92%AD/ipv6.txthttps://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv6.m3u 爬取失败❌, Error: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/gclgg/IPTV/refs/heads/main/%25E7%259B%25B4%25E6%2592%25AD/ipv6.txthttps:/raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv6.m3u
+2025-10-20 18:21:36,691 - ERROR - url: https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.1.txt 爬取失败❌, Error: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.1.txt
+2025-10-20 18:21:36,767 - INFO - url: https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.txt 获取成功，判断为txt格式
+2025-10-20 18:21:36,769 - INFO - url: https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.txt 爬取成功✅，包含频道分类: 更新时间, 央视频道, 卫视频道, 数字频道, 湾湾节点, 影视轮播, 游戏赛事
+2025-10-20 18:21:36,804 - INFO - url: https://raw.githubusercontent.com/asdjkl6/tv/tv/.m3u/整套直播源/测试/整套直播源/l.txt 获取成功，判断为txt格式
+2025-10-20 18:21:36,806 - INFO - url: https://raw.githubusercontent.com/asdjkl6/tv/tv/.m3u/整套直播源/测试/整套直播源/l.txt 爬取成功✅，包含频道分类: 💥 央视, 💥 卫视, 💥 浙江, 💥 体育, 💥 ip.tv, 💥 Y//Y, 💥 斗鱼, 💥 虎牙, 💥 iH.ot, 💥 数字, 💥 港闽
+2025-10-20 18:21:36,839 - INFO - url: https://raw.githubusercontent.com/asdjkl6/tv/tv/.m3u/整套直播源/测试/整套直播源/kk.txt 获取成功，判断为txt格式
+2025-10-20 18:21:36,841 - INFO - url: https://raw.githubusercontent.com/asdjkl6/tv/tv/.m3u/整套直播源/测试/整套直播源/kk.txt 爬取成功✅，包含频道分类: 🇨🇳 低调, 🇨🇳 央视, 🇨🇳 卫视, 🇨🇳 NEWTV, 🇨🇳 IHOT, 🇨🇳 咪咕, 🇨🇳 Y Y, 🇨🇳 剧场, 🇨🇳 体育, 🇨🇳 埋堆, 🇨🇳 斗鱼, 虎牙, 🇨🇳 港台, 🇨🇳 D J
+2025-10-20 18:21:36,901 - ERROR - url: https://raw.githubusercontent.com/fanming/live/main/tv/m3u/ipv6.m3u 爬取失败❌, Error: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/fanming/live/main/tv/m3u/ipv6.m3u
+2025-10-20 18:21:36,936 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt 获取成功，判断为txt格式
+2025-10-20 18:21:36,936 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt 爬取成功✅，包含频道分类: 地方频道, 体育频道, 更新时间
+2025-10-20 18:21:36,970 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt 获取成功，判断为txt格式
+2025-10-20 18:21:36,974 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt 爬取成功✅，包含频道分类: 央视频道, 卫视频道, 电影频道, 数字频道, 儿童频道, 地方频道, 纪录频道, 体育频道, 解说频道, 音乐频道, 春晚频道, 直播中国, 更新时间
+2025-10-20 18:21:37,050 - ERROR - url: https://raw.githubusercontent.com/yuechan/live/main/aptv.m3u 爬取失败❌, Error: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/yuechan/live/main/aptv.m3u
+2025-10-20 18:21:37,510 - INFO - url: https://live.izbds.com/tv/iptv6.txt 获取成功，判断为txt格式
+2025-10-20 18:21:37,511 - INFO - url: https://live.izbds.com/tv/iptv6.txt 爬取成功✅，包含频道分类: 地方频道, 体育频道, 更新时间
+2025-10-20 18:21:37,623 - INFO - url: https://live.izbds.com/tv/iptv4.txt 获取成功，判断为txt格式
+2025-10-20 18:21:37,626 - INFO - url: https://live.izbds.com/tv/iptv4.txt 爬取成功✅，包含频道分类: 央视频道, 卫视频道, 电影频道, 数字频道, 儿童频道, 地方频道, 纪录频道, 体育频道, 解说频道, 音乐频道, 春晚频道, 直播中国, 更新时间
