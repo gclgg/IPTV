@@ -2,8 +2,9 @@ name: Scheduled Auto Update
 
 on:
   schedule:
-    - cron: '0 * * * * *'  # UTC时间对应北京时间21:45
+    - cron: '0 * * * *'  # 每小时的0分触发（即整点执行）
   workflow_dispatch:
+
 
 jobs:
   auto-update:
