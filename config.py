@@ -1,8 +1,24 @@
 ip_version_priority = "ipv4"
 
 source_urls = [
-      "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt"
-    
+      "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+     "https://6758.kstore.space/666.txt",
+     "https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv6.m3u",
+     "https://raw.githubusercontent.com/Ftindy/IPTV-URL/main/IPTV.m3u",
+     "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u",
+     "https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt",
+     "https://raw.githubusercontent.com/gclgg/IPTV/refs/heads/main/%E7%9B%B4%E6%92%AD/ipv6.txt"
+     "https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv6.m3u",
+     "https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.1.txt",
+     "https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.txt",
+     "https://raw.githubusercontent.com/asdjkl6/tv/tv/.m3u/整套直播源/测试/整套直播源/l.txt",
+     "https://raw.githubusercontent.com/asdjkl6/tv/tv/.m3u/整套直播源/测试/整套直播源/kk.txt",
+     "https://raw.githubusercontent.com/fanming/live/main/tv/m3u/ipv6.m3u",
+      "https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv6.txt",
+     "https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt",
+     "https://raw.githubusercontent.com/yuechan/live/main/aptv.m3u",
+     "https://live.izbds.com/tv/iptv6.txt",
+     "https://live.izbds.com/tv/iptv4.txt"
      ]
 
 
