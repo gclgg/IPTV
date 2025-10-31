@@ -1,9 +1,8 @@
 ip_version_priority = "ipv4"
 
 source_urls = [
-     "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
-     "https://develop202.github.io/migu_video/interface.txt",
-     "https://gh-proxy.com/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt"
+      "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt"
+    
      ]
 
 
