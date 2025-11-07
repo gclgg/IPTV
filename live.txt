@@ -113,8 +113,8 @@ CCTV5+,https://smart.dxjc.pp.ua/smart.php?id=cctv5plus&token=tmxk$LR•IPV4『�
 CCTV5+,http://58.57.40.22:9901/tsfile/live/1005_1.m3u8$LR•IPV4『线路5』
 CCTV5+,http://www.douzhicloud.site:35455/gaoma/cctv5p.m3u8$LR•IPV4『线路6』
 CCTV5+,http://120.76.248.139/live/bfgd/4200000246.m3u8$LR•IPV4『线路7』
-CCTV5+,http://cssbyd.imwork.net:8082/hls/6/index.m3u8$LR•IPV4『线路8』
-CCTV5+,https://piccpndali.v.myalicdn.com/audio/cctv5plus_2.m3u8$LR•IPV4『线路9』
+CCTV5+,http://222.169.85.8:9901/tsfile/live/0116_1.m3u8$LR•IPV4『线路8』
+CCTV5+,http://cssbyd.imwork.net:8082/hls/6/index.m3u8$LR•IPV4『线路9』
 CCTV5+,http://39.134.65.71/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225603/index.m3u8$LR•IPV4『线路10』
 CCTV5+,http://ycsj.aguihome.com:4022/udp/233.50.201.220:5140$LR•IPV4『线路11』
 CCTV5+,http://[2409:8087:74f0:22::4]:6410/270000001111/1110000306/index.m3u8?channel-id=newtv&livemode=4&Contentid=1110000306$LR•IPV6『线路12』
@@ -170,9 +170,9 @@ CCTV8,https://smart.dxjc.pp.ua/smart.php?id=cctv8hd&token=tmxk$LR•IPV4『线�
 CCTV8,http://jlyzzgfhyeao.ap-northeast-1.clawcloudrun.com/smart.php?id=cctv8hd&token=ffmking$LR•IPV4『线路5』
 CCTV8,http://58.57.40.22:9901/tsfile/live/1008_1.m3u8$LR•IPV4『线路6』
 CCTV8,http://lt.hxtre.com:35455/gaoma/cctv8k_36m.m3u8$LR•IPV4『线路7』
-CCTV8,http://iptv77.iptv66.eu.org:35455/gaoma/cctv8.m3u8$LR•IPV4『线路8』
-CCTV8,http://gmxw.7766.org:808/hls/96/index.m3u8$LR•IPV4『线路9』
-CCTV8,http://183.11.239.36:808/hls/96/index.m3u8$LR•IPV4『线路10』
+CCTV8,http://gmxw.7766.org:808/hls/96/index.m3u8$LR•IPV4『线路8』
+CCTV8,http://183.11.239.36:808/hls/96/index.m3u8$LR•IPV4『线路9』
+CCTV8,http://120.76.248.139/live/bfgd/4200000066.m3u8$LR•IPV4『线路10』
 CCTV8,http://39.135.135.89/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226008/index.m3u8$LR•IPV4『线路11』
 CCTV8,http://ycsj.aguihome.com:4022/udp/233.50.200.110:5140$LR•IPV4『线路12』
 CCTV8,http://ycsj.aguihome.com:4022/udp/233.50.201.199:5140$LR•IPV4『线路13』
@@ -259,11 +259,11 @@ CCTV13,http://gslbmgsplive.miguvideo.com/envivo_x/2018/SD/cctv13/2000/index.m3u8
 CCTV13,http://m.061899.xyz/mg/cctv13$LR•IPV4『线路3』
 CCTV13,https://smart.dxjc.pp.ua/smart.php?id=cctv13&token=tmxk$LR•IPV4『线路4』
 CCTV13,http://jlyzzgfhyeao.ap-northeast-1.clawcloudrun.com/smart.php?id=cctv13&token=ffmking$LR•IPV4『线路5』
-CCTV13,http://58.57.40.22:9901/tsfile/live/1013_1.m3u8$LR•IPV4『线路6』
-CCTV13,https://event.pull.hebtv.com/jishi/cp1.m3u8$LR•IPV4『线路7』
-CCTV13,http://ali-m-l.cztv.com/channels/lantian/channel21/1080p.m3u8$LR•IPV4『线路8』
-CCTV13,http://jwplay.hebyun.com.cn/live/cctv13/1500k/tzwj_video.m3u8$LR•IPV4『线路9』
-CCTV13,https://ldncctvwbcdcnc.v.wscdns.com/ldncctvwbcd/cdrmldcctv13_1/index.m3u8$LR•IPV4『线路10』
+CCTV13,http://39.164.160.249:9901/tsfile/live/0013_1.m3u8$LR•IPV4『线路6』
+CCTV13,http://58.57.40.22:9901/tsfile/live/1013_1.m3u8$LR•IPV4『线路7』
+CCTV13,https://event.pull.hebtv.com/jishi/cp1.m3u8$LR•IPV4『线路8』
+CCTV13,http://ali-m-l.cztv.com/channels/lantian/channel21/1080p.m3u8$LR•IPV4『线路9』
+CCTV13,http://jwplay.hebyun.com.cn/live/cctv13/1500k/tzwj_video.m3u8$LR•IPV4『线路10』
 CCTV13,http://39.135.135.59/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226011/index.m3u8$LR•IPV4『线路11』
 CCTV13,http://ycsj.aguihome.com:4022/udp/233.50.200.111:5140$LR•IPV4『线路12』
 CCTV13,http://ycsj.aguihome.com:4022/udp/233.50.201.246:5140$LR•IPV4『线路13』
@@ -313,7 +313,9 @@ CHC家庭影院,http://eastscreen.tv/ooooo.php?id=chcjt$LR•IPV4『线路7』
 纬来电影,http://211.72.65.236:8579/.m3u8$LR•IPV4『线路2』
 靖天映画,https://4gtv.dxjc.pp.ua/li-4gtv-4gtv055/index.m3u8$LR•IPV4『线路1』
 靖天映画,https://4gtv.dxjc.pp.ua/4gtv-4gtv055/index.m3u8$LR•IPV4『线路2』
-靖天映画,http://breezy-audrie-zspace-7524863c.koyeb.app/vipsir?token=leifeng&id=4gtv-4gtv055$LR•IPV4『线路3』
-靖天戏剧,http://breezy-audrie-zspace-7524863c.koyeb.app/vipsir?token=leifeng&id=4gtv-4gtv058$LR•IPV4
+靖天映画,https://mao.ffmking888.dpdns.org/?id=6Z2W5aSp5pig55Wr&auth=30234cedf871581989d3c91a3daec1e9f50e024aafcfa2247e7d44d91bb8d02fbc3f571b2d67f9d82642cc1d0f133d89$LR•IPV4『线路3』
+靖天映画,http://breezy-audrie-zspace-7524863c.koyeb.app/vipsir?token=leifeng&id=4gtv-4gtv055$LR•IPV4『线路4』
+靖天戏剧,https://mao.ffmking888.dpdns.org/?id=6Z2W5aSp5oiy5YqH5Yaw&auth=30234cedf871581989d3c91a3daec1e9f50e024aafcfa2247e7d44d91bb8d02fbc3f571b2d67f9d82642cc1d0f133d89$LR•IPV4『线路1』
+靖天戏剧,http://breezy-audrie-zspace-7524863c.koyeb.app/vipsir?token=leifeng&id=4gtv-4gtv058$LR•IPV4『线路2』
 IPTV经典电影,http://113.88.211.3:9898/hls/71/index.m3u8$LR•IPV4
 
