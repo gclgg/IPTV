@@ -1,7 +1,7 @@
 #EXTM3U x-tvg-url="http://epg.51zmt.top:8000/e.xml","http://epg.aptvapp.com/xml","https://epg.pw/xmltv/epg_CN.xml","https://epg.pw/xmltv/epg_HK.xml","https://epg.pw/xmltv/epg_TW.xml"
 #EXTINF:-1 tvg-id="1" tvg-name="更新日期" tvg-logo="https://gitee.com/gclgg/gcl/raw/master/16.jpg" group-title="公告",更新日期
 https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
-#EXTINF:-1 tvg-id="1" tvg-name="2025-11-09" tvg-logo="https://gitee.com/gclgg/gcl/raw/master/16.jpg" group-title="公告",2025-11-09
+#EXTINF:-1 tvg-id="1" tvg-name="2025-11-10" tvg-logo="https://gitee.com/gclgg/gcl/raw/master/16.jpg" group-title="公告",2025-11-10
 https://gitlab.com/lr77/IPTV/-/raw/main/%E8%B5%B7%E9%A3%8E%E4%BA%86.mp4
 #EXTINF:-1 tvg-id="1" tvg-name="CCTV1" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="央视频道",CCTV1
 http://gslbmgsplive.miguvideo.com/wd_r2/cctv/cctv1hd/1200/index.m3u8?msisdn=202511092200265fe1e29bf03c4d09abd35ab96dacc94d&mdspid=&spid=699004&netType=0&sid=2201057821&pid=2028597139&timestamp=20251109220026&Channel_ID=0116_2600000900-99000-201600010010027&ProgramID=608807420&ParentNodeID=-99&assertID=2201057821&client_ip=106.13.250.89&SecurityKey=20251109220026&promotionId=&mvid=2201057821&mcid=500020&playurlVersion=WX-A1-8.10.1-RELEASE&userid=&jmhm=&videocodec=h264&bean=mgspad&tid=android&conFee=0&puData=e50a560645079cf6b573bfc12edd3b2f&ddCalcu=fe25eb003a8d50d6e02614c5f0b7397c5fb6$LR•IPV4『线路1』
