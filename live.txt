@@ -222,11 +222,11 @@ CCTV12,http://[2409:8087:1a01:df::7005]/ottrrs.hl.chinamobile.com/PLTV/88888888/
 CCTV12,http://[2409:8087:1a01:df::7005]:80/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226568/index.m3u8$LR•IPV6『线路16』
 CCTV13,http://gslbmgsplive.miguvideo.com/envivo_x/2018/SD/cctv13/2000/index.m3u8?msisdn=20251113060030f23b87a4b606467f868dacc98b3e2514&mdspid=&spid=699004&netType=0&sid=2202208864&pid=2028597139&timestamp=20251113060030&Channel_ID=0116_2600000900-99000-201600010010027&ProgramID=608807423&ParentNodeID=-99&assertID=2202208864&client_ip=106.13.250.83&SecurityKey=20251113060030&promotionId=&mvid=2202208864&mcid=500020&playurlVersion=WX-A1-8.10.1-RELEASE&userid=&jmhm=&videocodec=h264&bean=mgspad&tid=android&conFee=0&puData=4d13a8bbd0be90602870a599f2919fae&ddCalcu=e4adef119381a0982bfb9d905bae09708620$LR•IPV4『线路1』
 CCTV13,http://m.061899.xyz/mg/cctv13$LR•IPV4『线路2』
-CCTV13,http://58.57.40.22:9901/tsfile/live/1013_1.m3u8$LR•IPV4『线路3』
-CCTV13,https://event.pull.hebtv.com/jishi/cp1.m3u8$LR•IPV4『线路4』
-CCTV13,http://ali-m-l.cztv.com/channels/lantian/channel21/1080p.m3u8$LR•IPV4『线路5』
-CCTV13,http://jwplay.hebyun.com.cn/live/cctv13/1500k/tzwj_video.m3u8$LR•IPV4『线路6』
-CCTV13,https://ldncctvwbcdcnc.v.wscdns.com/ldncctvwbcd/cdrmldcctv13_1/index.m3u8$LR•IPV4『线路7』
+CCTV13,http://39.164.160.249:9901/tsfile/live/0013_1.m3u8$LR•IPV4『线路3』
+CCTV13,http://58.57.40.22:9901/tsfile/live/1013_1.m3u8$LR•IPV4『线路4』
+CCTV13,https://event.pull.hebtv.com/jishi/cp1.m3u8$LR•IPV4『线路5』
+CCTV13,http://ali-m-l.cztv.com/channels/lantian/channel21/1080p.m3u8$LR•IPV4『线路6』
+CCTV13,http://jwplay.hebyun.com.cn/live/cctv13/1500k/tzwj_video.m3u8$LR•IPV4『线路7』
 CCTV13,http://39.135.135.59/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226011/index.m3u8$LR•IPV4『线路8』
 CCTV13,http://ycsj.aguihome.com:4022/udp/233.50.200.111:5140$LR•IPV4『线路9』
 CCTV13,http://ycsj.aguihome.com:4022/udp/233.50.201.246:5140$LR•IPV4『线路10』
