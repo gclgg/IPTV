@@ -2,7 +2,6 @@ ip_version_priority = "ipv4"
 
 source_urls = [
       "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
-   
       "https://raw.githubusercontent.com/Guovin/iptv-database/master/result.txt",
      "https://raw.githubusercontent.com/iptv-org/iptv/gh-pages/countries/cn.m3u",
      "https://raw.githubusercontent.com/iptv-org/iptv/master/streams/cn.m3u",
