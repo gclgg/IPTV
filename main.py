@@ -18,7 +18,7 @@ def get_github_repo_update_time(owner: str, repo: str) -> str:
         resp = requests.get(url, timeout=10)
         resp.raise_for_status()
         updated_utc = datetime.strptime(resp.json()["updated_at"], "%Y-%m-%dT%H:%M:%SZ")
-        updated_local = updated_utc.replace(hour=(updated_utc.hour + 8) % 24)  # 简单 UTC+8
+        updated_local = updated_utc.replace(hour=(updated_utc.hour + 8) % 24)
         return updated_local.strftime("%Y-%m-%d %H:%M:%S")
     except Exception as e:
         logging.warning(f"获取 GitHub 更新时间失败: {e}")
@@ -113,7 +113,6 @@ def updateChannelUrlsM3U(channels, template_channels):
     written_urls = set()
     current_date = datetime.now().strftime("%Y-%m-%d")
 
-    # 获取仓库更新时间
     repo_time = get_github_repo_update_time("gclgg", "IPTV")
     update_channel_name = f"📦 仓库更新时间 {repo_time}" if repo_time else "📦 仓库更新时间 获取失败"
 
@@ -123,11 +122,12 @@ def updateChannelUrlsM3U(channels, template_channels):
                 entry['name'] = current_date
 
     with open("live.m3u", "w", encoding="utf-8") as f_m3u, open("live.txt", "w", encoding="utf-8") as f_txt:
-        # 文件头
-        f_m3u.write(f"#EXTM3U x-tvg-url={','.join(f'\"{url}\"' for url in config.epg_urls)}\n")
+        # 修复 f-string 反斜杠问题
+        epg_part = ','.join(f'"{u}"' for u in config.epg_urls)
+        f_m3u.write(f"#EXTM3U x-tvg-url={epg_part}\n")
         f_txt.write(f"# 仓库最后更新时间: {repo_time if repo_time else '获取失败'}\n")
 
-        # 公告分类（先插入“伪频道”）
+        # 公告分类（含伪频道）
         f_txt.write("公告,#genre#\n")
         f_m3u.write(f'#EXTINF:-1 tvg-id="0" tvg-name="仓库更新时间" '
                     f'tvg-logo="https://cdn.jsdelivr.net/gh/lr77/IPTV@main/icons/update.png" '
