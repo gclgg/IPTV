@@ -1,4 +1,6 @@
-# 仓库最后更新时间: 2025-11-19 11:33:11
+# 仓库最后更新时间: 2025-11-19 12:00:30
+公告,#genre#
+📦 仓库更新时间 2025-11-19 12:00:30,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
 公告,#genre#
 更新日期,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
 2025-11-19,https://gitlab.com/lr77/IPTV/-/raw/main/%E8%B5%B7%E9%A3%8E%E4%BA%86.mp4
@@ -308,12 +310,14 @@ CCTV13,http://[2409:8087:74f0:22::4]:6410/270000001128/9900000510/index.m3u8?cha
 CCTV13,http://[2409:8087:1a01:df::4077]/ottrrs.hl.chinamobile.com/PLTV/88888888/8/3221226011/index.m3u8$LR•IPV6『线路21』
 CCTV13,http://[2409:8087:1a01:df::7005]/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226537/index.m3u8$LR•IPV6『线路22』
 CCTV13,http://[2409:8087:1a01:df::7005]:80/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226537/index.m3u8$LR•IPV6『线路23』
+
 湖北频道,#genre#
 湖北经视,http://113.57.93.165:9900/tsfile/live/1017_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路1』
 湖北经视,http://58.19.43.46:9901/tsfile/live/1017_1.m3u8$LR•IPV4『线路2』
 湖北经视,http://58.48.37.158:1111/tsfile/live/0019_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路3』
 武汉新闻综合,http://stream.appwuhan.com:80/1tzb/sd/live.m3u8$LR•IPV4『线路1』
 武汉新闻综合,http://stream.appwuhan.com/1tzb/sd/live.m3u8$LR•IPV4『线路2』
+
 港·澳·台,#genre#
 凤凰中文,https://cdn6.101.qzz.io/163189/fhzw$LR•IPV4『线路1』
 凤凰中文,http://cdn6.163189.xyz/163189/fhzw$LR•IPV4『线路2』
@@ -396,6 +400,7 @@ CCTV13,http://[2409:8087:1a01:df::7005]:80/ottrrs.hl.chinamobile.com/PLTV/888888
 凤凰卫视,http://120.198.101.106:9901/tsfile/live/1062_1.m3u8?key=txiptv$LR•IPV4『线路1』
 凤凰卫视,http://221.7.175.154:8445/tsfile/live/1020_1.m3u8$LR•IPV4『线路2』
 凤凰卫视,http://122.152.202.33/s/81a8a44f/index.m3u8?id=15$LR•IPV4『线路3』
+
 影视频道,#genre#
 CHC动作电影,http://pitajvsa.asuscomm.com:51728/udp/238.200.200.61:5540$LR•IPV4『线路1』
 CHC动作电影,http://iptv.666230.xyz/iptv/sxg.php/wqCHCdzdyH265_4000$LR•IPV4『线路2』
