@@ -5,7 +5,25 @@ from collections import OrderedDict
 from datetime import datetime
 import config
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', handlers=[logging.FileHandler("function.log", "w", encoding="utf-8"), logging.StreamHandler()])
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s',
+                    handlers=[logging.FileHandler("function.log", "w", encoding="utf-8"), logging.StreamHandler()])
+
+# ✅ 新增：获取 GitHub 仓库更新时间
+def get_github_repo_update_time(owner, repo):
+    try:
+        url = f"https://api.github.com/repos/{owner}/{repo}"
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        data = response.json()
+        updated_at = data.get("updated_at")
+        if updated_at:
+            # 转换 UTC 时间为北京时间（UTC+8）
+            utc_time = datetime.strptime(updated_at, "%Y-%m-%dT%H:%M:%SZ")
+            local_time = utc_time.replace(hour=utc_time.hour + 8)
+            return local_time.strftime("%Y-%m-%d %H:%M:%S")
+    except Exception as e:
+        logging.warning(f"获取 GitHub 更新时间失败: {e}")
+    return None
 
 def parse_template(template_file):
     template_channels = OrderedDict()
@@ -106,19 +124,31 @@ def filter_source_urls(template_file):
 def is_ipv6(url):
     return re.match(r'^http:\/\/\[[0-9a-fA-F:]+\]', url) is not None
 
+# ✅ 修改：在生成的文件中加入 GitHub 更新时间
 def updateChannelUrlsM3U(channels, template_channels):
     written_urls = set()
 
     current_date = datetime.now().strftime("%Y-%m-%d")
+    
+    # ✅ 获取 GitHub 更新时间
+    repo_update_time = get_github_repo_update_time("gclgg", "IPTV")
+    if repo_update_time:
+        update_comment = f"# 仓库最后更新时间: {repo_update_time}\n"
+        logging.info(f"GitHub 仓库更新时间: {repo_update_time}")
+    else:
+        update_comment = "# 仓库最后更新时间: 获取失败\n"
+
     for group in config.announcements:
         for announcement in group['entries']:
             if announcement['name'] is None:
                 announcement['name'] = current_date
 
     with open("live.m3u", "w", encoding="utf-8") as f_m3u:
-        f_m3u.write(f"""#EXTM3U x-tvg-url={",".join(f'"{epg_url}"' for epg_url in config.epg_urls)}\n""")
+        f_m3u.write(f"""#EXTM3U x-tvg-url={",".join(f'"{epg_url}"' for epg_url in config.epg_urls)}
+{update_comment}""")  # ✅ 加入更新时间
 
         with open("live.txt", "w", encoding="utf-8") as f_txt:
+            f_txt.write(update_comment)  # ✅ 加入更新时间
             for group in config.announcements:
                 f_txt.write(f"{group['channel']},#genre#\n")
                 for announcement in group['entries']:
@@ -159,5 +189,7 @@ def updateChannelUrlsM3U(channels, template_channels):
 
 if __name__ == "__main__":
     template_file = "demo.txt"
+    logging.info("开始处理 IPTV 直播源...")
     channels, template_channels = filter_source_urls(template_file)
     updateChannelUrlsM3U(channels, template_channels)
+    logging.info("IPTV 直播源处理完成 ✅")
