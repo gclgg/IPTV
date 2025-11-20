@@ -1,6 +1,6 @@
-# 仓库最后更新时间: 2025-11-20 10:42:16
+# 仓库最后更新时间: 2025-11-20 11:40:02
 公告,#genre#
-📦 仓库更新时间 2025-11-20 10:42:16,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
+📦 仓库更新时间 2025-11-20 11:40:02,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
 公告,#genre#
 更新日期,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
 2025-11-20,https://gitlab.com/lr77/IPTV/-/raw/main/%E8%B5%B7%E9%A3%8E%E4%BA%86.mp4
@@ -36,8 +36,8 @@ CCTV2,http://112.123.206.32:808/hls/2/index.m3u8$LR•IPV4『线路3』
 CCTV2,http://183.11.239.36:808/hls/20/index.m3u8$LR•IPV4『线路4』
 CCTV2,http://120.76.248.139/live/bfgd/4200000061.m3u8$LR•IPV4『线路5』
 CCTV2,http://112.46.85.60:8009/hls/502/index.m3u8$LR•IPV4『线路6』
-CCTV2,https://shyd.695847.xyz/cms001/ch00000090990000001220/index.m3u8?IAS$LR•IPV4『线路7』
-CCTV2,http://gslbmgsplive.miguvideo.com/wd_r2/cctv/cctv2hd/1500/index.m3u8?msisdn=20251120100048c7dd16ef9e704cd8be913079aef27e6c&mdspid=&spid=699004&netType=0&sid=5500346945&pid=2028597139&timestamp=20251120100048&Channel_ID=0116_2600000900-99000-201600010010027&ProgramID=631780532&ParentNodeID=-99&assertID=5500346945&client_ip=106.13.250.88&SecurityKey=20251120100048&promotionId=&mvid=5101064231&mcid=500020&playurlVersion=WX-A1-8.11.1-RELEASE&userid=&jmhm=&videocodec=h264&bean=mgspad&tid=android&conFee=0&puData=71f69f17bb2305b20b53da80286519b2&ddCalcu=27b1e9f21615906f81270b8ba2d33055bb02$LR•IPV4『线路8』
+CCTV2,http://gslbmgsplive.miguvideo.com/wd_r2/cctv/cctv2hd/1500/index.m3u8?msisdn=20251120100048c7dd16ef9e704cd8be913079aef27e6c&mdspid=&spid=699004&netType=0&sid=5500346945&pid=2028597139&timestamp=20251120100048&Channel_ID=0116_2600000900-99000-201600010010027&ProgramID=631780532&ParentNodeID=-99&assertID=5500346945&client_ip=106.13.250.88&SecurityKey=20251120100048&promotionId=&mvid=5101064231&mcid=500020&playurlVersion=WX-A1-8.11.1-RELEASE&userid=&jmhm=&videocodec=h264&bean=mgspad&tid=android&conFee=0&puData=71f69f17bb2305b20b53da80286519b2&ddCalcu=27b1e9f21615906f81270b8ba2d33055bb02$LR•IPV4『线路7』
+CCTV2,https://shyd.695847.xyz/cms001/ch00000090990000001220/index.m3u8?IAS$LR•IPV4『线路8』
 CCTV2,http://m.061899.xyz/mg/cctv2$LR•IPV4『线路9』
 CCTV2,http://iptv.huuc.edu.cn/hls/cctv2hd.m3u8$LR•IPV4『线路10』
 CCTV2,http://ygbh.site/php/bfgd.php?id=061$LR•IPV4『线路11』
@@ -81,8 +81,8 @@ CCTV4,http://183.11.239.36:808/hls/22/index.m3u8$LR•IPV4『线路3』
 CCTV4,http://183.11.239.36:808/hls/77/index.m3u8$LR•IPV4『线路4』
 CCTV4,http://183.11.239.36:808/hls/67/index.m3u8$LR•IPV4『线路5』
 CCTV4,http://120.76.248.139/live/bfgd/4200000063.m3u8$LR•IPV4『线路6』
-CCTV4,https://shyd.695847.xyz/cms001/ch00000090990000001221/index.m3u8?IAS$LR•IPV4『线路7』
-CCTV4,http://gslbmgsplive.miguvideo.com/wd_r2/cctv/cctv4hd/1500/index.m3u8?msisdn=202511201000486df82ae580ed485ba37830bfceb13296&mdspid=&spid=699004&netType=0&sid=5500346947&pid=2028597139&timestamp=20251120100048&Channel_ID=0116_2600000900-99000-201600010010027&ProgramID=631780421&ParentNodeID=-99&assertID=5500346947&client_ip=106.13.250.88&SecurityKey=20251120100048&promotionId=&mvid=5101064235&mcid=500020&playurlVersion=WX-A1-8.11.1-RELEASE&userid=&jmhm=&videocodec=h264&bean=mgspad&tid=android&conFee=0&puData=3d39e671448949ee4566b919c456c6f1&ddCalcu=13fde632c916e05647c1941498b964695e4e$LR•IPV4『线路8』
+CCTV4,http://gslbmgsplive.miguvideo.com/wd_r2/cctv/cctv4hd/1500/index.m3u8?msisdn=202511201000486df82ae580ed485ba37830bfceb13296&mdspid=&spid=699004&netType=0&sid=5500346947&pid=2028597139&timestamp=20251120100048&Channel_ID=0116_2600000900-99000-201600010010027&ProgramID=631780421&ParentNodeID=-99&assertID=5500346947&client_ip=106.13.250.88&SecurityKey=20251120100048&promotionId=&mvid=5101064235&mcid=500020&playurlVersion=WX-A1-8.11.1-RELEASE&userid=&jmhm=&videocodec=h264&bean=mgspad&tid=android&conFee=0&puData=3d39e671448949ee4566b919c456c6f1&ddCalcu=13fde632c916e05647c1941498b964695e4e$LR•IPV4『线路7』
+CCTV4,https://shyd.695847.xyz/cms001/ch00000090990000001221/index.m3u8?IAS$LR•IPV4『线路8』
 CCTV4,http://m.061899.xyz/mg/cctv4$LR•IPV4『线路9』
 CCTV4,http://iptv.huuc.edu.cn/hls/cctv4hd.m3u8$LR•IPV4『线路10』
 CCTV4,http://ygbh.site/php/bfgd.php?id=063$LR•IPV4『线路11』
@@ -102,8 +102,8 @@ CCTV5,http://gmxw.7766.org:808/hls/93/index.m3u8$LR•IPV4『线路3』
 CCTV5,http://183.11.239.36:808/hls/93/index.m3u8$LR•IPV4『线路4』
 CCTV5,http://120.76.248.139/live/bfgd/4200000064.m3u8$LR•IPV4『线路5』
 CCTV5,http://112.46.85.60:8009/hls/503/index.m3u8$LR•IPV4『线路6』
-CCTV5,https://shyd.695847.xyz/cms001/ch00000090990000001187/index.m3u8?IAS$LR•IPV4『线路7』
-CCTV5,http://gslbmgsplive.miguvideo.com/wd_r2/cctv/cctv5hdnew/1200/index.m3u8?msisdn=20251120100048940bbb4026f44cbd99bb5ef25d78a1b6&mdspid=&spid=699004&netType=0&sid=5500516171&pid=2028597139&timestamp=20251120100048&Channel_ID=0116_2600000900-99000-201600010010027&ProgramID=641886683&ParentNodeID=-99&assertID=5500516171&client_ip=106.13.250.88&SecurityKey=20251120100048&promotionId=&mvid=5102048712&mcid=500020&playurlVersion=WX-A1-8.11.1-RELEASE&userid=&jmhm=&videocodec=h264&bean=mgspad&tid=android&conFee=0&puData=be4b94e98beb6b4d92f32848f0938584&ddCalcu=4b8ee5428b1390940ef9884b8e2b36fb249d$LR•IPV4『线路8』
+CCTV5,http://gslbmgsplive.miguvideo.com/wd_r2/cctv/cctv5hdnew/1200/index.m3u8?msisdn=20251120100048940bbb4026f44cbd99bb5ef25d78a1b6&mdspid=&spid=699004&netType=0&sid=5500516171&pid=2028597139&timestamp=20251120100048&Channel_ID=0116_2600000900-99000-201600010010027&ProgramID=641886683&ParentNodeID=-99&assertID=5500516171&client_ip=106.13.250.88&SecurityKey=20251120100048&promotionId=&mvid=5102048712&mcid=500020&playurlVersion=WX-A1-8.11.1-RELEASE&userid=&jmhm=&videocodec=h264&bean=mgspad&tid=android&conFee=0&puData=be4b94e98beb6b4d92f32848f0938584&ddCalcu=4b8ee5428b1390940ef9884b8e2b36fb249d$LR•IPV4『线路7』
+CCTV5,https://shyd.695847.xyz/cms001/ch00000090990000001187/index.m3u8?IAS$LR•IPV4『线路8』
 CCTV5,http://m.061899.xyz/mg/cctv5$LR•IPV4『线路9』
 CCTV5,http://iptv.huuc.edu.cn/hls/cctv5hd.m3u8$LR•IPV4『线路10』
 CCTV5,http://ygbh.site/php/bfgd.php?id=064$LR•IPV4『线路11』
@@ -143,8 +143,8 @@ CCTV6,http://183.11.239.36:808/hls/94/index.m3u8$LR•IPV4『线路3』
 CCTV6,http://120.76.248.139/live/bfgd/4200000065.m3u8$LR•IPV4『线路4』
 CCTV6,https://piccpndali.v.myalicdn.com/audio/cctv6_2.m3u8$LR•IPV4『线路5』
 CCTV6,http://182.150.23.74:808/hls/6/index.m3u8$LR•IPV4『线路6』
-CCTV6,https://shyd.695847.xyz/cms001/ch00000090990000001188/index.m3u8?IAS$LR•IPV4『线路7』
-CCTV6,http://gslbmgsplive.miguvideo.com/wd_r2/2018/ocn/cctv6hd/2000/index.m3u8?msisdn=20251120100049aa1d25ab08954a26ac37d414547a5bd5&mdspid=&spid=699004&netType=0&sid=5500212872&pid=2028597139&timestamp=20251120100049&Channel_ID=0116_2600000900-99000-201600010010027&ProgramID=624878396&ParentNodeID=-99&assertID=5500212872&client_ip=106.13.250.88&SecurityKey=20251120100049&promotionId=&mvid=5100001694&mcid=500020&playurlVersion=WX-A1-8.11.1-RELEASE&userid=&jmhm=&videocodec=h264&bean=mgspad&tid=android&conFee=0&puData=431d1c057256534e802c03b9f60ccee5&ddCalcu=54e3ee12cd4c100c60f597b23506c523048e$LR•IPV4『线路8』
+CCTV6,http://gslbmgsplive.miguvideo.com/wd_r2/2018/ocn/cctv6hd/2000/index.m3u8?msisdn=20251120100049aa1d25ab08954a26ac37d414547a5bd5&mdspid=&spid=699004&netType=0&sid=5500212872&pid=2028597139&timestamp=20251120100049&Channel_ID=0116_2600000900-99000-201600010010027&ProgramID=624878396&ParentNodeID=-99&assertID=5500212872&client_ip=106.13.250.88&SecurityKey=20251120100049&promotionId=&mvid=5100001694&mcid=500020&playurlVersion=WX-A1-8.11.1-RELEASE&userid=&jmhm=&videocodec=h264&bean=mgspad&tid=android&conFee=0&puData=431d1c057256534e802c03b9f60ccee5&ddCalcu=54e3ee12cd4c100c60f597b23506c523048e$LR•IPV4『线路7』
+CCTV6,https://shyd.695847.xyz/cms001/ch00000090990000001188/index.m3u8?IAS$LR•IPV4『线路8』
 CCTV6,http://m.061899.xyz/mg/cctv6$LR•IPV4『线路9』
 CCTV6,http://iptv.huuc.edu.cn/hls/cctv6hd.m3u8$LR•IPV4『线路10』
 CCTV6,http://ygbh.site/php/bfgd.php?id=065$LR•IPV4『线路11』
@@ -188,8 +188,8 @@ CCTV8,http://iptv77.iptv66.eu.org:35455/gaoma/cctv8.m3u8$LR•IPV4『线路3』
 CCTV8,http://gmxw.7766.org:808/hls/96/index.m3u8$LR•IPV4『线路4』
 CCTV8,http://183.11.239.36:808/hls/96/index.m3u8$LR•IPV4『线路5』
 CCTV8,http://120.76.248.139/live/bfgd/4200000066.m3u8$LR•IPV4『线路6』
-CCTV8,http://gslbmgsplive.miguvideo.com/wd_r2/2018/ocn/cctv8hd/2000/index.m3u8?msisdn=20251120100049c957486729004306b34c49da75285f4e&mdspid=&spid=699004&netType=0&sid=5500212868&pid=2028597139&timestamp=20251120100049&Channel_ID=0116_2600000900-99000-201600010010027&ProgramID=624878356&ParentNodeID=-99&assertID=5500212868&client_ip=106.13.250.88&SecurityKey=20251120100049&promotionId=&mvid=5100001695&mcid=500020&playurlVersion=WX-A1-8.11.1-RELEASE&userid=&jmhm=&videocodec=h264&bean=mgspad&tid=android&conFee=0&puData=b07857207e663d1ae252960ac1c881ee&ddCalcu=ebe0e172884850c712c0a70e6696235d21ea$LR•IPV4『线路7』
-CCTV8,https://shyd.695847.xyz/cms001/ch00000090990000001189/index.m3u8?IAS$LR•IPV4『线路8』
+CCTV8,https://shyd.695847.xyz/cms001/ch00000090990000001189/index.m3u8?IAS$LR•IPV4『线路7』
+CCTV8,http://gslbmgsplive.miguvideo.com/wd_r2/2018/ocn/cctv8hd/2000/index.m3u8?msisdn=20251120100049c957486729004306b34c49da75285f4e&mdspid=&spid=699004&netType=0&sid=5500212868&pid=2028597139&timestamp=20251120100049&Channel_ID=0116_2600000900-99000-201600010010027&ProgramID=624878356&ParentNodeID=-99&assertID=5500212868&client_ip=106.13.250.88&SecurityKey=20251120100049&promotionId=&mvid=5100001695&mcid=500020&playurlVersion=WX-A1-8.11.1-RELEASE&userid=&jmhm=&videocodec=h264&bean=mgspad&tid=android&conFee=0&puData=b07857207e663d1ae252960ac1c881ee&ddCalcu=ebe0e172884850c712c0a70e6696235d21ea$LR•IPV4『线路8』
 CCTV8,http://m.061899.xyz/mg/cctv8$LR•IPV4『线路9』
 CCTV8,http://iptv.huuc.edu.cn/hls/cctv8hd.m3u8$LR•IPV4『线路10』
 CCTV8,http://ygbh.site/php/bfgd.php?id=066$LR•IPV4『线路11』
