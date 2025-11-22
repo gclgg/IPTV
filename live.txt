@@ -1,6 +1,6 @@
-# 仓库最后更新时间: 2025-11-22 23:11:32
+# 仓库最后更新时间: 2025-11-22 00:14:27
 公告,#genre#
-📦 仓库更新时间 2025-11-22 23:11:32,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
+📦 仓库更新时间 2025-11-22 00:14:27,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
 公告,#genre#
 更新日期,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
 2025-11-23,https://gitlab.com/lr77/IPTV/-/raw/main/%E8%B5%B7%E9%A3%8E%E4%BA%86.mp4
@@ -130,7 +130,7 @@ CCTV6,http://58.57.40.22:9901/tsfile/live/1006_1.m3u8$LR•IPV4『线路2』
 CCTV6,http://183.11.239.36:808/hls/94/index.m3u8$LR•IPV4『线路3』
 CCTV6,http://120.76.248.139/live/bfgd/4200000065.m3u8$LR•IPV4『线路4』
 CCTV6,https://piccpndali.v.myalicdn.com/audio/cctv6_2.m3u8$LR•IPV4『线路5』
-CCTV6,http://61.156.228.12:8154/tsfile/live/0006_1.m3u8$LR•IPV4『线路6』
+CCTV6,http://182.150.23.74:808/hls/6/index.m3u8$LR•IPV4『线路6』
 CCTV6,https://shyd.695847.xyz/cms001/ch00000090990000001188/index.m3u8?IAS$LR•IPV4『线路7』
 CCTV6,http://gslbmgsplive.miguvideo.com/wd_r2/2018/ocn/cctv6hd/2000/index.m3u8?msisdn=202511222200306f9fa4d6bbf045ca9a927703600d1374&mdspid=&spid=699004&netType=0&sid=5500212872&pid=2028597139&timestamp=20251122220030&Channel_ID=0116_2600000900-99000-201600010010027&ProgramID=624878396&ParentNodeID=-99&assertID=5500212872&client_ip=106.13.250.83&SecurityKey=20251122220030&promotionId=&mvid=5100001694&mcid=500020&playurlVersion=WX-A1-8.11.1-RELEASE&userid=&jmhm=&videocodec=h264&bean=mgspad&tid=android&conFee=0&puData=751c672b43634380062ed0f68e71ee63&ddCalcu=3765ee12ec416077e28b64f306d3e4236800$LR•IPV4『线路8』
 CCTV6,http://m.061899.xyz/mg/cctv6$LR•IPV4『线路9』
@@ -244,10 +244,10 @@ CCTV11,http://[2409:8087:1a01:df::7005]/ottrrs.hl.chinamobile.com/PLTV/88888888/
 CCTV11,http://[2409:8087:1a01:df::7005]:80/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226565/index.m3u8$LR•IPV6『线路18』
 CCTV12,http://101.35.240.114:88/live.php?id=CCTV12$LR•IPV4『线路1』
 CCTV12,http://39.164.160.249:9901/tsfile/live/0012_1.m3u8$LR•IPV4『线路2』
-CCTV12,http://183.11.239.36:808/hls/30/index.m3u8$LR•IPV4『线路3』
-CCTV12,http://120.76.248.139/live/bfgd/4200000131.m3u8$LR•IPV4『线路4』
-CCTV12,http://112.46.85.60:8009/hls/507/index.m3u8$LR•IPV4『线路5』
-CCTV12,https://piccpndali.v.myalicdn.com/audio/cctv12_2.m3u8$LR•IPV4『线路6』
+CCTV12,http://58.57.40.22:9901/tsfile/live/1012_1.m3u8$LR•IPV4『线路3』
+CCTV12,http://183.11.239.36:808/hls/30/index.m3u8$LR•IPV4『线路4』
+CCTV12,http://120.76.248.139/live/bfgd/4200000131.m3u8$LR•IPV4『线路5』
+CCTV12,http://112.46.85.60:8009/hls/507/index.m3u8$LR•IPV4『线路6』
 CCTV12,http://gslbmgsplive.miguvideo.com/migu/kailu/20200324/cctv12hd/51/index.m3u8?msisdn=202511222200312ede473d92f540d1b3ae1b805a2387e6&mdspid=&spid=699004&netType=0&sid=5501083627&pid=2028597139&timestamp=20251122220031&Channel_ID=0116_2600000900-99000-201600010010027&ProgramID=673168185&ParentNodeID=-99&assertID=5501083627&client_ip=106.13.250.83&SecurityKey=20251122220031&promotionId=&mvid=5102910389&mcid=500020&playurlVersion=WX-A1-8.11.1-RELEASE&userid=&jmhm=&videocodec=h264&bean=mgspad&tid=android&conFee=0&puData=56888350ed8917a9a6ff4561460ef41e&ddCalcu=e516e482f83e800365401e6d5849f1f76aa9$LR•IPV4『线路7』
 CCTV12,http://m.061899.xyz/mg/cctv12$LR•IPV4『线路8』
 CCTV12,http://iptv.huuc.edu.cn/hls/cctv12hd.m3u8$LR•IPV4『线路9』
@@ -457,9 +457,11 @@ NewTV动作电影,http://43.138.0.72:35455/yy/1382736823$LR•IPV4『线路3』
 纬来电影,http://211.72.65.236:8579/.m3u8$LR•IPV4『线路2』
 靖天映画,https://cdn.iptv8k.top/dl/jrys.php?id=320&time=20240926215313&ip=111.229.253.40$LR•IPV4『线路1』
 靖天映画,http://breezy-audrie-zspace-7524863c.koyeb.app/vipsir?token=leifeng&id=4gtv-4gtv055$LR•IPV4『线路2』
+靖天映画,https://mao.ffmking888.dpdns.org/?id=6Z2W5aSp5pig55Wr&auth=30234cedf871581989d3c91a3daec1e9f50e024aafcfa2247e7d44d91bb8d02fbc3f571b2d67f9d82642cc1d0f133d89$LR•IPV4『线路3』
 靖天戏剧,http://serv00.bkpcp.top/litv3.php?id=4gtv-4gtv058$LR•IPV4『线路1』
 靖天戏剧,https://cdn.iptv8k.top/dl/jrys.php?id=318&time=20240926215313&ip=111.229.253.40$LR•IPV4『线路2』
 靖天戏剧,http://breezy-audrie-zspace-7524863c.koyeb.app/vipsir?token=leifeng&id=4gtv-4gtv058$LR•IPV4『线路3』
+靖天戏剧,https://mao.ffmking888.dpdns.org/?id=6Z2W5aSp5oiy5YqH5Yaw&auth=30234cedf871581989d3c91a3daec1e9f50e024aafcfa2247e7d44d91bb8d02fbc3f571b2d67f9d82642cc1d0f133d89$LR•IPV4『线路4』
 经典电影,http://jf.jxx2023.work:40446/tsfile/live/1055_1.m3u8$LR•IPV4『线路1』
 经典电影,http://60.172.130.146:352/tsfile/live/1006_1.m3u8?ace$LR•IPV4『线路2』
 经典电影,https://cdn.iptv8k.top/dl/jrys.php?id=396&time=20240926215313&ip=111.229.253.40$LR•IPV4『线路3』
