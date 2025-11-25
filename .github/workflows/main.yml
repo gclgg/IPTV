@@ -2,7 +2,7 @@ name: Scheduled Auto Update
 
 on:
   schedule:
-    - cron: '0 * * * *'  # 每小时的0分触发（即整点执行）
+   - cron: '0 */6 * * *'  # 每6小时的0分触发（即整点执行）
   workflow_dispatch:
 
 
