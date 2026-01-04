@@ -5,8 +5,7 @@ source_urls = [
      "https://zubo-bly.pages.dev/IPTV.txt",
        "https://raw.githubusercontent.com/gclgg/tv/refs/heads/main/itvlist.txt",
       "https://d.kstore.dev/download/15366/6988.txt",
-      "https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/%E6%B9%96%E5%8C%97%E7%A7%BB%E5%8A%A8%E5%86%85%E7%BD%91.m3u"
-       "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+      "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
       "https://raw.githubusercontent.com/Guovin/iptv-database/master/result.txt",
      "https://raw.githubusercontent.com/iptv-org/iptv/gh-pages/countries/cn.m3u",
      "https://raw.githubusercontent.com/iptv-org/iptv/master/streams/cn.m3u",
