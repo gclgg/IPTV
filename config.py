@@ -3,6 +3,7 @@ ip_version_priority = "ipv4"
 source_urls = [
      "https://zubo-bly.pages.dev/itvlist.txt",
      "https://zubo-bly.pages.dev/IPTV.txt",
+     "http://43.251.226.89:8080/live.txt"
        "https://raw.githubusercontent.com/gclgg/tv/refs/heads/main/itvlist.txt",
       "https://d.kstore.dev/download/15366/6988.txt",
       "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
