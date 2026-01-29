@@ -5,7 +5,7 @@ source_urls = [
      "https://zubo-bly.pages.dev/IPTV.txt",
      "https://raw.githubusercontent.com/alantang1977/JunTV/refs/heads/main/output/result.m3u",
      "https://tmxk.pp.ua/iptv-cn.m3u",
-     "https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"，
+     "https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt",
      "https://down.nigx.cn/raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1",
      "https://gh.catmak.name/https://raw.githubusercontent.com/alantang1977/X/refs/heads/main/live/live_ipv4.m3u",
      "https://dsj-1312694395.cos.ap-guangzhou.myqcloud.com/dsj10.1.txt",
