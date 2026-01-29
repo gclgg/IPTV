@@ -3,14 +3,13 @@ ip_version_priority = "ipv4"
 source_urls = [
      "https://zubo-bly.pages.dev/itvlist.txt",
      "https://zubo-bly.pages.dev/IPTV.txt",
-     "https://gh.catmak.name/https://raw.githubusercontent.com/alantang1977/JunTV/refs/heads/main/output/result.m3u",
+     "https://raw.githubusercontent.com/alantang1977/JunTV/refs/heads/main/output/result.m3u",
      "https://tmxk.pp.ua/iptv-cn.m3u",
-     "https://gh.catmak.name/https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"，
+     "https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt"，
      "https://down.nigx.cn/raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1",
      "https://gh.catmak.name/https://raw.githubusercontent.com/alantang1977/X/refs/heads/main/live/live_ipv4.m3u",
      "https://dsj-1312694395.cos.ap-guangzhou.myqcloud.com/dsj10.1.txt",
-
-       "https://raw.githubusercontent.com/gclgg/tv/refs/heads/main/itvlist.txt",
+     "https://raw.githubusercontent.com/gclgg/tv/refs/heads/main/itvlist.txt",
       "https://d.kstore.dev/download/15366/6988.txt",
       "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
       "https://raw.githubusercontent.com/Guovin/iptv-database/master/result.txt",
@@ -20,9 +19,7 @@ source_urls = [
      "https://raw.githubusercontent.com/kimwang1978/collect-tv-txt/main/others_output.txt",
      "https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt",
      "https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.txt",
-     
      "https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt"
-    
      ]
 
 
