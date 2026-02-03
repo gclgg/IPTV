@@ -1,8 +1,7 @@
 ip_version_priority = "ipv4"
 
 source_urls = [
-     "http://m5a.cn/nA3CC",
-     "https://zubo-bly.pages.dev/itvlist.txt",
+    "https://zubo-bly.pages.dev/itvlist.txt",
      "https://zubo-bly.pages.dev/IPTV.txt",
      "https://raw.githubusercontent.com/alantang1977/JunTV/refs/heads/main/output/result.m3u",
      "https://tmxk.pp.ua/iptv-cn.m3u",
