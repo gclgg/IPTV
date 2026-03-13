@@ -1,6 +1,10 @@
 ip_version_priority = "ipv4"
 
 source_urls = [
+    "https://gitee.com/jin-xueling/cinematography/raw/master/json.txt",
+    "http://210.245.166.84:1299/live/live.txt",
+    "https://d.kstore.dev/download/12441/ds9.txt",
+    "http://rihou.cc:555/gggg.nzk",
     "https://zubo-bly.pages.dev/itvlist.txt",
      "https://zubo-bly.pages.dev/IPTV.txt",
      "https://raw.githubusercontent.com/alantang1977/JunTV/refs/heads/main/output/result.m3u",
