@@ -1,44 +1,44 @@
-2026-03-15 02:18:37,120 - INFO - 开始处理 IPTV 直播源...
-2026-03-15 02:18:39,427 - INFO - url: https://gitee.com/jin-xueling/cinematography/raw/master/json.txt 获取成功，判断为txt格式
-2026-03-15 02:18:39,433 - INFO - url: https://gitee.com/jin-xueling/cinematography/raw/master/json.txt 爬取成功✅，包含频道分类: 央视卫视, 战争电影, 春晚现场, 🎤DJ  歌曲, 🎧经典音乐, 轮播, 聊斋, 聊斋先生, 西游记86版, 西游记续集, 西游记张卫健, 西游记后传, 西游记吴承恩版
-2026-03-15 02:18:40,703 - INFO - url: http://210.245.166.84:1299/live/live.txt 获取成功，判断为txt格式
-2026-03-15 02:18:40,705 - INFO - url: http://210.245.166.84:1299/live/live.txt 爬取成功✅，包含频道分类: ﻿CCTV央视, 全球电视, 新增频道, 央视备用, 超清频道, 卫视系列, 央视咪咕, Espn体育, 体育频道, 国外频道, 电影直播, 央视数字, 香港无线, 台湾新闻, 台湾娱乐, 测试上新
-2026-03-15 02:18:41,184 - INFO - url: https://d.kstore.dev/download/12441/ds9.txt 获取成功，判断为txt格式
-2026-03-15 02:18:41,192 - INFO - url: https://d.kstore.dev/download/12441/ds9.txt 爬取成功✅，包含频道分类: 『電視家9』, 央卫频道1, 央卫频道2, 央卫频道3, 央卫频道4, 央卫频道5, 国际频道, 凤凰频道, 北方广电, 北海联通, 太原联通, 移动高清, 联通酒店, 河南电信, 体育综合, 影视频道, 百事通线, 德州移动, 联通天津, 联通济南, 电信河北, 电信深圳, 央卫网络, 四川频道, 吉林频道, 黑龙江频道, 山东频道, 山西频道, 陕西频道, 湖北频道, 湖南频道, 江苏频道, 浙江频道, 重庆频道, 安徽频道, 江西频道, 广东频道, 海南频道, 内蒙古, 广西频道, 新疆频道, 上海频道, 其他地方, 十堰移通, 综合频道, 电视剧, 经典轮播, 👉下载地址
-2026-03-15 02:18:44,719 - INFO - url: http://rihou.cc:555/gggg.nzk 获取成功，判断为txt格式
-2026-03-15 02:18:44,726 - INFO - url: http://rihou.cc:555/gggg.nzk 爬取成功✅，包含频道分类: 猫TV影视, NBA赛评, 赛事咪咕, 央卫咪咕, 特区频流, 特新Pdtv, 欣赏频道, 网页音乐, 欣赏音乐, 闽南频测, 特区Mttv, 特马SXtv, 特闽Hktv, 特闽FYtv, 闽南4Gtv, 闽南回放, 特闽频晴, 央卫频特, 特区频特, 闽南频特, 央卫高码, 抖音网页, 荔枝网页, 虎牙频道, 爱奇频道, 特区地波, 广州电信, 童年频道, 亮剑全集, 雪豹全集, 凡人修仙, 华山论剑, Q-三国粤, 大时代粤, 流星花园, 还珠格格, 甄嬛传国, 大地恩情, 粤经典剧, 射雕英雄, 神雕侠侣, 视觉效果, 体育频特, 电影频特, 纪录频特, 新闻频特, 儿童频特, 新加频特, 马来频特, 印尼频特, 印度频特, 泰国频特, 英国频特, 越南频特, 韩国频特, 日本频特
-2026-03-15 02:18:44,962 - INFO - url: https://zubo-bly.pages.dev/itvlist.txt 获取成功，判断为txt格式
-2026-03-15 02:18:44,964 - INFO - url: https://zubo-bly.pages.dev/itvlist.txt 爬取成功✅，包含频道分类: 更新时间, 央视频道, 卫视频道, 数字频道
-2026-03-15 02:18:45,197 - INFO - url: https://zubo-bly.pages.dev/IPTV.txt 获取成功，判断为txt格式
-2026-03-15 02:18:45,200 - INFO - url: https://zubo-bly.pages.dev/IPTV.txt 爬取成功✅，包含频道分类: 更新时间, 央视频道, 卫视频道, 数字频道, 湖北
-2026-03-15 02:18:45,966 - INFO - url: https://raw.githubusercontent.com/alantang1977/JunTV/refs/heads/main/output/result.m3u 获取成功，判断为m3u格式
-2026-03-15 02:18:45,970 - INFO - url: https://raw.githubusercontent.com/alantang1977/JunTV/refs/heads/main/output/result.m3u 爬取成功✅，包含频道分类: 🕘️更新时间, 🍄┃广东频道, 🍉┃咪咕频道, 🍓┃央视频道, 🐧┃卫视频道, 🚂┃湾区频道, 🅱┃台湾频道, 📚┃浙江频道, 📚┃北京频道, 📚┃上海频道, 📚┃重庆频道, 🎬┃电影频道, 💰┃付费频道, 🎥┃咪咕直播, 🏀┃体育频道, 📚┃动画频道, 🎵┃音乐频道, 🏛┃经典剧场
-2026-03-15 02:18:47,869 - INFO - url: https://tmxk.pp.ua/iptv-cn.m3u 获取成功，判断为m3u格式
-2026-03-15 02:18:47,875 - INFO - url: https://tmxk.pp.ua/iptv-cn.m3u 爬取成功✅，包含频道分类: 超高清, 央视, 体育, 卫视, 地方, 影视, 新闻, 教育, 熊猫, 综艺, 少儿, 纪实, 体育-昨天, 体育-今天, 体育-明天, 央视频道, 卫视频道, 电影频道, 动画频道, 睛彩频道, 咪视界, 历年春晚
-2026-03-15 02:18:47,946 - INFO - url: https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt 获取成功，判断为m3u格式
-2026-03-15 02:18:47,947 - INFO - url: https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt 爬取成功✅，包含频道分类: 央视频道, 卫视频道, 广东地区, 湖南地区, 浙江地区, 江苏地区, 黑龙江地区, 陕西地区, 云南地区, 福建地区, 河南地区, 甘肃地区, 超清频道
-2026-03-15 02:18:48,339 - INFO - url: https://down.nigx.cn/raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1 获取成功，判断为txt格式
-2026-03-15 02:18:48,344 - INFO - url: https://down.nigx.cn/raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1 爬取成功✅，包含频道分类: ✈️TG频道@stymei1, 🔥[三网]央卫视直播, 🔥[电信]央卫视直播, 🔥[移动]央卫视直播, 🔥[联通]央卫视直播, 🔥[三网]地方台直播, 🔮[三网]港澳台直播, 🌏[三网]全球台直播, 👶🏻少儿直播, 🏀体育直播, 🎞️电影直播, 📽️综艺直播, 📺电视剧直播, 💽纪录片直播, 🎮游戏直播, 🎧音乐直播, 🎎动漫直播, 🍿短剧直播, 🧨小品直播, 🎚️相声直播, 📚听书直播, 👴🏻老年直播, 🔊解说直播, 👁️‍🗨️监控直播, 🎙️抖音直播, 🤟🏻YY直播, 💖爱奇艺直播, 🎨埋堆堆直播, 🏀蜘蛛直播, 🏀[联通]咪视界直播, 🏀[移动]咪视界直播, 🏀[移动]BestTV直播, 🛸[三网]NewTV直播, 🛸[移动]NewTV直播, 👠KK直播, 👠九秀直播, 👠齐齐直播, 🧘🏻‍♀️瑜伽裤直播, 👙模特直播, 💋车模直播, 💄女团直播, 💃🏻热舞直播, 🎣钓鱼直播, 🌲乡野直播, 🗣️脱口秀直播, 🤣沙雕动画直播, 🥥海南移动直播, 🎰API随机点播, 🎤周杰伦歌曲点播, 🎹歌手合集点播
-2026-03-15 02:18:48,414 - ERROR - url: https://gh.catmak.name/https://raw.githubusercontent.com/alantang1977/X/refs/heads/main/live/live_ipv4.m3u 爬取失败❌, Error: 403 Client Error: Forbidden for url: https://gh.catmak.name/https://raw.githubusercontent.com/alantang1977/X/refs/heads/main/live/live_ipv4.m3u
-2026-03-15 02:18:50,170 - INFO - url: https://dsj-1312694395.cos.ap-guangzhou.myqcloud.com/dsj10.1.txt 获取成功，判断为txt格式
-2026-03-15 02:18:50,176 - INFO - url: https://dsj-1312694395.cos.ap-guangzhou.myqcloud.com/dsj10.1.txt 爬取成功✅，包含频道分类: 🕘️使用公告, ☘️个人常看, 🖥抖音直播, 📺央卫网络, 📺优质IPTV, 📺央卫频道, 📡地方频道, 🔥港台电影, 🇭🇰香港, 🇹🇼台湾, 🇺🇸美国, 🇯🇵日本, 🇰🇷韩国, 🇷🇺俄罗斯#genre#, 🏀体育, 🐬动画, 📽爱奇艺, 📽虎牙轮播#genre#, 🎰随机点播, 🌏国外频道, 📻广播频道, 🎞️院线电影, 🎞️热门电影, 🎞️剧集, 🎞️综艺, 🎬留言求片, 🆕新闻女王2, 🆕倚天2003, 🆕倚天2019, 🆕难哄, 🆕卧底娇娃, 🍗打赏支持
-2026-03-15 02:18:50,282 - INFO - url: https://raw.githubusercontent.com/gclgg/tv/refs/heads/main/itvlist.txt 获取成功，判断为txt格式
-2026-03-15 02:18:50,282 - INFO - url: https://raw.githubusercontent.com/gclgg/tv/refs/heads/main/itvlist.txt 爬取成功✅，包含频道分类: 央视频道, 卫视频道, 其他频道
-2026-03-15 02:18:50,637 - INFO - url: https://d.kstore.dev/download/15366/6988.txt 获取成功，判断为txt格式
-2026-03-15 02:18:50,642 - INFO - url: https://d.kstore.dev/download/15366/6988.txt 爬取成功✅，包含频道分类: 央卫频道, 广东频道, 港台频道, 六合开奖
-2026-03-15 02:18:50,709 - INFO - url: https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt 获取成功，判断为m3u格式
-2026-03-15 02:18:50,710 - INFO - url: https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt 爬取成功✅，包含频道分类: 央视频道, 卫视频道, 广东地区, 湖南地区, 浙江地区, 江苏地区, 黑龙江地区, 陕西地区, 云南地区, 福建地区, 河南地区, 甘肃地区, 超清频道
-2026-03-15 02:18:50,767 - ERROR - url: https://raw.githubusercontent.com/Guovin/iptv-database/master/result.txt 爬取失败❌, Error: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/Guovin/iptv-database/master/result.txt
-2026-03-15 02:18:50,814 - INFO - url: https://raw.githubusercontent.com/iptv-org/iptv/gh-pages/countries/cn.m3u 获取成功，判断为m3u格式
-2026-03-15 02:18:50,814 - INFO - url: https://raw.githubusercontent.com/iptv-org/iptv/gh-pages/countries/cn.m3u 爬取成功✅，包含频道分类: Religious, News, Undefined, Kids, Education;Science, General, Business, Entertainment, Sports, Movies, Education, Culture, Documentary, Music, Lifestyle, Education;Outdoor, Animation;Kids, Education;Lifestyle;Science, Comedy, Kids;Lifestyle, Culture;Education, Outdoor, General;News, Shop, Weather, Family, Science, Legislative
-2026-03-15 02:18:50,887 - INFO - url: https://raw.githubusercontent.com/iptv-org/iptv/master/streams/cn.m3u 获取成功，判断为m3u格式
-2026-03-15 02:18:50,940 - INFO - url: https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv4.m3u 获取成功，判断为m3u格式
-2026-03-15 02:18:50,942 - INFO - url: https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv4.m3u 爬取成功✅，包含频道分类: 4K频道, 央视频道, 央视高清, 咪咕央视, 卫视频道, 备用频道, 移动IPTV, 数字频道, APTV专享, APTV专享" catchup="append" catchup-source="?playseek=${(b)yyyyMMddHHmmss}-${(e)yyyyMMddHHmmss}, APTV专享" tvg-logo="https://gcore.jsdelivr.net/gh/taksssss/tv/icon/北京纪实科教.png, BXTV频道, 港澳代理, 港澳台频道, IHOT频道, NewTV频道, 咪咕赛事, 动画频道, 虎牙影视, 斗鱼影视, 电视剧频道, 埋堆堆频道, 点播电影, ☘️北京频道, ☘️上海频道, ☘️浙江频道, ☘️湖南频道, ☘️四川频道, ☘️辽宁频道, ☘️广东频道, ☘️江苏频道, ☘️河南频道, ☘️河北频道, ☘️陕西频道, ☘️安徽频道, ☘️湖北频道, ☘️福建频道, ☘️海南频道, ☘️黑龙江频道, ☘️内蒙古频道, 地方频道, 春晚频道, 国际频道
-2026-03-15 02:18:51,034 - INFO - url: https://raw.githubusercontent.com/kimwang1978/collect-tv-txt/main/others_output.txt 获取成功，判断为txt格式
-2026-03-15 02:18:51,089 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt 获取成功，判断为txt格式
-2026-03-15 02:18:51,094 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt 爬取成功✅，包含频道分类: 央视频道, 卫视频道, 电影频道, 数字频道, 儿童频道, 特色直播, 地方频道, 纪录频道, 体育频道, 解说频道, 音乐频道, 春晚频道, 直播中国, 更新时间
-2026-03-15 02:18:51,178 - INFO - url: https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.txt 获取成功，判断为txt格式
-2026-03-15 02:18:51,180 - INFO - url: https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.txt 爬取成功✅，包含频道分类: 更新时间, 央视频道, 卫视频道, 数字频道, 湾湾节点, 影视轮播, 游戏赛事
-2026-03-15 02:18:51,232 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt 获取成功，判断为txt格式
-2026-03-15 02:18:51,237 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt 爬取成功✅，包含频道分类: 央视频道, 卫视频道, 电影频道, 数字频道, 儿童频道, 特色直播, 地方频道, 纪录频道, 体育频道, 解说频道, 音乐频道, 春晚频道, 直播中国, 更新时间
-2026-03-15 02:18:51,478 - INFO - IPTV 直播源处理完成 ✅
+2026-03-15 09:05:16,174 - INFO - 开始处理 IPTV 直播源...
+2026-03-15 09:05:18,509 - INFO - url: https://gitee.com/jin-xueling/cinematography/raw/master/json.txt 获取成功，判断为txt格式
+2026-03-15 09:05:18,514 - INFO - url: https://gitee.com/jin-xueling/cinematography/raw/master/json.txt 爬取成功✅，包含频道分类: 央视卫视, 战争电影, 春晚现场, 🎤DJ  歌曲, 🎧经典音乐, 轮播, 聊斋, 聊斋先生, 西游记86版, 西游记续集, 西游记张卫健, 西游记后传, 西游记吴承恩版
+2026-03-15 09:05:19,786 - INFO - url: http://210.245.166.84:1299/live/live.txt 获取成功，判断为txt格式
+2026-03-15 09:05:19,788 - INFO - url: http://210.245.166.84:1299/live/live.txt 爬取成功✅，包含频道分类: ﻿CCTV央视, 全球电视, 新增频道, 央视备用, 超清频道, 卫视系列, 央视咪咕, Espn体育, 体育频道, 国外频道, 电影直播, 央视数字, 香港无线, 台湾新闻, 台湾娱乐, 测试上新
+2026-03-15 09:05:20,226 - INFO - url: https://d.kstore.dev/download/12441/ds9.txt 获取成功，判断为txt格式
+2026-03-15 09:05:20,234 - INFO - url: https://d.kstore.dev/download/12441/ds9.txt 爬取成功✅，包含频道分类: 『電視家9』, 央卫频道1, 央卫频道2, 央卫频道3, 央卫频道4, 央卫频道5, 国际频道, 凤凰频道, 北方广电, 北海联通, 太原联通, 移动高清, 联通酒店, 河南电信, 体育综合, 影视频道, 百事通线, 德州移动, 联通天津, 联通济南, 电信河北, 电信深圳, 央卫网络, 四川频道, 吉林频道, 黑龙江频道, 山东频道, 山西频道, 陕西频道, 湖北频道, 湖南频道, 江苏频道, 浙江频道, 重庆频道, 安徽频道, 江西频道, 广东频道, 海南频道, 内蒙古, 广西频道, 新疆频道, 上海频道, 其他地方, 十堰移通, 综合频道, 电视剧, 经典轮播, 👉下载地址
+2026-03-15 09:05:23,638 - INFO - url: http://rihou.cc:555/gggg.nzk 获取成功，判断为txt格式
+2026-03-15 09:05:23,645 - INFO - url: http://rihou.cc:555/gggg.nzk 爬取成功✅，包含频道分类: 猫TV影视, NBA赛评, 赛事咪咕, 央卫咪咕, 特区频流, 特新Pdtv, 欣赏频道, 网页音乐, 欣赏音乐, 闽南频测, 特区Mttv, 特马SXtv, 特闽Hktv, 特闽FYtv, 闽南4Gtv, 闽南回放, 特闽频晴, 央卫频特, 特区频特, 闽南频特, 央卫高码, 抖音网页, 荔枝网页, 虎牙频道, 爱奇频道, 特区地波, 广州电信, 童年频道, 亮剑全集, 雪豹全集, 凡人修仙, 华山论剑, Q-三国粤, 大时代粤, 流星花园, 还珠格格, 甄嬛传国, 大地恩情, 粤经典剧, 射雕英雄, 神雕侠侣, 视觉效果, 体育频特, 电影频特, 纪录频特, 新闻频特, 儿童频特, 新加频特, 马来频特, 印尼频特, 印度频特, 泰国频特, 英国频特, 越南频特, 韩国频特, 日本频特
+2026-03-15 09:05:23,767 - INFO - url: https://zubo-bly.pages.dev/itvlist.txt 获取成功，判断为txt格式
+2026-03-15 09:05:23,768 - INFO - url: https://zubo-bly.pages.dev/itvlist.txt 爬取成功✅，包含频道分类: 更新时间, 央视频道, 卫视频道, 数字频道
+2026-03-15 09:05:23,992 - INFO - url: https://zubo-bly.pages.dev/IPTV.txt 获取成功，判断为txt格式
+2026-03-15 09:05:23,995 - INFO - url: https://zubo-bly.pages.dev/IPTV.txt 爬取成功✅，包含频道分类: 更新时间, 央视频道, 卫视频道, 数字频道, 湖北
+2026-03-15 09:05:24,112 - INFO - url: https://raw.githubusercontent.com/alantang1977/JunTV/refs/heads/main/output/result.m3u 获取成功，判断为m3u格式
+2026-03-15 09:05:24,115 - INFO - url: https://raw.githubusercontent.com/alantang1977/JunTV/refs/heads/main/output/result.m3u 爬取成功✅，包含频道分类: 🕘️更新时间, 🍄┃广东频道, 🍉┃咪咕频道, 🍓┃央视频道, 🐧┃卫视频道, 🚂┃湾区频道, 🅱┃台湾频道, 📚┃浙江频道, 📚┃北京频道, 📚┃上海频道, 📚┃重庆频道, 🎬┃电影频道, 💰┃付费频道, 🎥┃咪咕直播, 🏀┃体育频道, 📚┃动画频道, 🎵┃音乐频道, 🏛┃经典剧场
+2026-03-15 09:05:25,962 - INFO - url: https://tmxk.pp.ua/iptv-cn.m3u 获取成功，判断为m3u格式
+2026-03-15 09:05:25,968 - INFO - url: https://tmxk.pp.ua/iptv-cn.m3u 爬取成功✅，包含频道分类: 超高清, 央视, 体育, 卫视, 地方, 影视, 新闻, 教育, 熊猫, 综艺, 少儿, 纪实, 体育-昨天, 体育-今天, 体育-明天, 央视频道, 卫视频道, 电影频道, 动画频道, 睛彩频道, 咪视界, 历年春晚
+2026-03-15 09:05:26,035 - INFO - url: https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt 获取成功，判断为m3u格式
+2026-03-15 09:05:26,036 - INFO - url: https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt 爬取成功✅，包含频道分类: 央视频道, 卫视频道, 广东地区, 湖南地区, 浙江地区, 江苏地区, 黑龙江地区, 江西地区, 陕西地区, 云南地区, 福建地区, 河南地区, 甘肃地区, 超清频道
+2026-03-15 09:05:26,445 - INFO - url: https://down.nigx.cn/raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1 获取成功，判断为txt格式
+2026-03-15 09:05:26,449 - INFO - url: https://down.nigx.cn/raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1 爬取成功✅，包含频道分类: ✈️TG频道@stymei1, 🔥[三网]央卫视直播, 🔥[电信]央卫视直播, 🔥[移动]央卫视直播, 🔥[联通]央卫视直播, 🔥[三网]地方台直播, 🔮[三网]港澳台直播, 🌏[三网]全球台直播, 👶🏻少儿直播, 🏀体育直播, 🎞️电影直播, 📽️综艺直播, 📺电视剧直播, 💽纪录片直播, 🎮游戏直播, 🎧音乐直播, 🎎动漫直播, 🍿短剧直播, 🧨小品直播, 🎚️相声直播, 📚听书直播, 👴🏻老年直播, 🔊解说直播, 👁️‍🗨️监控直播, 🎙️抖音直播, 🤟🏻YY直播, 💖爱奇艺直播, 🎨埋堆堆直播, 🏀蜘蛛直播, 🏀[联通]咪视界直播, 🏀[移动]咪视界直播, 🏀[移动]BestTV直播, 🛸[三网]NewTV直播, 🛸[移动]NewTV直播, 👠KK直播, 👠九秀直播, 👠齐齐直播, 🧘🏻‍♀️瑜伽裤直播, 👙模特直播, 💋车模直播, 💄女团直播, 💃🏻热舞直播, 🎣钓鱼直播, 🌲乡野直播, 🗣️脱口秀直播, 🤣沙雕动画直播, 🥥海南移动直播, 🎰API随机点播, 🎤周杰伦歌曲点播, 🎹歌手合集点播
+2026-03-15 09:05:26,522 - ERROR - url: https://gh.catmak.name/https://raw.githubusercontent.com/alantang1977/X/refs/heads/main/live/live_ipv4.m3u 爬取失败❌, Error: 403 Client Error: Forbidden for url: https://gh.catmak.name/https://raw.githubusercontent.com/alantang1977/X/refs/heads/main/live/live_ipv4.m3u
+2026-03-15 09:05:28,395 - INFO - url: https://dsj-1312694395.cos.ap-guangzhou.myqcloud.com/dsj10.1.txt 获取成功，判断为txt格式
+2026-03-15 09:05:28,400 - INFO - url: https://dsj-1312694395.cos.ap-guangzhou.myqcloud.com/dsj10.1.txt 爬取成功✅，包含频道分类: 🕘️使用公告, ☘️个人常看, 🖥抖音直播, 📺央卫网络, 📺优质IPTV, 📺央卫频道, 📡地方频道, 🔥港台电影, 🇭🇰香港, 🇹🇼台湾, 🇺🇸美国, 🇯🇵日本, 🇰🇷韩国, 🇷🇺俄罗斯#genre#, 🏀体育, 🐬动画, 📽爱奇艺, 📽虎牙轮播#genre#, 🎰随机点播, 🌏国外频道, 📻广播频道, 🎞️院线电影, 🎞️热门电影, 🎞️剧集, 🎞️综艺, 🎬留言求片, 🆕新闻女王2, 🆕倚天2003, 🆕倚天2019, 🆕难哄, 🆕卧底娇娃, 🍗打赏支持
+2026-03-15 09:05:28,498 - INFO - url: https://raw.githubusercontent.com/gclgg/tv/refs/heads/main/itvlist.txt 获取成功，判断为txt格式
+2026-03-15 09:05:28,498 - INFO - url: https://raw.githubusercontent.com/gclgg/tv/refs/heads/main/itvlist.txt 爬取成功✅，包含频道分类: 央视频道, 卫视频道, 其他频道
+2026-03-15 09:05:28,911 - INFO - url: https://d.kstore.dev/download/15366/6988.txt 获取成功，判断为txt格式
+2026-03-15 09:05:28,916 - INFO - url: https://d.kstore.dev/download/15366/6988.txt 爬取成功✅，包含频道分类: 央卫频道, 广东频道, 港台频道, 六合开奖
+2026-03-15 09:05:28,954 - INFO - url: https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt 获取成功，判断为m3u格式
+2026-03-15 09:05:28,955 - INFO - url: https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt 爬取成功✅，包含频道分类: 央视频道, 卫视频道, 广东地区, 湖南地区, 浙江地区, 江苏地区, 黑龙江地区, 江西地区, 陕西地区, 云南地区, 福建地区, 河南地区, 甘肃地区, 超清频道
+2026-03-15 09:05:28,990 - ERROR - url: https://raw.githubusercontent.com/Guovin/iptv-database/master/result.txt 爬取失败❌, Error: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/Guovin/iptv-database/master/result.txt
+2026-03-15 09:05:29,025 - INFO - url: https://raw.githubusercontent.com/iptv-org/iptv/gh-pages/countries/cn.m3u 获取成功，判断为m3u格式
+2026-03-15 09:05:29,025 - INFO - url: https://raw.githubusercontent.com/iptv-org/iptv/gh-pages/countries/cn.m3u 爬取成功✅，包含频道分类: Religious, News, Undefined, Kids, Education;Science, General, Business, Entertainment, Sports, Movies, Education, Culture, Documentary, Music, Lifestyle, Education;Outdoor, Animation;Kids, Education;Lifestyle;Science, Comedy, Kids;Lifestyle, Culture;Education, Outdoor, General;News, Shop, Weather, Family, Science, Legislative
+2026-03-15 09:05:29,059 - INFO - url: https://raw.githubusercontent.com/iptv-org/iptv/master/streams/cn.m3u 获取成功，判断为m3u格式
+2026-03-15 09:05:29,104 - INFO - url: https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv4.m3u 获取成功，判断为m3u格式
+2026-03-15 09:05:29,107 - INFO - url: https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv4.m3u 爬取成功✅，包含频道分类: 4K频道, 央视频道, 央视高清, 咪咕央视, 卫视频道, 备用频道, 移动IPTV, 数字频道, APTV专享, APTV专享" catchup="append" catchup-source="?playseek=${(b)yyyyMMddHHmmss}-${(e)yyyyMMddHHmmss}, APTV专享" tvg-logo="https://gcore.jsdelivr.net/gh/taksssss/tv/icon/北京纪实科教.png, BXTV频道, 港澳代理, 港澳台频道, IHOT频道, NewTV频道, 咪咕赛事, 动画频道, 虎牙影视, 斗鱼影视, 电视剧频道, 埋堆堆频道, 点播电影, ☘️北京频道, ☘️上海频道, ☘️浙江频道, ☘️湖南频道, ☘️四川频道, ☘️辽宁频道, ☘️广东频道, ☘️江苏频道, ☘️河南频道, ☘️河北频道, ☘️陕西频道, ☘️安徽频道, ☘️湖北频道, ☘️福建频道, ☘️海南频道, ☘️黑龙江频道, ☘️内蒙古频道, 地方频道, 春晚频道, 国际频道
+2026-03-15 09:05:29,209 - INFO - url: https://raw.githubusercontent.com/kimwang1978/collect-tv-txt/main/others_output.txt 获取成功，判断为txt格式
+2026-03-15 09:05:29,249 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt 获取成功，判断为txt格式
+2026-03-15 09:05:29,254 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt 爬取成功✅，包含频道分类: 央视频道, 卫视频道, 电影频道, 数字频道, 儿童频道, 特色直播, 地方频道, 纪录频道, 体育频道, 解说频道, 音乐频道, 春晚频道, 直播中国, 更新时间
+2026-03-15 09:05:29,318 - INFO - url: https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.txt 获取成功，判断为txt格式
+2026-03-15 09:05:29,320 - INFO - url: https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.txt 爬取成功✅，包含频道分类: 更新时间, 央视频道, 卫视频道, 数字频道, 湾湾节点, 影视轮播, 游戏赛事
+2026-03-15 09:05:29,363 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt 获取成功，判断为txt格式
+2026-03-15 09:05:29,368 - INFO - url: https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt 爬取成功✅，包含频道分类: 央视频道, 卫视频道, 电影频道, 数字频道, 儿童频道, 特色直播, 地方频道, 纪录频道, 体育频道, 解说频道, 音乐频道, 春晚频道, 直播中国, 更新时间
+2026-03-15 09:05:29,572 - INFO - IPTV 直播源处理完成 ✅
