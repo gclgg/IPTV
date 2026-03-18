@@ -76,7 +76,8 @@ def parse_txt_file(filename):
                     'clean_url': clean_url,
                     'logo': logo_url,
                     'group': current_group,
-                    'is_announcement': current_group == '公告'
+                    'is_announcement': current_group == '公告',
+                    'source': 'local'  # 标记为本地源
                 })
     
     return dict(channels_by_group)
@@ -114,7 +115,9 @@ async def fetch_hotel_source():
                             
                             hotel_data[current_group].append({
                                 'name': channel_name,
-                                'url': channel_url
+                                'url': channel_url,
+                                'group': current_group,
+                                'source': 'hotel'  # 标记为酒店源
                             })
                 
                 # 统计并显示
@@ -152,6 +155,7 @@ async def check_channel(session, channel):
     full_url = channel.get('full_url', '')
     clean_url = channel.get('clean_url', '')
     is_announcement = channel.get('is_announcement', False)
+    source = channel.get('source', 'local')
     
     if is_announcement:
         return {
@@ -160,7 +164,8 @@ async def check_channel(session, channel):
             'full_url': full_url,
             'logo': channel_logo,
             'valid': True,
-            'height': 1080
+            'height': 1080,
+            'source': source
         }
     
     print(f"检测: {channel_name} - {clean_url[:60]}...")
@@ -173,7 +178,8 @@ async def check_channel(session, channel):
             'full_url': full_url,
             'logo': channel_logo,
             'valid': True,
-            'height': 720
+            'height': 720,
+            'source': source
         }
     
     try:
@@ -184,7 +190,8 @@ async def check_channel(session, channel):
                 'full_url': full_url,
                 'logo': channel_logo,
                 'valid': True,
-                'height': 720
+                'height': 720,
+                'source': source
             }
         else:
             return None
@@ -196,7 +203,8 @@ async def check_channel(session, channel):
             'full_url': full_url,
             'logo': channel_logo,
             'valid': True,
-            'height': 720
+            'height': 720,
+            'source': source
         }
 
 async def main():
@@ -224,6 +232,7 @@ async def main():
         for channel in channels:
             if group == '公告' and '更新日期' in channel['name']:
                 announcement = channel
+                announcement['source'] = 'local'
             elif group != '公告':
                 local_channels_to_check.append(channel)
     
@@ -285,7 +294,7 @@ async def main():
                         f.write(extinf + '\n')
                         f.write(ch['full_url'] + '\n')
         
-        # === 第三部分：酒店源（大分组 + 子分组） ===
+        # === 第三部分：酒店源 ===
         if hotel_data:
             # 酒店源大分组（带时间戳）
             f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
@@ -293,11 +302,11 @@ async def main():
             # 按顺序写入子分组
             for subgroup in HOTEL_SUB_GROUPS:
                 if subgroup in hotel_data and hotel_data[subgroup]:
-                    f.write(f'\n# 分组：{subgroup}\n')
+                    f.write(f'\n# 分组：{subgroup}（{HOTEL_MAIN_GROUP}）\n')
                     for ch in hotel_data[subgroup]:
                         tvg_id = str(abs(hash(ch['name'])) % 10000)
-                        # group-title 使用子分组名，这样播放器会显示为独立的组
-                        extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}" group-title="{subgroup}",{ch["name"]}'
+                        # 在分组名称中标注酒店源
+                        extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}" group-title="{subgroup}（{HOTEL_MAIN_GROUP}）",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
     
