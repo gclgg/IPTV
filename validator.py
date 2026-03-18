@@ -17,10 +17,10 @@ INPUT_SOURCE = "live.txt"
 
 # 酒店源配置
 HOTEL_SOURCE_URL = "https://raw.githubusercontent.com/gclgg/zubo/main/itvlist.txt"
-HOTEL_MAIN_GROUP = "酒店源"
+HOTEL_MAIN_GROUP = "酒店源"  # 酒店源主分组名称
 
-# 保留所有三个分组
-KEEP_HOTEL_GROUPS = ['央视频道', '卫视频道', '数字频道']
+# 酒店源下面的子分组
+HOTEL_SUB_GROUPS = ['央视频道', '卫视频道', '数字频道']
 
 USER_AGENTS = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
@@ -82,7 +82,7 @@ def parse_txt_file(filename):
     return dict(channels_by_group)
 
 async def fetch_hotel_source():
-    """拉取酒店源，保留央视频道、卫视频道、数字频道"""
+    """拉取酒店源，保持子分组结构"""
     print(f"\n🏨 正在拉取酒店源: {HOTEL_SOURCE_URL}")
     try:
         async with aiohttp.ClientSession() as session:
@@ -92,8 +92,8 @@ async def fetch_hotel_source():
                     return {}
                 
                 content = await resp.text()
-                hotel_by_subgroup = defaultdict(list)
-                current_subgroup = None
+                hotel_data = defaultdict(list)
+                current_group = None
                 lines = content.strip().split('\n')
                 
                 for line in lines:
@@ -102,32 +102,29 @@ async def fetch_hotel_source():
                         continue
                     
                     if line.endswith('#genre#'):
-                        current_subgroup = clean_group_name(line[:-7].strip())
+                        current_group = clean_group_name(line[:-7].strip())
                         continue
                     
-                    if ',' in line and current_subgroup:
-                        # 只保留指定的三个分组
-                        if current_subgroup in KEEP_HOTEL_GROUPS:
+                    if ',' in line and current_group:
+                        # 只保留需要的子分组
+                        if current_group in HOTEL_SUB_GROUPS:
                             parts = line.split(',', 1)
                             channel_name = parts[0].strip()
                             channel_url = parts[1].strip()
                             
-                            hotel_by_subgroup[current_subgroup].append({
+                            hotel_data[current_group].append({
                                 'name': channel_name,
-                                'url': channel_url,
-                                'group': current_subgroup
+                                'url': channel_url
                             })
                 
                 # 统计并显示
-                total = sum(len(ch) for ch in hotel_by_subgroup.values())
-                print(f"✅ 拉取成功，保留 {len(hotel_by_subgroup)} 个子分组，{total} 个频道")
+                total = sum(len(ch) for ch in hotel_data.values())
+                print(f"✅ 拉取成功，{len(hotel_data)} 个子分组，{total} 个频道")
+                for group in HOTEL_SUB_GROUPS:
+                    if group in hotel_data:
+                        print(f"   - {group}: {len(hotel_data[group])} 个频道")
                 
-                # 按指定顺序显示
-                for subgroup in KEEP_HOTEL_GROUPS:
-                    if subgroup in hotel_by_subgroup:
-                        print(f"   - {subgroup}: {len(hotel_by_subgroup[subgroup])} 个频道")
-                
-                return dict(hotel_by_subgroup)
+                return dict(hotel_data)
     except Exception as e:
         print(f"❌ 拉取失败: {e}")
         return {}
@@ -209,7 +206,7 @@ async def main():
     
     print(f"\n🕐 当前时间: {current_time}")
     
-    # 1. 拉取酒店源（保留央视频道、卫视频道、数字频道）
+    # 1. 拉取酒店源（保留子分组结构）
     hotel_data = await fetch_hotel_source()
     
     # 2. 解析本地源
@@ -219,22 +216,22 @@ async def main():
     
     channels_by_group = parse_txt_file(INPUT_SOURCE)
     
-    # 3. 分离公告和频道
+    # 3. 分离公告和需要检测的本地频道
     announcement = None
-    channels_to_check = []
+    local_channels_to_check = []
     
     for group, channels in channels_by_group.items():
         for channel in channels:
             if group == '公告' and '更新日期' in channel['name']:
                 announcement = channel
             elif group != '公告':
-                channels_to_check.append(channel)
+                local_channels_to_check.append(channel)
     
     print(f"\n📢 公告: 1 条")
-    print(f"📺 需要检测的本地频道: {len(channels_to_check)} 个")
+    print(f"📺 需要检测的本地频道: {len(local_channels_to_check)} 个")
     
     # 4. 检测本地频道
-    valid_channels = []
+    valid_local_channels = []
     async with aiohttp.ClientSession(
         connector=aiohttp.TCPConnector(ssl=False),
         headers={'User-Agent': random.choice(USER_AGENTS)}
@@ -245,15 +242,15 @@ async def main():
             async with semaphore:
                 return await check_channel(session, ch)
         
-        tasks = [bounded_check(ch) for ch in channels_to_check]
+        tasks = [bounded_check(ch) for ch in local_channels_to_check]
         results = await asyncio.gather(*tasks)
     
-    valid_channels = [r for r in results if r]
-    print(f"\n✅ 本地频道检测完成！有效: {len(valid_channels)}")
+    valid_local_channels = [r for r in results if r]
+    print(f"\n✅ 本地频道检测完成！有效: {len(valid_local_channels)}")
     
     # 5. 按分组整理本地有效源
     local_by_group = defaultdict(list)
-    for ch in valid_channels:
+    for ch in valid_local_channels:
         local_by_group[ch['group']].append(ch)
     
     # 6. 写入最终的 M3U 文件
@@ -288,16 +285,18 @@ async def main():
                         f.write(extinf + '\n')
                         f.write(ch['full_url'] + '\n')
         
-        # === 第三部分：酒店源（三个子分组） ===
+        # === 第三部分：酒店源（大分组 + 子分组） ===
         if hotel_data:
-            f.write(f'\n# ========== {HOTEL_MAIN_GROUP} ==========\n')
+            # 酒店源大分组（带时间戳）
+            f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
             
-            # 按顺序写入三个分组：央视频道、卫视频道、数字频道
-            for subgroup in KEEP_HOTEL_GROUPS:
+            # 按顺序写入子分组
+            for subgroup in HOTEL_SUB_GROUPS:
                 if subgroup in hotel_data and hotel_data[subgroup]:
                     f.write(f'\n# 分组：{subgroup}\n')
                     for ch in hotel_data[subgroup]:
                         tvg_id = str(abs(hash(ch['name'])) % 10000)
+                        # group-title 使用子分组名，这样播放器会显示为独立的组
                         extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}" group-title="{subgroup}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
@@ -310,13 +309,13 @@ async def main():
     print(f"🕐 更新时间: {current_time}")
     print(f"\n📊 最终文件统计:")
     print(f"  - 公告: 1 条")
-    print(f"  - 本地有效源: {len(valid_channels)} 个")
+    print(f"  - 本地有效源: {len(valid_local_channels)} 个")
     if hotel_data:
-        print(f"  - 酒店源: {total_hotel} 个频道，{len(hotel_data)} 个子分组")
-        for subgroup in KEEP_HOTEL_GROUPS:
+        print(f"  - {HOTEL_MAIN_GROUP}: {total_hotel} 个频道，{len(hotel_data)} 个子分组")
+        for subgroup in HOTEL_SUB_GROUPS:
             if subgroup in hotel_data:
                 print(f"      {subgroup}: {len(hotel_data[subgroup])} 个")
-    print(f"  - 总计: {len(valid_channels) + total_hotel} 个源")
+    print(f"  - 总计: {len(valid_local_channels) + total_hotel} 个源")
 
 if __name__ == "__main__":
     asyncio.run(main())
