@@ -2,6 +2,8 @@ ip_version_priority = "ipv4"
 
 source_urls = [
     "https://gitee.com/jin-xueling/cinematography/raw/master/json.txt",
+      "https://dsj-1312694395.cos.ap-guangzhou.myqcloud.com/dsj10.1.txt",
+    "https://gitee.com/yimi321/tv/raw/master/tv.png",
     "http://210.245.166.84:1299/live/live.txt",
     "https://d.kstore.dev/download/12441/ds9.txt",
     "http://rihou.cc:555/gggg.nzk",
