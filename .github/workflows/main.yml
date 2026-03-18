@@ -3,12 +3,12 @@ name: Scheduled Auto Update
 on:
   schedule:
     - cron: '0 22 * * *'  # 北京时间每天早上6点运行（UTC 22:00）
-  workflow_dispatch:
+  workflow_dispatch:        # 允许手动触发
 
 jobs:
   auto-update:
     runs-on: ubuntu-latest
-    timeout-minutes: 45     # 增加到45分钟，确保足够时间检测1300+个源
+    timeout-minutes: 90     # 增加到90分钟，确保足够时间
     
     permissions:
       contents: write
@@ -21,11 +21,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           persist-credentials: true
 
-      # 2. 自动生成 requirements.txt（如需要）
-      - name: Generate requirements.txt
+      # 2. 【修复】直接安装所需依赖，跳过有问题的 pipreqs
+      - name: Install required packages
         run: |
-          pip install pipreqs
-          pipreqs ./ --encoding=utf8 --force
+          pip install aiohttp
           
       # 3. 设置 Python 环境
       - name: Setup Python 3.10
@@ -34,11 +33,13 @@ jobs:
           python-version: '3.10'
           cache: 'pip'
 
-      # 4. 安装 Python 依赖
+      # 4. 安装 Python 依赖（如果有 requirements.txt）
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+          if [ -f "requirements.txt" ]; then
+            pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+          fi
 
       # 5. 安装 ffmpeg（用于流检测）
       - name: Install ffmpeg
@@ -54,18 +55,13 @@ jobs:
             || echo "ffprobe test failed (but continuing)"
         continue-on-error: true
 
-      # 7. 安装 validator.py 需要的额外依赖
-      - name: Install validation dependencies
-        run: |
-          pip install aiohttp
-
-      # 8. 执行主脚本（生成 live.txt）
+      # 7. 执行主脚本（生成 live.txt）
       - name: Execute update script
         run: python main.py
         env:
           TZ: Asia/Shanghai
 
-      # 9. 检查 live.txt 是否生成并显示统计信息
+      # 8. 检查 live.txt 是否生成并显示统计信息
       - name: Check live.txt
         run: |
           if [ -f "live.txt" ]; then
@@ -80,10 +76,10 @@ jobs:
             exit 1
           fi
 
-      # 10. 运行优化版有效性检测脚本
+      # 9. 运行优化版有效性检测脚本（包含酒店源合并）
       - name: Run stream validation
         run: |
-          echo "🔍 开始检测直播源有效性（优化版-两阶段检测）..."
+          echo "🔍 开始检测直播源有效性（包含酒店源合并）..."
           START_TIME=$(date +%s)
           python validator.py
           END_TIME=$(date +%s)
@@ -107,7 +103,7 @@ jobs:
             echo "失效源数量：$INVALID_COUNT"
           fi
 
-      # 11. 提交并推送更改
+      # 10. 提交并推送更改
       - name: Commit & Push Changes
         if: always()
         run: |
