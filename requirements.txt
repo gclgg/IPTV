@@ -1,1 +1,2 @@
+aiohttp==3.13.3
 Requests==2.32.5
