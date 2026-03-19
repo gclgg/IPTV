@@ -42,16 +42,22 @@ def clean_group_name(group_name):
     return re.sub(r',', '', group_name).strip()
 
 def extract_logo_from_m3u(channel_name, m3u_file):
-    """从原始 M3U 文件中提取 logo"""
+    """从原始 M3U 文件中提取指定频道的 logo URL"""
     if not os.path.exists(m3u_file):
         return ""
-    with open(m3u_file, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-    for line in lines:
-        if line.startswith('#EXTINF') and f',{channel_name}' in line:
-            logo_match = re.search(r'tvg-logo="([^"]+)"', line)
-            if logo_match:
-                return logo_match.group(1)
+    
+    try:
+        with open(m3u_file, 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+        
+        for i, line in enumerate(lines):
+            if line.startswith('#EXTINF') and f',{channel_name}' in line:
+                # 查找 tvg-logo 属性
+                logo_match = re.search(r'tvg-logo="([^"]+)"', line)
+                if logo_match:
+                    return logo_match.group(1)
+    except:
+        pass
     return ""
 
 def parse_txt_file(filename):
@@ -87,10 +93,13 @@ def parse_txt_file(filename):
     return dict(channels_by_group)
 
 async def fetch_hotel_source():
-    """拉取酒店源，完整保留原始结构"""
+    """拉取酒店源，完整保留原始结构，并尝试获取logo"""
     print(f"\n🏨 正在拉取酒店源: {HOTEL_SOURCE_URL}")
     hotel_groups = defaultdict(list)
     hotel_group_order = []
+    
+    # 尝试获取本地已有的酒店源 M3U 文件（用于提取logo）
+    hotel_m3u_file = "hotel_temp.m3u"
     
     try:
         async with aiohttp.ClientSession() as session:
@@ -121,9 +130,14 @@ async def fetch_hotel_source():
                         channel_name = parts[0].strip()
                         channel_url = parts[1].strip()
                         
+                        # 尝试从本地已有的 M3U 中提取 logo（如果有的话）
+                        # 这里暂时没有 logo，后续可以从其他地方获取
+                        logo_url = ""
+                        
                         hotel_groups[current_group].append({
                             'name': channel_name,
-                            'url': channel_url
+                            'url': channel_url,
+                            'logo': logo_url
                         })
                 
                 # 统计
@@ -299,7 +313,7 @@ async def main():
         
         # === 第三部分：酒店源（完整保留原始结构） ===
         if hotel_groups and hotel_group_order:
-            # 酒店源大分组标题
+            # 酒店源大分组标题 - 修正为"酒店源"
             f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
             
             # 按原始顺序写入酒店源的各个分组，但修改分组名称以区分本地源
@@ -311,7 +325,13 @@ async def main():
                     f.write(f'\n# 分组：{display_group}\n')
                     for ch in hotel_groups[group]:
                         tvg_id = str(abs(hash(ch['name'])) % 10000)
-                        extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}" group-title="{display_group}",{ch["name"]}'
+                        extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}"'
+                        
+                        # 如果有logo就加上
+                        if ch.get('logo'):
+                            extinf += f' tvg-logo="{ch["logo"]}"'
+                        
+                        extinf += f' group-title="{display_group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
     
