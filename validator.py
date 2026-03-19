@@ -19,6 +19,14 @@ INPUT_SOURCE = "live.txt"
 HOTEL_SOURCE_URL = "https://raw.githubusercontent.com/gclgg/zubo/main/itvlist.txt"
 HOTEL_MAIN_GROUP = "酒店源"  # 酒店源主分组名称
 
+# 分组名称映射（将酒店源中容易混淆的分组改名）
+GROUP_MAPPING = {
+    "央视频道": "央视",
+    # 如果有其他需要改名的分组，可以在这里添加
+    # "卫视频道": "卫视",
+    # "数字频道": "数字"
+}
+
 USER_AGENTS = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.36',
@@ -81,19 +89,20 @@ def parse_txt_file(filename):
 async def fetch_hotel_source():
     """拉取酒店源，完整保留原始结构"""
     print(f"\n🏨 正在拉取酒店源: {HOTEL_SOURCE_URL}")
+    hotel_groups = defaultdict(list)
+    hotel_group_order = []
+    
     try:
         async with aiohttp.ClientSession() as session:
             async with session.get(HOTEL_SOURCE_URL, timeout=30) as resp:
                 if resp.status != 200:
                     print(f"❌ 拉取失败: HTTP {resp.status}")
-                    return None, {}
+                    return hotel_groups, hotel_group_order
                 
                 content = await resp.text()
                 
                 # 解析酒店源的完整内容
-                hotel_groups = defaultdict(list)
                 current_group = None
-                group_order = []  # 记录分组顺序
                 
                 lines = content.strip().split('\n')
                 for line in lines:
@@ -103,8 +112,8 @@ async def fetch_hotel_source():
                     
                     if line.endswith('#genre#'):
                         current_group = clean_group_name(line[:-7].strip())
-                        if current_group not in group_order:
-                            group_order.append(current_group)
+                        if current_group not in hotel_group_order:
+                            hotel_group_order.append(current_group)
                         continue
                     
                     if ',' in line and current_group:
@@ -120,14 +129,14 @@ async def fetch_hotel_source():
                 # 统计
                 total = sum(len(ch) for ch in hotel_groups.values())
                 print(f"✅ 拉取成功，共 {len(hotel_groups)} 个分组，{total} 个频道")
-                for group in group_order:
+                for group in hotel_group_order:
                     if group in hotel_groups:
                         print(f"   - {group}: {len(hotel_groups[group])} 个频道")
                 
-                return hotel_groups, group_order
+                return hotel_groups, hotel_group_order
     except Exception as e:
         print(f"❌ 拉取失败: {e}")
-        return {}, []
+        return hotel_groups, hotel_group_order
 
 async def fast_check(session, clean_url):
     """快速 HEAD 检查"""
@@ -288,29 +297,23 @@ async def main():
                         f.write(extinf + '\n')
                         f.write(ch['full_url'] + '\n')
         
-       # === 第三部分：酒店源（完整保留原始结构） ===
-if hotel_groups and hotel_group_order:
-    f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
-    
-    # 按原始顺序写入酒店源的各个分组，但修改分组名称以区分本地源
-    for group in hotel_group_order:
-        if group in hotel_groups and hotel_groups[group]:
-            # 分组名称映射：将容易混淆的名称改为更容易区分的名称
-            group_mapping = {
-                "央视频道": "央视",
-                # 如果有其他需要改名的分组，可以在这里添加
-                # "卫视频道": "卫视",
-                # "数字频道": "数字"
-            }
+        # === 第三部分：酒店源（完整保留原始结构） ===
+        if hotel_groups and hotel_group_order:
+            # 酒店源大分组标题
+            f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
             
-            display_group = group_mapping.get(group, group)  # 如果有映射就用映射后的名称，否则用原名
-            
-            f.write(f'\n# 分组：{display_group}\n')
-            for ch in hotel_groups[group]:
-                tvg_id = str(abs(hash(ch['name'])) % 10000)
-                extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}" group-title="{display_group}",{ch["name"]}'
-                f.write(extinf + '\n')
-                f.write(ch['url'] + '\n')
+            # 按原始顺序写入酒店源的各个分组，但修改分组名称以区分本地源
+            for group in hotel_group_order:
+                if group in hotel_groups and hotel_groups[group]:
+                    # 分组名称映射：将容易混淆的名称改为更容易区分的名称
+                    display_group = GROUP_MAPPING.get(group, group)  # 如果有映射就用映射后的名称，否则用原名
+                    
+                    f.write(f'\n# 分组：{display_group}\n')
+                    for ch in hotel_groups[group]:
+                        tvg_id = str(abs(hash(ch['name'])) % 10000)
+                        extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}" group-title="{display_group}",{ch["name"]}'
+                        f.write(extinf + '\n')
+                        f.write(ch['url'] + '\n')
     
     # 统计信息
     total_hotel = sum(len(ch) for ch in hotel_groups.values()) if hotel_groups else 0
@@ -325,7 +328,8 @@ if hotel_groups and hotel_group_order:
         print(f"  - {HOTEL_MAIN_GROUP}: {total_hotel} 个频道，{len(hotel_groups)} 个分组")
         for group in hotel_group_order:
             if group in hotel_groups:
-                print(f"      {group}: {len(hotel_groups[group])} 个")
+                display_group = GROUP_MAPPING.get(group, group)
+                print(f"      {display_group}: {len(hotel_groups[group])} 个")
     print(f"  - 总计: {len(valid_local_channels) + total_hotel} 个源")
 
 if __name__ == "__main__":
