@@ -21,7 +21,7 @@ HOTEL_MAIN_GROUP = "酒店源"  # 酒店源主分组名称
 
 # 分组名称映射（将酒店源中容易混淆的分组改名）
 GROUP_MAPPING = {
-    "央视频道": "央视",
+    "央视频道": "央   视",
     # 如果有其他需要改名的分组，可以在这里添加
     # "卫视频道": "卫视",
     # "数字频道": "数字"
@@ -114,7 +114,7 @@ def parse_txt_file(filename):
                     'clean_url': clean_url,
                     'logo': logo_url,
                     'group': current_group,
-                    'is_announcement': current_group == '公告'
+                    'is_announcement': current_group == '公    告'
                 })
     
     return dict(channels_by_group)
