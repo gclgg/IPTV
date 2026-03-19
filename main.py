@@ -112,37 +112,31 @@ def is_ipv6(url):
 def updateChannelUrlsM3U(channels, template_channels):
     written_urls = set()
     current_date = datetime.now().strftime("%Y-%m-%d")
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     repo_time = get_github_repo_update_time("gclgg", "IPTV")
-    update_channel_name = f"📦 仓库更新时间 {repo_time}" if repo_time else "📦 仓库更新时间 获取失败"
-
-    for group in config.announcements:
-        for entry in group['entries']:
-            if entry['name'] is None:
-                entry['name'] = current_date
+    update_channel_name = f"更新时间 {current_time}"  # 统一用当前时间
 
     with open("live.m3u", "w", encoding="utf-8") as f_m3u, open("live.txt", "w", encoding="utf-8") as f_txt:
         # 修复 f-string 反斜杠问题
         epg_part = ','.join(f'"{u}"' for u in config.epg_urls)
         f_m3u.write(f"#EXTM3U x-tvg-url={epg_part}\n")
-        f_txt.write(f"# 仓库最后更新时间: {repo_time if repo_time else '获取失败'}\n")
+        f_txt.write(f"# 仓库最后更新时间: {current_time}\n")
 
-        # 公告分类（含伪频道）
+        # === 公告分类（只保留一个）===
         f_txt.write("公   告,#genre#\n")
-        f_m3u.write(f'#EXTINF:-1 tvg-id="0" tvg-name="仓库更新" '
-                    f'tvg-logo="https://gitee.com/gclgg/gcl/raw/master/16.jpg" '
+        
+        # 获取公告的logo（从config中取第一个公告的logo）
+        announcement_logo = config.announcements[0]['entries'][0]['logo'] if config.announcements else ""
+        
+        # 写入公告（只写一条）
+        f_m3u.write(f'#EXTINF:-1 tvg-id="0" tvg-name="{update_channel_name}" '
+                    f'tvg-logo="{announcement_logo}" '
                     f'group-title="公告",{update_channel_name}\n')
-        f_m3u.write("https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4\n")
-        f_txt.write(f"{update_channel_name},https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4\n")
-
-        # 其余公告
-        for group in config.announcements:
-            f_txt.write(f"{group['channel']},#genre#\n")
-            for entry in group['entries']:
-                f_m3u.write(f"#EXTINF:-1 tvg-id=\"1\" tvg-name=\"{entry['name']}\" "
-                            f"tvg-logo=\"{entry['logo']}\" group-title=\"{group['channel']}\",{entry['name']}\n")
-                f_m3u.write(f"{entry['url']}\n")
-                f_txt.write(f"{entry['name']},{entry['url']}\n")
+        # 使用第一个公告的URL
+        announcement_url = config.announcements[0]['entries'][0]['url'] if config.announcements else "https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4"
+        f_m3u.write(f"{announcement_url}\n")
+        f_txt.write(f"{update_channel_name},{announcement_url}\n")
 
         # 普通频道
         for category, ch_list in template_channels.items():
