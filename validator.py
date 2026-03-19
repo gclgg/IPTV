@@ -114,7 +114,7 @@ def parse_txt_file(filename):
                     'clean_url': clean_url,
                     'logo': logo_url,
                     'group': current_group,
-                    'is_announcement': current_group == '公    告'
+                    'is_announcement': current_group == '公告'
                 })
     
     return dict(channels_by_group)
