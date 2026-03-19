@@ -1,9 +1,6 @@
-# 仓库最后更新时间: 2026-03-19 16:51:36
+# 仓库最后更新时间: 2026-03-19 17:21:45
 公   告,#genre#
-📦 仓库更新时间 2026-03-19 16:51:36,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
-公    告,#genre#
-更新日期,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
-2026-03-19,https://gitlab.com/lr77/IPTV/-/raw/main/%E8%B5%B7%E9%A3%8E%E4%BA%86.mp4
+更新时间 2026-03-19 17:21:45,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
 央视频道,#genre#
 CCTV1,http://go.bkpcp.top/mg/cctv1$LR•IPV4『线路1』
 CCTV1,http://rihou.cc:555/tv/CCTV1酒店$LR•IPV4『线路2』
