@@ -193,7 +193,6 @@ def parse_txt_file(filename, current_time):
                 
                 # 处理公告分组：只保留一个"更新时间"子分组
                 if current_group == '公告':
-                    # 将所有公告频道的名称统一为"更新时间" + 时间戳
                     channel_name = f"更新时间 {current_time}"
                 
                 channels_by_group[current_group].append({
@@ -355,8 +354,8 @@ async def main():
     # 3. 拉取酒店源
     hotel_groups, hotel_group_order = await fetch_hotel_source()
     
-    # 4. 分离公告和需要检测的本地频道
-    announcement_channels = []
+    # 4. 分离需要检测的本地频道（排除公告）
+    announcement_channel = None
     local_channels_to_check = []
     local_group_order = []
     
@@ -365,13 +364,14 @@ async def main():
             local_group_order.append(group)
         for channel in channels:
             if group == '公告':
-                # 公告分组只保留一个频道（去重）
-                if not announcement_channels:
-                    announcement_channels.append(channel)
-            elif group != '公告':
+                # 只取第一个公告频道作为代表
+                if announcement_channel is None:
+                    announcement_channel = channel
+                # 不加入检测列表
+            else:
                 local_channels_to_check.append(channel)
     
-    print(f"\n📢 公告: {len(announcement_channels)} 条")
+    print(f"\n📢 公告: {1 if announcement_channel else 0} 条")
     print(f"📺 需要检测的本地频道: {len(local_channels_to_check)} 个")
     
     # 5. 检测本地频道
@@ -402,17 +402,16 @@ async def main():
         # 写入 EPG 信息行
         f.write('#EXTM3U x-tvg-url="' + '","'.join(EPG_URLS) + '"\n')
         
-        # === 第一部分：公告（只保留一个"更新时间"子分组）===
-        if announcement_channels:
+        # === 第一部分：公告（只保留一个）===
+        if announcement_channel:
             f.write('\n# 分组：公告\n')
-            for ch in announcement_channels:
-                tvg_id = str(abs(hash(ch['name'])) % 10000)
-                extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}"'
-                if ch.get('logo'):
-                    extinf += f' tvg-logo="{ch["logo"]}"'
-                extinf += f' group-title="公告",{ch["name"]}'
-                f.write(extinf + '\n')
-                f.write(ch['full_url'] + '\n')
+            tvg_id = str(abs(hash(announcement_channel['name'])) % 10000)
+            extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{announcement_channel["name"]}"'
+            if announcement_channel.get('logo'):
+                extinf += f' tvg-logo="{announcement_channel["logo"]}"'
+            extinf += f' group-title="公告",{announcement_channel["name"]}'
+            f.write(extinf + '\n')
+            f.write(announcement_channel['full_url'] + '\n')
         
         # === 第二部分：本地有效频道 ===
         if local_by_group:
@@ -458,7 +457,7 @@ async def main():
     print(f"\n⏱️ 总耗时: {elapsed:.1f} 秒")
     print(f"🕐 更新时间: {current_time}")
     print(f"\n📊 最终文件统计:")
-    print(f"  - 公告: {len(announcement_channels)} 条 (更新时间: {current_time})")
+    print(f"  - 公告: {1 if announcement_channel else 0} 条 (更新时间: {current_time})")
     print(f"  - 本地有效源: {len(valid_local_channels)} 个")
     if hotel_groups:
         print(f"  - {HOTEL_MAIN_GROUP}: {total_hotel} 个频道，{len(hotel_groups)} 个分组")
@@ -468,7 +467,7 @@ async def main():
                 display_group = GROUP_MAPPING.get(group, group)
                 group_logo_count = sum(1 for ch in hotel_groups[group] if ch['logo'])
                 print(f"      {display_group}: {len(hotel_groups[group])} 个频道 ({group_logo_count} 个有logo)")
-    print(f"  - 总计: {len(valid_local_channels) + total_hotel + len(announcement_channels)} 个源")
+    print(f"  - 总计: {len(valid_local_channels) + total_hotel + (1 if announcement_channel else 0)} 个源")
 
 if __name__ == "__main__":
     asyncio.run(main())
