@@ -91,9 +91,9 @@ async def fetch_hotel_source():
                 content = await resp.text()
                 
                 # 解析酒店源的完整内容
-                hotel_lines = []
                 hotel_groups = defaultdict(list)
                 current_group = None
+                group_order = []  # 记录分组顺序
                 
                 lines = content.strip().split('\n')
                 for line in lines:
@@ -101,10 +101,10 @@ async def fetch_hotel_source():
                     if not line:
                         continue
                     
-                    hotel_lines.append(line)
-                    
                     if line.endswith('#genre#'):
                         current_group = clean_group_name(line[:-7].strip())
+                        if current_group not in group_order:
+                            group_order.append(current_group)
                         continue
                     
                     if ',' in line and current_group:
@@ -120,13 +120,14 @@ async def fetch_hotel_source():
                 # 统计
                 total = sum(len(ch) for ch in hotel_groups.values())
                 print(f"✅ 拉取成功，共 {len(hotel_groups)} 个分组，{total} 个频道")
-                for group, channels in hotel_groups.items():
-                    print(f"   - {group}: {len(channels)} 个频道")
+                for group in group_order:
+                    if group in hotel_groups:
+                        print(f"   - {group}: {len(hotel_groups[group])} 个频道")
                 
-                return hotel_lines, hotel_groups
+                return hotel_groups, group_order
     except Exception as e:
         print(f"❌ 拉取失败: {e}")
-        return None, {}
+        return {}, []
 
 async def fast_check(session, clean_url):
     """快速 HEAD 检查"""
@@ -206,7 +207,7 @@ async def main():
     print(f"\n🕐 当前时间: {current_time}")
     
     # 1. 拉取酒店源（保留完整结构和原始顺序）
-    hotel_lines, hotel_groups = await fetch_hotel_source()
+    hotel_groups, hotel_group_order = await fetch_hotel_source()
     
     # 2. 解析本地源
     if not os.path.exists(INPUT_SOURCE):
@@ -218,11 +219,11 @@ async def main():
     # 3. 分离公告和需要检测的本地频道
     announcement = None
     local_channels_to_check = []
-    local_groups_order = []  # 记录本地分组的原始顺序
+    local_group_order = []  # 记录本地分组的原始顺序
     
     for group, channels in channels_by_group.items():
-        if group not in local_groups_order:
-            local_groups_order.append(group)
+        if group not in local_group_order:
+            local_group_order.append(group)
         for channel in channels:
             if group == '公告' and '更新日期' in channel['name']:
                 announcement = channel
@@ -275,7 +276,7 @@ async def main():
         # === 第二部分：本地有效频道（按原始顺序） ===
         if local_by_group:
             f.write('\n# ========== 本地源 ==========\n')
-            for group in local_groups_order:
+            for group in local_group_order:
                 if group != '公告' and group in local_by_group and local_by_group[group]:
                     f.write(f'\n# 分组：{group}\n')
                     for ch in local_by_group[group]:
@@ -287,25 +288,29 @@ async def main():
                         f.write(extinf + '\n')
                         f.write(ch['full_url'] + '\n')
         
-        # === 第三部分：酒店源（完整保留原始结构） ===
-        if hotel_lines:
-            f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
+       # === 第三部分：酒店源（完整保留原始结构） ===
+if hotel_groups and hotel_group_order:
+    f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
+    
+    # 按原始顺序写入酒店源的各个分组，但修改分组名称以区分本地源
+    for group in hotel_group_order:
+        if group in hotel_groups and hotel_groups[group]:
+            # 分组名称映射：将容易混淆的名称改为更容易区分的名称
+            group_mapping = {
+                "央视频道": "央视",
+                # 如果有其他需要改名的分组，可以在这里添加
+                # "卫视频道": "卫视",
+                # "数字频道": "数字"
+            }
             
-            # 直接写入酒店源的原始内容，保持完整结构
-            current_main_group = None
-            for line in hotel_lines:
-                if line.endswith('#genre#'):
-                    current_main_group = clean_group_name(line[:-7].strip())
-                    f.write(f'\n# 分组：{current_main_group}\n')
-                elif ',' in line and current_main_group:
-                    parts = line.split(',', 1)
-                    channel_name = parts[0].strip()
-                    channel_url = parts[1].strip()
-                    
-                    tvg_id = str(abs(hash(channel_name)) % 10000)
-                    extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{channel_name}" group-title="{current_main_group}",{channel_name}'
-                    f.write(extinf + '\n')
-                    f.write(channel_url + '\n')
+            display_group = group_mapping.get(group, group)  # 如果有映射就用映射后的名称，否则用原名
+            
+            f.write(f'\n# 分组：{display_group}\n')
+            for ch in hotel_groups[group]:
+                tvg_id = str(abs(hash(ch['name'])) % 10000)
+                extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}" group-title="{display_group}",{ch["name"]}'
+                f.write(extinf + '\n')
+                f.write(ch['url'] + '\n')
     
     # 统计信息
     total_hotel = sum(len(ch) for ch in hotel_groups.values()) if hotel_groups else 0
@@ -318,8 +323,9 @@ async def main():
     print(f"  - 本地有效源: {len(valid_local_channels)} 个")
     if hotel_groups:
         print(f"  - {HOTEL_MAIN_GROUP}: {total_hotel} 个频道，{len(hotel_groups)} 个分组")
-        for group, channels in hotel_groups.items():
-            print(f"      {group}: {len(channels)} 个")
+        for group in hotel_group_order:
+            if group in hotel_groups:
+                print(f"      {group}: {len(hotel_groups[group])} 个")
     print(f"  - 总计: {len(valid_local_channels) + total_hotel} 个源")
 
 if __name__ == "__main__":
