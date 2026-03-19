@@ -60,7 +60,7 @@ url_blacklist = [
 
 announcements = [
     {
-        "channel": "公告",
+        "channel": "公    告",
         "entries": [
             {"name": "更新日期", "url": "https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4", "logo": "https://gitee.com/gclgg/gcl/raw/master/16.jpg"},
             {"name": None, "url": "https://gitlab.com/lr77/IPTV/-/raw/main/%E8%B5%B7%E9%A3%8E%E4%BA%86.mp4", "logo": "https://gitee.com/gclgg/gcl/raw/master/16.jpg"}
