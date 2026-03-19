@@ -21,7 +21,7 @@ HOTEL_MAIN_GROUP = "酒店源"  # 酒店源主分组名称
 
 # 分组名称映射（将酒店源中容易混淆的分组改名）
 GROUP_MAPPING = {
-    "央视频道": "央视",
+    "央视频道": "央   视",
     # 如果有其他需要改名的分组，可以在这里添加
     # "卫视频道": "卫视",
     # "数字频道": "数字"
@@ -275,12 +275,12 @@ async def main():
         if group not in local_group_order:
             local_group_order.append(group)
         for channel in channels:
-            if group == '公告' and '更新日期' in channel['name']:
+            if group == '公   告' and '更新日期' in channel['name']:
                 announcement = channel
-            elif group != '公告':
+            elif group != '公   告':
                 local_channels_to_check.append(channel)
     
-    print(f"\n📢 公告: 1 条")
+    print(f"\n📢 公   告: 1 条")
     print(f"📺 需要检测的本地频道: {len(local_channels_to_check)} 个")
     
     # 4. 检测本地频道
@@ -313,13 +313,13 @@ async def main():
         
         # === 第一部分：公告 ===
         if announcement:
-            f.write('\n# 分组：公告\n')
+            f.write('\n# 分组：公   告\n')
             announcement_name = f"更新日期 {current_time}"
             tvg_id = str(abs(hash(announcement_name)) % 10000)
             extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{announcement_name}"'
             if announcement.get('logo'):
                 extinf += f' tvg-logo="{announcement["logo"]}"'
-            extinf += f' group-title="公告",{announcement_name}'
+            extinf += f' group-title="公   告",{announcement_name}'
             f.write(extinf + '\n')
             f.write(announcement['full_url'] + '\n')
         
@@ -327,7 +327,7 @@ async def main():
         if local_by_group:
             f.write('\n# ========== 本地源 ==========\n')
             for group in local_group_order:
-                if group != '公告' and group in local_by_group and local_by_group[group]:
+                if group != '公   告' and group in local_by_group and local_by_group[group]:
                     f.write(f'\n# 分组：{group}\n')
                     for ch in local_by_group[group]:
                         tvg_id = str(abs(hash(ch['name'])) % 10000)
