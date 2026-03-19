@@ -128,9 +128,9 @@ def updateChannelUrlsM3U(channels, template_channels):
         f_txt.write(f"# 仓库最后更新时间: {repo_time if repo_time else '获取失败'}\n")
 
         # 公告分类（含伪频道）
-        f_txt.write("公告,#genre#\n")
-        f_m3u.write(f'#EXTINF:-1 tvg-id="0" tvg-name="仓库更新时间" '
-                    f'tvg-logo="https://cdn.jsdelivr.net/gh/lr77/IPTV@main/icons/update.png" '
+        f_txt.write("公   告,#genre#\n")
+        f_m3u.write(f'#EXTINF:-1 tvg-id="0" tvg-name="仓库更新" '
+                    f'tvg-logo="https://gitee.com/gclgg/gcl/raw/master/16.jpg" '
                     f'group-title="公告",{update_channel_name}\n')
         f_m3u.write("https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4\n")
         f_txt.write(f"{update_channel_name},https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4\n")
