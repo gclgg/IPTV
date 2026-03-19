@@ -21,10 +21,39 @@ HOTEL_MAIN_GROUP = "酒店源"  # 酒店源主分组名称
 
 # 分组名称映射（将酒店源中容易混淆的分组改名）
 GROUP_MAPPING = {
-    "央视频道": "央  视",
+    "央视频道": "央视",
     # 如果有其他需要改名的分组，可以在这里添加
     # "卫视频道": "卫视",
     # "数字频道": "数字"
+}
+
+# 常用频道的logo URL（可以从本地源中提取，这里作为备用）
+COMMON_LOGOS = {
+    "CCTV1": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png",
+    "CCTV2": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV2.png",
+    "CCTV3": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV3.png",
+    "CCTV4": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV4.png",
+    "CCTV5": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5.png",
+    "CCTV6": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV6.png",
+    "CCTV7": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV7.png",
+    "CCTV8": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV8.png",
+    "CCTV9": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV9.png",
+    "CCTV10": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV10.png",
+    "CCTV11": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV11.png",
+    "CCTV12": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV12.png",
+    "CCTV13": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV13.png",
+    "CCTV14": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV14.png",
+    "CCTV15": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV15.png",
+    "CCTV16": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV16.png",
+    "CCTV17": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV17.png",
+    "湖南卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Hunan.png",
+    "浙江卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Zhejiang.png",
+    "江苏卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Jiangsu.png",
+    "东方卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/DragonTV.png",
+    "北京卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Beijing.png",
+    "广东卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Guangdong.png",
+    "深圳卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Shenzhen.png",
+    "湖北卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Hubei.png",
 }
 
 USER_AGENTS = [
@@ -44,7 +73,7 @@ def clean_group_name(group_name):
 def extract_logo_from_m3u(channel_name, m3u_file):
     """从原始 M3U 文件中提取指定频道的 logo URL"""
     if not os.path.exists(m3u_file):
-        return ""
+        return COMMON_LOGOS.get(channel_name, "")
     
     try:
         with open(m3u_file, 'r', encoding='utf-8') as f:
@@ -58,7 +87,9 @@ def extract_logo_from_m3u(channel_name, m3u_file):
                     return logo_match.group(1)
     except:
         pass
-    return ""
+    
+    # 如果没找到，返回常用logo
+    return COMMON_LOGOS.get(channel_name, "")
 
 def parse_txt_file(filename):
     """解析本地直播源 TXT 文件"""
@@ -87,7 +118,7 @@ def parse_txt_file(filename):
                     'clean_url': clean_url,
                     'logo': logo_url,
                     'group': current_group,
-                    'is_announcement': current_group == '公  告'
+                    'is_announcement': current_group == '公告'
                 })
     
     return dict(channels_by_group)
@@ -97,9 +128,6 @@ async def fetch_hotel_source():
     print(f"\n🏨 正在拉取酒店源: {HOTEL_SOURCE_URL}")
     hotel_groups = defaultdict(list)
     hotel_group_order = []
-    
-    # 尝试获取本地已有的酒店源 M3U 文件（用于提取logo）
-    hotel_m3u_file = "hotel_temp.m3u"
     
     try:
         async with aiohttp.ClientSession() as session:
@@ -130,9 +158,8 @@ async def fetch_hotel_source():
                         channel_name = parts[0].strip()
                         channel_url = parts[1].strip()
                         
-                        # 尝试从本地已有的 M3U 中提取 logo（如果有的话）
-                        # 这里暂时没有 logo，后续可以从其他地方获取
-                        logo_url = ""
+                        # 从常用logo库中获取logo
+                        logo_url = COMMON_LOGOS.get(channel_name, "")
                         
                         hotel_groups[current_group].append({
                             'name': channel_name,
@@ -313,7 +340,7 @@ async def main():
         
         # === 第三部分：酒店源（完整保留原始结构） ===
         if hotel_groups and hotel_group_order:
-            # 酒店源大分组标题 - 修正为"酒店源"
+            # 酒店源大分组标题 - 明确使用"酒店源"而不是"更新时间"
             f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
             
             # 按原始顺序写入酒店源的各个分组，但修改分组名称以区分本地源
@@ -340,7 +367,7 @@ async def main():
     elapsed = time.time() - start_time
     
     print(f"\n⏱️ 总耗时: {elapsed:.1f} 秒")
-    print(f"🕐 酒店源: {current_time}")
+    print(f"🕐 更新时间: {current_time}")
     print(f"\n📊 最终文件统计:")
     print(f"  - 公告: 1 条")
     print(f"  - 本地有效源: {len(valid_local_channels)} 个")
