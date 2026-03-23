@@ -25,6 +25,11 @@ jobs:
         with:
           python-version: '3.10'
 
+      # 添加这一步骤：安装依赖
+      - name: Install dependencies
+        run: |
+          pip install requests
+
       - name: Execute update script
         run: python main.py
         env:
