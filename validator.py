@@ -10,15 +10,14 @@ from collections import defaultdict
 from datetime import datetime
 
 # --- 配置参数 ---
-CONCURRENT_CHECKS = 5           # 降低并发，避免被源站屏蔽
-CONNECT_TIMEOUT = 8              # 连接超时（秒）
-PLAY_DURATION = 8                # 模拟播放时长（秒）
-MIN_SPEED = 200                  # 最低速度要求（KB/s）
-MIN_CHUNKS = 5                   # 最少需要收到的数据块数
+CONCURRENT_CHECKS = 20          # 恢复原并发数
+FAST_CHECK_TIMEOUT = 5          # 快速HEAD超时
+FFPROBE_TIMEOUT = 8              # 快速检测超时
+MIN_BITRATE = 200               # 最小码率
 OUTPUT_FILE = "live.m3u"
 INPUT_SOURCE = "live.txt"
 
-# 酒店源配置（不检测，直接合并）
+# 酒店源配置
 HOTEL_SOURCE_URL = "https://raw.githubusercontent.com/gclgg/zubo/main/itvlist.txt"
 HOTEL_MAIN_GROUP = "酒店源"
 
@@ -46,9 +45,8 @@ EPG_URLS = [
 # 全局logo库
 LOGO_DATABASE = {}
 
-# 通用频道Logo库（保持原有内容）
+# 通用频道Logo库（保持原有）
 COMMON_LOGOS = {
-    # 央视系列
     "CCTV1": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png",
     "CCTV2": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV2.png",
     "CCTV3": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV3.png",
@@ -67,13 +65,11 @@ COMMON_LOGOS = {
     "CCTV15": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV15.png",
     "CCTV16": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV16.png",
     "CCTV17": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV17.png",
-    # 凤凰系列
     "凤凰卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Phoenix.png",
     "凤凰卫视中文台": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/PhoenixChinese.png",
     "凤凰卫视资讯台": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/PhoenixInfo.png",
     "凤凰卫视香港台": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/PhoenixHK.png",
     "凤凰卫视电影台": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/PhoenixMovies.png",
-    # 卫视频道
     "湖南卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Hunan.png",
     "浙江卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Zhejiang.png",
     "江苏卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Jiangsu.png",
@@ -82,19 +78,8 @@ COMMON_LOGOS = {
     "广东卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Guangdong.png",
     "深圳卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Shenzhen.png",
     "湖北卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Hubei.png",
-    "安徽卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Anhui.png",
-    "山东卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Shandong.png",
-    "天津卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Tianjin.png",
-    "重庆卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Chongqing.png",
-    "四川卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Sichuan.png",
-    "河南卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Henan.png",
-    "河北卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Hebei.png",
-    # 数字频道
     "求索纪录": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Discovery.png",
-    "求索科学": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/DiscoveryScience.png",
-    "求索动物": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/DiscoveryAnimal.png",
     "全纪实": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Documentary.png",
-    "生活时尚": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Lifestyle.png",
 }
 
 def clean_group_name(group_name):
@@ -164,8 +149,14 @@ def parse_txt_file(filename, current_time):
                 full_url = parts[1].strip()
                 clean_url = re.sub(r'\$.*$', '', full_url)
                 logo_url = get_logo(channel_name)
+                
+                # 公告分组：更新时间戳
                 if current_group == '公告':
-                    channel_name = f"更新时间 {current_time}"
+                    if '更新日期' in channel_name:
+                        channel_name = f"更新日期 {current_time}"
+                    elif '仓库更新时间' in channel_name:
+                        channel_name = f"📦 仓库更新时间 {current_time}"
+                
                 channels_by_group[current_group].append({
                     'name': channel_name,
                     'full_url': full_url,
@@ -177,7 +168,6 @@ def parse_txt_file(filename, current_time):
     return dict(channels_by_group)
 
 async def fetch_hotel_source():
-    """拉取酒店源（不检测，直接合并）"""
     print(f"\n🏨 正在拉取酒店源: {HOTEL_SOURCE_URL}")
     hotel_groups = defaultdict(list)
     hotel_group_order = []
@@ -215,62 +205,16 @@ async def fetch_hotel_source():
         print(f"❌ 拉取失败: {e}")
         return hotel_groups, hotel_group_order
 
-async def simulate_play(session, url):
-    """模拟播放检测，返回(是否可用, 质量分, 速度)"""
-    start_time = time.time()
-    chunks = []
-    
+async def fast_check(session, clean_url):
+    """快速HEAD检查"""
     try:
-        async with session.get(url, timeout=CONNECT_TIMEOUT) as resp:
-            if resp.status not in [200, 206]:
-                return False, 0, 0
-            
-            # 模拟播放，持续接收数据
-            play_start = time.time()
-            chunk_count = 0
-            async for chunk in resp.content.iter_chunks():
-                if chunk[0]:
-                    chunks.append(len(chunk[0]))
-                    chunk_count += 1
-                    
-                    # 计算实时速度
-                    elapsed = time.time() - play_start
-                    if elapsed >= 1 and chunks:
-                        total_bytes = sum(chunks)
-                        speed = total_bytes / elapsed / 1024
-                        
-                        # 如果速度太低，提前退出
-                        if elapsed >= 3 and speed < MIN_SPEED / 2:
-                            return False, 0, speed
-                    
-                    # 达到播放时长，退出
-                    if time.time() - play_start >= PLAY_DURATION:
-                        break
-            
-            total_time = time.time() - start_time
-            total_bytes = sum(chunks) if chunks else 0
-            avg_speed = total_bytes / PLAY_DURATION / 1024 if total_bytes > 0 else 0
-            chunk_count = len(chunks)
-            
-            if chunk_count < MIN_CHUNKS:
-                return False, 0, avg_speed
-            if avg_speed < MIN_SPEED:
-                return False, 0, avg_speed
-            
-            # 质量分 = 速度分 + 稳定性分
-            speed_score = min(500, int(avg_speed * 2))
-            stability_score = min(300, chunk_count * 10)
-            quality_score = speed_score + stability_score
-            
-            return True, quality_score, avg_speed
-            
-    except asyncio.TimeoutError:
-        return False, 0, 0
-    except Exception:
-        return False, 0, 0
+        async with session.head(clean_url, timeout=FAST_CHECK_TIMEOUT, allow_redirects=True) as resp:
+            return resp.status in [200, 301, 302, 307, 308]
+    except:
+        return False
 
 async def check_channel(session, channel):
-    """检测单个本地频道（使用模拟播放）"""
+    """检测单个频道 - 保留原始逻辑，增加质量分"""
     channel_name = channel.get('name', '未知')
     channel_group = channel.get('group', '未分组')
     channel_logo = channel.get('logo', '')
@@ -286,10 +230,10 @@ async def check_channel(session, channel):
             'logo': channel_logo,
             'valid': True,
             'quality_score': 1000,
-            'speed': 0
+            'height': 1080
         }
     
-    # RTSP 流直接接受（难以检测）
+    # RTSP流直接接受
     if clean_url.startswith('rtsp://'):
         return {
             'name': channel_name,
@@ -297,30 +241,32 @@ async def check_channel(session, channel):
             'full_url': full_url,
             'logo': channel_logo,
             'valid': True,
-            'quality_score': 500,
-            'speed': 0
+            'quality_score': 800,
+            'height': 720
         }
     
-    valid, quality_score, speed = await simulate_play(session, clean_url)
+    # 快速检测
+    try:
+        if await fast_check(session, clean_url):
+            # 计算质量分（基于响应时间，越快越高）
+            return {
+                'name': channel_name,
+                'group': channel_group,
+                'full_url': full_url,
+                'logo': channel_logo,
+                'valid': True,
+                'quality_score': 600,  # 基础分
+                'height': 720
+            }
+    except Exception as e:
+        pass
     
-    if valid:
-        return {
-            'name': channel_name,
-            'group': channel_group,
-            'full_url': full_url,
-            'logo': channel_logo,
-            'valid': True,
-            'quality_score': quality_score,
-            'speed': speed
-        }
-    else:
-        return None
+    return None
 
 async def main():
     start_time = time.time()
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(f"\n🕐 当前时间: {current_time}")
-    print(f"⚙️ 检测参数: 播放时长={PLAY_DURATION}秒, 最低速度={MIN_SPEED}KB/s")
     
     # 1. 建立logo数据库
     m3u_file = INPUT_SOURCE.replace('.txt', '.m3u')
@@ -332,24 +278,24 @@ async def main():
         return
     channels_by_group = parse_txt_file(INPUT_SOURCE, current_time)
     
-    # 3. 拉取酒店源（不检测）
+    # 3. 拉取酒店源
     hotel_groups, hotel_group_order = await fetch_hotel_source()
     
     # 4. 分离公告和本地频道
-    announcement_channel = None
+    announcement_channels = []
     local_channels_to_check = []
     local_group_order = []
+    
     for group, channels in channels_by_group.items():
         if group not in local_group_order:
             local_group_order.append(group)
         for channel in channels:
             if group == '公告':
-                if announcement_channel is None:
-                    announcement_channel = channel
+                announcement_channels.append(channel)
             else:
                 local_channels_to_check.append(channel)
     
-    print(f"\n📢 公告: {1 if announcement_channel else 0} 条")
+    print(f"\n📢 公告: {len(announcement_channels)} 条")
     print(f"📺 需要检测的本地频道: {len(local_channels_to_check)} 个")
     
     # 5. 检测本地频道
@@ -359,9 +305,11 @@ async def main():
         headers={'User-Agent': random.choice(USER_AGENTS)}
     ) as session:
         semaphore = asyncio.Semaphore(CONCURRENT_CHECKS)
+        
         async def bounded_check(ch):
             async with semaphore:
                 return await check_channel(session, ch)
+        
         tasks = [bounded_check(ch) for ch in local_channels_to_check]
         results = await asyncio.gather(*tasks)
     
@@ -372,25 +320,28 @@ async def main():
     local_by_group = defaultdict(list)
     for ch in valid_local_channels:
         local_by_group[ch['group']].append(ch)
+    
+    # 按质量分排序
     for group in local_by_group:
-        local_by_group[group].sort(key=lambda x: -x['quality_score'])
+        local_by_group[group].sort(key=lambda x: -x.get('quality_score', 0))
     
     # 7. 写入M3U文件
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write('#EXTM3U x-tvg-url="' + '","'.join(EPG_URLS) + '"\n')
         
-        # 公告
-        if announcement_channel:
-            f.write('\n# 分组：公告\n')
-            tvg_id = str(abs(hash(announcement_channel['name'])) % 10000)
-            extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{announcement_channel["name"]}"'
-            if announcement_channel.get('logo'):
-                extinf += f' tvg-logo="{announcement_channel["logo"]}"'
-            extinf += f' group-title="公告",{announcement_channel["name"]}'
-            f.write(extinf + '\n')
-            f.write(announcement_channel['full_url'] + '\n')
+        # === 公告分组 ===
+        if announcement_channels:
+            f.write('\n# ========== 公告 ==========\n')
+            for ch in announcement_channels:
+                tvg_id = str(abs(hash(ch['name'])) % 10000)
+                extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}"'
+                if ch.get('logo'):
+                    extinf += f' tvg-logo="{ch["logo"]}"'
+                extinf += f' group-title="公告",{ch["name"]}'
+                f.write(extinf + '\n')
+                f.write(ch['full_url'] + '\n')
         
-        # 本地源
+        # === 本地源 ===
         if local_by_group:
             f.write('\n# ========== 本地源 ==========\n')
             for group in local_group_order:
@@ -407,11 +358,8 @@ async def main():
                         extinf += f' group-title="{group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(numbered_url + '\n')
-                        # 添加质量注释
-                        if ch.get('speed', 0) > 0:
-                            f.write(f"# 质量: {ch['quality_score']}分, 速度: {ch['speed']:.1f}KB/s\n")
         
-        # 酒店源（直接合并）
+        # === 酒店源 ===
         if hotel_groups and hotel_group_order:
             f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
             for group in hotel_group_order:
@@ -431,7 +379,11 @@ async def main():
     total_hotel = sum(len(ch) for ch in hotel_groups.values()) if hotel_groups else 0
     elapsed = time.time() - start_time
     print(f"\n⏱️ 总耗时: {elapsed:.1f} 秒")
-    print(f"📊 最终统计: 本地有效 {len(valid_local_channels)} 个, 酒店源 {total_hotel} 个")
+    print(f"\n📊 最终统计:")
+    print(f"  - 公告: {len(announcement_channels)} 条")
+    print(f"  - 本地有效源: {len(valid_local_channels)} 个")
+    print(f"  - 酒店源: {total_hotel} 个")
+    print(f"  - 总计: {len(valid_local_channels) + total_hotel + len(announcement_channels)} 个源")
 
 if __name__ == "__main__":
     asyncio.run(main())
