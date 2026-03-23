@@ -61,16 +61,6 @@ announcements = [
 
 
 epg_urls = [
-    "http://epg.112114.xyz/pp.xml",
-    "https://epg.112114.free.hr/pp.xml",
-    "https://epg.112114.eu.org/pp.xml",
-    "https://epg.v1.mk/fy.xml",
-    "https://epg.v1.mk/fy.xml.gz",
-    "http://epg.51zmt.top:8000/e.xml",
-    "http://epg.51zmt.top:8000/e.xml.gz",
-    "http://epg.51zmt.top:8000/e.xml",
-    "http://epg.aptvapp.com/xml",
-    "https://epg.pw/xmltv/epg_CN.xml",
-    "https://epg.pw/xmltv/epg_HK.xml",
-    "https://epg.pw/xmltv/epg_TW.xml"
+  "https://epg.pw/xmltv/epg_CN.xml",
+  "http://epg.51zmt.top:8000/e.xml"
 ]
