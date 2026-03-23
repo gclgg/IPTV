@@ -1,29 +1,22 @@
 ip_version_priority = "ipv4"
 
 source_urls = [
-    "https://gitee.com/jin-xueling/cinematography/raw/master/json.txt",
-      "https://dsj-1312694395.cos.ap-guangzhou.myqcloud.com/dsj10.1.txt",
-     "http://210.245.166.84:1299/live/live.txt",
-    "https://d.kstore.dev/download/12441/ds9.txt",
-    "https://zubo-bly.pages.dev/itvlist.txt",
-     "https://zubo-bly.pages.dev/IPTV.txt",
-     "https://raw.githubusercontent.com/alantang1977/JunTV/refs/heads/main/output/result.m3u",
-     "https://tmxk.pp.ua/iptv-cn.m3u",
-     "https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt",
-     "https://down.nigx.cn/raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1",
-     "https://gh.catmak.name/https://raw.githubusercontent.com/alantang1977/X/refs/heads/main/live/live_ipv4.m3u",
-     "https://raw.githubusercontent.com/gclgg/tv/refs/heads/main/itvlist.txt",
-      "https://d.kstore.dev/download/15366/6988.txt",
-      "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
-      "https://raw.githubusercontent.com/Guovin/iptv-database/master/result.txt",
-     "https://raw.githubusercontent.com/iptv-org/iptv/gh-pages/countries/cn.m3u",
-     "https://raw.githubusercontent.com/iptv-org/iptv/master/streams/cn.m3u",
-     "https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv4.m3u",
-     "https://raw.githubusercontent.com/kimwang1978/collect-tv-txt/main/others_output.txt",
-     "https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt",
-     "https://raw.githubusercontent.com/kakaxi-1/IPTV/refs/heads/main/ipv4.txt",
-     "https://raw.githubusercontent.com/vbskycn/iptv/master/tv/iptv4.txt"
-     ]
+      "https://gitee.com/jin-xueling/cinematography/raw/master/json.txt",
+    "https://cloud.7so.top/f/Bgw1H8/%E5%A4%A7%E6%94%B9.txt",
+   "https://ds65.tv1288.xyz",
+   "https://gitee.com/yimi321/tv/raw/master/tv.png",
+    "http://rihou.cc:555/gggg.nzk",
+      "https://d.kstore.dev/download/12441/ds9.txt",
+    "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1.m3u",
+     "http://1.94.31.214/live/live9/dgtv.txt",
+ "https://tvv.tw/github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+     "https://ghfast.top/https://raw.githubusercontent.com/Supprise0901/TVBox_live/main/live.txt",
+   "http://tvv.tw/github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+   "http://210.245.166.84:1299/live/live1.txt",
+   "https://dsj-1312694395.cos.ap-guangzhou.myqcloud.com/dsj10.1.txt",
+  "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1.m3u",
+   "http://210.245.166.84:1299/live/live.txt"
+   ]
 
 
 url_blacklist = [
