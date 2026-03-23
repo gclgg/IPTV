@@ -25,8 +25,8 @@ GROUP_MAPPING = {
 
 EPG_URLS = [
     # 主力 EPG 源（已验证可用）
-    "http://epg.51zmt.top:8000/e.xml",
     "https://epg.pw/xmltv/epg_CN.xml",
+    "http://epg.51zmt.top:8000/e.xml",
 ]
 
 # 全局Logo库
