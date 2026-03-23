@@ -1,6 +1,6 @@
-# 仓库最后更新时间: 2026-03-23 16:55:19
+# 仓库最后更新时间: 2026-03-24 06:26:38
 公   告,#genre#
-更新时间 2026-03-23 16:55:19,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
+更新时间 2026-03-24 06:26:38,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
 央视频道,#genre#
 CCTV1,http://go.bkpcp.top/mg/cctv1$LR•IPV4『线路1』
 CCTV1,http://222.214.208.34:59901/tsfile/live/0001_1.m3u8$LR•IPV4『线路2』
@@ -938,12 +938,10 @@ CHC动作电影,rtsp://112.245.125.38:1554/iptv/import/Tvod/iptv/001/001/ch18120
 CHC动作电影,http://sc.rrs.169ol.com:80/PLTV/88888888/224/3221227984/index.m3u8$LR•IPV4『线路12』
 CHC动作电影,http://k.061899.xyz/k.php?id=dzdy$LR•IPV4『线路13』
 CHC动作电影,http://180.152.19.206:1234/644368714$LR•IPV4『线路14』
-CHC动作电影,http://47.113.193.94:2082/644368714$LR•IPV4『线路15』
-CHC动作电影,http://www.ikan.cc.cd:1234/644368714$LR•IPV4『线路16』
-CHC动作电影,https://mgcn.chinacert.cftest5.cn/644368714$LR•IPV4『线路17』
-CHC动作电影,http://125.94.244.92:7890/644368714$LR•IPV4『线路18』
-CHC动作电影,http://rihou.cc:555/tv/CHC动作电影$LR•IPV4『线路19』
-CHC动作电影,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000523$LR•IPV4『线路20』
+CHC动作电影,https://mgcn.chinacert.cftest5.cn/644368714$LR•IPV4『线路15』
+CHC动作电影,http://125.94.244.92:7890/644368714$LR•IPV4『线路16』
+CHC动作电影,http://rihou.cc:555/tv/CHC动作电影$LR•IPV4『线路17』
+CHC动作电影,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000523$LR•IPV4『线路18』
 CHC高清电影,http://27.17.111.252:8118/udp/239.69.1.241:11088$LR•IPV4『线路1』
 CHC高清电影,http://47.92.252.72:3566/644368714$LR•IPV4『线路2』
 CHC高清电影,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000539$LR•IPV4『线路3』
@@ -960,12 +958,10 @@ CHC家庭影院,rtsp://10.15.250.13/PLTV/88888888/224/3221226942/468087169.smil$
 CHC家庭影院,rtsp://112.245.125.39:1554/iptv/import/Tvod/iptv/001/001/ch18120514091718394256.rsc/81481_Uni.sdp$LR•IPV4『线路11』
 CHC家庭影院,http://k.061899.xyz/k.php?id=jtyy$LR•IPV4『线路12』
 CHC家庭影院,http://180.152.19.206:1234/644368373$LR•IPV4『线路13』
-CHC家庭影院,http://47.113.193.94:2082/644368373$LR•IPV4『线路14』
-CHC家庭影院,http://www.ikan.cc.cd:1234/644368373$LR•IPV4『线路15』
-CHC家庭影院,https://mgcn.chinacert.cftest5.cn/644368373$LR•IPV4『线路16』
-CHC家庭影院,http://125.94.244.92:7890/644368373$LR•IPV4『线路17』
-CHC家庭影院,http://rihou.cc:555/tv/CHC家庭影院$LR•IPV4『线路18』
-CHC家庭影院,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000522$LR•IPV4『线路19』
+CHC家庭影院,https://mgcn.chinacert.cftest5.cn/644368373$LR•IPV4『线路14』
+CHC家庭影院,http://125.94.244.92:7890/644368373$LR•IPV4『线路15』
+CHC家庭影院,http://rihou.cc:555/tv/CHC家庭影院$LR•IPV4『线路16』
+CHC家庭影院,rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000522$LR•IPV4『线路17』
 NewTV惊悚悬疑,http://gslbserv.itv.cmvideo.cn:80/1.m3u8?channel-id=FifastbLive&Contentid=1000000004000024282&livemode=1&stbId=yu&mode=1&$LR•IPV4『线路1』
 NewTV惊悚悬疑,http://gslbserv.itv.cmvideo.cn:80/1.m3u8?channel-id=FifastbLive&Contentid=7151256057701199617&livemode=1&stbId=yu&mode=1&$LR•IPV4『线路2』
 NewTV惊悚悬疑,http://ott.mobaibox.com/PLTV/3/224/3221227536/index.m3u8$LR•IPV4『线路3』
