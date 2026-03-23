@@ -3,137 +3,48 @@ name: Scheduled Auto Update
 on:
   schedule:
     - cron: '0 22 * * *'  # 北京时间每天早上6点运行（UTC 22:00）
-  workflow_dispatch:        # 允许手动触发
+  workflow_dispatch:
 
 jobs:
   auto-update:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 30
     
     permissions:
       contents: write
 
     steps:
-      # 1. 检出代码
       - name: Checkout with PAT
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           persist-credentials: true
 
-      # 2. 设置 Python 环境
       - name: Setup Python 3.10
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-          cache: 'pip'
 
-      # 3. 升级 pip
-      - name: Upgrade pip
-        run: |
-          python -m pip install --upgrade pip setuptools wheel
-
-      # 4. 安装依赖
-      - name: Install dependencies
-        run: |
-          pip install "aiohttp>=3.8.0" -i https://pypi.tuna.tsinghua.edu.cn/simple
-          if [ -f "requirements.txt" ]; then
-            cp requirements.txt requirements.txt.bak
-            sed -i 's/aiohttp==.*/aiohttp>=3.8.0/g' requirements.txt
-            pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
-            mv requirements.txt.bak requirements.txt
-          fi
-
-      # 5. 安装 ffmpeg
-      - name: Install ffmpeg
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
-
-      # 6. 测试 ffprobe
-      - name: Test ffprobe
-        run: |
-          ffprobe -v quiet -print_format json -show_streams \
-            -i http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8 \
-            || echo "ffprobe test failed (but continuing)"
-        continue-on-error: true
-
-      # 7. 执行主脚本
       - name: Execute update script
         run: python main.py
         env:
           TZ: Asia/Shanghai
 
-      # 8. 检查 live.txt
-      - name: Check live.txt
-        run: |
-          if [ -f "live.txt" ]; then
-            TOTAL_LINES=$(wc -l < live.txt)
-            echo "✅ live.txt 生成成功，总行数：$TOTAL_LINES"
-            echo "前5行预览："
-            head -5 live.txt
-            echo "后5行预览："
-            tail -5 live.txt
-          else
-            echo "❌ 错误：live.txt 未生成！"
-            exit 1
-          fi
+      - name: Convert TXT to M3U
+        run: python validator.py
 
-      # 9. 运行检测脚本
-      - name: Run stream validation
-        run: |
-          echo "🔍 开始检测直播源有效性..."
-          START_TIME=$(date +%s)
-          python validator.py
-          END_TIME=$(date +%s)
-          DURATION=$((END_TIME - START_TIME))
-          echo "✅ 检测完成！总耗时：$((DURATION / 60)) 分 $((DURATION % 60)) 秒"
-          
-          if [ -f "live.m3u" ]; then
-            VALID_COUNT=$(grep -c '^#EXTINF' live.m3u || echo 0)
-            echo "有效源数量：$VALID_COUNT"
-            echo "分组统计："
-            grep 'group-title=' live.m3u | sed 's/.*group-title="\([^"]*\)".*/\1/' | sort | uniq -c | sort -rn
-          else
-            echo "⚠️ 警告：live.m3u 未生成"
-          fi
-          
-          if [ -f "invalid_sources.log" ]; then
-            INVALID_COUNT=$(wc -l < invalid_sources.log)
-            echo "失效源数量：$INVALID_COUNT"
-          fi
-
-      # 10. 提交并推送更改
       - name: Commit & Push Changes
         if: always()
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # 检查是否有文件变更
           if [ -n "$(git status --porcelain)" ]; then
-            git add live.m3u live.txt
-            
-            # 获取统计信息
-            VALID_COUNT=$(grep -c '^#EXTINF' live.m3u 2>/dev/null || echo 0)
-            INVALID_COUNT=$(wc -l < invalid_sources.log 2>/dev/null || echo 0)
-            
-            git commit -m "AutoUpdate: $(date +'%Y-%m-%d %H:%M:%S') [有效:$VALID_COUNT 无效:$INVALID_COUNT]"
-            
-            # 尝试推送
-            echo "尝试推送更改..."
-            if git push origin main; then
-              echo "✅ 推送成功"
-            else
-              echo "⚠️ 推送失败，尝试拉取最新代码..."
-              git pull --rebase origin main
-              git push origin main
-              echo "✅ 拉取后推送成功"
-            fi
-            
-            # 显示生成的文件大小
-            echo "生成的文件："
-            ls -lh live.txt live.m3u invalid_sources.log 2>/dev/null || echo "部分文件查看失败"
+            git add .
+            git commit -m "AutoUpdate: $(date +'%Y-%m-%d %H:%M:%S')"
+            git pull --rebase origin main
+            git push origin main
+            echo "✅ 更改已推送"
           else
             echo "📭 没有文件变更"
           fi
