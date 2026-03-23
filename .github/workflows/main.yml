@@ -2,7 +2,7 @@ name: Scheduled Auto Update
 
 on:
   schedule:
-    - cron: '0 22 * * *'  # 北京时间每天早上6点运行（UTC 22:00）
+    - cron: '0 22 * * *'
   workflow_dispatch:
 
 jobs:
@@ -14,42 +14,36 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout with PAT
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           persist-credentials: true
 
-      - name: Setup Python 3.10
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      # 添加这一步骤：安装依赖
       - name: Install dependencies
-        run: |
-          pip install requests
+        run: pip install requests aiohttp
 
-      - name: Execute update script
+      - name: Run main.py
         run: python main.py
         env:
           TZ: Asia/Shanghai
 
-      - name: Convert TXT to M3U
+      - name: Run validator.py
         run: python validator.py
 
-      - name: Commit & Push Changes
+      - name: Commit & Push
         if: always()
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
           if [ -n "$(git status --porcelain)" ]; then
             git add .
             git commit -m "AutoUpdate: $(date +'%Y-%m-%d %H:%M:%S')"
             git pull --rebase origin main
             git push origin main
-            echo "✅ 更改已推送"
-          else
-            echo "📭 没有文件变更"
           fi
