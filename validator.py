@@ -14,7 +14,7 @@ HOTEL_MAIN_GROUP = "酒店源"
 
 # iptv-api 源配置
 
-IPTV_API_URL = "https://ghproxy.net/https://gitee.com/gclgg/iptv-api/raw/master/output/result.m3u"
+IPTV_API_URL = "https://raw.githubusercontent.com/gclgg/iptv-api/refs/heads/master/output/result.m3u"
 IPTV_API_MAIN_GROUP = "iptv-api"
 
 # Logo仓库配置
