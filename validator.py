@@ -198,6 +198,9 @@ async def fetch_iptv_api_source():
                     return None, None
                 
                 content = await resp.text()
+                print(f"📄 原始内容长度: {len(content)} 字符")
+                print(f"📄 前500字符预览: {content[:500]}")
+                
                 lines = content.strip().split('\n')
                 
                 iptv_groups = defaultdict(list)
@@ -211,7 +214,7 @@ async def fetch_iptv_api_source():
                     if not line:
                         continue
                     
-                    # 处理分组注释行（格式：# 分组：xxx 或 # 子分组：xxx）
+                    # 处理分组注释行
                     if line.startswith('# 分组：') or line.startswith('# 子分组：'):
                         # 提取分组名
                         group_match = re.search(r'# (?:子)?分组：(.+)', line)
@@ -223,7 +226,7 @@ async def fetch_iptv_api_source():
                     
                     # 处理 EXTINF 行
                     if line.startswith('#EXTINF'):
-                        # 提取频道名称和 logo
+                        # 提取频道名称
                         name_match = re.search(r',([^,]+)$', line)
                         if name_match:
                             current_name = name_match.group(1).strip()
@@ -235,7 +238,7 @@ async def fetch_iptv_api_source():
                             current_logo = ""
                         continue
                     
-                    # 处理 URL 行（不以 # 开头）
+                    # 处理 URL 行
                     if line and not line.startswith('#') and current_name:
                         # 添加到当前分组
                         iptv_groups[current_group].append({
@@ -243,15 +246,18 @@ async def fetch_iptv_api_source():
                             'url': line,
                             'logo': current_logo or get_logo(current_name)
                         })
+                        # 打印第一个频道作为验证
+                        if len(iptv_groups[current_group]) == 1:
+                            print(f"   ✅ 示例频道: {current_name} -> {line[:60]}...")
                         current_name = ""  # 重置
                         current_logo = ""
                 
                 total = sum(len(ch) for ch in iptv_groups.values())
                 if total == 0:
-                    print(f"⚠️ 解析到 0 个频道，可能格式不匹配，尝试直接保存原始内容")
-                    # 如果解析失败，创建一个默认分组保存全部内容
+                    print(f"⚠️ 解析到 0 个频道，尝试直接保存原始 M3U 内容")
+                    # 直接保存整个文件内容
                     iptv_groups["原始内容"].append({
-                        'name': 'iptv-api源',
+                        'name': 'iptv-api 源',
                         'url': IPTV_API_URL,
                         'logo': ''
                     })
