@@ -233,21 +233,24 @@ async def fetch_iptv_api_source():
                         name_match = re.search(r',([^,]+)$', line)
                         if name_match:
                             current_name = name_match.group(1).strip()
+                            # 去掉 CCTV- 中的横杠
+                            current_name = current_name.replace('CCTV-', 'CCTV')
                         
                         # 提取 tvg-id
                         tvg_id_match = re.search(r'tvg-id="([^"]+)"', line)
                         if tvg_id_match:
                             current_tvg_id = tvg_id_match.group(1)
+                            # 同时处理 tvg-id 中的横杠
+                            current_tvg_id = current_tvg_id.replace('CCTV-', 'CCTV')
                         continue
                     
                     # 处理 URL 行（不以 # 开头）
                     if line and not line.startswith('#') and current_name:
-                        # 关键修改：使用本仓库的 Logo 数据库，而不是原始文件中的 logo
                         iptv_groups[current_group].append({
                             'name': current_name,
                             'url': line,
                             'tvg_id': current_tvg_id,
-                            'logo': get_logo(current_name)  # 从本地 Logo 数据库获取
+                            'logo': get_logo(current_name)
                         })
                         if len(iptv_groups[current_group]) == 1:
                             print(f"   ✅ 示例频道: {current_name} -> 使用本仓库Logo")
