@@ -211,9 +211,8 @@ async def fetch_iptv_api_source():
                 iptv_groups = defaultdict(list)
                 iptv_group_order = []
                 current_name = ""
-                current_logo = ""
-                current_tvg_id = ""
                 current_group = "未分组"
+                current_tvg_id = ""
                 
                 for line in lines:
                     line = line.strip()
@@ -239,26 +238,21 @@ async def fetch_iptv_api_source():
                         tvg_id_match = re.search(r'tvg-id="([^"]+)"', line)
                         if tvg_id_match:
                             current_tvg_id = tvg_id_match.group(1)
-                        
-                        # 提取 logo
-                        logo_match = re.search(r'tvg-logo="([^"]+)"', line)
-                        if logo_match:
-                            current_logo = logo_match.group(1)
-                        else:
-                            current_logo = ""
                         continue
                     
                     # 处理 URL 行（不以 # 开头）
                     if line and not line.startswith('#') and current_name:
+                        # 关键修改：使用本仓库的 Logo 数据库，而不是原始文件中的 logo
                         iptv_groups[current_group].append({
                             'name': current_name,
                             'url': line,
                             'tvg_id': current_tvg_id,
-                            'logo': current_logo or get_logo(current_name)
+                            'logo': get_logo(current_name)  # 从本地 Logo 数据库获取
                         })
+                        if len(iptv_groups[current_group]) == 1:
+                            print(f"   ✅ 示例频道: {current_name} -> 使用本仓库Logo")
                         current_name = ""
                         current_tvg_id = ""
-                        current_logo = ""
                 
                 total = sum(len(ch) for ch in iptv_groups.values())
                 if total == 0:
