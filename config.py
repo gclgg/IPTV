@@ -2,19 +2,17 @@ ip_version_priority = "ipv4"
 
 source_urls = [
       "https://gitee.com/jin-xueling/cinematography/raw/master/json.txt",
-    "https://cloud.7so.top/f/Bgw1H8/%E5%A4%A7%E6%94%B9.txt",
-   "https://ds65.tv1288.xyz",
-   "https://gitee.com/yimi321/tv/raw/master/tv.png",
-    "http://rihou.cc:555/gggg.nzk",
+      "https://gitee.com/yimi321/tv/raw/master/tv.png",
+      "http://rihou.cc:555/gggg.nzk",
       "https://d.kstore.dev/download/12441/ds9.txt",
-    "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1.m3u",
+     "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1.m3u",
      "http://1.94.31.214/live/live9/dgtv.txt",
- "https://tvv.tw/github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+     "https://tvv.tw/github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
      "https://ghfast.top/https://raw.githubusercontent.com/Supprise0901/TVBox_live/main/live.txt",
-   "http://tvv.tw/github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
-   "http://210.245.166.84:1299/live/live1.txt",
-   "https://dsj-1312694395.cos.ap-guangzhou.myqcloud.com/dsj10.1.txt",
-  "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1.m3u",
+    "http://tvv.tw/github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+    "http://210.245.166.84:1299/live/live1.txt",
+    "https://dsj-1312694395.cos.ap-guangzhou.myqcloud.com/dsj10.1.txt",
+   "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1.m3u",
    "http://210.245.166.84:1299/live/live.txt"
    ]
 
