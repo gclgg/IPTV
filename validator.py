@@ -13,7 +13,8 @@ HOTEL_SOURCE_URL = "https://raw.githubusercontent.com/gclgg/zubo/main/itvlist.tx
 HOTEL_MAIN_GROUP = "酒店源"
 
 # iptv-api 源配置
-IPTV_API_URL = "https://gitee.com/gclgg/iptv-api/raw/master/output/result.m3u"
+
+IPTV_API_URL = "https://ghproxy.net/https://gitee.com/gclgg/iptv-api/raw/master/output/result.m3u"
 IPTV_API_MAIN_GROUP = "iptv-api"
 
 # Logo仓库配置
@@ -188,13 +189,27 @@ async def fetch_hotel_source():
         return hotel_groups, hotel_group_order
 
 async def fetch_iptv_api_source():
-    """拉取 iptv-api 源的 M3U 文件，完整保留结构"""
+    """拉取 iptv-api 源的 M3U 文件（伪装浏览器请求）"""
     print(f"\n📡 正在拉取 iptv-api 源: {IPTV_API_URL}")
+    
+    # 伪装成浏览器的请求头
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1',
+        'Cache-Control': 'max-age=0',
+    }
+    
     try:
-        async with aiohttp.ClientSession() as session:
+        async with aiohttp.ClientSession(headers=headers) as session:
             async with session.get(IPTV_API_URL, timeout=30) as resp:
                 if resp.status != 200:
                     print(f"❌ 拉取失败: HTTP {resp.status}")
+                    # 尝试打印响应头信息，帮助调试
+                    print(f"   Response headers: {dict(resp.headers)}")
                     return None, None
                 
                 content = await resp.text()
@@ -220,12 +235,9 @@ async def fetch_iptv_api_source():
                     if not line:
                         continue
                     
-                    # 处理分组注释行（多种可能的格式）
-                    if '# 分组：' in line or '# 子分组：' in line or '# 频道组：' in line:
-                        # 提取分组名
+                    # 处理分组注释行
+                    if '# 分组：' in line or '# 子分组：' in line:
                         group_match = re.search(r'# (?:子)?分组：(.+)', line)
-                        if not group_match:
-                            group_match = re.search(r'# 频道组：(.+)', line)
                         if group_match:
                             current_group = group_match.group(1).strip()
                             if current_group not in iptv_group_order:
@@ -235,15 +247,12 @@ async def fetch_iptv_api_source():
                     
                     # 处理 EXTINF 行
                     if line.startswith('#EXTINF'):
-                        # 提取频道名称
                         name_match = re.search(r',([^,]+)$', line)
                         if name_match:
                             current_name = name_match.group(1).strip()
-                        # 提取 tvg-id
                         tvg_id_match = re.search(r'tvg-id="([^"]+)"', line)
                         if tvg_id_match:
                             current_tvg_id = tvg_id_match.group(1)
-                        # 提取 logo
                         logo_match = re.search(r'tvg-logo="([^"]+)"', line)
                         if logo_match:
                             current_logo = logo_match.group(1)
@@ -251,32 +260,29 @@ async def fetch_iptv_api_source():
                             current_logo = ""
                         continue
                     
-                    # 处理 URL 行（不以 # 开头）
+                    # 处理 URL 行
                     if line and not line.startswith('#') and current_name:
-                        # 添加到当前分组
                         iptv_groups[current_group].append({
                             'name': current_name,
                             'url': line,
                             'tvg_id': current_tvg_id,
                             'logo': current_logo or get_logo(current_name)
                         })
-                        # 打印第一个频道作为验证
                         if len(iptv_groups[current_group]) == 1:
                             print(f"   ✅ 示例频道: {current_name} -> {line[:60]}...")
-                        current_name = ""  # 重置
+                        current_name = ""
                         current_tvg_id = ""
                         current_logo = ""
                 
                 total = sum(len(ch) for ch in iptv_groups.values())
                 if total == 0:
-                    print(f"⚠️ 解析到 0 个频道，尝试直接保存原始 M3U 内容")
-                    # 直接保存整个文件内容作为备用
-                    iptv_groups["原始内容"].append({
+                    print(f"⚠️ 解析到 0 个频道")
+                    iptv_groups["iptv-api源"].append({
                         'name': 'iptv-api 源',
                         'url': IPTV_API_URL,
                         'logo': ''
                     })
-                    iptv_group_order = ["原始内容"]
+                    iptv_group_order = ["iptv-api源"]
                     total = 1
                 else:
                     print(f"✅ 拉取成功，共 {len(iptv_groups)} 个分组，{total} 个频道")
@@ -289,7 +295,6 @@ async def fetch_iptv_api_source():
     except Exception as e:
         print(f"❌ 拉取失败: {e}")
         return None, None
-
 async def main():
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(f"\n🕐 当前时间: {current_time}")
