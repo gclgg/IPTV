@@ -12,8 +12,8 @@ INPUT_SOURCE = "live.txt"
 HOTEL_SOURCE_URL = "https://raw.githubusercontent.com/gclgg/zubo/main/itvlist.txt"
 HOTEL_MAIN_GROUP = "酒店源"
 
-# iptv-api 源配置（新增）
-IPTV_API_URL = "https://raw.githubusercontent.com/gclgg/iptv-api/refs/heads/master/output/result.m3u"
+# iptv-api 源配置
+IPTV_API_URL = "https://gitee.com/gclgg/iptv-api/raw/master/output/result.m3u"
 IPTV_API_MAIN_GROUP = "iptv-api"
 
 # Logo仓库配置
@@ -199,7 +199,12 @@ async def fetch_iptv_api_source():
                 
                 content = await resp.text()
                 print(f"📄 原始内容长度: {len(content)} 字符")
-                print(f"📄 前500字符预览: {content[:500]}")
+                
+                # 打印前几行用于调试
+                first_lines = content.strip().split('\n')[:10]
+                print("📄 前10行预览:")
+                for i, line in enumerate(first_lines, 1):
+                    print(f"   {i}: {line[:100]}")
                 
                 lines = content.strip().split('\n')
                 
@@ -208,20 +213,24 @@ async def fetch_iptv_api_source():
                 current_group = "未分组"
                 current_name = ""
                 current_logo = ""
+                current_tvg_id = ""
                 
                 for line in lines:
                     line = line.strip()
                     if not line:
                         continue
                     
-                    # 处理分组注释行
-                    if line.startswith('# 分组：') or line.startswith('# 子分组：'):
+                    # 处理分组注释行（多种可能的格式）
+                    if '# 分组：' in line or '# 子分组：' in line or '# 频道组：' in line:
                         # 提取分组名
                         group_match = re.search(r'# (?:子)?分组：(.+)', line)
+                        if not group_match:
+                            group_match = re.search(r'# 频道组：(.+)', line)
                         if group_match:
                             current_group = group_match.group(1).strip()
                             if current_group not in iptv_group_order:
                                 iptv_group_order.append(current_group)
+                            print(f"   📁 发现分组: {current_group}")
                         continue
                     
                     # 处理 EXTINF 行
@@ -230,6 +239,10 @@ async def fetch_iptv_api_source():
                         name_match = re.search(r',([^,]+)$', line)
                         if name_match:
                             current_name = name_match.group(1).strip()
+                        # 提取 tvg-id
+                        tvg_id_match = re.search(r'tvg-id="([^"]+)"', line)
+                        if tvg_id_match:
+                            current_tvg_id = tvg_id_match.group(1)
                         # 提取 logo
                         logo_match = re.search(r'tvg-logo="([^"]+)"', line)
                         if logo_match:
@@ -238,24 +251,26 @@ async def fetch_iptv_api_source():
                             current_logo = ""
                         continue
                     
-                    # 处理 URL 行
+                    # 处理 URL 行（不以 # 开头）
                     if line and not line.startswith('#') and current_name:
                         # 添加到当前分组
                         iptv_groups[current_group].append({
                             'name': current_name,
                             'url': line,
+                            'tvg_id': current_tvg_id,
                             'logo': current_logo or get_logo(current_name)
                         })
                         # 打印第一个频道作为验证
                         if len(iptv_groups[current_group]) == 1:
                             print(f"   ✅ 示例频道: {current_name} -> {line[:60]}...")
                         current_name = ""  # 重置
+                        current_tvg_id = ""
                         current_logo = ""
                 
                 total = sum(len(ch) for ch in iptv_groups.values())
                 if total == 0:
                     print(f"⚠️ 解析到 0 个频道，尝试直接保存原始 M3U 内容")
-                    # 直接保存整个文件内容
+                    # 直接保存整个文件内容作为备用
                     iptv_groups["原始内容"].append({
                         'name': 'iptv-api 源',
                         'url': IPTV_API_URL,
