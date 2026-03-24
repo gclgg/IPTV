@@ -381,7 +381,8 @@ async def main():
                         extinf += f' group-title="{group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
-    
+
+            
     # 统计
     total_local = sum(len(ch) for ch in channels_by_group.values())
     total_hotel = sum(len(ch) for ch in hotel_groups.values()) if hotel_groups else 0
@@ -391,23 +392,7 @@ async def main():
     print(f"   - 酒店源: {total_hotel} 个频道")
     print(f"   - iptv-api: {total_iptv} 个频道")
     print(f"   - 总计: {total_local + total_hotel + total_iptv} 个频道")
-        
-     # === iptv-api 源 ===
-if iptv_groups and iptv_group_order:
-    f.write(f'\n# ========== {IPTV_API_MAIN_GROUP} [{current_time}] ==========\n')
-    for group in iptv_group_order:
-        if group in iptv_groups and iptv_groups[group]:
-            # 直接使用原始分组名，不做映射
-            f.write(f'\n# 分组：{group}\n')
-            for ch in iptv_groups[group]:
-                tvg_id = str(abs(hash(ch['name'])) % 10000)
-                extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}"'
-                if ch.get('logo'):
-                    extinf += f' tvg-logo="{ch["logo"]}"'
-                extinf += f' group-title="{group}",{ch["name"]}'
-                f.write(extinf + '\n')
-                f.write(ch['url'] + '\n')
-    
+
     # 统计
     total_local = sum(len(ch) for ch in channels_by_group.values())
     total_hotel = sum(len(ch) for ch in hotel_groups.values()) if hotel_groups else 0
