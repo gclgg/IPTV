@@ -296,11 +296,39 @@ async def main():
         return
     channels_by_group = parse_txt_file(INPUT_SOURCE, current_time)
     
-    # 3. 拉取酒店源
-    hotel_groups, hotel_group_order = await fetch_hotel_source()
+    # 3. 拉取酒店源（初始化默认值）
+    hotel_groups = {}
+    hotel_group_order = []
+    try:
+        result = await fetch_hotel_source()
+        if result and len(result) == 2:
+            hotel_groups, hotel_group_order = result
+        else:
+            print(f"⚠️ 酒店源返回数据格式异常，使用默认值")
+    except Exception as e:
+        print(f"⚠️ 拉取酒店源失败: {e}")
     
-    # 4. 拉取 iptv-api 源（新增）
-    iptv_groups, iptv_group_order = await fetch_iptv_api_source()
+    # 4. 拉取 iptv-api 源（初始化默认值）
+    iptv_groups = {}
+    iptv_group_order = []
+    try:
+        result = await fetch_iptv_api_source()
+        if result and len(result) == 2:
+            iptv_groups, iptv_group_order = result
+        else:
+            print(f"⚠️ iptv-api 源返回数据格式异常，使用默认值")
+    except Exception as e:
+        print(f"⚠️ 拉取 iptv-api 源失败: {e}")
+    
+    # 确保变量是字典和列表类型
+    if iptv_groups is None:
+        iptv_groups = {}
+    if iptv_group_order is None:
+        iptv_group_order = []
+    if hotel_groups is None:
+        hotel_groups = {}
+    if hotel_group_order is None:
+        hotel_group_order = []
     
     # 5. 写入M3U文件
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
@@ -338,6 +366,31 @@ async def main():
                         extinf += f' group-title="{display_group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
+        
+        # === iptv-api 源 ===
+        if iptv_groups and iptv_group_order:
+            f.write(f'\n# ========== {IPTV_API_MAIN_GROUP} [{current_time}] ==========\n')
+            for group in iptv_group_order:
+                if group in iptv_groups and iptv_groups[group]:
+                    f.write(f'\n# 分组：{group}\n')
+                    for ch in iptv_groups[group]:
+                        tvg_id = str(abs(hash(ch['name'])) % 10000)
+                        extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}"'
+                        if ch.get('logo'):
+                            extinf += f' tvg-logo="{ch["logo"]}"'
+                        extinf += f' group-title="{group}",{ch["name"]}'
+                        f.write(extinf + '\n')
+                        f.write(ch['url'] + '\n')
+    
+    # 统计
+    total_local = sum(len(ch) for ch in channels_by_group.values())
+    total_hotel = sum(len(ch) for ch in hotel_groups.values()) if hotel_groups else 0
+    total_iptv = sum(len(ch) for ch in iptv_groups.values()) if iptv_groups else 0
+    print(f"\n✅ 转换完成！")
+    print(f"   - 本地源: {total_local} 个频道")
+    print(f"   - 酒店源: {total_hotel} 个频道")
+    print(f"   - iptv-api: {total_iptv} 个频道")
+    print(f"   - 总计: {total_local + total_hotel + total_iptv} 个频道")
         
      # === iptv-api 源 ===
 if iptv_groups and iptv_group_order:
