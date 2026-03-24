@@ -28,7 +28,6 @@ GROUP_MAPPING = {
 }
 
 EPG_URLS = [
-    # 主力 EPG 源（已验证可用）
     "https://epg.pw/xmltv/epg_CN.xml",
 ]
 
@@ -73,11 +72,9 @@ COMMON_LOGOS = {
 }
 
 def clean_group_name(group_name):
-    """清理分组名称，去掉逗号"""
     return re.sub(r',', '', group_name).strip()
 
 async def fetch_my_logo_list():
-    """从你的GitHub仓库获取Logo列表"""
     print(f"\n📡 正在从你的仓库拉取Logo列表: {LOGO_BASE_URL}")
     api_url = f"https://api.github.com/repos/{LOGO_REPO_OWNER}/{LOGO_REPO_NAME}/contents/{LOGO_PATH_IN_REPO}"
     my_logos = {}
@@ -85,7 +82,6 @@ async def fetch_my_logo_list():
         async with aiohttp.ClientSession() as session:
             async with session.get(api_url, timeout=15) as resp:
                 if resp.status != 200:
-                    print(f"⚠️ 无法获取Logo列表 (HTTP {resp.status})")
                     return my_logos
                 files = await resp.json()
                 png_files = [f for f in files if f['name'].lower().endswith('.png')]
@@ -99,16 +95,10 @@ async def fetch_my_logo_list():
     return my_logos
 
 async def build_logo_database(m3u_file):
-    """建立完整的Logo数据库"""
     global LOGO_DATABASE
     LOGO_DATABASE = {}
-    
-    # 1. 从你的GitHub仓库获取
     my_logos = await fetch_my_logo_list()
     LOGO_DATABASE.update(my_logos)
-    print(f"📦 从你的仓库加载 {len(my_logos)} 个logo")
-    
-    # 2. 从本地 M3U 提取（如果有）
     if os.path.exists(m3u_file):
         try:
             with open(m3u_file, 'r', encoding='utf-8') as f:
@@ -121,25 +111,19 @@ async def build_logo_database(m3u_file):
                         channel_name = name_match.group(1).strip()
                         if channel_name not in LOGO_DATABASE:
                             LOGO_DATABASE[channel_name] = logo_match.group(1)
-            print(f"📦 从本地 M3U 补充了一些logo")
         except:
             pass
-    
-    # 3. 从通用库补充
     for name, url in COMMON_LOGOS.items():
         if name not in LOGO_DATABASE:
             LOGO_DATABASE[name] = url
     print(f"✅ Logo数据库共 {len(LOGO_DATABASE)} 条记录")
 
 def get_logo(channel_name):
-    """获取频道Logo"""
     return LOGO_DATABASE.get(channel_name, "")
 
 def parse_txt_file(filename, current_time):
-    """解析 TXT 文件"""
     channels_by_group = defaultdict(list)
     current_group = "未分组"
-    
     with open(filename, 'r', encoding='utf-8') as f:
         for line in f:
             line = line.strip()
@@ -153,24 +137,19 @@ def parse_txt_file(filename, current_time):
                 channel_name = parts[0].strip()
                 full_url = parts[1].strip()
                 logo_url = get_logo(channel_name)
-                
-                # 公告分组：更新时间戳
                 if current_group == '公告':
                     if '更新日期' in channel_name:
                         channel_name = f"更新日期 {current_time}"
                     elif '仓库更新时间' in channel_name:
                         channel_name = f"📦 仓库更新时间 {current_time}"
-                
                 channels_by_group[current_group].append({
                     'name': channel_name,
                     'url': full_url,
                     'logo': logo_url
                 })
-    
     return dict(channels_by_group)
 
 async def fetch_hotel_source():
-    """拉取酒店源"""
     print(f"\n🏨 正在拉取酒店源: {HOTEL_SOURCE_URL}")
     hotel_groups = defaultdict(list)
     hotel_group_order = []
@@ -178,7 +157,6 @@ async def fetch_hotel_source():
         async with aiohttp.ClientSession() as session:
             async with session.get(HOTEL_SOURCE_URL, timeout=30) as resp:
                 if resp.status != 200:
-                    print(f"❌ 拉取失败: HTTP {resp.status}")
                     return hotel_groups, hotel_group_order
                 content = await resp.text()
                 current_group = None
@@ -210,7 +188,7 @@ async def fetch_hotel_source():
         return hotel_groups, hotel_group_order
 
 async def fetch_iptv_api_source():
-    """拉取 iptv-api 源（完整保留原始结构）"""
+    """拉取 iptv-api 源的 M3U 文件，完整保留结构"""
     print(f"\n📡 正在拉取 iptv-api 源: {IPTV_API_URL}")
     try:
         async with aiohttp.ClientSession() as session:
@@ -222,56 +200,68 @@ async def fetch_iptv_api_source():
                 content = await resp.text()
                 lines = content.strip().split('\n')
                 
-                # 提取第一行的 EPG 信息（如果有）
-                first_line = lines[0] if lines else ""
-                if first_line.startswith('#EXTM3U'):
-                    epg_match = re.search(r'x-tvg-url="([^"]+)"', first_line)
-                    if epg_match and epg_match.group(1):
-                        print(f"📺 原始 EPG: {epg_match.group(1)}")
-                
-                # 解析 M3U 结构，保留分组和频道
                 iptv_groups = defaultdict(list)
-                current_group = "未分组"
                 iptv_group_order = []
-                channel_name = ""
+                current_group = "未分组"
+                current_name = ""
+                current_logo = ""
                 
                 for line in lines:
                     line = line.strip()
                     if not line:
                         continue
                     
-                    # 处理分组行（# 分组：xxx）
+                    # 处理分组注释行（格式：# 分组：xxx 或 # 子分组：xxx）
                     if line.startswith('# 分组：') or line.startswith('# 子分组：'):
-                        current_group = line.split('：')[-1].strip()
-                        if current_group not in iptv_group_order:
-                            iptv_group_order.append(current_group)
+                        # 提取分组名
+                        group_match = re.search(r'# (?:子)?分组：(.+)', line)
+                        if group_match:
+                            current_group = group_match.group(1).strip()
+                            if current_group not in iptv_group_order:
+                                iptv_group_order.append(current_group)
                         continue
                     
                     # 处理 EXTINF 行
                     if line.startswith('#EXTINF'):
-                        # 提取频道名称
+                        # 提取频道名称和 logo
                         name_match = re.search(r',([^,]+)$', line)
                         if name_match:
-                            channel_name = name_match.group(1).strip()
+                            current_name = name_match.group(1).strip()
+                        # 提取 logo
+                        logo_match = re.search(r'tvg-logo="([^"]+)"', line)
+                        if logo_match:
+                            current_logo = logo_match.group(1)
+                        else:
+                            current_logo = ""
                         continue
                     
                     # 处理 URL 行（不以 # 开头）
-                    if line and not line.startswith('#') and channel_name:
-                        # 从原始行中提取 logo（如果有）
-                        logo_url = ""
-                        # 可以尝试从之前的 EXTINF 行提取，但这里简化处理
+                    if line and not line.startswith('#') and current_name:
+                        # 添加到当前分组
                         iptv_groups[current_group].append({
-                            'name': channel_name,
+                            'name': current_name,
                             'url': line,
-                            'logo': get_logo(channel_name)
+                            'logo': current_logo or get_logo(current_name)
                         })
-                        channel_name = ""  # 重置
+                        current_name = ""  # 重置
+                        current_logo = ""
                 
                 total = sum(len(ch) for ch in iptv_groups.values())
-                print(f"✅ 拉取成功，共 {len(iptv_groups)} 个分组，{total} 个频道")
-                for group in iptv_group_order:
-                    if group in iptv_groups:
-                        print(f"   - {group}: {len(iptv_groups[group])} 个频道")
+                if total == 0:
+                    print(f"⚠️ 解析到 0 个频道，可能格式不匹配，尝试直接保存原始内容")
+                    # 如果解析失败，创建一个默认分组保存全部内容
+                    iptv_groups["原始内容"].append({
+                        'name': 'iptv-api源',
+                        'url': IPTV_API_URL,
+                        'logo': ''
+                    })
+                    iptv_group_order = ["原始内容"]
+                    total = 1
+                else:
+                    print(f"✅ 拉取成功，共 {len(iptv_groups)} 个分组，{total} 个频道")
+                    for group in iptv_group_order:
+                        if group in iptv_groups:
+                            print(f"   - {group}: {len(iptv_groups[group])} 个频道")
                 
                 return iptv_groups, iptv_group_order
                 
@@ -336,7 +326,7 @@ async def main():
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
         
-        # === iptv-api 源（新增大分组）===
+        # === iptv-api 源 ===
         if iptv_groups and iptv_group_order:
             f.write(f'\n# ========== {IPTV_API_MAIN_GROUP} [{current_time}] ==========\n')
             for group in iptv_group_order:
