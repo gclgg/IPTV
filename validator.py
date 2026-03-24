@@ -12,6 +12,10 @@ INPUT_SOURCE = "live.txt"
 HOTEL_SOURCE_URL = "https://raw.githubusercontent.com/gclgg/zubo/main/itvlist.txt"
 HOTEL_MAIN_GROUP = "酒店源"
 
+# iptv-api 源配置（新增）
+IPTV_API_URL = "https://raw.githubusercontent.com/gclgg/iptv-api/refs/heads/master/output/result.m3u"
+IPTV_API_MAIN_GROUP = "iptv-api"
+
 # Logo仓库配置
 LOGO_REPO_OWNER = "gclgg"
 LOGO_REPO_NAME = "live"
@@ -26,7 +30,6 @@ GROUP_MAPPING = {
 EPG_URLS = [
     # 主力 EPG 源（已验证可用）
     "https://epg.pw/xmltv/epg_CN.xml",
-    
 ]
 
 # 全局Logo库
@@ -206,6 +209,76 @@ async def fetch_hotel_source():
         print(f"❌ 拉取失败: {e}")
         return hotel_groups, hotel_group_order
 
+async def fetch_iptv_api_source():
+    """拉取 iptv-api 源（完整保留原始结构）"""
+    print(f"\n📡 正在拉取 iptv-api 源: {IPTV_API_URL}")
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(IPTV_API_URL, timeout=30) as resp:
+                if resp.status != 200:
+                    print(f"❌ 拉取失败: HTTP {resp.status}")
+                    return None, None
+                
+                content = await resp.text()
+                lines = content.strip().split('\n')
+                
+                # 提取第一行的 EPG 信息（如果有）
+                first_line = lines[0] if lines else ""
+                if first_line.startswith('#EXTM3U'):
+                    epg_match = re.search(r'x-tvg-url="([^"]+)"', first_line)
+                    if epg_match and epg_match.group(1):
+                        print(f"📺 原始 EPG: {epg_match.group(1)}")
+                
+                # 解析 M3U 结构，保留分组和频道
+                iptv_groups = defaultdict(list)
+                current_group = "未分组"
+                iptv_group_order = []
+                channel_name = ""
+                
+                for line in lines:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    
+                    # 处理分组行（# 分组：xxx）
+                    if line.startswith('# 分组：') or line.startswith('# 子分组：'):
+                        current_group = line.split('：')[-1].strip()
+                        if current_group not in iptv_group_order:
+                            iptv_group_order.append(current_group)
+                        continue
+                    
+                    # 处理 EXTINF 行
+                    if line.startswith('#EXTINF'):
+                        # 提取频道名称
+                        name_match = re.search(r',([^,]+)$', line)
+                        if name_match:
+                            channel_name = name_match.group(1).strip()
+                        continue
+                    
+                    # 处理 URL 行（不以 # 开头）
+                    if line and not line.startswith('#') and channel_name:
+                        # 从原始行中提取 logo（如果有）
+                        logo_url = ""
+                        # 可以尝试从之前的 EXTINF 行提取，但这里简化处理
+                        iptv_groups[current_group].append({
+                            'name': channel_name,
+                            'url': line,
+                            'logo': get_logo(channel_name)
+                        })
+                        channel_name = ""  # 重置
+                
+                total = sum(len(ch) for ch in iptv_groups.values())
+                print(f"✅ 拉取成功，共 {len(iptv_groups)} 个分组，{total} 个频道")
+                for group in iptv_group_order:
+                    if group in iptv_groups:
+                        print(f"   - {group}: {len(iptv_groups[group])} 个频道")
+                
+                return iptv_groups, iptv_group_order
+                
+    except Exception as e:
+        print(f"❌ 拉取失败: {e}")
+        return None, None
+
 async def main():
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(f"\n🕐 当前时间: {current_time}")
@@ -223,7 +296,10 @@ async def main():
     # 3. 拉取酒店源
     hotel_groups, hotel_group_order = await fetch_hotel_source()
     
-    # 4. 写入M3U文件
+    # 4. 拉取 iptv-api 源（新增）
+    iptv_groups, iptv_group_order = await fetch_iptv_api_source()
+    
+    # 5. 写入M3U文件
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write('#EXTM3U x-tvg-url="' + '","'.join(EPG_URLS) + '"\n')
         
@@ -259,14 +335,31 @@ async def main():
                         extinf += f' group-title="{display_group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
+        
+        # === iptv-api 源（新增大分组）===
+        if iptv_groups and iptv_group_order:
+            f.write(f'\n# ========== {IPTV_API_MAIN_GROUP} [{current_time}] ==========\n')
+            for group in iptv_group_order:
+                if group in iptv_groups and iptv_groups[group]:
+                    f.write(f'\n# 分组：{group}\n')
+                    for ch in iptv_groups[group]:
+                        tvg_id = str(abs(hash(ch['name'])) % 10000)
+                        extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}"'
+                        if ch.get('logo'):
+                            extinf += f' tvg-logo="{ch["logo"]}"'
+                        extinf += f' group-title="{group}",{ch["name"]}'
+                        f.write(extinf + '\n')
+                        f.write(ch['url'] + '\n')
     
     # 统计
     total_local = sum(len(ch) for ch in channels_by_group.values())
     total_hotel = sum(len(ch) for ch in hotel_groups.values()) if hotel_groups else 0
+    total_iptv = sum(len(ch) for ch in iptv_groups.values()) if iptv_groups else 0
     print(f"\n✅ 转换完成！")
     print(f"   - 本地源: {total_local} 个频道")
     print(f"   - 酒店源: {total_hotel} 个频道")
-    print(f"   - 总计: {total_local + total_hotel} 个频道")
+    print(f"   - iptv-api: {total_iptv} 个频道")
+    print(f"   - 总计: {total_local + total_hotel + total_iptv} 个频道")
 
 if __name__ == "__main__":
     asyncio.run(main())
