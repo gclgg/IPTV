@@ -2,7 +2,7 @@ name: Scheduled Auto Update
 
 on:
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '40 22 * * *'  # UTC 22:40 = 北京时间次日 06:40，每天运行
   workflow_dispatch:
 
 jobs:
