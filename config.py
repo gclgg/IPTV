@@ -59,6 +59,8 @@ announcements = [
 
 
 epg_urls = [
-  "https://epg.pw/xmltv/epg_CN.xml",
-  "http://epg.51zmt.top:8000/e.xml"
+"https://iptv-sources2.pages.dev/epg/51zmt.xml",
+"https://iptv-sources2.pages.dev/epg/51zmt_cc.xml",
+"https://iptv-sources2.pages.dev/epg/51zmt_df.xml",
+"http://epg.51zmt.top:8000/e.xml"
 ]
