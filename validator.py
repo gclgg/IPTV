@@ -29,9 +29,10 @@ GROUP_MAPPING = {
 }
 
 EPG_URLS = [
-"https://iptv-sources2.pages.dev/epg/51zmt.xml",
-"https://iptv-sources2.pages.dev/epg/51zmt_cc.xml",
-"https://iptv-sources2.pages.dev/epg/51zmt_df.xml",
+"https://epg.gcl.de5.net/epg/51zmt.xml",
+"https://epg.gcl.de5.net/epg/51zmt_df.xml",
+"https://epg.gcl.de5.net/epg/51zmt_cc.xml",
+"https://epg.gcl.de5.net/epg/epg_pw.xml",
 "http://epg.51zmt.top:8000/e.xml",
 ]
 
