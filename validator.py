@@ -9,7 +9,7 @@ OUTPUT_FILE = "live.m3u"
 INPUT_SOURCE = "live.txt"
 
 # 酒店源配置
-HOTEL_SOURCE_URL = "https://raw.githubusercontent.com/gclgg/zubo/main/itvlist.txt"
+HOTEL_SOURCE_URL = "https://itv.gcl.de5.net/sub?950428=m3u"
 HOTEL_MAIN_GROUP = "酒店源"
 
 # iptv-api 源配置
