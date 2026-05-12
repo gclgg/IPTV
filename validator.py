@@ -13,7 +13,6 @@ HOTEL_SOURCE_URL = "https://itv.gcl.de5.net/sub?950428=m3u"
 HOTEL_MAIN_GROUP = "酒店源"
 
 # iptv-api 源配置
-
 IPTV_API_URL = "https://raw.githubusercontent.com/gclgg/iptv-api/refs/heads/master/output/result.m3u"
 IPTV_API_MAIN_GROUP = "iptv-api"
 
@@ -155,39 +154,69 @@ def parse_txt_file(filename, current_time):
     return dict(channels_by_group)
 
 async def fetch_hotel_source():
-    print(f"\n🏨 正在拉取酒店源: {HOTEL_SOURCE_URL}")
+    """拉取酒店源（M3U格式）"""
+    print(f"\n🏨 正在拉取酒店源(M3U格式): {HOTEL_SOURCE_URL}")
     hotel_groups = defaultdict(list)
     hotel_group_order = []
     try:
         async with aiohttp.ClientSession() as session:
             async with session.get(HOTEL_SOURCE_URL, timeout=30) as resp:
                 if resp.status != 200:
+                    print(f"❌ 拉取失败: HTTP {resp.status}")
                     return hotel_groups, hotel_group_order
+                
                 content = await resp.text()
-                current_group = None
                 lines = content.strip().split('\n')
+                
+                current_group = "未分组"
+                current_name = ""
+                
                 for line in lines:
                     line = line.strip()
                     if not line:
                         continue
-                    if line.endswith('#genre#'):
-                        current_group = clean_group_name(line[:-7].strip())
-                        if current_group not in hotel_group_order:
-                            hotel_group_order.append(current_group)
+                    
+                    # 处理 EXTINF 行，从中提取 group-title 和频道名
+                    if line.startswith('#EXTINF'):
+                        # 提取 group-title
+                        group_match = re.search(r'group-title="([^"]+)"', line)
+                        if group_match:
+                            current_group = group_match.group(1).strip()
+                            if current_group not in hotel_group_order:
+                                hotel_group_order.append(current_group)
+                        
+                        # 提取频道名称（最后一个逗号后面的内容）
+                        name_match = re.search(r',([^,]+)$', line)
+                        if name_match:
+                            current_name = name_match.group(1).strip()
                         continue
-                    if ',' in line and current_group:
-                        parts = line.split(',', 1)
-                        channel_name = parts[0].strip()
-                        channel_url = parts[1].strip()
-                        logo_url = get_logo(channel_name)
+                    
+                    # 处理 URL 行（不以 # 开头，且我们已有一个频道名）
+                    if line and not line.startswith('#') and current_name:
+                        # 获取 Logo，优先使用您自己的 Logo 库
+                        logo_url = get_logo(current_name)
+                        
                         hotel_groups[current_group].append({
-                            'name': channel_name,
-                            'url': channel_url,
+                            'name': current_name,
+                            'url': line,
                             'logo': logo_url
                         })
+                        # 重置当前频道名，准备处理下一个
+                        current_name = ""
+                
                 total = sum(len(ch) for ch in hotel_groups.values())
-                print(f"✅ 拉取成功，共 {len(hotel_groups)} 个分组，{total} 个频道")
+                if total > 0:
+                    print(f"✅ 拉取成功，共 {len(hotel_groups)} 个分组，{total} 个频道")
+                    # 打印部分分组信息供调试
+                    for group in list(hotel_group_order)[:5]:
+                        print(f"   - {group}: {len(hotel_groups[group])} 个频道")
+                    if len(hotel_group_order) > 5:
+                        print(f"   ... 等共 {len(hotel_group_order)} 个分组")
+                else:
+                    print(f"⚠️ 未能从M3U中解析到任何频道，请检查链接是否有效")
+                
                 return hotel_groups, hotel_group_order
+                
     except Exception as e:
         print(f"❌ 拉取失败: {e}")
         return hotel_groups, hotel_group_order
@@ -382,17 +411,6 @@ async def main():
                         extinf += f' group-title="{group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
-
-            
-    # 统计
-    total_local = sum(len(ch) for ch in channels_by_group.values())
-    total_hotel = sum(len(ch) for ch in hotel_groups.values()) if hotel_groups else 0
-    total_iptv = sum(len(ch) for ch in iptv_groups.values()) if iptv_groups else 0
-    print(f"\n✅ 转换完成！")
-    print(f"   - 本地源: {total_local} 个频道")
-    print(f"   - 酒店源: {total_hotel} 个频道")
-    print(f"   - iptv-api: {total_iptv} 个频道")
-    print(f"   - 总计: {total_local + total_hotel + total_iptv} 个频道")
 
     # 统计
     total_local = sum(len(ch) for ch in channels_by_group.values())
