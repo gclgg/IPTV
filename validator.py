@@ -8,7 +8,7 @@ from datetime import datetime
 OUTPUT_FILE = "live.m3u"
 INPUT_SOURCE = "live.txt"
 
-# 酒店源配置
+# 酒店源配置（已更换为新地址）
 HOTEL_SOURCE_URL = "https://itv.gcl.de5.net/sub?950428=m3u"
 HOTEL_MAIN_GROUP = "酒店源"
 
@@ -28,11 +28,11 @@ GROUP_MAPPING = {
 }
 
 EPG_URLS = [
-"https://epg.gcl.de5.net/epg/51zmt.xml",
-"https://epg.gcl.de5.net/epg/51zmt_df.xml",
-"https://epg.gcl.de5.net/epg/51zmt_cc.xml",
-"https://epg.gcl.de5.net/epg/epg_pw.xml",
-"http://epg.51zmt.top:8000/e.xml",
+    "https://epg.gcl.de5.net/epg/51zmt.xml",
+    "https://epg.gcl.de5.net/epg/51zmt_df.xml",
+    "https://epg.gcl.de5.net/epg/51zmt_cc.xml",
+    "https://epg.gcl.de5.net/epg/epg_pw.xml",
+    "http://epg.51zmt.top:8000/e.xml",
 ]
 
 # 全局Logo库
@@ -136,14 +136,11 @@ def parse_txt_file(filename, current_time):
             if line.endswith('#genre#'):
                 current_group = clean_group_name(line[:-7].strip())
                 continue
-      if line and not line.startswith('#') and current_name and current_group:
-                        logo_url = get_logo(current_name)
-                        hotel_groups[current_group].append({
-                            'name': current_name,
-                            'url': line,
-                            'logo': logo_url
-                        })
-                        current_name = ""
+            if ',' in line:
+                parts = line.split(',', 1)
+                channel_name = parts[0].strip()
+                full_url = parts[1].strip()
+                logo_url = get_logo(channel_name)
                 if current_group == '公告':
                     if '更新日期' in channel_name:
                         channel_name = f"更新日期 {current_time}"
@@ -157,7 +154,7 @@ def parse_txt_file(filename, current_time):
     return dict(channels_by_group)
 
 async def fetch_hotel_source():
-    """拉取酒店源"""
+    """拉取酒店源 - 支持M3U格式"""
     print(f"\n🏨 正在拉取酒店源: {HOTEL_SOURCE_URL}")
     hotel_groups = defaultdict(list)
     hotel_group_order = []
@@ -167,57 +164,53 @@ async def fetch_hotel_source():
                 if resp.status != 200:
                     print(f"❌ 拉取失败: HTTP {resp.status}")
                     return hotel_groups, hotel_group_order
-                
+
                 content = await resp.text()
                 lines = content.strip().split('\n')
-                
-                current_group = "未分组"
+
+                current_group = ""
                 current_name = ""
-                
+
                 for line in lines:
                     line = line.strip()
                     if not line:
                         continue
-                    
+
                     if line.startswith('#EXTINF'):
+                        # 提取 group-title
                         group_match = re.search(r'group-title="([^"]+)"', line)
                         if group_match:
-                            current_group = group_match.group(1).strip()
-                            if current_group not in hotel_group_order:
+                            current_group = group_match.group(1)
+                            if current_group and current_group not in hotel_group_order:
                                 hotel_group_order.append(current_group)
-                        
-                        name_match = re.search(r',([^,]+)$', line)
-                        if name_match:
-                            current_name = name_match.group(1).strip()
+
+                        # 提取频道名称
+                        if ',' in line:
+                            current_name = line.split(',')[-1].strip()
                         continue
-                    
-                    # 原始代码：判断 TXT 格式
-                    # if ',' in line and not line.startswith('#') and current_group:
-                    #     parts = line.split(',', 1)
-                    #     channel_name = parts[0].strip()
-                    #     full_url = parts[1].strip()
-                    
-                    # 改成下面这样，判断 M3U 格式
+
+                    # 匹配URL行
                     if line and not line.startswith('#') and current_name and current_group:
-                        logo_url = get_logo(current_name)
-                        hotel_groups[current_group].append({
-                            'name': current_name,
-                            'url': line,
-                            'logo': logo_url
-                        })
-                        current_name = ""
-                
+                        if line.startswith('http'):
+                            logo_url = get_logo(current_name)
+                            hotel_groups[current_group].append({
+                                'name': current_name,
+                                'url': line,
+                                'logo': logo_url
+                            })
+                            current_name = ""
+
                 total = sum(len(ch) for ch in hotel_groups.values())
                 if total > 0:
-                    print(f"✅ 拉取成功，共 {len(hotel_groups)} 个分组，{total} 个频道")
+                    print(f"✅ 酒店源拉取成功: {len(hotel_groups)} 个分组, {total} 个频道")
                     for group in hotel_group_order:
                         if group in hotel_groups:
                             print(f"   - {group}: {len(hotel_groups[group])} 个频道")
                 else:
-                    print(f"⚠️ 未能从M3U中解析到任何频道")
-                
+                    print(f"⚠️ 未能解析到任何频道")
+
                 return hotel_groups, hotel_group_order
-                
+
     except Exception as e:
         print(f"❌ 拉取失败: {e}")
         return hotel_groups, hotel_group_order
@@ -225,53 +218,50 @@ async def fetch_hotel_source():
 async def fetch_iptv_api_source():
     """拉取 iptv-api 源的 M3U 文件"""
     print(f"\n📡 正在拉取 iptv-api 源: {IPTV_API_URL}")
-    
+
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
     }
-    
+
     try:
         async with aiohttp.ClientSession(headers=headers) as session:
             async with session.get(IPTV_API_URL, timeout=30) as resp:
                 if resp.status != 200:
                     print(f"❌ 拉取失败: HTTP {resp.status}")
                     return None, None
-                
+
                 content = await resp.text()
-                print(f"📄 原始内容长度: {len(content)} 字符")
-                
                 lines = content.strip().split('\n')
-                
+
                 iptv_groups = defaultdict(list)
                 iptv_group_order = []
                 current_name = ""
                 current_group = "未分组"
                 current_tvg_id = ""
-                
+
                 for line in lines:
                     line = line.strip()
                     if not line:
                         continue
-                    
+
                     if line.startswith('#EXTINF'):
                         group_match = re.search(r'group-title="([^"]+)"', line)
                         if group_match:
                             current_group = group_match.group(1).strip()
                             if current_group not in iptv_group_order:
                                 iptv_group_order.append(current_group)
-                                print(f"   📁 发现分组: {current_group}")
-                        
+
                         name_match = re.search(r',([^,]+)$', line)
                         if name_match:
                             current_name = name_match.group(1).strip()
                             current_name = current_name.replace('CCTV-', 'CCTV')
-                        
+
                         tvg_id_match = re.search(r'tvg-id="([^"]+)"', line)
                         if tvg_id_match:
                             current_tvg_id = tvg_id_match.group(1)
                             current_tvg_id = current_tvg_id.replace('CCTV-', 'CCTV')
                         continue
-                    
+
                     if line and not line.startswith('#') and current_name:
                         iptv_groups[current_group].append({
                             'name': current_name,
@@ -279,11 +269,9 @@ async def fetch_iptv_api_source():
                             'tvg_id': current_tvg_id,
                             'logo': get_logo(current_name)
                         })
-                        if len(iptv_groups[current_group]) == 1:
-                            print(f"   ✅ 示例频道: {current_name} -> 使用本仓库Logo")
                         current_name = ""
                         current_tvg_id = ""
-                
+
                 total = sum(len(ch) for ch in iptv_groups.values())
                 if total == 0:
                     print(f"⚠️ 解析到 0 个频道")
@@ -296,12 +284,9 @@ async def fetch_iptv_api_source():
                     total = 1
                 else:
                     print(f"✅ 拉取成功，共 {len(iptv_groups)} 个分组，{total} 个频道")
-                    for group in iptv_group_order:
-                        if group in iptv_groups:
-                            print(f"   - {group}: {len(iptv_groups[group])} 个频道")
-                
+
                 return iptv_groups, iptv_group_order
-                
+
     except Exception as e:
         print(f"❌ 拉取失败: {e}")
         return None, None
@@ -309,17 +294,17 @@ async def fetch_iptv_api_source():
 async def main():
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(f"\n🕐 当前时间: {current_time}")
-    
+
     # 1. 建立Logo数据库
     m3u_file = INPUT_SOURCE.replace('.txt', '.m3u')
     await build_logo_database(m3u_file)
-    
+
     # 2. 解析本地源
     if not os.path.exists(INPUT_SOURCE):
         print(f"错误：文件 {INPUT_SOURCE} 不存在！")
         return
     channels_by_group = parse_txt_file(INPUT_SOURCE, current_time)
-    
+
     # 3. 拉取酒店源
     hotel_groups = {}
     hotel_group_order = []
@@ -327,11 +312,9 @@ async def main():
         result = await fetch_hotel_source()
         if result and len(result) == 2:
             hotel_groups, hotel_group_order = result
-        else:
-            print(f"⚠️ 酒店源返回数据格式异常，使用默认值")
     except Exception as e:
         print(f"⚠️ 拉取酒店源失败: {e}")
-    
+
     # 4. 拉取 iptv-api 源
     iptv_groups = {}
     iptv_group_order = []
@@ -339,12 +322,10 @@ async def main():
         result = await fetch_iptv_api_source()
         if result and len(result) == 2:
             iptv_groups, iptv_group_order = result
-        else:
-            print(f"⚠️ iptv-api 源返回数据格式异常，使用默认值")
     except Exception as e:
         print(f"⚠️ 拉取 iptv-api 源失败: {e}")
-    
-    # 确保变量是字典和列表类型
+
+    # 确保变量类型正确
     if iptv_groups is None:
         iptv_groups = {}
     if iptv_group_order is None:
@@ -353,11 +334,11 @@ async def main():
         hotel_groups = {}
     if hotel_group_order is None:
         hotel_group_order = []
-    
+
     # 5. 写入M3U文件
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write('#EXTM3U x-tvg-url="' + '","'.join(EPG_URLS) + '"\n')
-        
+
         # === 本地源 ===
         for group, channels in channels_by_group.items():
             if group == '公告':
@@ -365,7 +346,7 @@ async def main():
             else:
                 f.write(f'\n# ========== 本地源 ==========\n')
                 f.write(f'\n# 分组：{group}\n')
-            
+
             for ch in channels:
                 tvg_id = str(abs(hash(ch['name'])) % 10000)
                 extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}"'
@@ -374,9 +355,9 @@ async def main():
                 extinf += f' group-title="{group}",{ch["name"]}'
                 f.write(extinf + '\n')
                 f.write(ch['url'] + '\n')
-        
+
         # === 酒店源 ===
-        if hotel_groups and hotel_group_order:
+        if hotel_groups:
             f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
             for group in hotel_group_order:
                 if group in hotel_groups and hotel_groups[group]:
@@ -390,9 +371,9 @@ async def main():
                         extinf += f' group-title="{display_group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
-        
+
         # === iptv-api 源 ===
-        if iptv_groups and iptv_group_order:
+        if iptv_groups:
             f.write(f'\n# ========== {IPTV_API_MAIN_GROUP} [{current_time}] ==========\n')
             for group in iptv_group_order:
                 if group in iptv_groups and iptv_groups[group]:
