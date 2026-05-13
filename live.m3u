@@ -6,6 +6,8 @@
 #EXTINF:-1 tvg-name="更新时间" group-title="公   告,",更新时间
 https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
 
+# ========== 本地源 ==========
+
 # 分组：央视频道,
 #EXTINF:-1 tvg-name="CCTV1" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="央视频道,",CCTV1
 http://222.214.208.34:59901/tsfile/live/0001_1.m3u8$LR•IPV4『线路1』
@@ -288,6 +290,8 @@ http://27.18.251.45:7788/608807423$LR•IPV4『线路9』
 #EXTINF:-1 tvg-name="CCTV13" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV13.png" group-title="央视频道,",CCTV13
 http://go.bkpcp.top/mg/cctv13$LR•IPV4『线路10』
 
+# ========== 本地源 ==========
+
 # 分组：湖北频道,
 #EXTINF:-1 tvg-name="湖北经视" group-title="湖北频道,",湖北经视
 http://59.173.122.222:8686/rtp/239.69.1.41:9886$LR•IPV4『线路2』
@@ -305,6 +309,8 @@ http://198.204.228.26/live/hbjs.m3u8$LR•IPV4『线路7』
 http://61.184.46.85:85/tsfile/live/0019_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路8』
 #EXTINF:-1 tvg-name="武汉新闻综合" group-title="湖北频道,",武汉新闻综合
 http://livestream.hannews.com.cn/hannews/1511-hannews.m3u8?txSecret=894cfb3bf400ee80f6b4c1a1ed0bd3ab&txTime=760D3C40$LR•IPV4『线路2』
+
+# ========== 本地源 ==========
 
 # 分组：港·澳·台,
 #EXTINF:-1 tvg-name="凤凰中文" group-title="港·澳·台,",凤凰中文
@@ -375,6 +381,8 @@ http://221.7.175.154:8445/tsfile/live/1020_1.m3u8$LR•IPV4『线路2』
 http://221.7.175.154:8445/tsfile/live/1020_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路3』
 #EXTINF:-1 tvg-name="凤凰卫视" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Phoenix.png" group-title="港·澳·台,",凤凰卫视
 http://122.152.202.33/s/81a8a44f/index.m3u8?id=15$LR•IPV4『线路4』
+
+# ========== 本地源 ==========
 
 # 分组：影视频道,
 #EXTINF:-1 tvg-name="CHC动作电影" group-title="影视频道,",CHC动作电影
@@ -474,7 +482,7 @@ http://222.214.208.34:59901/tsfile/live/1020_1.m3u8?key=txiptv&playlive=1&authid
 #EXTINF:-1 tvg-name="IPTV经典电影" group-title="影视频道,",IPTV经典电影
 http://120.87.19.109:80/PLTV/88888973/224/3221226108/10000100000000060000000000916419_0.smil/01.m3u8?fmt=ts2hls,244,01.m3u8&accountinfo=UoQbCSdhOfs+Fhzpjb+WON1faRQ9pU15SBx6EULzJM/q63EjPL5/UXSVfEKzDq3xDj7vLX+y9mw0ArNdvKC0DQWZ1F4+6A1eDkDeh5XZlpvpn23wIF+ldb6dnBPa8zHj,END&tenantId=8601$LR•IPV4『线路1』
 
-# ========== 酒店源 [2026-05-13 07:27:30] ==========
+# ========== 酒店源 [2026-05-13 08:42:32] ==========
 
 # 分组：央视频道
 #EXTINF:-1 tvg-name="CCTV1" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="央视频道",CCTV1
@@ -3491,81 +3499,81 @@ https://itv.gcl.de5.net/live?url=http%3A//124.77.177.17%3A5555/rtp/233.18.204.16
 https://itv.gcl.de5.net/live?url=http%3A//124.77.177.17%3A5555/rtp/233.18.204.170%3A5140
 #EXTINF:-1 tvg-name="BesTV电影介绍HD" group-title="未分类节目",BesTV电影介绍HD
 https://itv.gcl.de5.net/live?url=http%3A//124.77.177.17%3A5555/rtp/233.18.204.116%3A5140
-#EXTINF:-1 tvg-name="CCTV 2" group-title="未分类节目",CCTV 2
+#EXTINF:-1 tvg-name="CCTV 2" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV2.png" group-title="未分类节目",CCTV 2
 http://60.177.207.135:9901/tsfile/live/1016_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV 3" group-title="未分类节目",CCTV 3
+#EXTINF:-1 tvg-name="CCTV 3" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV3.png" group-title="未分类节目",CCTV 3
 http://60.177.207.135:9901/tsfile/live/1017_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV 4" group-title="未分类节目",CCTV 4
+#EXTINF:-1 tvg-name="CCTV 4" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV4.png" group-title="未分类节目",CCTV 4
 http://60.177.207.135:9901/tsfile/live/1018_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-14" group-title="未分类节目",CCTV-14
+#EXTINF:-1 tvg-name="CCTV-14" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV14.png" group-title="未分类节目",CCTV-14
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.14%3A1043
-#EXTINF:-1 tvg-name="CCTV-14" group-title="未分类节目",CCTV-14
+#EXTINF:-1 tvg-name="CCTV-14" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV14.png" group-title="未分类节目",CCTV-14
 https://itv.gcl.de5.net/live?url=http%3A//42.230.249.238%3A4000/rtp/225.1.4.14%3A1043
-#EXTINF:-1 tvg-name="CCTV-14" group-title="未分类节目",CCTV-14
+#EXTINF:-1 tvg-name="CCTV-14" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV14.png" group-title="未分类节目",CCTV-14
 https://itv.gcl.de5.net/live?url=http%3A//115.50.70.63%3A8090/rtp/225.1.4.14%3A1043
-#EXTINF:-1 tvg-name="CCTV-14" group-title="未分类节目",CCTV-14
+#EXTINF:-1 tvg-name="CCTV-14" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV14.png" group-title="未分类节目",CCTV-14
 https://itv.gcl.de5.net/live?url=http%3A//123.160.173.41%3A8800/rtp/239.16.10.112%3A2000
-#EXTINF:-1 tvg-name="CCTV-14" group-title="未分类节目",CCTV-14
+#EXTINF:-1 tvg-name="CCTV-14" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV14.png" group-title="未分类节目",CCTV-14
 http://42.231.61.201:808/hls/14/index.m3u8
-#EXTINF:-1 tvg-name="CCTV-14 720" group-title="未分类节目",CCTV-14 720
+#EXTINF:-1 tvg-name="CCTV-14 720" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="未分类节目",CCTV-14 720
 https://itv.gcl.de5.net/live?url=http%3A//123.160.173.41%3A8800/rtp/239.16.20.14%3A10140
-#EXTINF:-1 tvg-name="CCTV-14少儿" group-title="未分类节目",CCTV-14少儿
+#EXTINF:-1 tvg-name="CCTV-14少儿" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="未分类节目",CCTV-14少儿
 http://61.178.227.57:9901/tsfile/live/1004_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-14高清" group-title="未分类节目",CCTV-14高清
+#EXTINF:-1 tvg-name="CCTV-14高清" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="未分类节目",CCTV-14高清
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.80%3A1109
-#EXTINF:-1 tvg-name="CCTV-14高清" group-title="未分类节目",CCTV-14高清
+#EXTINF:-1 tvg-name="CCTV-14高清" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="未分类节目",CCTV-14高清
 https://itv.gcl.de5.net/live?url=http%3A//42.230.249.238%3A4000/rtp/225.1.4.80%3A1109
-#EXTINF:-1 tvg-name="CCTV-14高清" group-title="未分类节目",CCTV-14高清
+#EXTINF:-1 tvg-name="CCTV-14高清" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="未分类节目",CCTV-14高清
 https://itv.gcl.de5.net/live?url=http%3A//115.50.70.63%3A8090/rtp/225.1.4.80%3A1109
-#EXTINF:-1 tvg-name="CCTV-15" group-title="未分类节目",CCTV-15
+#EXTINF:-1 tvg-name="CCTV-15" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV15.png" group-title="未分类节目",CCTV-15
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.15%3A1044
-#EXTINF:-1 tvg-name="CCTV-15" group-title="未分类节目",CCTV-15
+#EXTINF:-1 tvg-name="CCTV-15" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV15.png" group-title="未分类节目",CCTV-15
 https://itv.gcl.de5.net/live?url=http%3A//42.230.249.238%3A4000/rtp/225.1.4.15%3A1044
-#EXTINF:-1 tvg-name="CCTV-15" group-title="未分类节目",CCTV-15
+#EXTINF:-1 tvg-name="CCTV-15" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV15.png" group-title="未分类节目",CCTV-15
 https://itv.gcl.de5.net/live?url=http%3A//115.50.70.63%3A8090/rtp/225.1.4.15%3A1044
-#EXTINF:-1 tvg-name="CCTV-15" group-title="未分类节目",CCTV-15
+#EXTINF:-1 tvg-name="CCTV-15" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV15.png" group-title="未分类节目",CCTV-15
 https://itv.gcl.de5.net/live?url=http%3A//123.160.173.41%3A8800/rtp/239.16.20.15%3A10150
-#EXTINF:-1 tvg-name="CCTV-15" group-title="未分类节目",CCTV-15
+#EXTINF:-1 tvg-name="CCTV-15" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV15.png" group-title="未分类节目",CCTV-15
 https://itv.gcl.de5.net/live?url=http%3A//123.160.173.41%3A8800/rtp/239.16.10.113%3A2000
-#EXTINF:-1 tvg-name="CCTV-15" group-title="未分类节目",CCTV-15
+#EXTINF:-1 tvg-name="CCTV-15" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV15.png" group-title="未分类节目",CCTV-15
 http://42.231.61.201:808/hls/15/index.m3u8
-#EXTINF:-1 tvg-name="CCTV-15高清" group-title="未分类节目",CCTV-15高清
+#EXTINF:-1 tvg-name="CCTV-15高清" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="未分类节目",CCTV-15高清
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.216%3A1269
-#EXTINF:-1 tvg-name="CCTV-15高清" group-title="未分类节目",CCTV-15高清
+#EXTINF:-1 tvg-name="CCTV-15高清" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="未分类节目",CCTV-15高清
 https://itv.gcl.de5.net/live?url=http%3A//42.230.249.238%3A4000/rtp/225.1.4.216%3A1269
-#EXTINF:-1 tvg-name="CCTV-15高清" group-title="未分类节目",CCTV-15高清
+#EXTINF:-1 tvg-name="CCTV-15高清" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="未分类节目",CCTV-15高清
 https://itv.gcl.de5.net/live?url=http%3A//115.50.70.63%3A8090/rtp/225.1.4.216%3A1269
-#EXTINF:-1 tvg-name="CCTV-16" group-title="未分类节目",CCTV-16
+#EXTINF:-1 tvg-name="CCTV-16" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV16.png" group-title="未分类节目",CCTV-16
 https://itv.gcl.de5.net/live?url=http%3A//123.160.173.41%3A8800/rtp/239.16.20.34%3A10340
-#EXTINF:-1 tvg-name="CCTV-16高清" group-title="未分类节目",CCTV-16高清
+#EXTINF:-1 tvg-name="CCTV-16高清" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="未分类节目",CCTV-16高清
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.5.46%3A1356
-#EXTINF:-1 tvg-name="CCTV-16高清" group-title="未分类节目",CCTV-16高清
+#EXTINF:-1 tvg-name="CCTV-16高清" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="未分类节目",CCTV-16高清
 https://itv.gcl.de5.net/live?url=http%3A//42.230.249.238%3A4000/rtp/225.1.5.46%3A1356
-#EXTINF:-1 tvg-name="CCTV-16高清" group-title="未分类节目",CCTV-16高清
+#EXTINF:-1 tvg-name="CCTV-16高清" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="未分类节目",CCTV-16高清
 https://itv.gcl.de5.net/live?url=http%3A//115.50.70.63%3A8090/rtp/225.1.5.46%3A1356
-#EXTINF:-1 tvg-name="CCTV-17" group-title="未分类节目",CCTV-17
+#EXTINF:-1 tvg-name="CCTV-17" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV17.png" group-title="未分类节目",CCTV-17
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.227%3A2507
-#EXTINF:-1 tvg-name="CCTV-17" group-title="未分类节目",CCTV-17
+#EXTINF:-1 tvg-name="CCTV-17" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV17.png" group-title="未分类节目",CCTV-17
 https://itv.gcl.de5.net/live?url=http%3A//42.230.249.238%3A4000/rtp/225.1.4.227%3A2507
-#EXTINF:-1 tvg-name="CCTV-17" group-title="未分类节目",CCTV-17
+#EXTINF:-1 tvg-name="CCTV-17" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV17.png" group-title="未分类节目",CCTV-17
 https://itv.gcl.de5.net/live?url=http%3A//115.50.70.63%3A8090/rtp/225.1.4.227%3A2507
-#EXTINF:-1 tvg-name="CCTV-17" group-title="未分类节目",CCTV-17
+#EXTINF:-1 tvg-name="CCTV-17" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV17.png" group-title="未分类节目",CCTV-17
 https://itv.gcl.de5.net/live?url=http%3A//123.160.173.41%3A8800/rtp/239.16.20.7%3A10070
-#EXTINF:-1 tvg-name="CCTV-17" group-title="未分类节目",CCTV-17
+#EXTINF:-1 tvg-name="CCTV-17" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV17.png" group-title="未分类节目",CCTV-17
 https://itv.gcl.de5.net/live?url=http%3A//123.160.173.41%3A8800/rtp/239.16.10.129%3A2000
-#EXTINF:-1 tvg-name="CCTV-17" group-title="未分类节目",CCTV-17
+#EXTINF:-1 tvg-name="CCTV-17" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV17.png" group-title="未分类节目",CCTV-17
 http://42.231.61.201:808/hls/25/index.m3u8
-#EXTINF:-1 tvg-name="CCTV-17高清" group-title="未分类节目",CCTV-17高清
+#EXTINF:-1 tvg-name="CCTV-17高清" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="未分类节目",CCTV-17高清
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.226%3A2506
-#EXTINF:-1 tvg-name="CCTV-17高清" group-title="未分类节目",CCTV-17高清
+#EXTINF:-1 tvg-name="CCTV-17高清" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="未分类节目",CCTV-17高清
 https://itv.gcl.de5.net/live?url=http%3A//42.230.249.238%3A4000/rtp/225.1.4.226%3A2506
-#EXTINF:-1 tvg-name="CCTV-17高清" group-title="未分类节目",CCTV-17高清
+#EXTINF:-1 tvg-name="CCTV-17高清" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="未分类节目",CCTV-17高清
 https://itv.gcl.de5.net/live?url=http%3A//115.50.70.63%3A8090/rtp/225.1.4.226%3A2506
-#EXTINF:-1 tvg-name="CCTV-5＋高清" group-title="未分类节目",CCTV-5＋高清
+#EXTINF:-1 tvg-name="CCTV-5＋高清" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5.png" group-title="未分类节目",CCTV-5＋高清
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.75%3A1104
-#EXTINF:-1 tvg-name="CCTV-5＋高清" group-title="未分类节目",CCTV-5＋高清
+#EXTINF:-1 tvg-name="CCTV-5＋高清" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5.png" group-title="未分类节目",CCTV-5＋高清
 https://itv.gcl.de5.net/live?url=http%3A//42.230.249.238%3A4000/rtp/225.1.4.75%3A1104
-#EXTINF:-1 tvg-name="CCTV-5＋高清" group-title="未分类节目",CCTV-5＋高清
+#EXTINF:-1 tvg-name="CCTV-5＋高清" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5.png" group-title="未分类节目",CCTV-5＋高清
 https://itv.gcl.de5.net/live?url=http%3A//115.50.70.63%3A8090/rtp/225.1.4.75%3A1104
 #EXTINF:-1 tvg-name="CCTV1-综合HD" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="未分类节目",CCTV1-综合HD
 http://171.38.218.115:8082/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
@@ -8726,292 +8734,292 @@ https://itv.gcl.de5.net/live?url=http%3A//117.91.60.238%3A8800/rtp/239.49.8.144%
 #EXTINF:-1 tvg-name="齐鲁频道" group-title="未分类节目",齐鲁频道
 http://60.212.134.243:85/tsfile/live/35/2010_1.m3u8?key=txiptv
 
-# ========== iptv-api [2026-05-13 07:27:30] ==========
+# ========== iptv-api [2026-05-13 08:42:32] ==========
 
 # 分组：🕘️更新时间
 #EXTINF:-1 tvg-name="2026-05-13 05:58:32" group-title="🕘️更新时间",2026-05-13 05:58:32
 http://61.178.227.57:9901/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
 
 # 分组：📺央视频道
-#EXTINF:-1 tvg-name="CCTV-1" group-title="📺央视频道",CCTV-1
+#EXTINF:-1 tvg-name="CCTV-1" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="📺央视频道",CCTV-1
 http://61.178.227.57:9901/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-1" group-title="📺央视频道",CCTV-1
+#EXTINF:-1 tvg-name="CCTV-1" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="📺央视频道",CCTV-1
 http://123.113.104.82:85/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-1" group-title="📺央视频道",CCTV-1
+#EXTINF:-1 tvg-name="CCTV-1" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="📺央视频道",CCTV-1
 http://42.237.163.143:9901/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-1" group-title="📺央视频道",CCTV-1
+#EXTINF:-1 tvg-name="CCTV-1" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="📺央视频道",CCTV-1
 https://itv.gcl.de5.net/live?url=http%3A//27.18.119.28%3A8888/rtp/239.254.96.96%3A8550
-#EXTINF:-1 tvg-name="CCTV-1" group-title="📺央视频道",CCTV-1
+#EXTINF:-1 tvg-name="CCTV-1" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="📺央视频道",CCTV-1
 https://itv.gcl.de5.net/live?url=http%3A//171.83.38.8%3A8888/rtp/239.254.96.96%3A8550
-#EXTINF:-1 tvg-name="CCTV-1" group-title="📺央视频道",CCTV-1
+#EXTINF:-1 tvg-name="CCTV-1" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="📺央视频道",CCTV-1
 https://itv.gcl.de5.net/live?url=http%3A//27.11.53.195%3A8001/rtp/225.0.4.74%3A7980
-#EXTINF:-1 tvg-name="CCTV-1" group-title="📺央视频道",CCTV-1
+#EXTINF:-1 tvg-name="CCTV-1" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="📺央视频道",CCTV-1
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.73%3A1102
-#EXTINF:-1 tvg-name="CCTV-1" group-title="📺央视频道",CCTV-1
+#EXTINF:-1 tvg-name="CCTV-1" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="📺央视频道",CCTV-1
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.1%3A1030
-#EXTINF:-1 tvg-name="CCTV-1" group-title="📺央视频道",CCTV-1
+#EXTINF:-1 tvg-name="CCTV-1" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="📺央视频道",CCTV-1
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.22%3A8009/rtp/225.0.4.74%3A7980
-#EXTINF:-1 tvg-name="CCTV-1" group-title="📺央视频道",CCTV-1
+#EXTINF:-1 tvg-name="CCTV-1" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="📺央视频道",CCTV-1
 https://itv.gcl.de5.net/live?url=http%3A//120.6.121.227%3A8088/rtp/239.253.92.83%3A8012
-#EXTINF:-1 tvg-name="CCTV-2" group-title="📺央视频道",CCTV-2
+#EXTINF:-1 tvg-name="CCTV-2" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV2.png" group-title="📺央视频道",CCTV-2
 http://61.178.227.57:9901/tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-2" group-title="📺央视频道",CCTV-2
+#EXTINF:-1 tvg-name="CCTV-2" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV2.png" group-title="📺央视频道",CCTV-2
 http://123.113.104.82:85/tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-2" group-title="📺央视频道",CCTV-2
+#EXTINF:-1 tvg-name="CCTV-2" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV2.png" group-title="📺央视频道",CCTV-2
 http://42.237.163.143:9901/tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-2" group-title="📺央视频道",CCTV-2
+#EXTINF:-1 tvg-name="CCTV-2" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV2.png" group-title="📺央视频道",CCTV-2
 https://itv.gcl.de5.net/live?url=http%3A//27.18.119.28%3A8888/rtp/239.69.1.102%3A10250
-#EXTINF:-1 tvg-name="CCTV-2" group-title="📺央视频道",CCTV-2
+#EXTINF:-1 tvg-name="CCTV-2" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV2.png" group-title="📺央视频道",CCTV-2
 https://itv.gcl.de5.net/live?url=http%3A//171.83.38.8%3A8888/rtp/239.69.1.102%3A10250
-#EXTINF:-1 tvg-name="CCTV-2" group-title="📺央视频道",CCTV-2
+#EXTINF:-1 tvg-name="CCTV-2" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV2.png" group-title="📺央视频道",CCTV-2
 https://itv.gcl.de5.net/live?url=http%3A//27.11.53.195%3A8001/rtp/225.0.4.132%3A7980
-#EXTINF:-1 tvg-name="CCTV-2" group-title="📺央视频道",CCTV-2
+#EXTINF:-1 tvg-name="CCTV-2" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV2.png" group-title="📺央视频道",CCTV-2
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.74%3A1103
-#EXTINF:-1 tvg-name="CCTV-2" group-title="📺央视频道",CCTV-2
+#EXTINF:-1 tvg-name="CCTV-2" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV2.png" group-title="📺央视频道",CCTV-2
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.2%3A1031
-#EXTINF:-1 tvg-name="CCTV-2" group-title="📺央视频道",CCTV-2
+#EXTINF:-1 tvg-name="CCTV-2" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV2.png" group-title="📺央视频道",CCTV-2
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.22%3A8009/rtp/225.0.4.132%3A7980
-#EXTINF:-1 tvg-name="CCTV-2" group-title="📺央视频道",CCTV-2
+#EXTINF:-1 tvg-name="CCTV-2" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV2.png" group-title="📺央视频道",CCTV-2
 https://itv.gcl.de5.net/live?url=http%3A//120.6.121.227%3A8088/rtp/239.253.92.190%3A6065
-#EXTINF:-1 tvg-name="CCTV-3" group-title="📺央视频道",CCTV-3
+#EXTINF:-1 tvg-name="CCTV-3" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV3.png" group-title="📺央视频道",CCTV-3
 http://61.178.227.57:9901/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-3" group-title="📺央视频道",CCTV-3
+#EXTINF:-1 tvg-name="CCTV-3" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV3.png" group-title="📺央视频道",CCTV-3
 http://123.113.104.82:85/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-3" group-title="📺央视频道",CCTV-3
+#EXTINF:-1 tvg-name="CCTV-3" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV3.png" group-title="📺央视频道",CCTV-3
 http://42.237.163.143:9901/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-3" group-title="📺央视频道",CCTV-3
+#EXTINF:-1 tvg-name="CCTV-3" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV3.png" group-title="📺央视频道",CCTV-3
 https://itv.gcl.de5.net/live?url=http%3A//27.18.119.28%3A8888/rtp/239.69.1.122%3A10370
-#EXTINF:-1 tvg-name="CCTV-3" group-title="📺央视频道",CCTV-3
+#EXTINF:-1 tvg-name="CCTV-3" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV3.png" group-title="📺央视频道",CCTV-3
 https://itv.gcl.de5.net/live?url=http%3A//171.83.38.8%3A8888/rtp/239.69.1.122%3A10370
-#EXTINF:-1 tvg-name="CCTV-3" group-title="📺央视频道",CCTV-3
+#EXTINF:-1 tvg-name="CCTV-3" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV3.png" group-title="📺央视频道",CCTV-3
 https://itv.gcl.de5.net/live?url=http%3A//27.11.53.195%3A8001/rtp/225.0.4.142%3A7980
-#EXTINF:-1 tvg-name="CCTV-3" group-title="📺央视频道",CCTV-3
+#EXTINF:-1 tvg-name="CCTV-3" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV3.png" group-title="📺央视频道",CCTV-3
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.158%3A1194
-#EXTINF:-1 tvg-name="CCTV-3" group-title="📺央视频道",CCTV-3
+#EXTINF:-1 tvg-name="CCTV-3" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV3.png" group-title="📺央视频道",CCTV-3
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.22%3A8009/rtp/225.0.4.142%3A7980
-#EXTINF:-1 tvg-name="CCTV-3" group-title="📺央视频道",CCTV-3
+#EXTINF:-1 tvg-name="CCTV-3" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV3.png" group-title="📺央视频道",CCTV-3
 https://itv.gcl.de5.net/live?url=http%3A//120.6.121.227%3A8088/rtp/239.253.92.191%3A6057
-#EXTINF:-1 tvg-name="CCTV-3" group-title="📺央视频道",CCTV-3
+#EXTINF:-1 tvg-name="CCTV-3" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV3.png" group-title="📺央视频道",CCTV-3
 https://itv.gcl.de5.net/live?url=http%3A//221.219.199.86%3A4022/rtp/239.3.1.172%3A8001
-#EXTINF:-1 tvg-name="CCTV-4" group-title="📺央视频道",CCTV-4
+#EXTINF:-1 tvg-name="CCTV-4" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV4.png" group-title="📺央视频道",CCTV-4
 https://itv.gcl.de5.net/live?url=http%3A//27.18.119.28%3A8888/rtp/239.69.1.138%3A10466
-#EXTINF:-1 tvg-name="CCTV-4" group-title="📺央视频道",CCTV-4
+#EXTINF:-1 tvg-name="CCTV-4" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV4.png" group-title="📺央视频道",CCTV-4
 https://itv.gcl.de5.net/live?url=http%3A//171.83.38.8%3A8888/rtp/239.69.1.138%3A10466
-#EXTINF:-1 tvg-name="CCTV-4" group-title="📺央视频道",CCTV-4
+#EXTINF:-1 tvg-name="CCTV-4" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV4.png" group-title="📺央视频道",CCTV-4
 https://itv.gcl.de5.net/live?url=http%3A//27.11.53.195%3A8001/rtp/225.0.4.176%3A7980
-#EXTINF:-1 tvg-name="CCTV-4" group-title="📺央视频道",CCTV-4
+#EXTINF:-1 tvg-name="CCTV-4" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV4.png" group-title="📺央视频道",CCTV-4
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.5.30%3A1333
-#EXTINF:-1 tvg-name="CCTV-4" group-title="📺央视频道",CCTV-4
+#EXTINF:-1 tvg-name="CCTV-4" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV4.png" group-title="📺央视频道",CCTV-4
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.4%3A1033
-#EXTINF:-1 tvg-name="CCTV-4" group-title="📺央视频道",CCTV-4
+#EXTINF:-1 tvg-name="CCTV-4" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV4.png" group-title="📺央视频道",CCTV-4
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.22%3A8009/rtp/225.0.4.176%3A7980
-#EXTINF:-1 tvg-name="CCTV-4" group-title="📺央视频道",CCTV-4
+#EXTINF:-1 tvg-name="CCTV-4" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV4.png" group-title="📺央视频道",CCTV-4
 https://itv.gcl.de5.net/live?url=http%3A//221.219.199.86%3A4022/rtp/239.3.1.105%3A8092
-#EXTINF:-1 tvg-name="CCTV-4" group-title="📺央视频道",CCTV-4
+#EXTINF:-1 tvg-name="CCTV-4" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV4.png" group-title="📺央视频道",CCTV-4
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.169%3A8001/rtp/225.0.4.176%3A7980
-#EXTINF:-1 tvg-name="CCTV-4" group-title="📺央视频道",CCTV-4
+#EXTINF:-1 tvg-name="CCTV-4" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV4.png" group-title="📺央视频道",CCTV-4
 https://itv.gcl.de5.net/live?url=http%3A//27.10.73.172%3A8003/rtp/225.0.4.176%3A7980
-#EXTINF:-1 tvg-name="CCTV-4" group-title="📺央视频道",CCTV-4
+#EXTINF:-1 tvg-name="CCTV-4" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV4.png" group-title="📺央视频道",CCTV-4
 https://itv.gcl.de5.net/live?url=http%3A//42.230.249.238%3A4000/rtp/225.1.5.30%3A1333
-#EXTINF:-1 tvg-name="CCTV-5" group-title="📺央视频道",CCTV-5
+#EXTINF:-1 tvg-name="CCTV-5" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5.png" group-title="📺央视频道",CCTV-5
 http://61.178.227.57:9901/tsfile/live/0005_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-5" group-title="📺央视频道",CCTV-5
+#EXTINF:-1 tvg-name="CCTV-5" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5.png" group-title="📺央视频道",CCTV-5
 http://123.113.104.82:85/tsfile/live/0005_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-5" group-title="📺央视频道",CCTV-5
+#EXTINF:-1 tvg-name="CCTV-5" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5.png" group-title="📺央视频道",CCTV-5
 http://42.237.163.143:9901/tsfile/live/0005_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-5" group-title="📺央视频道",CCTV-5
+#EXTINF:-1 tvg-name="CCTV-5" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5.png" group-title="📺央视频道",CCTV-5
 https://itv.gcl.de5.net/live?url=http%3A//27.18.119.28%3A8888/rtp/239.69.1.123%3A10376
-#EXTINF:-1 tvg-name="CCTV-5" group-title="📺央视频道",CCTV-5
+#EXTINF:-1 tvg-name="CCTV-5" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5.png" group-title="📺央视频道",CCTV-5
 https://itv.gcl.de5.net/live?url=http%3A//171.83.38.8%3A8888/rtp/239.69.1.123%3A10376
-#EXTINF:-1 tvg-name="CCTV-5" group-title="📺央视频道",CCTV-5
+#EXTINF:-1 tvg-name="CCTV-5" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5.png" group-title="📺央视频道",CCTV-5
 https://itv.gcl.de5.net/live?url=http%3A//27.11.53.195%3A8001/rtp/225.0.4.143%3A7980
-#EXTINF:-1 tvg-name="CCTV-5" group-title="📺央视频道",CCTV-5
+#EXTINF:-1 tvg-name="CCTV-5" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5.png" group-title="📺央视频道",CCTV-5
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.159%3A1195
-#EXTINF:-1 tvg-name="CCTV-5" group-title="📺央视频道",CCTV-5
+#EXTINF:-1 tvg-name="CCTV-5" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5.png" group-title="📺央视频道",CCTV-5
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.22%3A8009/rtp/225.0.4.143%3A7980
-#EXTINF:-1 tvg-name="CCTV-5" group-title="📺央视频道",CCTV-5
+#EXTINF:-1 tvg-name="CCTV-5" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5.png" group-title="📺央视频道",CCTV-5
 https://itv.gcl.de5.net/live?url=http%3A//221.219.199.86%3A4022/rtp/239.3.1.173%3A8001
-#EXTINF:-1 tvg-name="CCTV-5" group-title="📺央视频道",CCTV-5
+#EXTINF:-1 tvg-name="CCTV-5" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5.png" group-title="📺央视频道",CCTV-5
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.169%3A8001/rtp/225.0.4.143%3A7980
-#EXTINF:-1 tvg-name="CCTV-5+" group-title="📺央视频道",CCTV-5+
+#EXTINF:-1 tvg-name="CCTV-5+" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5Plus.png" group-title="📺央视频道",CCTV-5+
 http://61.178.227.57:9901/tsfile/live/0141_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-5+" group-title="📺央视频道",CCTV-5+
+#EXTINF:-1 tvg-name="CCTV-5+" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5Plus.png" group-title="📺央视频道",CCTV-5+
 http://42.237.163.143:9901/tsfile/live/1000_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-5+" group-title="📺央视频道",CCTV-5+
+#EXTINF:-1 tvg-name="CCTV-5+" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5Plus.png" group-title="📺央视频道",CCTV-5+
 https://itv.gcl.de5.net/live?url=http%3A//27.18.119.28%3A8888/rtp/239.254.96.234%3A9484
-#EXTINF:-1 tvg-name="CCTV-5+" group-title="📺央视频道",CCTV-5+
+#EXTINF:-1 tvg-name="CCTV-5+" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5Plus.png" group-title="📺央视频道",CCTV-5+
 https://itv.gcl.de5.net/live?url=http%3A//171.83.38.8%3A8888/rtp/239.254.96.234%3A9484
-#EXTINF:-1 tvg-name="CCTV-5+" group-title="📺央视频道",CCTV-5+
+#EXTINF:-1 tvg-name="CCTV-5+" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5Plus.png" group-title="📺央视频道",CCTV-5+
 https://itv.gcl.de5.net/live?url=http%3A//27.11.53.195%3A8001/rtp/225.0.4.73%3A7980
-#EXTINF:-1 tvg-name="CCTV-5+" group-title="📺央视频道",CCTV-5+
+#EXTINF:-1 tvg-name="CCTV-5+" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5Plus.png" group-title="📺央视频道",CCTV-5+
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.22%3A8009/rtp/225.0.4.73%3A7980
-#EXTINF:-1 tvg-name="CCTV-5+" group-title="📺央视频道",CCTV-5+
+#EXTINF:-1 tvg-name="CCTV-5+" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5Plus.png" group-title="📺央视频道",CCTV-5+
 https://itv.gcl.de5.net/live?url=http%3A//221.219.199.86%3A4022/rtp/239.3.1.130%3A8004
-#EXTINF:-1 tvg-name="CCTV-5+" group-title="📺央视频道",CCTV-5+
+#EXTINF:-1 tvg-name="CCTV-5+" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5Plus.png" group-title="📺央视频道",CCTV-5+
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.169%3A8001/rtp/225.0.4.73%3A7980
-#EXTINF:-1 tvg-name="CCTV-5+" group-title="📺央视频道",CCTV-5+
+#EXTINF:-1 tvg-name="CCTV-5+" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5Plus.png" group-title="📺央视频道",CCTV-5+
 https://itv.gcl.de5.net/live?url=http%3A//27.10.73.172%3A8003/rtp/225.0.4.73%3A7980
-#EXTINF:-1 tvg-name="CCTV-5+" group-title="📺央视频道",CCTV-5+
+#EXTINF:-1 tvg-name="CCTV-5+" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5Plus.png" group-title="📺央视频道",CCTV-5+
 https://itv.gcl.de5.net/live?url=http%3A//114.250.16.7%3A4022/rtp/239.3.1.130%3A8004
-#EXTINF:-1 tvg-name="CCTV-6" group-title="📺央视频道",CCTV-6
+#EXTINF:-1 tvg-name="CCTV-6" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV6.png" group-title="📺央视频道",CCTV-6
 http://61.178.227.57:9901/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-6" group-title="📺央视频道",CCTV-6
+#EXTINF:-1 tvg-name="CCTV-6" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV6.png" group-title="📺央视频道",CCTV-6
 http://123.113.104.82:85/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-6" group-title="📺央视频道",CCTV-6
+#EXTINF:-1 tvg-name="CCTV-6" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV6.png" group-title="📺央视频道",CCTV-6
 http://42.237.163.143:9901/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-6" group-title="📺央视频道",CCTV-6
+#EXTINF:-1 tvg-name="CCTV-6" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV6.png" group-title="📺央视频道",CCTV-6
 https://itv.gcl.de5.net/live?url=http%3A//27.18.119.28%3A8888/rtp/239.69.1.124%3A10382
-#EXTINF:-1 tvg-name="CCTV-6" group-title="📺央视频道",CCTV-6
+#EXTINF:-1 tvg-name="CCTV-6" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV6.png" group-title="📺央视频道",CCTV-6
 https://itv.gcl.de5.net/live?url=http%3A//171.83.38.8%3A8888/rtp/239.69.1.124%3A10382
-#EXTINF:-1 tvg-name="CCTV-6" group-title="📺央视频道",CCTV-6
+#EXTINF:-1 tvg-name="CCTV-6" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV6.png" group-title="📺央视频道",CCTV-6
 https://itv.gcl.de5.net/live?url=http%3A//27.11.53.195%3A8001/rtp/225.0.4.144%3A7980
-#EXTINF:-1 tvg-name="CCTV-6" group-title="📺央视频道",CCTV-6
+#EXTINF:-1 tvg-name="CCTV-6" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV6.png" group-title="📺央视频道",CCTV-6
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.160%3A1196
-#EXTINF:-1 tvg-name="CCTV-6" group-title="📺央视频道",CCTV-6
+#EXTINF:-1 tvg-name="CCTV-6" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV6.png" group-title="📺央视频道",CCTV-6
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.22%3A8009/rtp/225.0.4.144%3A7980
-#EXTINF:-1 tvg-name="CCTV-6" group-title="📺央视频道",CCTV-6
+#EXTINF:-1 tvg-name="CCTV-6" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV6.png" group-title="📺央视频道",CCTV-6
 https://itv.gcl.de5.net/live?url=http%3A//221.219.199.86%3A4022/rtp/239.3.1.174%3A8001
-#EXTINF:-1 tvg-name="CCTV-6" group-title="📺央视频道",CCTV-6
+#EXTINF:-1 tvg-name="CCTV-6" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV6.png" group-title="📺央视频道",CCTV-6
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.169%3A8001/rtp/225.0.4.144%3A7980
-#EXTINF:-1 tvg-name="CCTV-7" group-title="📺央视频道",CCTV-7
+#EXTINF:-1 tvg-name="CCTV-7" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV7.png" group-title="📺央视频道",CCTV-7
 http://61.178.227.57:9901/tsfile/live/0007_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-7" group-title="📺央视频道",CCTV-7
+#EXTINF:-1 tvg-name="CCTV-7" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV7.png" group-title="📺央视频道",CCTV-7
 http://123.113.104.82:85/tsfile/live/0007_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-7" group-title="📺央视频道",CCTV-7
+#EXTINF:-1 tvg-name="CCTV-7" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV7.png" group-title="📺央视频道",CCTV-7
 https://itv.gcl.de5.net/live?url=http%3A//27.18.119.28%3A8888/rtp/239.69.1.103%3A10256
-#EXTINF:-1 tvg-name="CCTV-7" group-title="📺央视频道",CCTV-7
+#EXTINF:-1 tvg-name="CCTV-7" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV7.png" group-title="📺央视频道",CCTV-7
 https://itv.gcl.de5.net/live?url=http%3A//171.83.38.8%3A8888/rtp/239.69.1.103%3A10256
-#EXTINF:-1 tvg-name="CCTV-7" group-title="📺央视频道",CCTV-7
+#EXTINF:-1 tvg-name="CCTV-7" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV7.png" group-title="📺央视频道",CCTV-7
 https://itv.gcl.de5.net/live?url=http%3A//27.11.53.195%3A8001/rtp/225.0.4.127%3A7980
-#EXTINF:-1 tvg-name="CCTV-7" group-title="📺央视频道",CCTV-7
+#EXTINF:-1 tvg-name="CCTV-7" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV7.png" group-title="📺央视频道",CCTV-7
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.76%3A1105
-#EXTINF:-1 tvg-name="CCTV-7" group-title="📺央视频道",CCTV-7
+#EXTINF:-1 tvg-name="CCTV-7" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV7.png" group-title="📺央视频道",CCTV-7
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.7%3A1036
-#EXTINF:-1 tvg-name="CCTV-7" group-title="📺央视频道",CCTV-7
+#EXTINF:-1 tvg-name="CCTV-7" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV7.png" group-title="📺央视频道",CCTV-7
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.22%3A8009/rtp/225.0.4.127%3A7980
-#EXTINF:-1 tvg-name="CCTV-7" group-title="📺央视频道",CCTV-7
+#EXTINF:-1 tvg-name="CCTV-7" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV7.png" group-title="📺央视频道",CCTV-7
 https://itv.gcl.de5.net/live?url=http%3A//221.219.199.86%3A4022/rtp/239.3.1.61%3A8104
-#EXTINF:-1 tvg-name="CCTV-7" group-title="📺央视频道",CCTV-7
+#EXTINF:-1 tvg-name="CCTV-7" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV7.png" group-title="📺央视频道",CCTV-7
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.169%3A8001/rtp/225.0.4.127%3A7980
-#EXTINF:-1 tvg-name="CCTV-8" group-title="📺央视频道",CCTV-8
+#EXTINF:-1 tvg-name="CCTV-8" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV8.png" group-title="📺央视频道",CCTV-8
 http://61.178.227.57:9901/tsfile/live/0008_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-8" group-title="📺央视频道",CCTV-8
+#EXTINF:-1 tvg-name="CCTV-8" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV8.png" group-title="📺央视频道",CCTV-8
 http://123.113.104.82:85/tsfile/live/0008_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-8" group-title="📺央视频道",CCTV-8
+#EXTINF:-1 tvg-name="CCTV-8" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV8.png" group-title="📺央视频道",CCTV-8
 http://42.237.163.143:9901/tsfile/live/0008_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-8" group-title="📺央视频道",CCTV-8
+#EXTINF:-1 tvg-name="CCTV-8" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV8.png" group-title="📺央视频道",CCTV-8
 https://itv.gcl.de5.net/live?url=http%3A//27.18.119.28%3A8888/rtp/239.69.1.125%3A10388
-#EXTINF:-1 tvg-name="CCTV-8" group-title="📺央视频道",CCTV-8
+#EXTINF:-1 tvg-name="CCTV-8" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV8.png" group-title="📺央视频道",CCTV-8
 https://itv.gcl.de5.net/live?url=http%3A//171.83.38.8%3A8888/rtp/239.69.1.125%3A10388
-#EXTINF:-1 tvg-name="CCTV-8" group-title="📺央视频道",CCTV-8
+#EXTINF:-1 tvg-name="CCTV-8" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV8.png" group-title="📺央视频道",CCTV-8
 https://itv.gcl.de5.net/live?url=http%3A//27.11.53.195%3A8001/rtp/225.0.4.137%3A7980
-#EXTINF:-1 tvg-name="CCTV-8" group-title="📺央视频道",CCTV-8
+#EXTINF:-1 tvg-name="CCTV-8" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV8.png" group-title="📺央视频道",CCTV-8
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.161%3A1197
-#EXTINF:-1 tvg-name="CCTV-8" group-title="📺央视频道",CCTV-8
+#EXTINF:-1 tvg-name="CCTV-8" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV8.png" group-title="📺央视频道",CCTV-8
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.22%3A8009/rtp/225.0.4.137%3A7980
-#EXTINF:-1 tvg-name="CCTV-8" group-title="📺央视频道",CCTV-8
+#EXTINF:-1 tvg-name="CCTV-8" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV8.png" group-title="📺央视频道",CCTV-8
 https://itv.gcl.de5.net/live?url=http%3A//221.219.199.86%3A4022/rtp/239.3.1.175%3A8001
-#EXTINF:-1 tvg-name="CCTV-8" group-title="📺央视频道",CCTV-8
+#EXTINF:-1 tvg-name="CCTV-8" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV8.png" group-title="📺央视频道",CCTV-8
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.169%3A8001/rtp/225.0.4.137%3A7980
-#EXTINF:-1 tvg-name="CCTV-9" group-title="📺央视频道",CCTV-9
+#EXTINF:-1 tvg-name="CCTV-9" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV9.png" group-title="📺央视频道",CCTV-9
 http://61.178.227.57:9901/tsfile/live/0009_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-9" group-title="📺央视频道",CCTV-9
+#EXTINF:-1 tvg-name="CCTV-9" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV9.png" group-title="📺央视频道",CCTV-9
 http://123.113.104.82:85/tsfile/live/0009_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-9" group-title="📺央视频道",CCTV-9
+#EXTINF:-1 tvg-name="CCTV-9" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV9.png" group-title="📺央视频道",CCTV-9
 http://117.85.57.55:60001/tsfile/live/0009_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-9" group-title="📺央视频道",CCTV-9
+#EXTINF:-1 tvg-name="CCTV-9" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV9.png" group-title="📺央视频道",CCTV-9
 http://42.237.163.143:9901/tsfile/live/0009_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-9" group-title="📺央视频道",CCTV-9
+#EXTINF:-1 tvg-name="CCTV-9" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV9.png" group-title="📺央视频道",CCTV-9
 https://itv.gcl.de5.net/live?url=http%3A//27.18.119.28%3A8888/rtp/239.69.1.104%3A10262
-#EXTINF:-1 tvg-name="CCTV-9" group-title="📺央视频道",CCTV-9
+#EXTINF:-1 tvg-name="CCTV-9" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV9.png" group-title="📺央视频道",CCTV-9
 https://itv.gcl.de5.net/live?url=http%3A//171.83.38.8%3A8888/rtp/239.69.1.104%3A10262
-#EXTINF:-1 tvg-name="CCTV-9" group-title="📺央视频道",CCTV-9
+#EXTINF:-1 tvg-name="CCTV-9" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV9.png" group-title="📺央视频道",CCTV-9
 https://itv.gcl.de5.net/live?url=http%3A//27.11.53.195%3A8001/rtp/225.0.4.131%3A7980
-#EXTINF:-1 tvg-name="CCTV-9" group-title="📺央视频道",CCTV-9
+#EXTINF:-1 tvg-name="CCTV-9" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV9.png" group-title="📺央视频道",CCTV-9
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.77%3A1106
-#EXTINF:-1 tvg-name="CCTV-9" group-title="📺央视频道",CCTV-9
+#EXTINF:-1 tvg-name="CCTV-9" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV9.png" group-title="📺央视频道",CCTV-9
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.9%3A1038
-#EXTINF:-1 tvg-name="CCTV-9" group-title="📺央视频道",CCTV-9
+#EXTINF:-1 tvg-name="CCTV-9" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV9.png" group-title="📺央视频道",CCTV-9
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.22%3A8009/rtp/225.0.4.131%3A7980
-#EXTINF:-1 tvg-name="CCTV-10" group-title="📺央视频道",CCTV-10
+#EXTINF:-1 tvg-name="CCTV-10" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV10.png" group-title="📺央视频道",CCTV-10
 http://61.178.227.57:9901/tsfile/live/0010_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-10" group-title="📺央视频道",CCTV-10
+#EXTINF:-1 tvg-name="CCTV-10" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV10.png" group-title="📺央视频道",CCTV-10
 http://123.113.104.82:85/tsfile/live/0010_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-10" group-title="📺央视频道",CCTV-10
+#EXTINF:-1 tvg-name="CCTV-10" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV10.png" group-title="📺央视频道",CCTV-10
 http://42.237.163.143:9901/tsfile/live/0010_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-10" group-title="📺央视频道",CCTV-10
+#EXTINF:-1 tvg-name="CCTV-10" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV10.png" group-title="📺央视频道",CCTV-10
 https://itv.gcl.de5.net/live?url=http%3A//27.18.119.28%3A8888/rtp/239.69.1.105%3A10268
-#EXTINF:-1 tvg-name="CCTV-10" group-title="📺央视频道",CCTV-10
+#EXTINF:-1 tvg-name="CCTV-10" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV10.png" group-title="📺央视频道",CCTV-10
 https://itv.gcl.de5.net/live?url=http%3A//171.83.38.8%3A8888/rtp/239.69.1.105%3A10268
-#EXTINF:-1 tvg-name="CCTV-10" group-title="📺央视频道",CCTV-10
+#EXTINF:-1 tvg-name="CCTV-10" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV10.png" group-title="📺央视频道",CCTV-10
 https://itv.gcl.de5.net/live?url=http%3A//27.11.53.195%3A8001/rtp/225.0.4.130%3A7980
-#EXTINF:-1 tvg-name="CCTV-10" group-title="📺央视频道",CCTV-10
+#EXTINF:-1 tvg-name="CCTV-10" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV10.png" group-title="📺央视频道",CCTV-10
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.78%3A1107
-#EXTINF:-1 tvg-name="CCTV-10" group-title="📺央视频道",CCTV-10
+#EXTINF:-1 tvg-name="CCTV-10" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV10.png" group-title="📺央视频道",CCTV-10
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.10%3A1039
-#EXTINF:-1 tvg-name="CCTV-10" group-title="📺央视频道",CCTV-10
+#EXTINF:-1 tvg-name="CCTV-10" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV10.png" group-title="📺央视频道",CCTV-10
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.22%3A8009/rtp/225.0.4.130%3A7980
-#EXTINF:-1 tvg-name="CCTV-10" group-title="📺央视频道",CCTV-10
+#EXTINF:-1 tvg-name="CCTV-10" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV10.png" group-title="📺央视频道",CCTV-10
 https://itv.gcl.de5.net/live?url=http%3A//221.219.199.86%3A4022/rtp/239.3.1.63%3A8116
-#EXTINF:-1 tvg-name="CCTV-11" group-title="📺央视频道",CCTV-11
+#EXTINF:-1 tvg-name="CCTV-11" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV11.png" group-title="📺央视频道",CCTV-11
 http://61.178.227.57:9901/tsfile/live/0012_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-11" group-title="📺央视频道",CCTV-11
+#EXTINF:-1 tvg-name="CCTV-11" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV11.png" group-title="📺央视频道",CCTV-11
 http://123.113.104.82:85/tsfile/live/0012_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-11" group-title="📺央视频道",CCTV-11
+#EXTINF:-1 tvg-name="CCTV-11" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV11.png" group-title="📺央视频道",CCTV-11
 http://42.237.163.143:9901/tsfile/live/0012_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-11" group-title="📺央视频道",CCTV-11
+#EXTINF:-1 tvg-name="CCTV-11" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV11.png" group-title="📺央视频道",CCTV-11
 https://itv.gcl.de5.net/live?url=http%3A//27.18.119.28%3A8888/rtp/239.69.1.154%3A10560
-#EXTINF:-1 tvg-name="CCTV-11" group-title="📺央视频道",CCTV-11
+#EXTINF:-1 tvg-name="CCTV-11" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV11.png" group-title="📺央视频道",CCTV-11
 https://itv.gcl.de5.net/live?url=http%3A//171.83.38.8%3A8888/rtp/239.69.1.154%3A10560
-#EXTINF:-1 tvg-name="CCTV-11" group-title="📺央视频道",CCTV-11
+#EXTINF:-1 tvg-name="CCTV-11" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV11.png" group-title="📺央视频道",CCTV-11
 https://itv.gcl.de5.net/live?url=http%3A//27.11.53.195%3A8001/rtp/225.0.4.218%3A7980
-#EXTINF:-1 tvg-name="CCTV-11" group-title="📺央视频道",CCTV-11
+#EXTINF:-1 tvg-name="CCTV-11" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV11.png" group-title="📺央视频道",CCTV-11
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.215%3A1268
-#EXTINF:-1 tvg-name="CCTV-11" group-title="📺央视频道",CCTV-11
+#EXTINF:-1 tvg-name="CCTV-11" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV11.png" group-title="📺央视频道",CCTV-11
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.11%3A1040
-#EXTINF:-1 tvg-name="CCTV-11" group-title="📺央视频道",CCTV-11
+#EXTINF:-1 tvg-name="CCTV-11" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV11.png" group-title="📺央视频道",CCTV-11
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.22%3A8009/rtp/225.0.4.218%3A7980
-#EXTINF:-1 tvg-name="CCTV-11" group-title="📺央视频道",CCTV-11
+#EXTINF:-1 tvg-name="CCTV-11" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV11.png" group-title="📺央视频道",CCTV-11
 https://itv.gcl.de5.net/live?url=http%3A//221.219.199.86%3A4022/rtp/239.3.1.152%3A8120
-#EXTINF:-1 tvg-name="CCTV-12" group-title="📺央视频道",CCTV-12
+#EXTINF:-1 tvg-name="CCTV-12" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV12.png" group-title="📺央视频道",CCTV-12
 https://itv.gcl.de5.net/live?url=http%3A//27.18.119.28%3A8888/rtp/239.69.1.106%3A10274
-#EXTINF:-1 tvg-name="CCTV-12" group-title="📺央视频道",CCTV-12
+#EXTINF:-1 tvg-name="CCTV-12" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV12.png" group-title="📺央视频道",CCTV-12
 https://itv.gcl.de5.net/live?url=http%3A//171.83.38.8%3A8888/rtp/239.69.1.106%3A10274
-#EXTINF:-1 tvg-name="CCTV-12" group-title="📺央视频道",CCTV-12
+#EXTINF:-1 tvg-name="CCTV-12" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV12.png" group-title="📺央视频道",CCTV-12
 https://itv.gcl.de5.net/live?url=http%3A//27.11.53.195%3A8001/rtp/225.0.4.129%3A7980
-#EXTINF:-1 tvg-name="CCTV-12" group-title="📺央视频道",CCTV-12
+#EXTINF:-1 tvg-name="CCTV-12" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV12.png" group-title="📺央视频道",CCTV-12
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.79%3A1108
-#EXTINF:-1 tvg-name="CCTV-12" group-title="📺央视频道",CCTV-12
+#EXTINF:-1 tvg-name="CCTV-12" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV12.png" group-title="📺央视频道",CCTV-12
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.12%3A1041
-#EXTINF:-1 tvg-name="CCTV-12" group-title="📺央视频道",CCTV-12
+#EXTINF:-1 tvg-name="CCTV-12" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV12.png" group-title="📺央视频道",CCTV-12
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.22%3A8009/rtp/225.0.4.129%3A7980
-#EXTINF:-1 tvg-name="CCTV-12" group-title="📺央视频道",CCTV-12
+#EXTINF:-1 tvg-name="CCTV-12" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV12.png" group-title="📺央视频道",CCTV-12
 https://itv.gcl.de5.net/live?url=http%3A//221.219.199.86%3A4022/rtp/239.3.1.64%3A8124
-#EXTINF:-1 tvg-name="CCTV-12" group-title="📺央视频道",CCTV-12
+#EXTINF:-1 tvg-name="CCTV-12" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV12.png" group-title="📺央视频道",CCTV-12
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.169%3A8001/rtp/225.0.4.129%3A7980
-#EXTINF:-1 tvg-name="CCTV-12" group-title="📺央视频道",CCTV-12
+#EXTINF:-1 tvg-name="CCTV-12" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV12.png" group-title="📺央视频道",CCTV-12
 https://itv.gcl.de5.net/live?url=http%3A//27.10.73.172%3A8003/rtp/225.0.4.129%3A7980
-#EXTINF:-1 tvg-name="CCTV-12" group-title="📺央视频道",CCTV-12
+#EXTINF:-1 tvg-name="CCTV-12" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV12.png" group-title="📺央视频道",CCTV-12
 https://itv.gcl.de5.net/live?url=http%3A//42.230.249.238%3A4000/rtp/225.1.4.79%3A1108
-#EXTINF:-1 tvg-name="CCTV-13" group-title="📺央视频道",CCTV-13
+#EXTINF:-1 tvg-name="CCTV-13" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV13.png" group-title="📺央视频道",CCTV-13
 http://61.178.227.57:9901/tsfile/live/0013_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-13" group-title="📺央视频道",CCTV-13
+#EXTINF:-1 tvg-name="CCTV-13" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV13.png" group-title="📺央视频道",CCTV-13
 http://123.113.104.82:85/tsfile/live/0013_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-13" group-title="📺央视频道",CCTV-13
+#EXTINF:-1 tvg-name="CCTV-13" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV13.png" group-title="📺央视频道",CCTV-13
 http://42.237.163.143:9901/tsfile/live/0013_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="CCTV-13" group-title="📺央视频道",CCTV-13
+#EXTINF:-1 tvg-name="CCTV-13" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV13.png" group-title="📺央视频道",CCTV-13
 https://itv.gcl.de5.net/live?url=http%3A//27.18.119.28%3A8888/rtp/239.254.96.161%3A9040
-#EXTINF:-1 tvg-name="CCTV-13" group-title="📺央视频道",CCTV-13
+#EXTINF:-1 tvg-name="CCTV-13" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV13.png" group-title="📺央视频道",CCTV-13
 https://itv.gcl.de5.net/live?url=http%3A//171.83.38.8%3A8888/rtp/239.254.96.161%3A9040
-#EXTINF:-1 tvg-name="CCTV-13" group-title="📺央视频道",CCTV-13
+#EXTINF:-1 tvg-name="CCTV-13" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV13.png" group-title="📺央视频道",CCTV-13
 https://itv.gcl.de5.net/live?url=http%3A//27.11.53.195%3A8001/rtp/225.0.4.219%3A7980
-#EXTINF:-1 tvg-name="CCTV-13" group-title="📺央视频道",CCTV-13
+#EXTINF:-1 tvg-name="CCTV-13" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV13.png" group-title="📺央视频道",CCTV-13
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.113%3A1293
-#EXTINF:-1 tvg-name="CCTV-13" group-title="📺央视频道",CCTV-13
+#EXTINF:-1 tvg-name="CCTV-13" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV13.png" group-title="📺央视频道",CCTV-13
 https://itv.gcl.de5.net/live?url=http%3A//182.121.11.178%3A8090/rtp/225.1.4.13%3A1042
-#EXTINF:-1 tvg-name="CCTV-13" group-title="📺央视频道",CCTV-13
+#EXTINF:-1 tvg-name="CCTV-13" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV13.png" group-title="📺央视频道",CCTV-13
 https://itv.gcl.de5.net/live?url=http%3A//27.11.194.22%3A8009/rtp/225.0.4.219%3A7980
-#EXTINF:-1 tvg-name="CCTV-13" group-title="📺央视频道",CCTV-13
+#EXTINF:-1 tvg-name="CCTV-13" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV13.png" group-title="📺央视频道",CCTV-13
 https://itv.gcl.de5.net/live?url=http%3A//221.219.199.86%3A4022/rtp/239.3.1.124%3A8128
 
 # 分组：📺港·澳·台
