@@ -113,24 +113,23 @@ def filter_source_urls(template_file):
 def is_ipv6(url):
     return re.match(r'^http:\/\/\[[0-9a-fA-F:]+\]', url) is not None
 
-# ----------- 生成 live.txt -----------
+# ----------- 生成 live.txt（全部写入，不跳过任何分组） -----------
 def updateChannelUrlsM3U(channels, template_channels):
     written_urls = set()
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
     with open("live.txt", "w", encoding="utf-8") as f_txt:
-        # 写入公告分组（注意：分组名后面不要有多余的逗号）
+        # 写入公告分组
         f_txt.write(f"公   告,#genre#\n")
         
         # 获取公告URL
         announcement_url = "https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4"
         
-        # 写入公告频道（注意：频道名和URL用逗号分隔）
+        # 写入公告（不带时间戳，时间戳由 validator.py 添加）
         f_txt.write(f"更新时间,{announcement_url}\n\n")
         
-        # 写入所有匹配到的频道
+        # 写入所有匹配到的频道（不跳过任何分组）
         for category, ch_dict in channels.items():
-            # 写入分组标记（格式：分组名,#genre#）
             f_txt.write(f"{category},#genre#\n")
             for ch_name, urls in ch_dict.items():
                 # 去重、过滤、排序
@@ -143,7 +142,6 @@ def updateChannelUrlsM3U(channels, template_channels):
                     suffix = f"$LR•IPV6『线路{idx}』" if is_ipv6(url) else f"$LR•IPV4『线路{idx}』"
                     base_url = url.split('$')[0]
                     final_url = f"{base_url}{suffix}"
-                    # 写入频道（格式：频道名,URL）
                     f_txt.write(f"{ch_name},{final_url}\n")
                     written_urls.add(url)
             f_txt.write("\n")
