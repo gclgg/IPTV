@@ -113,23 +113,33 @@ def filter_source_urls(template_file):
 def is_ipv6(url):
     return re.match(r'^http:\/\/\[[0-9a-fA-F:]+\]', url) is not None
 
-# ----------- 生成 live.txt（只包含公告和本地源） -----------
+# ----------- 生成 live.txt（只包含公告和本地源，跳过酒店源） -----------
 def updateChannelUrlsM3U(channels, template_channels):
     written_urls = set()
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
+    # 需要跳过的分组（这些将由远程酒店源提供）
+    skip_categories = [
+        "央视频道", "卫视频道", "央视", "港台节目", "其他节目", 
+        "未分类节目", "港·澳·台", "影视频道", "湖北频道", "CCTV", "央视卫视"
+    ]
+    
     with open("live.txt", "w", encoding="utf-8") as f_txt:
-        # 只写入公告分组
+        # 写入公告分组
         f_txt.write(f"公   告,#genre#\n")
         
         # 获取公告URL
         announcement_url = "https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4"
         
-        # 写入公告（不带时间戳，时间戳由第一个脚本添加）
+        # 写入公告（不带时间戳，时间戳由合并脚本添加）
         f_txt.write(f"更新时间,{announcement_url}\n\n")
         
-        # 只写入本地源（模板匹配的频道），不写入酒店源
+        # 只写入本地源（跳过酒店源分组）
         for category, ch_dict in channels.items():
+            # 跳过酒店源分组
+            if category in skip_categories:
+                logging.info(f"跳过酒店源分组: {category}")
+                continue
             if category not in template_channels:
                 continue
             f_txt.write(f"{category},#genre#\n")
@@ -148,7 +158,7 @@ def updateChannelUrlsM3U(channels, template_channels):
                     written_urls.add(url)
             f_txt.write("\n")
     
-    logging.info("✅ live.txt 生成完成，等待第一个脚本合并酒店源和iptv-api源")
+    logging.info("✅ live.txt 生成完成，等待合并脚本合并酒店源和iptv-api源")
 
 # ----------- 入口 -----------
 if __name__ == "__main__":
