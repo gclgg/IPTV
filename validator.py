@@ -64,8 +64,8 @@ def get_logo(channel_name):
             return COMMON_LOGOS[key]
     return ""
 
-def parse_txt_file(filename, current_time):
-    """读取 live.txt 中的本地源"""
+def parse_txt_file(filename):
+    """读取 live.txt 中的本地源 - 修复逗号问题"""
     channels_by_group = defaultdict(list)
     current_group = "未分组"
     
@@ -77,20 +77,31 @@ def parse_txt_file(filename, current_time):
             line = line.strip()
             if not line:
                 continue
+            
+            # 处理分组标记
             if line.endswith('#genre#'):
                 current_group = line[:-7].strip()
+                print(f"📁 发现分组: {current_group}")
                 continue
+            
+            # 处理频道行（格式：频道名,URL）
             if ',' in line:
-                parts = line.split(',', 1)
-                if len(parts) == 2:
-                    channel_name = parts[0].strip()
-                    full_url = parts[1].strip()
-                    logo_url = get_logo(channel_name)
-                    channels_by_group[current_group].append({
-                        'name': channel_name,
-                        'url': full_url,
-                        'logo': logo_url
-                    })
+                # 找到第一个逗号的位置（频道名和URL的分隔符）
+                comma_index = line.find(',')
+                if comma_index != -1:
+                    channel_name = line[:comma_index].strip()
+                    full_url = line[comma_index + 1:].strip()
+                    
+                    # 只处理有效的URL
+                    if full_url.startswith('http') or full_url.startswith('https'):
+                        logo_url = get_logo(channel_name)
+                        channels_by_group[current_group].append({
+                            'name': channel_name,
+                            'url': full_url,
+                            'logo': logo_url
+                        })
+                        print(f"   ✅ 添加频道: {channel_name}")
+    
     return dict(channels_by_group)
 
 async def fetch_m3u_source(url, source_name):
@@ -124,6 +135,7 @@ async def fetch_m3u_source(url, source_name):
                             current_group = group_match.group(1)
                             if current_group and current_group not in group_order:
                                 group_order.append(current_group)
+                                print(f"   📁 酒店源分组: {current_group}")
                         
                         # 提取频道名称
                         if ',' in line:
@@ -139,6 +151,7 @@ async def fetch_m3u_source(url, source_name):
                                 'url': line,
                                 'logo': logo_url
                             })
+                            print(f"   ✅ 酒店源频道: {current_name}")
                             current_name = ""
                 
                 total = sum(len(groups[g]) for g in groups)
@@ -155,14 +168,15 @@ async def fetch_m3u_source(url, source_name):
 
 async def main():
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    print(f"\n{'='*50}")
+    print(f"\n{'='*60}")
     print(f"开始合并直播源 - {current_time}")
-    print(f"{'='*50}\n")
+    print(f"{'='*60}\n")
     
     # 1. 读取本地源（从 live.txt）
-    local_groups = parse_txt_file(INPUT_SOURCE, current_time)
+    print("📖 正在读取本地源 live.txt...")
+    local_groups = parse_txt_file(INPUT_SOURCE)
     local_count = sum(len(local_groups[g]) for g in local_groups)
-    print(f"📁 本地源: {len(local_groups)} 个分组, {local_count} 个频道")
+    print(f"\n📁 本地源读取完成: {len(local_groups)} 个分组, {local_count} 个频道")
     
     # 2. 拉取酒店源
     hotel_groups, hotel_order = await fetch_m3u_source(HOTEL_SOURCE_URL, "酒店源")
@@ -180,7 +194,11 @@ async def main():
         if local_groups:
             f.write(f'\n# ========== 本地源 ==========\n')
             for group, channels in local_groups.items():
-                f.write(f'\n# 分组：{group}\n')
+                if group == '公告':
+                    f.write(f'\n# ========== 公告 ==========\n')
+                else:
+                    f.write(f'\n# 分组：{group}\n')
+                
                 for ch in channels:
                     extinf = f'#EXTINF:-1 tvg-name="{ch["name"]}"'
                     if ch.get('logo'):
@@ -202,6 +220,12 @@ async def main():
                         extinf += f' group-title="{group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
+        else:
+            print(f"⚠️ 警告：酒店源没有数据")
+            f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
+            f.write(f'\n# 分组：提示\n')
+            f.write(f'#EXTINF:-1 group-title="提示",酒店源暂无数据\n')
+            f.write(f'https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4\n')
         
         # ========== 3. iptv-api 源（带时间戳） ==========
         if iptv_groups:
@@ -216,19 +240,21 @@ async def main():
                         extinf += f' group-title="{group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
+        else:
+            print(f"⚠️ 警告：iptv-api源没有数据")
     
     # 统计
     hotel_count = sum(len(hotel_groups[g]) for g in hotel_groups) if hotel_groups else 0
     iptv_count = sum(len(iptv_groups[g]) for g in iptv_groups) if iptv_groups else 0
     
-    print(f"\n{'='*50}")
+    print(f"\n{'='*60}")
     print(f"✅ 合并完成！")
     print(f"   - 本地源: {local_count} 个频道")
     print(f"   - 酒店源: {hotel_count} 个频道")
     print(f"   - iptv-api: {iptv_count} 个频道")
     print(f"   - 总计: {local_count + hotel_count + iptv_count} 个频道")
     print(f"   - 输出文件: {OUTPUT_FILE}")
-    print(f"{'='*50}")
+    print(f"{'='*60}")
 
 if __name__ == "__main__":
     asyncio.run(main())
