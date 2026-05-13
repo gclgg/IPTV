@@ -44,11 +44,12 @@ def parse_template(template_file):
 def fetch_channels(url):
     channels = OrderedDict()
     try:
-        response = requests.get(url)
+        response = requests.get(url, timeout=30)
         response.raise_for_status()
         response.encoding = 'utf-8'
         lines = response.text.splitlines()
         current_category = None
+        current_name = None
         is_m3u = any("#EXTINF" in line for line in lines[:15])
         source_type = "m3u" if is_m3u else "txt"
         logging.info(f"url: {url} 获取成功，判断为{source_type}格式")
@@ -57,25 +58,29 @@ def fetch_channels(url):
             for line in lines:
                 line = line.strip()
                 if line.startswith("#EXTINF"):
-                    m = re.search(r'group-title="(.*?)",(.*)', line)
-                    if m:
-                        current_category = m.group(1).strip()
-                        channel_name = m.group(2).strip()
+                    group_match = re.search(r'group-title="([^"]+)"', line)
+                    name_match = re.search(r',([^,]+)$', line)
+                    if group_match:
+                        current_category = group_match.group(1).strip()
                         if current_category not in channels:
                             channels[current_category] = []
-                elif line and not line.startswith("#"):
-                    if current_category and channel_name:
-                        channels[current_category].append((channel_name, line.strip()))
+                    if name_match:
+                        current_name = name_match.group(1).strip()
+                elif line and not line.startswith("#") and current_category and current_name:
+                    if line.startswith("http"):
+                        channels[current_category].append((current_name, line.strip()))
+                    current_name = None
         else:
             for line in lines:
                 line = line.strip()
                 if "#genre#" in line:
                     current_category = line.split(",")[0].strip()
                     channels[current_category] = []
-                elif current_category:
+                elif current_category and "," in line:
                     m = re.match(r"^(.*?),(.*?)$", line)
                     if m:
                         channels[current_category].append((m.group(1).strip(), m.group(2).strip()))
+        
         if channels:
             logging.info(f"url: {url} 爬取成功✅，包含频道分类: {', '.join(channels.keys())}")
     except requests.RequestException as e:
@@ -108,20 +113,19 @@ def filter_source_urls(template_file):
 def is_ipv6(url):
     return re.match(r'^http:\/\/\[[0-9a-fA-F:]+\]', url) is not None
 
-# ----------- 生成 live.m3u & live.txt -----------
+# ----------- 生成 live.txt（只包含公告和本地源） -----------
 def updateChannelUrlsM3U(channels, template_channels):
     written_urls = set()
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
     with open("live.txt", "w", encoding="utf-8") as f_txt:
-        # 只写入公告
+        # 只写入公告分组
         f_txt.write(f"公   告,#genre#\n")
         
         # 获取公告URL和Logo
-        announcement_url = config.announcements[0]['entries'][0]['url'] if config.announcements else "https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4"
-        announcement_logo = config.announcements[0]['entries'][0]['logo'] if config.announcements else ""
+        announcement_url = "https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4"
         
-        # 写入公告（只写一条，不带时间戳在这里，时间戳由第一个脚本添加）
+        # 写入公告（不带时间戳，时间戳由第一个脚本添加）
         f_txt.write(f"更新时间,{announcement_url}\n\n")
         
         # 只写入本地源（模板匹配的频道），不写入酒店源
@@ -143,48 +147,7 @@ def updateChannelUrlsM3U(channels, template_channels):
                     written_urls.add(url)
             f_txt.write("\n")
     
-    # 生成最终的 M3U 文件（由第一个脚本完成，这里不生成）
-    logging.info("live.txt 生成完成，等待第一个脚本合并酒店源和iptv-api源")
-        
-        # 获取公告的logo（从config中取第一个公告的logo）
-        announcement_logo = config.announcements[0]['entries'][0]['logo'] if config.announcements else ""
-        
-        # 写入公告（只写一条）
-        f_m3u.write(f'#EXTINF:-1 tvg-id="0" tvg-name="{update_channel_name}" '
-                    f'tvg-logo="{announcement_logo}" '
-                    f'group-title="公告",{update_channel_name}\n')
-        # 使用第一个公告的URL
-        announcement_url = config.announcements[0]['entries'][0]['url'] if config.announcements else "https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4"
-        f_m3u.write(f"{announcement_url}\n")
-        f_txt.write(f"{update_channel_name},{announcement_url}\n")
-
-        # 普通频道
-        for category, ch_list in template_channels.items():
-            f_txt.write(f"{category},#genre#\n")
-            if category not in channels:
-                continue
-            for ch_name in ch_list:
-                if ch_name not in channels[category]:
-                    continue
-                urls = sorted(channels[category][ch_name],
-                              key=lambda u: not is_ipv6(u) if config.ip_version_priority == "ipv6" else is_ipv6(u))
-                filtered = []
-                for u in urls:
-                    if u and u not in written_urls and not any(b in u for b in config.url_blacklist):
-                        filtered.append(u)
-                        written_urls.add(u)
-
-                total = len(filtered)
-                for idx, url in enumerate(filtered, 1):
-                    suffix = f"$LR•IPV6『线路{idx}』" if is_ipv6(url) else f"$LR•IPV4『线路{idx}』"
-                    base = url.split('$')[0]
-                    new_url = f"{base}{suffix}"
-                    f_m3u.write(f"#EXTINF:-1 tvg-id=\"{idx}\" tvg-name=\"{ch_name}\" "
-                                f"tvg-logo=\"https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/{ch_name}.png\" "
-                                f"group-title=\"{category}\",{ch_name}\n")
-                    f_m3u.write(new_url + "\n")
-                    f_txt.write(f"{ch_name},{new_url}\n")
-            f_txt.write("\n")
+    logging.info("✅ live.txt 生成完成，等待第一个脚本合并酒店源和iptv-api源")
 
 # ----------- 入口 -----------
 if __name__ == "__main__":
