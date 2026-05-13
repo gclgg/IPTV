@@ -113,16 +113,10 @@ def filter_source_urls(template_file):
 def is_ipv6(url):
     return re.match(r'^http:\/\/\[[0-9a-fA-F:]+\]', url) is not None
 
-# ----------- 生成 live.txt（只包含公告和本地源，跳过酒店源） -----------
+# ----------- 生成 live.txt（全部写入，不跳过任何分组） -----------
 def updateChannelUrlsM3U(channels, template_channels):
     written_urls = set()
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    
-    # 需要跳过的分组（这些将由远程酒店源提供）
-    skip_categories = [
-        "央视频道", "卫视频道", "央视", "港台节目", "其他节目", 
-        "未分类节目", "港·澳·台", "影视频道", "湖北频道", "CCTV", "央视卫视"
-    ]
     
     with open("live.txt", "w", encoding="utf-8") as f_txt:
         # 写入公告分组
@@ -131,17 +125,11 @@ def updateChannelUrlsM3U(channels, template_channels):
         # 获取公告URL
         announcement_url = "https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4"
         
-        # 写入公告（不带时间戳，时间戳由合并脚本添加）
+        # 写入公告（不带时间戳，时间戳由 validator.py 添加）
         f_txt.write(f"更新时间,{announcement_url}\n\n")
         
-        # 只写入本地源（跳过酒店源分组）
+        # 写入所有匹配到的频道（不跳过任何分组）
         for category, ch_dict in channels.items():
-            # 跳过酒店源分组
-            if category in skip_categories:
-                logging.info(f"跳过酒店源分组: {category}")
-                continue
-            if category not in template_channels:
-                continue
             f_txt.write(f"{category},#genre#\n")
             for ch_name, urls in ch_dict.items():
                 # 去重、过滤、排序
@@ -158,12 +146,19 @@ def updateChannelUrlsM3U(channels, template_channels):
                     written_urls.add(url)
             f_txt.write("\n")
     
-    logging.info("✅ live.txt 生成完成，等待合并脚本合并酒店源和iptv-api源")
+    # 统计
+    total_categories = len(channels)
+    total_channels = sum(len(ch_dict) for ch_dict in channels.values())
+    logging.info(f"✅ live.txt 生成完成，共写入 {total_categories} 个分组，{total_channels} 个频道")
 
 # ----------- 入口 -----------
 if __name__ == "__main__":
     logging.info("开始处理 IPTV 直播源...")
     template_file = "demo.txt"
     channels, template_channels = filter_source_urls(template_file)
+    
+    # 打印所有匹配到的分组，方便调试
+    logging.info(f"匹配到的所有分组: {list(channels.keys())}")
+    
     updateChannelUrlsM3U(channels, template_channels)
     logging.info("IPTV 直播源处理完成 ✅")
