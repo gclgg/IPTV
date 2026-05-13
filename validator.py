@@ -44,6 +44,24 @@ COMMON_LOGOS = {
     "CCTV15": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV15.png",
     "CCTV16": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV16.png",
     "CCTV17": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV17.png",
+    "CCTV-1": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png",
+    "CCTV-2": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV2.png",
+    "CCTV-3": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV3.png",
+    "CCTV-4": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV4.png",
+    "CCTV-5": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5.png",
+    "CCTV-5+": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV5Plus.png",
+    "CCTV-6": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV6.png",
+    "CCTV-7": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV7.png",
+    "CCTV-8": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV8.png",
+    "CCTV-9": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV9.png",
+    "CCTV-10": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV10.png",
+    "CCTV-11": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV11.png",
+    "CCTV-12": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV12.png",
+    "CCTV-13": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV13.png",
+    "CCTV-14": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV14.png",
+    "CCTV-15": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV15.png",
+    "CCTV-16": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV16.png",
+    "CCTV-17": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV17.png",
     "凤凰卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Phoenix.png",
     "凤凰卫视中文台": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/PhoenixChinese.png",
     "凤凰卫视资讯台": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/PhoenixInfo.png",
@@ -56,16 +74,44 @@ COMMON_LOGOS = {
     "深圳卫视": "https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/Shenzhen.png",
 }
 
+def clean_channel_name(name):
+    """清理频道名，用于Logo匹配"""
+    # 去掉空格
+    name = name.strip()
+    # CCTV-1 -> CCTV1
+    name = re.sub(r'CCTV-(\d+)', r'CCTV\1', name)
+    # CCTV-5+ -> CCTV5+
+    name = re.sub(r'CCTV-(\d+\+?)', r'CCTV\1', name)
+    return name
+
 def get_logo(channel_name):
+    """获取频道Logo"""
+    # 先清理频道名
+    clean_name = clean_channel_name(channel_name)
+    
+    # 直接匹配
+    if clean_name in COMMON_LOGOS:
+        return COMMON_LOGOS[clean_name]
     if channel_name in COMMON_LOGOS:
         return COMMON_LOGOS[channel_name]
+    
+    # 模糊匹配
     for key in COMMON_LOGOS:
+        if key in clean_name or clean_name in key:
+            return COMMON_LOGOS[key]
         if key in channel_name or channel_name in key:
             return COMMON_LOGOS[key]
+    
+    # 去掉空格再匹配
+    no_space = channel_name.replace(' ', '')
+    for key in COMMON_LOGOS:
+        if key == no_space:
+            return COMMON_LOGOS[key]
+    
     return ""
 
-def parse_txt_file(filename):
-    """读取 live.txt 中的本地源 - 修复逗号问题"""
+def parse_txt_file(filename, current_time):
+    """读取 live.txt 中的本地源"""
     channels_by_group = defaultdict(list)
     current_group = "未分组"
     
@@ -78,29 +124,28 @@ def parse_txt_file(filename):
             if not line:
                 continue
             
-            # 处理分组标记
             if line.endswith('#genre#'):
                 current_group = line[:-7].strip()
-                print(f"📁 发现分组: {current_group}")
                 continue
             
-            # 处理频道行（格式：频道名,URL）
             if ',' in line:
-                # 找到第一个逗号的位置（频道名和URL的分隔符）
                 comma_index = line.find(',')
                 if comma_index != -1:
                     channel_name = line[:comma_index].strip()
                     full_url = line[comma_index + 1:].strip()
                     
-                    # 只处理有效的URL
                     if full_url.startswith('http') or full_url.startswith('https'):
                         logo_url = get_logo(channel_name)
+                        
+                        if current_group == '公告':
+                            if channel_name == '更新时间':
+                                channel_name = f"更新时间 {current_time}"
+                        
                         channels_by_group[current_group].append({
                             'name': channel_name,
                             'url': full_url,
                             'logo': logo_url
                         })
-                        print(f"   ✅ 添加频道: {channel_name}")
     
     return dict(channels_by_group)
 
@@ -129,20 +174,16 @@ async def fetch_m3u_source(url, source_name):
                         continue
                     
                     if line.startswith('#EXTINF'):
-                        # 提取 group-title
                         group_match = re.search(r'group-title="([^"]+)"', line)
                         if group_match:
                             current_group = group_match.group(1)
                             if current_group and current_group not in group_order:
                                 group_order.append(current_group)
-                                print(f"   📁 酒店源分组: {current_group}")
                         
-                        # 提取频道名称
                         if ',' in line:
                             current_name = line.split(',')[-1].strip()
                         continue
                     
-                    # 匹配URL行
                     if line and not line.startswith('#') and current_name and current_group:
                         if line.startswith('http'):
                             logo_url = get_logo(current_name)
@@ -151,12 +192,15 @@ async def fetch_m3u_source(url, source_name):
                                 'url': line,
                                 'logo': logo_url
                             })
-                            print(f"   ✅ 酒店源频道: {current_name}")
                             current_name = ""
                 
                 total = sum(len(groups[g]) for g in groups)
                 if total > 0:
                     print(f"✅ {source_name} 拉取成功: {len(groups)} 个分组, {total} 个频道")
+                    # 打印前5个频道的Logo匹配情况
+                    for g in list(groups.keys())[:3]:
+                        for ch in groups[g][:3]:
+                            print(f"   Logo匹配: {ch['name']} -> {ch['logo'][:50] if ch['logo'] else '无'}")
                 else:
                     print(f"⚠️ {source_name} 未能解析到任何频道")
                 
@@ -172,11 +216,10 @@ async def main():
     print(f"开始合并直播源 - {current_time}")
     print(f"{'='*60}\n")
     
-    # 1. 读取本地源（从 live.txt）
-    print("📖 正在读取本地源 live.txt...")
-    local_groups = parse_txt_file(INPUT_SOURCE)
+    # 1. 读取本地源
+    local_groups = parse_txt_file(INPUT_SOURCE, current_time)
     local_count = sum(len(local_groups[g]) for g in local_groups)
-    print(f"\n📁 本地源读取完成: {len(local_groups)} 个分组, {local_count} 个频道")
+    print(f"📁 本地源: {len(local_groups)} 个分组, {local_count} 个频道")
     
     # 2. 拉取酒店源
     hotel_groups, hotel_order = await fetch_m3u_source(HOTEL_SOURCE_URL, "酒店源")
@@ -192,13 +235,13 @@ async def main():
         
         # ========== 1. 本地源 ==========
         if local_groups:
-            f.write(f'\n# ========== 本地源 ==========\n')
             for group, channels in local_groups.items():
                 if group == '公告':
                     f.write(f'\n# ========== 公告 ==========\n')
                 else:
-                    f.write(f'\n# 分组：{group}\n')
+                    f.write(f'\n# ========== 本地源 ==========\n')
                 
+                f.write(f'\n# 分组：{group}\n')
                 for ch in channels:
                     extinf = f'#EXTINF:-1 tvg-name="{ch["name"]}"'
                     if ch.get('logo'):
@@ -208,8 +251,8 @@ async def main():
                     f.write(ch['url'] + '\n')
         
         # ========== 2. 酒店源（带时间戳） ==========
+        f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
         if hotel_groups:
-            f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
             for group in hotel_order:
                 if group in hotel_groups and hotel_groups[group]:
                     f.write(f'\n# 分组：{group}\n')
@@ -220,16 +263,10 @@ async def main():
                         extinf += f' group-title="{group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
-        else:
-            print(f"⚠️ 警告：酒店源没有数据")
-            f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
-            f.write(f'\n# 分组：提示\n')
-            f.write(f'#EXTINF:-1 group-title="提示",酒店源暂无数据\n')
-            f.write(f'https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4\n')
         
         # ========== 3. iptv-api 源（带时间戳） ==========
+        f.write(f'\n# ========== {IPTV_API_MAIN_GROUP} [{current_time}] ==========\n')
         if iptv_groups:
-            f.write(f'\n# ========== {IPTV_API_MAIN_GROUP} [{current_time}] ==========\n')
             for group in iptv_order:
                 if group in iptv_groups and iptv_groups[group]:
                     f.write(f'\n# 分组：{group}\n')
@@ -240,8 +277,6 @@ async def main():
                         extinf += f' group-title="{group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
-        else:
-            print(f"⚠️ 警告：iptv-api源没有数据")
     
     # 统计
     hotel_count = sum(len(hotel_groups[g]) for g in hotel_groups) if hotel_groups else 0
