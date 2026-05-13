@@ -191,7 +191,7 @@ async def main():
         
         # ========== 2. 酒店源（带时间戳） ==========
         if hotel_groups:
-            f.write(f'\n# ========== 酒店源 [{current_time}] ==========\n')
+            f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
             for group in hotel_order:
                 if group in hotel_groups and hotel_groups[group]:
                     f.write(f'\n# 分组：{group}\n')
@@ -205,7 +205,7 @@ async def main():
         
         # ========== 3. iptv-api 源（带时间戳） ==========
         if iptv_groups:
-            f.write(f'\n# ========== iptv-api [{current_time}] ==========\n')
+            f.write(f'\n# ========== {IPTV_API_MAIN_GROUP} [{current_time}] ==========\n')
             for group in iptv_order:
                 if group in iptv_groups and iptv_groups[group]:
                     f.write(f'\n# 分组：{group}\n')
