@@ -76,33 +76,25 @@ COMMON_LOGOS = {
 
 def clean_channel_name(name):
     """清理频道名，用于Logo匹配"""
-    # 去掉空格
     name = name.strip()
     # CCTV-1 -> CCTV1
     name = re.sub(r'CCTV-(\d+)', r'CCTV\1', name)
-    # CCTV-5+ -> CCTV5+
     name = re.sub(r'CCTV-(\d+\+?)', r'CCTV\1', name)
     return name
 
 def get_logo(channel_name):
     """获取频道Logo"""
-    # 先清理频道名
     clean_name = clean_channel_name(channel_name)
     
-    # 直接匹配
     if clean_name in COMMON_LOGOS:
         return COMMON_LOGOS[clean_name]
     if channel_name in COMMON_LOGOS:
         return COMMON_LOGOS[channel_name]
     
-    # 模糊匹配
     for key in COMMON_LOGOS:
         if key in clean_name or clean_name in key:
             return COMMON_LOGOS[key]
-        if key in channel_name or channel_name in key:
-            return COMMON_LOGOS[key]
     
-    # 去掉空格再匹配
     no_space = channel_name.replace(' ', '')
     for key in COMMON_LOGOS:
         if key == no_space:
@@ -111,7 +103,7 @@ def get_logo(channel_name):
     return ""
 
 def parse_txt_file(filename, current_time):
-    """读取 live.txt 中的本地源"""
+    """读取 live.txt 中的本地源 - 修复分组名逗号问题"""
     channels_by_group = defaultdict(list)
     current_group = "未分组"
     
@@ -124,10 +116,17 @@ def parse_txt_file(filename, current_time):
             if not line:
                 continue
             
-            if line.endswith('#genre#'):
-                current_group = line[:-7].strip()
+            # 处理分组标记（格式：分组名,#genre#）
+            if '#genre#' in line:
+                # 提取分组名：取第一个逗号之前的内容
+                comma_index = line.find(',')
+                if comma_index != -1:
+                    current_group = line[:comma_index].strip()
+                else:
+                    current_group = line.replace('#genre#', '').strip()
                 continue
             
+            # 处理频道行（格式：频道名,URL）
             if ',' in line:
                 comma_index = line.find(',')
                 if comma_index != -1:
@@ -137,6 +136,7 @@ def parse_txt_file(filename, current_time):
                     if full_url.startswith('http') or full_url.startswith('https'):
                         logo_url = get_logo(channel_name)
                         
+                        # 处理公告分组的时间戳
                         if current_group == '公告':
                             if channel_name == '更新时间':
                                 channel_name = f"更新时间 {current_time}"
@@ -197,10 +197,6 @@ async def fetch_m3u_source(url, source_name):
                 total = sum(len(groups[g]) for g in groups)
                 if total > 0:
                     print(f"✅ {source_name} 拉取成功: {len(groups)} 个分组, {total} 个频道")
-                    # 打印前5个频道的Logo匹配情况
-                    for g in list(groups.keys())[:3]:
-                        for ch in groups[g][:3]:
-                            print(f"   Logo匹配: {ch['name']} -> {ch['logo'][:50] if ch['logo'] else '无'}")
                 else:
                     print(f"⚠️ {source_name} 未能解析到任何频道")
                 
@@ -220,6 +216,7 @@ async def main():
     local_groups = parse_txt_file(INPUT_SOURCE, current_time)
     local_count = sum(len(local_groups[g]) for g in local_groups)
     print(f"📁 本地源: {len(local_groups)} 个分组, {local_count} 个频道")
+    print(f"   分组列表: {list(local_groups.keys())}")
     
     # 2. 拉取酒店源
     hotel_groups, hotel_order = await fetch_m3u_source(HOTEL_SOURCE_URL, "酒店源")
