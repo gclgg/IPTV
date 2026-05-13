@@ -126,8 +126,13 @@ def get_logo(channel_name):
     return LOGO_DATABASE.get(channel_name, "")
 
 def parse_txt_file(filename, current_time):
+    """解析 live.txt 中的本地源"""
     channels_by_group = defaultdict(list)
     current_group = "未分组"
+    
+    if not os.path.exists(filename):
+        return channels_by_group
+    
     with open(filename, 'r', encoding='utf-8') as f:
         for line in f:
             line = line.strip()
@@ -138,19 +143,20 @@ def parse_txt_file(filename, current_time):
                 continue
             if ',' in line:
                 parts = line.split(',', 1)
-                channel_name = parts[0].strip()
-                full_url = parts[1].strip()
-                logo_url = get_logo(channel_name)
-                if current_group == '公告':
-                    if '更新日期' in channel_name:
-                        channel_name = f"更新日期 {current_time}"
-                    elif '仓库更新时间' in channel_name:
-                        channel_name = f"📦 仓库更新时间 {current_time}"
-                channels_by_group[current_group].append({
-                    'name': channel_name,
-                    'url': full_url,
-                    'logo': logo_url
-                })
+                if len(parts) == 2:
+                    channel_name = parts[0].strip()
+                    full_url = parts[1].strip()
+                    logo_url = get_logo(channel_name)
+                    if current_group == '公告':
+                        if '更新日期' in channel_name:
+                            channel_name = f"更新日期 {current_time}"
+                        elif '仓库更新时间' in channel_name:
+                            channel_name = f"📦 仓库更新时间 {current_time}"
+                    channels_by_group[current_group].append({
+                        'name': channel_name,
+                        'url': full_url,
+                        'logo': logo_url
+                    })
     return dict(channels_by_group)
 
 async def fetch_hotel_source():
@@ -203,9 +209,6 @@ async def fetch_hotel_source():
                 total = sum(len(ch) for ch in hotel_groups.values())
                 if total > 0:
                     print(f"✅ 酒店源拉取成功: {len(hotel_groups)} 个分组, {total} 个频道")
-                    for group in hotel_group_order:
-                        if group in hotel_groups:
-                            print(f"   - {group}: {len(hotel_groups[group])} 个频道")
                 else:
                     print(f"⚠️ 未能解析到任何频道")
 
@@ -299,11 +302,12 @@ async def main():
     m3u_file = INPUT_SOURCE.replace('.txt', '.m3u')
     await build_logo_database(m3u_file)
 
-    # 2. 解析本地源
+    # 2. 解析本地源（从 live.txt 读取）
     if not os.path.exists(INPUT_SOURCE):
         print(f"错误：文件 {INPUT_SOURCE} 不存在！")
         return
     channels_by_group = parse_txt_file(INPUT_SOURCE, current_time)
+    print(f"📁 本地源: {len(channels_by_group)} 个分组")
 
     # 3. 拉取酒店源
     hotel_groups = {}
@@ -339,24 +343,25 @@ async def main():
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write('#EXTM3U x-tvg-url="' + '","'.join(EPG_URLS) + '"\n')
 
-        # === 本地源 ===
-        for group, channels in channels_by_group.items():
-            if group == '公告':
-                f.write(f'\n# ========== 公告 ==========\n')
-            else:
-                f.write(f'\n# ========== 本地源 ==========\n')
-                f.write(f'\n# 分组：{group}\n')
+        # ========== 本地源 ==========
+        if channels_by_group:
+            for group, channels in channels_by_group.items():
+                if group == '公告':
+                    f.write(f'\n# ========== 公告 ==========\n')
+                else:
+                    f.write(f'\n# ========== 本地源 ==========\n')
+                    f.write(f'\n# 分组：{group}\n')
+                
+                for ch in channels:
+                    tvg_id = str(abs(hash(ch['name'])) % 10000)
+                    extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}"'
+                    if ch.get('logo'):
+                        extinf += f' tvg-logo="{ch["logo"]}"'
+                    extinf += f' group-title="{group}",{ch["name"]}'
+                    f.write(extinf + '\n')
+                    f.write(ch['url'] + '\n')
 
-            for ch in channels:
-                tvg_id = str(abs(hash(ch['name'])) % 10000)
-                extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}"'
-                if ch.get('logo'):
-                    extinf += f' tvg-logo="{ch["logo"]}"'
-                extinf += f' group-title="{group}",{ch["name"]}'
-                f.write(extinf + '\n')
-                f.write(ch['url'] + '\n')
-
-        # === 酒店源 ===
+        # ========== 酒店源 ==========
         if hotel_groups:
             f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
             for group in hotel_group_order:
@@ -372,7 +377,7 @@ async def main():
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
 
-        # === iptv-api 源 ===
+        # ========== iptv-api 源 ==========
         if iptv_groups:
             f.write(f'\n# ========== {IPTV_API_MAIN_GROUP} [{current_time}] ==========\n')
             for group in iptv_group_order:
@@ -391,6 +396,7 @@ async def main():
     total_local = sum(len(ch) for ch in channels_by_group.values())
     total_hotel = sum(len(ch) for ch in hotel_groups.values()) if hotel_groups else 0
     total_iptv = sum(len(ch) for ch in iptv_groups.values()) if iptv_groups else 0
+    
     print(f"\n✅ 转换完成！")
     print(f"   - 本地源: {total_local} 个频道")
     print(f"   - 酒店源: {total_hotel} 个频道")
