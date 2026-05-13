@@ -122,7 +122,7 @@ def updateChannelUrlsM3U(channels, template_channels):
         # 只写入公告分组
         f_txt.write(f"公   告,#genre#\n")
         
-        # 获取公告URL和Logo
+        # 获取公告URL
         announcement_url = "https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4"
         
         # 写入公告（不带时间戳，时间戳由第一个脚本添加）
@@ -139,7 +139,8 @@ def updateChannelUrlsM3U(channels, template_channels):
                 urls = [u for u in urls if u and u not in written_urls and not any(b in u for b in config.url_blacklist)]
                 urls.sort(key=lambda u: not is_ipv6(u) if config.ip_version_priority == "ipv6" else is_ipv6(u))
                 
-                for idx, url in enumerate(urls[:config.max_urls_per_channel], 1):
+                max_urls = getattr(config, 'max_urls_per_channel', 10)
+                for idx, url in enumerate(urls[:max_urls], 1):
                     suffix = f"$LR•IPV6『线路{idx}』" if is_ipv6(url) else f"$LR•IPV4『线路{idx}』"
                     base_url = url.split('$')[0]
                     final_url = f"{base_url}{suffix}"
