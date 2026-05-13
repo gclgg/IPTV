@@ -111,20 +111,40 @@ def is_ipv6(url):
 # ----------- 生成 live.m3u & live.txt -----------
 def updateChannelUrlsM3U(channels, template_channels):
     written_urls = set()
-    current_date = datetime.now().strftime("%Y-%m-%d")
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-    repo_time = get_github_repo_update_time("gclgg", "IPTV")
-    update_channel_name = f"更新时间 {current_time}"  # 统一用当前时间
-
-    with open("live.m3u", "w", encoding="utf-8") as f_m3u, open("live.txt", "w", encoding="utf-8") as f_txt:
-        # 修复 f-string 反斜杠问题
-        epg_part = ','.join(f'"{u}"' for u in config.epg_urls)
-        f_m3u.write(f"#EXTM3U x-tvg-url={epg_part}\n")
-        f_txt.write(f"# 仓库最后更新时间: {current_time}\n")
-
-        # === 公告分类（只保留一个）===
-        f_txt.write("公   告,#genre#\n")
+    
+    with open("live.txt", "w", encoding="utf-8") as f_txt:
+        # 只写入公告
+        f_txt.write(f"公   告,#genre#\n")
+        
+        # 获取公告URL和Logo
+        announcement_url = config.announcements[0]['entries'][0]['url'] if config.announcements else "https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4"
+        announcement_logo = config.announcements[0]['entries'][0]['logo'] if config.announcements else ""
+        
+        # 写入公告（只写一条，不带时间戳在这里，时间戳由第一个脚本添加）
+        f_txt.write(f"更新时间,{announcement_url}\n\n")
+        
+        # 只写入本地源（模板匹配的频道），不写入酒店源
+        for category, ch_dict in channels.items():
+            if category not in template_channels:
+                continue
+            f_txt.write(f"{category},#genre#\n")
+            for ch_name, urls in ch_dict.items():
+                # 去重、过滤、排序
+                urls = list(OrderedDict.fromkeys(urls))
+                urls = [u for u in urls if u and u not in written_urls and not any(b in u for b in config.url_blacklist)]
+                urls.sort(key=lambda u: not is_ipv6(u) if config.ip_version_priority == "ipv6" else is_ipv6(u))
+                
+                for idx, url in enumerate(urls[:config.max_urls_per_channel], 1):
+                    suffix = f"$LR•IPV6『线路{idx}』" if is_ipv6(url) else f"$LR•IPV4『线路{idx}』"
+                    base_url = url.split('$')[0]
+                    final_url = f"{base_url}{suffix}"
+                    f_txt.write(f"{ch_name},{final_url}\n")
+                    written_urls.add(url)
+            f_txt.write("\n")
+    
+    # 生成最终的 M3U 文件（由第一个脚本完成，这里不生成）
+    logging.info("live.txt 生成完成，等待第一个脚本合并酒店源和iptv-api源")
         
         # 获取公告的logo（从config中取第一个公告的logo）
         announcement_logo = config.announcements[0]['entries'][0]['logo'] if config.announcements else ""
