@@ -87,7 +87,6 @@ def parse_txt_file(filename, current_time):
             if not line:
                 continue
             
-            # 处理分组标记
             if '#genre#' in line:
                 comma_index = line.find(',')
                 if comma_index != -1:
@@ -96,7 +95,6 @@ def parse_txt_file(filename, current_time):
                     current_group = line.replace('#genre#', '').strip()
                 continue
             
-            # 处理频道行
             if ',' in line:
                 comma_index = line.find(',')
                 if comma_index != -1:
@@ -105,12 +103,6 @@ def parse_txt_file(filename, current_time):
                     
                     if full_url.startswith('http') or full_url.startswith('https'):
                         logo_url = get_logo(channel_name)
-                        
-                        # 修复：公告时间戳 - 只要当前分组是"公告"，就给频道名加上时间戳
-                        if current_group == '公告':
-                            # 不管频道名是什么，都显示为带时间戳的格式
-                            channel_name = f"更新时间 {current_time}"
-                        
                         channels_by_group[current_group].append({
                             'name': channel_name,
                             'url': full_url,
@@ -200,47 +192,44 @@ async def main():
         f.write('#EXTM3U x-tvg-url="' + '","'.join(EPG_URLS) + '"\n')
         
         # ========== 1. 本地源 ==========
-        if local_groups:
-            for group, channels in local_groups.items():
-                if group == '公告':
-                    f.write(f'\n# ========== 公告 ==========\n')
-                else:
-                    f.write(f'\n# ========== 本地源 ==========\n')
+        for group, channels in local_groups.items():
+            for ch in channels:
+                extinf = f'#EXTINF:-1 tvg-name="{ch["name"]}"'
+                if ch.get('logo'):
+                    extinf += f' tvg-logo="{ch["logo"]}"'
                 
-                f.write(f'\n# 分组：{group}\n')
-                for ch in channels:
-                    extinf = f'#EXTINF:-1 tvg-name="{ch["name"]}"'
-                    if ch.get('logo'):
-                        extinf += f' tvg-logo="{ch["logo"]}"'
+                # 公告分组：频道名加上时间戳
+                if group == '公告':
+                    channel_name = f"更新时间 {current_time}"
+                    extinf += f' group-title="{group}",{channel_name}'
+                else:
                     extinf += f' group-title="{group}",{ch["name"]}'
-                    f.write(extinf + '\n')
-                    f.write(ch['url'] + '\n')
+                
+                f.write(extinf + '\n')
+                f.write(ch['url'] + '\n')
         
-        # ========== 2. 酒店源（带时间戳） - 强制写入标题 ==========
-        f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
+        # ========== 2. 酒店源（央视频道 -> 央视） ==========
         if hotel_groups:
             for group in hotel_order:
                 if group in hotel_groups and hotel_groups[group]:
-                    f.write(f'\n# 分组：{group}\n')
+                    # 将"央视频道"改名为"央视"
+                    if group == "央视频道":
+                        display_group = "央视"
+                    else:
+                        display_group = group
+                    
                     for ch in hotel_groups[group]:
                         extinf = f'#EXTINF:-1 tvg-name="{ch["name"]}"'
                         if ch.get('logo'):
                             extinf += f' tvg-logo="{ch["logo"]}"'
-                        extinf += f' group-title="{group}",{ch["name"]}'
+                        extinf += f' group-title="{display_group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
-        else:
-            # 如果酒店源没有数据，写入提示
-            f.write(f'\n# 分组：提示\n')
-            f.write(f'#EXTINF:-1 group-title="提示",酒店源暂无数据\n')
-            f.write(f'https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4\n')
         
-        # ========== 3. iptv-api 源（带时间戳） ==========
-        f.write(f'\n# ========== {IPTV_API_MAIN_GROUP} [{current_time}] ==========\n')
+        # ========== 3. iptv-api 源 ==========
         if iptv_groups:
             for group in iptv_order:
                 if group in iptv_groups and iptv_groups[group]:
-                    f.write(f'\n# 分组：{group}\n')
                     for ch in iptv_groups[group]:
                         extinf = f'#EXTINF:-1 tvg-name="{ch["name"]}"'
                         if ch.get('logo'):
