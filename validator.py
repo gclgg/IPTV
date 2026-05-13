@@ -126,8 +126,12 @@ def get_logo(channel_name):
     return LOGO_DATABASE.get(channel_name, "")
 
 def parse_txt_file(filename, current_time):
+    """解析 live.txt，跳过酒店源相关内容"""
     channels_by_group = defaultdict(list)
     current_group = "未分组"
+    
+    # 需要跳过的分组（这些将由远程酒店源提供）
+    skip_groups = ["央视频道", "卫视频道", "央视", "港台节目", "其他节目", "未分类节目", "港·澳·台", "影视频道", "湖北频道"]
     
     if not os.path.exists(filename):
         return channels_by_group
@@ -137,24 +141,34 @@ def parse_txt_file(filename, current_time):
             line = line.strip()
             if not line:
                 continue
+            
             if line.endswith('#genre#'):
                 current_group = clean_group_name(line[:-7].strip())
                 continue
+            
             if ',' in line:
                 parts = line.split(',', 1)
-                channel_name = parts[0].strip()
-                full_url = parts[1].strip()
-                logo_url = get_logo(channel_name)
-                if current_group == '公告':
-                    if '更新日期' in channel_name:
-                        channel_name = f"更新日期 {current_time}"
-                    elif '仓库更新时间' in channel_name:
-                        channel_name = f"📦 仓库更新时间 {current_time}"
-                channels_by_group[current_group].append({
-                    'name': channel_name,
-                    'url': full_url,
-                    'logo': logo_url
-                })
+                if len(parts) == 2:
+                    channel_name = parts[0].strip()
+                    full_url = parts[1].strip()
+                    
+                    # 跳过酒店源分组
+                    if current_group in skip_groups:
+                        continue
+                    
+                    logo_url = get_logo(channel_name)
+                    
+                    # 处理公告
+                    if current_group == '公告':
+                        if '更新日期' in channel_name or '更新时间' in channel_name:
+                            channel_name = f"更新时间 {current_time}"
+                    
+                    channels_by_group[current_group].append({
+                        'name': channel_name,
+                        'url': full_url,
+                        'logo': logo_url
+                    })
+    
     return dict(channels_by_group)
 
 async def fetch_hotel_source():
@@ -180,22 +194,18 @@ async def fetch_hotel_source():
                     if not line:
                         continue
                     
-                    # 解析 M3U 格式的 EXTINF 行
                     if line.startswith('#EXTINF'):
-                        # 提取 group-title
                         group_match = re.search(r'group-title="([^"]+)"', line)
                         if group_match:
                             current_group = group_match.group(1).strip()
                             if current_group not in hotel_group_order:
                                 hotel_group_order.append(current_group)
                         
-                        # 提取频道名称
                         name_match = re.search(r',([^,]+)$', line)
                         if name_match:
                             current_name = name_match.group(1).strip()
                         continue
                     
-                    # 处理 URL 行
                     if line and not line.startswith('#') and current_name:
                         logo_url = get_logo(current_name)
                         hotel_groups[current_group].append({
@@ -300,67 +310,48 @@ async def main():
     print(f"\n🕐 当前时间: {current_time}")
     
     # 1. 建立Logo数据库
-    m3u_file = INPUT_SOURCE.replace('.txt', '.m3u')
-    await build_logo_database(m3u_file)
+    await build_logo_database("")
     
-    # 2. 解析本地源（由第二个脚本生成的 live.txt）
+    # 2. 解析本地源（跳过酒店源分组）
     if not os.path.exists(INPUT_SOURCE):
         print(f"错误：文件 {INPUT_SOURCE} 不存在！请先运行第二个脚本生成 live.txt")
         return
     channels_by_group = parse_txt_file(INPUT_SOURCE, current_time)
     
     # 3. 拉取酒店源
-    hotel_groups = {}
-    hotel_group_order = []
-    try:
-        result = await fetch_hotel_source()
-        if result and len(result) == 2:
-            hotel_groups, hotel_group_order = result
-    except Exception as e:
-        print(f"⚠️ 拉取酒店源失败: {e}")
+    hotel_groups, hotel_group_order = await fetch_hotel_source()
     
     # 4. 拉取 iptv-api 源
-    iptv_groups = {}
-    iptv_group_order = []
-    try:
-        result = await fetch_iptv_api_source()
-        if result and len(result) == 2:
-            iptv_groups, iptv_group_order = result
-    except Exception as e:
-        print(f"⚠️ 拉取 iptv-api 源失败: {e}")
-    
-    # 确保变量类型正确
-    if iptv_groups is None:
-        iptv_groups = {}
-    if iptv_group_order is None:
-        iptv_group_order = []
-    if hotel_groups is None:
-        hotel_groups = {}
-    if hotel_group_order is None:
-        hotel_group_order = []
+    iptv_result = await fetch_iptv_api_source()
+    iptv_groups, iptv_group_order = iptv_result if iptv_result else ({}, [])
     
     # 5. 写入最终的 M3U 文件
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write('#EXTM3U x-tvg-url="' + '","'.join(EPG_URLS) + '"\n')
         
-        # === 本地源（来自 live.txt）===
-        for group, channels in channels_by_group.items():
-            if group == '公告':
-                f.write(f'\n# ========== 公告 ==========\n')
-            else:
+        # ========== 公告（只有一个，带时间戳） ==========
+        announcement_url = "https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4"
+        f.write(f'\n# ========== 公告 ==========\n')
+        f.write(f'#EXTINF:-1 tvg-id="update" tvg-name="更新时间" group-title="公告",更新时间 {current_time}\n')
+        f.write(f'{announcement_url}\n')
+        
+        # ========== 本地源（来自 live.txt，不含酒店源） ==========
+        if channels_by_group:
+            for group, channels in channels_by_group.items():
+                if group == '公告':
+                    continue
                 f.write(f'\n# ========== 本地源 ==========\n')
                 f.write(f'\n# 分组：{group}\n')
-            
-            for ch in channels:
-                tvg_id = str(abs(hash(ch['name'])) % 10000)
-                extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}"'
-                if ch.get('logo'):
-                    extinf += f' tvg-logo="{ch["logo"]}"'
-                extinf += f' group-title="{group}",{ch["name"]}'
-                f.write(extinf + '\n')
-                f.write(ch['url'] + '\n')
+                for ch in channels:
+                    tvg_id = str(abs(hash(ch['name'])) % 10000)
+                    extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}"'
+                    if ch.get('logo'):
+                        extinf += f' tvg-logo="{ch["logo"]}"'
+                    extinf += f' group-title="{group}",{ch["name"]}'
+                    f.write(extinf + '\n')
+                    f.write(ch['url'] + '\n')
         
-        # === 酒店源 ===
+        # ========== 酒店源（独立板块，带时间戳） ==========
         if hotel_groups:
             f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
             for group in hotel_group_order:
@@ -376,9 +367,9 @@ async def main():
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
         else:
-            print(f"⚠️ 警告：酒店源没有数据，请检查 URL 是否正确")
+            print(f"⚠️ 警告：酒店源没有数据")
         
-        # === iptv-api 源 ===
+        # ========== iptv-api 源（独立板块，带时间戳） ==========
         if iptv_groups:
             f.write(f'\n# ========== {IPTV_API_MAIN_GROUP} [{current_time}] ==========\n')
             for group in iptv_group_order:
@@ -397,6 +388,7 @@ async def main():
     total_local = sum(len(ch) for ch in channels_by_group.values())
     total_hotel = sum(len(ch) for ch in hotel_groups.values()) if hotel_groups else 0
     total_iptv = sum(len(ch) for ch in iptv_groups.values()) if iptv_groups else 0
+    
     print(f"\n✅ 转换完成！")
     print(f"   - 本地源: {total_local} 个频道")
     print(f"   - 酒店源: {total_hotel} 个频道")
