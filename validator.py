@@ -222,7 +222,7 @@ async def main():
                 if group in hotel_groups and hotel_groups[group]:
                     # 将"央视频道"改名为"央视"
                     if group == "央视频道":
-                        display_group = "央   视"
+                        display_group = "央     视"
                     else:
                         display_group = group
                     
