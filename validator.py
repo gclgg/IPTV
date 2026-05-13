@@ -317,6 +317,7 @@ async def main():
         result = await fetch_hotel_source()
         if result and len(result) == 2:
             hotel_groups, hotel_group_order = result
+            print(f"📊 酒店源数据: {len(hotel_groups)} 个分组, 分组列表: {hotel_group_order[:5]}")
     except Exception as e:
         print(f"⚠️ 拉取酒店源失败: {e}")
     
@@ -344,13 +345,17 @@ async def main():
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write('#EXTM3U x-tvg-url="' + '","'.join(EPG_URLS) + '"\n')
         
+        # 写入更新时间（作为第一个公告）
+        f.write(f'\n# ========== 更新时间 [{current_time}] ==========\n')
+        f.write(f'#EXTINF:-1 tvg-id="update" group-title="公告",更新时间 {current_time}\n')
+        f.write(f'https://example.com/update\n')
+        
         # === 本地源 ===
         for group, channels in channels_by_group.items():
             if group == '公告':
-                f.write(f'\n# ========== 公告 ==========\n')
-            else:
-                f.write(f'\n# ========== 本地源 ==========\n')
-                f.write(f'\n# 分组：{group}\n')
+                continue  # 跳过原有的公告，因为我们已经添加了新的
+            f.write(f'\n# ========== 本地源 ==========\n')
+            f.write(f'\n# 分组：{group}\n')
             
             for ch in channels:
                 tvg_id = str(abs(hash(ch['name'])) % 10000)
@@ -361,11 +366,11 @@ async def main():
                 f.write(extinf + '\n')
                 f.write(ch['url'] + '\n')
         
-        # === 酒店源（修复：确保显示标题和更新时间） ===
+        # === 酒店源（强制写入标题） ===
+        # 不管数据是否为空，都写入标题栏
+        f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
+        
         if hotel_groups and len(hotel_groups) > 0:
-            # 写入主标题，包含更新时间
-            f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
-            
             # 遍历所有分组
             for group in hotel_group_order:
                 if group in hotel_groups and hotel_groups[group]:
@@ -381,6 +386,11 @@ async def main():
                         extinf += f' group-title="{display_group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
+        else:
+            # 如果没有数据，写入提示信息
+            f.write(f'\n# 分组：提示\n')
+            f.write(f'#EXTINF:-1 tvg-id="no_data" group-title="提示",酒店源暂时无数据\n')
+            f.write(f'https://example.com/no_data\n')
         
         # === iptv-api 源 ===
         if iptv_groups and len(iptv_groups) > 0:
