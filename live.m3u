@@ -290,8 +290,6 @@ http://go.bkpcp.top/mg/cctv13$LR•IPV4『线路10』
 
 # 分组：湖北频道,
 #EXTINF:-1 tvg-name="湖北经视" group-title="湖北频道,",湖北经视
-rtsp://111.48.34.138:1554/170000004112/10000100000000050000000002444588$LR•IPV4『线路1』
-#EXTINF:-1 tvg-name="湖北经视" group-title="湖北频道,",湖北经视
 http://59.173.122.222:8686/rtp/239.69.1.41:9886$LR•IPV4『线路2』
 #EXTINF:-1 tvg-name="湖北经视" group-title="湖北频道,",湖北经视
 http://122.189.103.12:8888/udp/228.0.0.125:6108$LR•IPV4『线路3』
@@ -305,10 +303,6 @@ http://192.151.150.154/live/hbjs.m3u8$LR•IPV4『线路6』
 http://198.204.228.26/live/hbjs.m3u8$LR•IPV4『线路7』
 #EXTINF:-1 tvg-name="湖北经视" group-title="湖北频道,",湖北经视
 http://61.184.46.85:85/tsfile/live/0019_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路8』
-#EXTINF:-1 tvg-name="湖北经视" group-title="湖北频道,",湖北经视
-rtsp://111.48.34.138:1554/170000004112/10000100000000050000000002444588$LR•IPV4『线路9』
-#EXTINF:-1 tvg-name="武汉新闻综合" group-title="湖北频道,",武汉新闻综合
-rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000429$LR•IPV4『线路1』
 #EXTINF:-1 tvg-name="武汉新闻综合" group-title="湖北频道,",武汉新闻综合
 http://livestream.hannews.com.cn/hannews/1511-hannews.m3u8?txSecret=894cfb3bf400ee80f6b4c1a1ed0bd3ab&txTime=760D3C40$LR•IPV4『线路2』
 
@@ -406,11 +400,7 @@ http://1.94.31.214/php/py/k-web/ku9/py/socks5.py?ip=218.95.39.31:59999&u=http://
 #EXTINF:-1 tvg-name="CHC高清电影" group-title="影视频道,",CHC高清电影
 http://27.17.111.252:8118/udp/239.69.1.241:11088$LR•IPV4『线路1』
 #EXTINF:-1 tvg-name="CHC高清电影" group-title="影视频道,",CHC高清电影
-rtsp://183.59.56.116:554/PLTV/88888905/224/3221230008/10000100000000060000000010481261_0.smil?0&accountinfo=%7E%7EV2.0%7E08zSQD91Uwj13p7HUFLHNw%7EzJeEdQQK6GK7r2Q5jZjxjKYhZiHklGs8wg1XyXUSKdk5d8f2s2AYjzO2-qcyDeaExan3Pra4cuU_Whoju6BKGf666OGX7-GKwJrfpZjwyfM~ExtInfoWNHSPSTb+3AG0FnUkYLPMw=-1%2C0%2C1%2C%2C%2C2%2C%2C%2C%2C2%2CEND&GuardEncType=2$LR•IPV4『线路2』
-#EXTINF:-1 tvg-name="CHC高清电影" group-title="影视频道,",CHC高清电影
 http://www.kaniptv.cn/xz/xz_960a1fe828/湖南广电.php?id=5664$LR•IPV4『线路3』
-#EXTINF:-1 tvg-name="CHC高清电影" group-title="影视频道,",CHC高清电影
-rtsp://111.48.34.138:1554/170000004112/99180001000000050000000000000539$LR•IPV4『线路4』
 #EXTINF:-1 tvg-name="CHC家庭影院" group-title="影视频道,",CHC家庭影院
 http://php.jdshipin.com/TVOD/iptv.php?id=chcjtyy$LR•IPV4『线路1』
 #EXTINF:-1 tvg-name="CHC家庭影院" group-title="影视频道,",CHC家庭影院
@@ -478,15 +468,13 @@ https://down-hls.qxiu.com/live/453135/index.m3u8$LR•IPV4『线路1』
 #EXTINF:-1 tvg-name="经典电影" group-title="影视频道,",经典电影
 http://route.079915.xyz:4022/rtp/239.3.1.195:9024$LR•IPV4『线路2』
 #EXTINF:-1 tvg-name="经典电影" group-title="影视频道,",经典电影
-rtsp://183.59.56.116:554/PLTV/88888905/224/3221227204/10000100000000060000000000987156_0.smil?0&accountinfo=%7E%7EV2.0%7EsWQFnsCT-Agib29CAIH5Xw%7EzJeEdQQK6GK7r2Q5jZjxjKYhZiHklGs8wg1XyXUSKdk5d8f2s2AYjzO2-qcyDeaExan3Pra4cuU_Whoju6BKGf666OGX7-GKwJrfpZjwyfM~ExtInfoWNHSPSTb+3AG0FnUkYLPMw=-1%2C0%2C1%2C%2C%2C2%2C%2C%2C%2C2%2CEND&GuardEncType=2$LR•IPV4『线路3』
-#EXTINF:-1 tvg-name="经典电影" group-title="影视频道,",经典电影
 http://1.69.114.36:9901/tsfile/live/1017_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路4』
 #EXTINF:-1 tvg-name="经典电影" group-title="影视频道,",经典电影
 http://222.214.208.34:59901/tsfile/live/1020_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路5』
 #EXTINF:-1 tvg-name="IPTV经典电影" group-title="影视频道,",IPTV经典电影
 http://120.87.19.109:80/PLTV/88888973/224/3221226108/10000100000000060000000000916419_0.smil/01.m3u8?fmt=ts2hls,244,01.m3u8&accountinfo=UoQbCSdhOfs+Fhzpjb+WON1faRQ9pU15SBx6EULzJM/q63EjPL5/UXSVfEKzDq3xDj7vLX+y9mw0ArNdvKC0DQWZ1F4+6A1eDkDeh5XZlpvpn23wIF+ldb6dnBPa8zHj,END&tenantId=8601$LR•IPV4『线路1』
 
-# ========== 酒店源 [2026-05-13 07:17:36] ==========
+# ========== 酒店源 [2026-05-13 07:27:30] ==========
 
 # 分组：央视频道
 #EXTINF:-1 tvg-name="CCTV1" tvg-logo="https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/CCTV1.png" group-title="央视频道",CCTV1
@@ -8738,7 +8726,7 @@ https://itv.gcl.de5.net/live?url=http%3A//117.91.60.238%3A8800/rtp/239.49.8.144%
 #EXTINF:-1 tvg-name="齐鲁频道" group-title="未分类节目",齐鲁频道
 http://60.212.134.243:85/tsfile/live/35/2010_1.m3u8?key=txiptv
 
-# ========== iptv-api [2026-05-13 07:17:36] ==========
+# ========== iptv-api [2026-05-13 07:27:30] ==========
 
 # 分组：🕘️更新时间
 #EXTINF:-1 tvg-name="2026-05-13 05:58:32" group-title="🕘️更新时间",2026-05-13 05:58:32
