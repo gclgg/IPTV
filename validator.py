@@ -159,8 +159,9 @@ def parse_txt_file(filename, current_time):
                     })
     return dict(channels_by_group)
 
+# ==================== 只修改了这个函数 ====================
 async def fetch_hotel_source():
-    """拉取酒店源 - 支持M3U格式"""
+    """拉取酒店源 - 正确解析M3U格式"""
     print(f"\n🏨 正在拉取酒店源: {HOTEL_SOURCE_URL}")
     hotel_groups = defaultdict(list)
     hotel_group_order = []
@@ -182,6 +183,7 @@ async def fetch_hotel_source():
                     if not line:
                         continue
 
+                    # 解析 EXTINF 行
                     if line.startswith('#EXTINF'):
                         # 提取 group-title
                         group_match = re.search(r'group-title="([^"]+)"', line)
@@ -190,12 +192,12 @@ async def fetch_hotel_source():
                             if current_group and current_group not in hotel_group_order:
                                 hotel_group_order.append(current_group)
 
-                        # 提取频道名称
+                        # 提取频道名称（最后一个逗号后面）
                         if ',' in line:
                             current_name = line.split(',')[-1].strip()
                         continue
 
-                    # 匹配URL行
+                    # 解析 URL 行（不以 # 开头，有频道名和分组）
                     if line and not line.startswith('#') and current_name and current_group:
                         if line.startswith('http'):
                             logo_url = get_logo(current_name)
@@ -209,14 +211,17 @@ async def fetch_hotel_source():
                 total = sum(len(ch) for ch in hotel_groups.values())
                 if total > 0:
                     print(f"✅ 酒店源拉取成功: {len(hotel_groups)} 个分组, {total} 个频道")
+                    for group in hotel_group_order[:5]:
+                        print(f"   - {group}: {len(hotel_groups[group])} 个频道")
                 else:
-                    print(f"⚠️ 未能解析到任何频道")
+                    print(f"⚠️ 未能解析到任何频道，请检查URL")
 
                 return hotel_groups, hotel_group_order
 
     except Exception as e:
         print(f"❌ 拉取失败: {e}")
         return hotel_groups, hotel_group_order
+# ==================== 上面的函数已修改 ====================
 
 async def fetch_iptv_api_source():
     """拉取 iptv-api 源的 M3U 文件"""
