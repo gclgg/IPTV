@@ -1,7 +1,6 @@
 ip_version_priority = "ipv4"
 
 source_urls = [
-      "https://itv.gcl.de5.net/sub?950428=m3u"
       "https://gitee.com/jin-xueling/cinematography/raw/master/json.txt",
       "https://gitee.com/yimi321/tv/raw/master/tv.png",
       "http://rihou.cc:555/gggg.nzk",
