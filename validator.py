@@ -120,8 +120,7 @@ def clean_group_name(group_name):
 
 async def fetch_my_logo_list():
     """从你的GitHub仓库获取Logo文件列表"""
-    print(f"
-📡 正在从你的仓库拉取Logo列表: {LOGO_BASE_URL}")
+    print(f"\n📡 正在从你的仓库拉取Logo列表: {LOGO_BASE_URL}")
     api_url = f"https://api.github.com/repos/{LOGO_REPO_OWNER}/{LOGO_REPO_NAME}/contents/{LOGO_PATH_IN_REPO}"
     my_logos = {}
 
@@ -229,8 +228,7 @@ def parse_txt_file(filename, current_time):
 
 async def fetch_hotel_source():
     """拉取酒店源"""
-    print(f"
-🏨 正在拉取酒店源: {HOTEL_SOURCE_URL}")
+    print(f"\n🏨 正在拉取酒店源: {HOTEL_SOURCE_URL}")
     hotel_groups = defaultdict(list)
     hotel_group_order = []
 
@@ -299,8 +297,7 @@ async def fetch_hotel_source():
 
 async def fetch_iptv_api_source():
     """拉取IPTV-API源（M3U格式）"""
-    print(f"
-📡 正在拉取IPTV-API源: {IPTV_API_URL}")
+    print(f"\n📡 正在拉取IPTV-API源: {IPTV_API_URL}")
     iptv_groups = defaultdict(list)
     iptv_group_order = []
 
@@ -468,8 +465,7 @@ async def main():
     start_time = time.time()
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    print(f"
-🕐 当前时间: {current_time}")
+    print(f"\n🕐 当前时间: {current_time}")
 
     # 1. 建立logo数据库
     m3u_file = INPUT_SOURCE.replace('.txt', '.m3u')
@@ -505,8 +501,7 @@ async def main():
             else:
                 local_channels_to_check.append(channel)
 
-    print(f"
-📢 公告: {1 if announcement_channel else 0} 条")
+    print(f"\n📢 公告: {1 if announcement_channel else 0} 条")
     print(f"📺 需要检测的本地频道: {len(local_channels_to_check)} 个")
 
     # 6. 检测本地频道
@@ -525,8 +520,7 @@ async def main():
         results = await asyncio.gather(*tasks)
 
     valid_local_channels = [r for r in results if r]
-    print(f"
-✅ 本地频道检测完成！有效: {len(valid_local_channels)}")
+    print(f"\n✅ 本地频道检测完成！有效: {len(valid_local_channels)}")
 
     # 7. 按分组整理本地有效源
     local_by_group = defaultdict(list)
@@ -647,11 +641,9 @@ async def main():
 
     elapsed = time.time() - start_time
 
-    print(f"
-⏱️ 总耗时: {elapsed:.1f} 秒")
+    print(f"\n⏱️ 总耗时: {elapsed:.1f} 秒")
     print(f"🕐 更新时间: {current_time}")
-    print(f"
-📊 最终文件统计:")
+    print(f"\n📊 最终文件统计:")
     print(f"  - 公告: {1 if announcement_channel else 0} 条 (更新时间: {current_time})")
     print(f"  - 本地有效源: {len(valid_local_channels)} 个")
     if hotel_groups:
