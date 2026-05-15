@@ -15,11 +15,11 @@ MIN_BITRATE = 200
 OUTPUT_FILE = "live.m3u"
 INPUT_SOURCE = "live.txt"
 
-# 酒店源配置（已更换为新地址）
+# 酒店源配置
 HOTEL_SOURCE_URL = "https://itv.gcl.de5.net/sub?950428=txt"
 HOTEL_MAIN_GROUP = "酒店源"
 
-# iptv-api 源配置（新增）
+# iptv-api 源配置
 IPTV_API_SOURCE_URL = "https://raw.githubusercontent.com/gclgg/iptv-api/refs/heads/master/output/result.m3u"
 IPTV_API_MAIN_GROUP = "iptv-api"
 
@@ -102,6 +102,13 @@ def clean_group_name(group_name):
     """清理分组名称，去掉逗号"""
     return re.sub(r',', '', group_name).strip()
 
+def clean_channel_name(channel_name):
+    """清理频道名：CCTV-1 -> CCTV1"""
+    # 将 CCTV-数字 格式转换为 CCTV数字
+    channel_name = re.sub(r'CCTV-(\d+)', r'CCTV\1', channel_name)
+    channel_name = re.sub(r'CCTV-(\d+\+?)', r'CCTV\1', channel_name)
+    return channel_name
+
 async def fetch_my_logo_list():
     """从你的GitHub仓库获取Logo文件列表"""
     print(f"\n📡 正在从你的仓库拉取Logo列表: {LOGO_BASE_URL}")
@@ -173,6 +180,11 @@ async def build_comprehensive_logo_database(m3u_file):
 
 def get_logo(channel_name):
     """获取频道的logo"""
+    # 先清理频道名
+    clean_name = clean_channel_name(channel_name)
+    # 尝试用清理后的名称匹配
+    if clean_name in LOGO_DATABASE:
+        return LOGO_DATABASE[clean_name]
     return LOGO_DATABASE.get(channel_name, "")
 
 def parse_txt_file(filename, current_time):
@@ -211,7 +223,7 @@ def parse_txt_file(filename, current_time):
     return dict(channels_by_group)
 
 async def fetch_hotel_source():
-    """拉取酒店源（新地址，TXT格式）"""
+    """拉取酒店源（TXT格式）"""
     print(f"\n🏨 正在拉取酒店源: {HOTEL_SOURCE_URL}")
     hotel_groups = defaultdict(list)
     hotel_group_order = []
@@ -253,22 +265,13 @@ async def fetch_hotel_source():
                 total = sum(len(ch) for ch in hotel_groups.values())
                 print(f"✅ 拉取成功，共 {len(hotel_groups)} 个分组，{total} 个频道")
                 
-                logo_count = sum(1 for group in hotel_groups.values() for ch in group if ch['logo'])
-                if logo_count > 0:
-                    print(f"   🖼️ 其中 {logo_count} 个频道已有logo")
-                
-                for group in hotel_group_order:
-                    if group in hotel_groups:
-                        group_logo_count = sum(1 for ch in hotel_groups[group] if ch['logo'])
-                        print(f"   - {group}: {len(hotel_groups[group])} 个频道 ({group_logo_count} 个有logo)")
-                
                 return hotel_groups, hotel_group_order
     except Exception as e:
         print(f"❌ 拉取失败: {e}")
         return hotel_groups, hotel_group_order
 
 async def fetch_iptv_api_source():
-    """拉取 iptv-api 源（M3U8格式）"""
+    """拉取 iptv-api 源（M3U8格式），并将 CCTV-* 转换为 CCTV*"""
     print(f"\n📡 正在拉取 iptv-api 源: {IPTV_API_SOURCE_URL}")
     iptv_groups = defaultdict(list)
     iptv_group_order = []
@@ -284,41 +287,39 @@ async def fetch_iptv_api_source():
                 lines = content.strip().split('\n')
                 
                 current_group = None
+                current_name = None
+                
                 for line in lines:
                     line = line.strip()
                     if not line:
                         continue
                     
-                    # 解析 M3U 分组信息
                     if line.startswith('#EXTINF'):
-                        # 尝试提取 group-title
                         group_match = re.search(r'group-title="([^"]+)"', line)
                         if group_match:
                             current_group = group_match.group(1).strip()
                             if current_group not in iptv_group_order:
                                 iptv_group_order.append(current_group)
-                        # 提取频道名
+                        
                         name_match = re.search(r',([^,]+)$', line)
                         if name_match:
                             current_name = name_match.group(1).strip()
+                            # 关键：将 CCTV-1 转换为 CCTV1
+                            current_name = clean_channel_name(current_name)
                         continue
                     
-                    # 如果是 URL 行且已有分组和频道名
                     if line and not line.startswith('#') and current_group and current_name:
-                        logo_url = get_logo(current_name)
-                        iptv_groups[current_group].append({
-                            'name': current_name,
-                            'url': line,
-                            'logo': logo_url
-                        })
-                        current_name = None
+                        if line.startswith('http'):
+                            logo_url = get_logo(current_name)
+                            iptv_groups[current_group].append({
+                                'name': current_name,
+                                'url': line,
+                                'logo': logo_url
+                            })
+                            current_name = None
                 
                 total = sum(len(ch) for ch in iptv_groups.values())
                 print(f"✅ 拉取成功，共 {len(iptv_groups)} 个分组，{total} 个频道")
-                
-                for group in iptv_group_order:
-                    if group in iptv_groups:
-                        print(f"   - {group}: {len(iptv_groups[group])} 个频道")
                 
                 return iptv_groups, iptv_group_order
     except Exception as e:
@@ -330,14 +331,8 @@ async def fast_check(session, clean_url):
     try:
         async with session.head(clean_url, timeout=FAST_CHECK_TIMEOUT, allow_redirects=True) as resp:
             is_valid = resp.status in [200, 301, 302, 307, 308]
-            if is_valid:
-                print(f"  ✅ {resp.status}")
-            else:
-                print(f"  ❌ {resp.status}")
             return is_valid
-    except Exception as e:
-        error_type = type(e).__name__
-        print(f"  ⚠️ {error_type}")
+    except Exception:
         return False
 
 async def check_channel(session, channel):
@@ -355,21 +350,16 @@ async def check_channel(session, channel):
             'group': channel_group,
             'full_url': full_url,
             'logo': channel_logo,
-            'valid': True,
-            'height': 1080
+            'valid': True
         }
     
-    print(f"检测: {channel_name} - {clean_url[:60]}...")
-    
     if clean_url.startswith('rtsp://'):
-        print(f"  📹 RTSP流（直接接受）")
         return {
             'name': channel_name,
             'group': channel_group,
             'full_url': full_url,
             'logo': channel_logo,
-            'valid': True,
-            'height': 720
+            'valid': True
         }
     
     try:
@@ -379,20 +369,17 @@ async def check_channel(session, channel):
                 'group': channel_group,
                 'full_url': full_url,
                 'logo': channel_logo,
-                'valid': True,
-                'height': 720
+                'valid': True
             }
         else:
             return None
-    except Exception as e:
-        print(f"  ⚠️ 异常但仍接受: {type(e).__name__}")
+    except Exception:
         return {
             'name': channel_name,
             'group': channel_group,
             'full_url': full_url,
             'logo': channel_logo,
-            'valid': True,
-            'height': 720
+            'valid': True
         }
 
 async def main():
@@ -462,14 +449,12 @@ async def main():
     
     # 8. 写入最终的 M3U 文件
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-        # 写入 EPG 信息行
         f.write('#EXTM3U x-tvg-url="' + '","'.join(EPG_URLS) + '"\n')
         
         # ========== 1. 公告 ==========
         if announcement_channel:
             f.write('\n# ========== 公告 ==========\n')
-            tvg_id = str(abs(hash(announcement_channel['name'])) % 10000)
-            extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{announcement_channel["name"]}"'
+            extinf = f'#EXTINF:-1 tvg-name="{announcement_channel["name"]}"'
             if announcement_channel.get('logo'):
                 extinf += f' tvg-logo="{announcement_channel["logo"]}"'
             extinf += f' group-title="公告",{announcement_channel["name"]}'
@@ -483,16 +468,14 @@ async def main():
                 if group != '公告' and group in local_by_group and local_by_group[group]:
                     f.write(f'\n# 分组：{group}\n')
                     for ch in local_by_group[group]:
-                        tvg_id = str(abs(hash(ch['name'])) % 10000)
-                        extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}"'
+                        extinf = f'#EXTINF:-1 tvg-name="{ch["name"]}"'
                         if ch.get('logo'):
                             extinf += f' tvg-logo="{ch["logo"]}"'
                         extinf += f' group-title="{group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['full_url'] + '\n')
         
-        # ========== 3. 酒店源 ==========
-        # 确保写入酒店源大分组标题（即使没有数据也写入）
+        # ========== 3. 酒店源（强制写入大分组标题） ==========
         f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
         
         if hotel_groups:
@@ -501,36 +484,29 @@ async def main():
                     display_group = GROUP_MAPPING.get(group, group)
                     f.write(f'\n# 分组：{display_group}\n')
                     for ch in hotel_groups[group]:
-                        tvg_id = str(abs(hash(ch['name'])) % 10000)
-                        extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}"'
+                        extinf = f'#EXTINF:-1 tvg-name="{ch["name"]}"'
                         if ch.get('logo'):
                             extinf += f' tvg-logo="{ch["logo"]}"'
                         extinf += f' group-title="{display_group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
-        else:
-            f.write(f'\n# 分组：提示\n')
-            f.write(f'#EXTINF:-1 group-title="提示",酒店源暂无数据\n')
-            f.write(f'https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4\n')
         
         # ========== 4. iptv-api 源 ==========
-        if iptv_groups and iptv_group_order:
+        if iptv_groups:
             f.write(f'\n# ========== {IPTV_API_MAIN_GROUP} [{current_time}] ==========\n')
             for group in iptv_group_order:
                 if group in iptv_groups and iptv_groups[group]:
                     f.write(f'\n# 分组：{group}\n')
                     for ch in iptv_groups[group]:
-                        tvg_id = str(abs(hash(ch['name'])) % 10000)
-                        extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}"'
+                        extinf = f'#EXTINF:-1 tvg-name="{ch["name"]}"'
                         if ch.get('logo'):
                             extinf += f' tvg-logo="{ch["logo"]}"'
                         extinf += f' group-title="{group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
     
-    # 统计信息
+    # 统计
     total_hotel = sum(len(ch) for ch in hotel_groups.values()) if hotel_groups else 0
-    hotel_logo_count = sum(1 for group in hotel_groups.values() for ch in group if ch['logo']) if hotel_groups else 0
     total_iptv = sum(len(ch) for ch in iptv_groups.values()) if iptv_groups else 0
     
     elapsed = time.time() - start_time
@@ -539,18 +515,11 @@ async def main():
     print(f"🕐 更新时间: {current_time}")
     print(f"\n📊 最终文件统计:")
     print(f"  - 公告: {1 if announcement_channel else 0} 条")
+    print(f"  - 本地有效源: {len(valid_local_channels)} 个")
     if hotel_groups:
         print(f"  - {HOTEL_MAIN_GROUP}: {total_hotel} 个频道，{len(hotel_groups)} 个分组")
-        for group in hotel_group_order:
-            if group in hotel_groups:
-                display_group = GROUP_MAPPING.get(group, group)
-                group_logo_count = sum(1 for ch in hotel_groups[group] if ch['logo'])
-                print(f"      {display_group}: {len(hotel_groups[group])} 个频道 ({group_logo_count} 个有logo)")
     if iptv_groups:
         print(f"  - {IPTV_API_MAIN_GROUP}: {total_iptv} 个频道，{len(iptv_groups)} 个分组")
-        for group in iptv_group_order:
-            if group in iptv_groups:
-                print(f"      {group}: {len(iptv_groups[group])} 个频道")
     print(f"  - 总计: {len(valid_local_channels) + total_hotel + total_iptv + (1 if announcement_channel else 0)} 个源")
 
 if __name__ == "__main__":
