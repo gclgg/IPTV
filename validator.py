@@ -31,7 +31,7 @@ LOGO_BASE_URL = f"https://raw.githubusercontent.com/{LOGO_REPO_OWNER}/{LOGO_REPO
 
 # 分组名称映射
 GROUP_MAPPING = {
-    "央视频道": "央    视",
+    "央视频道": "央      视",
 }
 
 USER_AGENTS = [
