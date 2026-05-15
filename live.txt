@@ -1,6 +1,6 @@
-# 仓库最后更新时间: 2026-05-15 11:20:31
+# 仓库最后更新时间: 2026-05-16 07:33:16
 公   告,#genre#
-更新时间 2026-05-15 11:20:31,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
+更新时间 2026-05-16 07:33:16,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
 央视频道,#genre#
 CCTV1,http://222.214.208.34:59901/tsfile/live/0001_1.m3u8$LR•IPV4『线路1』
 CCTV1,http://175.154.151.98:808/hls/1/index.m3u8$LR•IPV4『线路2』
@@ -861,15 +861,17 @@ CCTV13,http://gslbserv.itv.cmvideo.cn:80/6918130250570453526/1.m3u8?channel-id=y
 凤凰香港,http://m.061899.xyz/mg/fhhk$LR•IPV4『线路1』
 凤凰香港,http://cdn6.163189.xyz/163189/fhhk$LR•IPV4『线路2』
 凤凰香港,http://feilong123.vip/409990236/hktv.php?id=2$LR•IPV4『线路3』
-凤凰香港,http://k.061899.xyz/k.php?id=fhhk$LR•IPV4『线路4』
-凤凰香港,http://122.152.202.33/s/81a8a44f/index.m3u8?id=fhhk TVB$LR•IPV4『线路5』
-凤凰香港,http://122.152.202.33/s/81a8a44f/index.m3u8?id=fhhk$LR•IPV4『线路6』
-凤凰香港,https://cdn6.163189.xyz/163189/fhhk$LR•IPV4『线路7』
-凤凰香港,http://r.jdshipin.com/yDoTN$LR•IPV4『线路8』
-凤凰香港,http://115.44.140.170:18180/TV00000000000000000024@HHZT$LR•IPV4『线路9』
-凤凰卫视,http://221.7.175.154:8445/tsfile/live/1020_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路1』
-凤凰卫视,http://221.7.175.154:8445/tsfile/live/1020_1.m3u8$LR•IPV4『线路2』
-凤凰卫视,http://122.152.202.33/s/81a8a44f/index.m3u8?id=15$LR•IPV4『线路3』
+凤凰香港,http://xsmt.ccwu.cc/xsmt/smt.php?id=1345$LR•IPV4『线路4』
+凤凰香港,http://k.061899.xyz/k.php?id=fhhk$LR•IPV4『线路5』
+凤凰香港,http://122.152.202.33/s/81a8a44f/index.m3u8?id=fhhk TVB$LR•IPV4『线路6』
+凤凰香港,http://122.152.202.33/s/81a8a44f/index.m3u8?id=fhhk$LR•IPV4『线路7』
+凤凰香港,https://cdn6.163189.xyz/163189/fhhk$LR•IPV4『线路8』
+凤凰香港,http://r.jdshipin.com/yDoTN$LR•IPV4『线路9』
+凤凰香港,http://115.44.140.170:18180/TV00000000000000000024@HHZT$LR•IPV4『线路10』
+凤凰卫视,http://xsmt.ccwu.cc/xsmt/smt.php?id=60$LR•IPV4『线路1』
+凤凰卫视,http://221.7.175.154:8445/tsfile/live/1020_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路2』
+凤凰卫视,http://221.7.175.154:8445/tsfile/live/1020_1.m3u8$LR•IPV4『线路3』
+凤凰卫视,http://122.152.202.33/s/81a8a44f/index.m3u8?id=15$LR•IPV4『线路4』
 
 影视频道,#genre#
 CHC动作电影,http://php.jdshipin.com/TVOD/iptv.php?id=chcdzdy$LR•IPV4『线路1』
@@ -949,7 +951,6 @@ NewTV动作电影,http://1.94.31.214/php/py/k-web/ku9/py/socks5.py?ip=111.43.114
 经典电影,https://down-hls.qxiu.com/live/453135/index.m3u8$LR•IPV4『线路1』
 经典电影,http://route.079915.xyz:4022/rtp/239.3.1.195:9024$LR•IPV4『线路2』
 经典电影,rtsp://183.59.56.116:554/PLTV/88888905/224/3221227204/10000100000000060000000000987156_0.smil?0&accountinfo=%7E%7EV2.0%7EsWQFnsCT-Agib29CAIH5Xw%7EzJeEdQQK6GK7r2Q5jZjxjKYhZiHklGs8wg1XyXUSKdk5d8f2s2AYjzO2-qcyDeaExan3Pra4cuU_Whoju6BKGf666OGX7-GKwJrfpZjwyfM~ExtInfoWNHSPSTb+3AG0FnUkYLPMw=-1%2C0%2C1%2C%2C%2C2%2C%2C%2C%2C2%2CEND&GuardEncType=2$LR•IPV4『线路3』
-经典电影,http://1.69.114.76:9901/tsfile/live/1017_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路4』
-经典电影,http://222.214.208.34:59901/tsfile/live/1020_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路5』
+经典电影,http://222.214.208.34:59901/tsfile/live/1020_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路4』
 IPTV经典电影,http://120.87.19.109:80/PLTV/88888973/224/3221226108/10000100000000060000000000916419_0.smil/01.m3u8?fmt=ts2hls,244,01.m3u8&accountinfo=UoQbCSdhOfs+Fhzpjb+WON1faRQ9pU15SBx6EULzJM/q63EjPL5/UXSVfEKzDq3xDj7vLX+y9mw0ArNdvKC0DQWZ1F4+6A1eDkDeh5XZlpvpn23wIF+ldb6dnBPa8zHj,END&tenantId=8601$LR•IPV4『线路1』
 
