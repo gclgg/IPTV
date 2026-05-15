@@ -429,10 +429,8 @@ async def main():
             local_group_order.append(group)
         for channel in channels:
             if group == '公告':
-                # 只取第一个公告频道作为代表
                 if announcement_channel is None:
                     announcement_channel = channel
-                # 不加入检测列表
             else:
                 local_channels_to_check.append(channel)
     
@@ -467,9 +465,9 @@ async def main():
         # 写入 EPG 信息行
         f.write('#EXTM3U x-tvg-url="' + '","'.join(EPG_URLS) + '"\n')
         
-        # === 第一部分：公告（只保留一个）===
+        # ========== 1. 公告 ==========
         if announcement_channel:
-            f.write('\n# 分组：公告\n')
+            f.write('\n# ========== 公告 ==========\n')
             tvg_id = str(abs(hash(announcement_channel['name'])) % 10000)
             extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{announcement_channel["name"]}"'
             if announcement_channel.get('logo'):
@@ -478,7 +476,7 @@ async def main():
             f.write(extinf + '\n')
             f.write(announcement_channel['full_url'] + '\n')
         
-        # === 第二部分：本地有效频道 ===
+        # ========== 2. 本地源 ==========
         if local_by_group:
             f.write('\n# ========== 本地源 ==========\n')
             for group in local_group_order:
@@ -493,41 +491,39 @@ async def main():
                         f.write(extinf + '\n')
                         f.write(ch['full_url'] + '\n')
         
-        # === 第三部分：酒店源 ===
-        if hotel_groups and hotel_group_order:
-            # 写入酒店源的大分组标题（带时间戳）
-            f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
-            
+        # ========== 3. 酒店源 ==========
+        # 确保写入酒店源大分组标题（即使没有数据也写入）
+        f.write(f'\n# ========== {HOTEL_MAIN_GROUP} [{current_time}] ==========\n')
+        
+        if hotel_groups:
             for group in hotel_group_order:
                 if group in hotel_groups and hotel_groups[group]:
                     display_group = GROUP_MAPPING.get(group, group)
-                    
                     f.write(f'\n# 分组：{display_group}\n')
                     for ch in hotel_groups[group]:
                         tvg_id = str(abs(hash(ch['name'])) % 10000)
                         extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}"'
-                        
                         if ch.get('logo'):
                             extinf += f' tvg-logo="{ch["logo"]}"'
-                        
                         extinf += f' group-title="{display_group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
+        else:
+            f.write(f'\n# 分组：提示\n')
+            f.write(f'#EXTINF:-1 group-title="提示",酒店源暂无数据\n')
+            f.write(f'https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4\n')
         
-        # === 第四部分：iptv-api 源 ===
+        # ========== 4. iptv-api 源 ==========
         if iptv_groups and iptv_group_order:
             f.write(f'\n# ========== {IPTV_API_MAIN_GROUP} [{current_time}] ==========\n')
-            
             for group in iptv_group_order:
                 if group in iptv_groups and iptv_groups[group]:
                     f.write(f'\n# 分组：{group}\n')
                     for ch in iptv_groups[group]:
                         tvg_id = str(abs(hash(ch['name'])) % 10000)
                         extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{ch["name"]}"'
-                        
                         if ch.get('logo'):
                             extinf += f' tvg-logo="{ch["logo"]}"'
-                        
                         extinf += f' group-title="{group}",{ch["name"]}'
                         f.write(extinf + '\n')
                         f.write(ch['url'] + '\n')
@@ -542,11 +538,9 @@ async def main():
     print(f"\n⏱️ 总耗时: {elapsed:.1f} 秒")
     print(f"🕐 更新时间: {current_time}")
     print(f"\n📊 最终文件统计:")
-    print(f"  - 公告: {1 if announcement_channel else 0} 条 (更新时间: {current_time})")
-    print(f"  - 本地有效源: {len(valid_local_channels)} 个")
+    print(f"  - 公告: {1 if announcement_channel else 0} 条")
     if hotel_groups:
         print(f"  - {HOTEL_MAIN_GROUP}: {total_hotel} 个频道，{len(hotel_groups)} 个分组")
-        print(f"      其中有 {hotel_logo_count} 个频道已添加logo")
         for group in hotel_group_order:
             if group in hotel_groups:
                 display_group = GROUP_MAPPING.get(group, group)
