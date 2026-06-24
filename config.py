@@ -1,10 +1,11 @@
 ip_version_priority = "ipv4"
 
 source_urls = [
-      "https://gh.927223.xyz/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
-      "https://gitee.com/jin-xueling/cinematography/raw/master/json.txt",
+      "https://gongdian.top/tv/guovin",
+       "https://gitee.com/jin-xueling/cinematography/raw/master/json.txt",
       "https://gitee.com/yimi321/tv/raw/master/tv.png",
-      "http://rihou.cc:555/gggg.nzk",
+      "https://gh.927223.xyz/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+     "http://rihou.cc:555/gggg.nzk",
       "https://d.kstore.dev/download/12441/ds9.txt",
      "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1.m3u",
      "http://1.94.31.214/live/live9/dgtv.txt",
