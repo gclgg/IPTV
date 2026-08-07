@@ -1,6 +1,6 @@
-# 仓库最后更新时间: 2026-08-06 07:34:05
+# 仓库最后更新时间: 2026-08-07 09:37:09
 公   告,#genre#
-更新时间 2026-08-06 07:34:05,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
+更新时间 2026-08-07 09:37:09,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
 央视频道,#genre#
 CCTV1,http://221.7.175.154:8445/tsfile/live/1000_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路1』
 CCTV1,http://221.205.207.120:9003/hls/1/index.m3u8$LR•IPV4『线路2』
