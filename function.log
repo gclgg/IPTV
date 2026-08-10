@@ -1,26 +1,26 @@
-2026-08-10 07:02:38,007 - INFO - 开始处理 IPTV 直播源...
-2026-08-10 07:02:39,078 - ERROR - url: https://gongdian.top/tv/guovin 爬取失败❌, Error: 403 Client Error: Forbidden for url: https://gongdian.top/tv/guovin/
-2026-08-10 07:02:42,953 - ERROR - url: https://gitee.com/jin-xueling/cinematography/raw/master/json.txt 爬取失败❌, Error: 423 Client Error: Locked for url: https://gitee.com/jin-xueling/cinematography/raw/master/json.txt
-2026-08-10 07:02:44,530 - ERROR - url: https://gitee.com/yimi321/tv/raw/master/tv.png 爬取失败❌, Error: 423 Client Error: Locked for url: https://gitee.com/yimi321/tv/raw/master/tv.png
-2026-08-10 07:02:44,871 - INFO - url: https://gh.927223.xyz/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt 获取成功，判断为txt格式
-2026-08-10 07:02:47,610 - INFO - url: http://rihou.cc:555/gggg.nzk 获取成功，判断为txt格式
-2026-08-10 07:02:47,613 - INFO - url: http://rihou.cc:555/gggg.nzk 爬取成功✅，包含频道分类: 猫TV影视, 欣赏港乐, 欣赏Pdtv, 赛事精锦, 女篮12赛, 央卫咪咕, 特区双音, 特区频晴, 欣赏频道, 网页音乐, 欣赏音乐, 特闽FYtv, 闽南4Gtv, 闽南回放, 抖音网页, 荔枝网页, 虎牙频道, 爱奇频道, 特区地波, 广州电信, 童年频道, 亮剑全集, 雪豹全集, 凡人修仙, 华山论剑, Q-三国粤, 大时代粤, 流星花园, 还珠格格, 甄嬛传国, 大地恩情, 粤经典剧, 射雕英雄, 神雕侠侣, 视觉效果
-2026-08-10 07:02:47,916 - INFO - url: https://d.kstore.dev/download/12441/ds9.txt 获取成功，判断为txt格式
-2026-08-10 07:02:47,920 - INFO - url: https://d.kstore.dev/download/12441/ds9.txt 爬取成功✅，包含频道分类: 『電視直播』, 央视频道A, 卫视频道A, 央视频道B, 卫视频道B, 央视频道C, 卫视频道C, 央视频道D, 卫视频道D, 北海联通, 太原联通, 移动高清, 联通酒店, 河南电信, 百事通线, 德州移动, 联通天津, 联通济南, 电信河北, 央卫网络, 体育综合, 凤凰频道, 国际频道, 四川频道, 吉林频道, 黑龙江频道, 山东频道, 山西频道, 陕西频道, 湖北频道, 湖南频道, 江苏频道, 浙江频道, 重庆频道, 安徽频道, 江西频道, 广东频道, 海南频道, 内蒙古, 广西频道, 新疆频道, 上海频道, 其他地方, 综合频道, 影视频道, 经典轮播, 👉下载地址
-2026-08-10 07:02:48,117 - ERROR - url: https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1.m3u 爬取失败❌, Error: 404 Client Error: Not Found for url: https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1.m3u
-2026-08-10 07:02:48,704 - INFO - url: http://1.94.31.214/live/live9/dgtv.txt 获取成功，判断为txt格式
-2026-08-10 07:02:48,706 - INFO - url: http://1.94.31.214/live/live9/dgtv.txt 爬取成功✅，包含频道分类: 央视, 卫视, 地方, 其他, 体育-昨天08-09, 体育-今天08-10, 体育-明天08-11, 代理央卫1, 代理央卫2, 数字频道, 咪咕体育全网, 移动咪咕体育, 虎牙轮播, 北京地区, 上海地区, 广东地区, 浙江地区, 江苏地区, 黑龙江地区, 江西地区, 陕西地区, 安徽地区, 重庆地区, 云南地区, 河北地区, 福建地区, 河南地区, 甘肃地区, 山东地区
-2026-08-10 07:02:49,251 - INFO - url: https://tvv.tw/github.com/fafa002/yf2025/blob/main/yiyifafa.txt 获取成功，判断为txt格式
-2026-08-10 07:02:49,264 - INFO - url: https://tvv.tw/github.com/fafa002/yf2025/blob/main/yiyifafa.txt 爬取成功✅，包含频道分类: 抖音K歌, 清风DJ, 欧美music, 加入易發群, AK电影, 极速港台, 极速港台2, 四季台湾, 四季台湾2, 今日影视, 美国UA(挂梯子), 英国UK(挂梯子), 韩国KR, 抖音直播, 广东荔枝网, 广东酒店, 揭阳IPTV, 深圳天威, 海南移动, 广东电信(内网), 广东联通(内网), 广东移动(内网), 咪咕央视, 咪咕央视2, 咪咕央视3, 咪咕央视4, 咪咕体育, 央视频, 央视频2, 央视频3, 央视频5, 央视频6, 安徽JD, 福建iptv, 虎牙轮播, 斗鱼轮播, YY轮播, 随机点播, 音乐电台, 私密频道_169169, 私密频道2_169169, 私密频道3_169169, JAV點播_169169
-2026-08-10 07:02:49,559 - INFO - url: https://ghfast.top/https://raw.githubusercontent.com/Supprise0901/TVBox_live/main/live.txt 获取成功，判断为txt格式
-2026-08-10 07:02:49,561 - INFO - url: https://ghfast.top/https://raw.githubusercontent.com/Supprise0901/TVBox_live/main/live.txt 爬取成功✅，包含频道分类: 🇨🇳河南地方, 🇨🇳IPV4线路, 🇨🇳组播线路, 🇨🇳电影在线, 🇨🇳影音剧场
-2026-08-10 07:02:49,970 - INFO - url: http://tvv.tw/github.com/fafa002/yf2025/blob/main/yiyifafa.txt 获取成功，判断为txt格式
-2026-08-10 07:02:49,983 - INFO - url: http://tvv.tw/github.com/fafa002/yf2025/blob/main/yiyifafa.txt 爬取成功✅，包含频道分类: 抖音K歌, 清风DJ, 欧美music, 加入易發群, AK电影, 极速港台, 极速港台2, 四季台湾, 四季台湾2, 今日影视, 美国UA(挂梯子), 英国UK(挂梯子), 韩国KR, 抖音直播, 广东荔枝网, 广东酒店, 揭阳IPTV, 深圳天威, 海南移动, 广东电信(内网), 广东联通(内网), 广东移动(内网), 咪咕央视, 咪咕央视2, 咪咕央视3, 咪咕央视4, 咪咕体育, 央视频, 央视频2, 央视频3, 央视频5, 央视频6, 安徽JD, 福建iptv, 虎牙轮播, 斗鱼轮播, YY轮播, 随机点播, 音乐电台, 私密频道_169169, 私密频道2_169169, 私密频道3_169169, JAV點播_169169
-2026-08-10 07:02:51,360 - INFO - url: http://210.245.166.84:1299/live/live1.txt 获取成功，判断为txt格式
-2026-08-10 07:02:51,365 - INFO - url: http://210.245.166.84:1299/live/live1.txt 爬取成功✅，包含频道分类: ﻿超清央卫, 甘肃咪咕, 湖北咪咕, 河北咪咕, 重庆咪咕, 西藏咪咕, 咪咕多线, 贵州移动, 阿里咪咕, 广东咪咕, 日后咪咕, 四川咪咕, 陕西移动, 西安移动, 辽宁移动, 移动咪咕, 咪咕体育, 轮播, 少量地方, 3D»短片, 春晚频道, 经典小品, 歌手音乐
-2026-08-10 07:02:52,465 - INFO - url: https://dsj-1312694395.cos.ap-guangzhou.myqcloud.com/dsj10.1.txt 获取成功，判断为txt格式
-2026-08-10 07:02:52,465 - INFO - url: https://dsj-1312694395.cos.ap-guangzhou.myqcloud.com/dsj10.1.txt 爬取成功✅，包含频道分类: 📢升级公告
-2026-08-10 07:02:52,588 - ERROR - url: https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1.m3u 爬取失败❌, Error: 404 Client Error: Not Found for url: https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1.m3u
-2026-08-10 07:02:53,966 - INFO - url: http://210.245.166.84:1299/live/live.txt 获取成功，判断为txt格式
-2026-08-10 07:02:53,970 - INFO - url: http://210.245.166.84:1299/live/live.txt 爬取成功✅，包含频道分类: ﻿超清央卫, 甘肃咪咕, 湖北咪咕, 河北咪咕, 重庆咪咕, 西藏咪咕, 咪咕多线, 贵州移动, 阿里咪咕, 广东咪咕, 日后咪咕, 四川咪咕, 陕西移动, 西安移动, 辽宁移动, 移动咪咕, 咪咕体育, 轮播, 少量地方, 3D»短片, 春晚频道, 经典小品, 歌手音乐
-2026-08-10 07:02:54,378 - INFO - IPTV 直播源处理完成 ✅
+2026-08-11 07:15:16,955 - INFO - 开始处理 IPTV 直播源...
+2026-08-11 07:15:18,265 - ERROR - url: https://gongdian.top/tv/guovin 爬取失败❌, Error: 403 Client Error: Forbidden for url: https://gongdian.top/tv/guovin/
+2026-08-11 07:15:22,360 - ERROR - url: https://gitee.com/jin-xueling/cinematography/raw/master/json.txt 爬取失败❌, Error: 423 Client Error: Locked for url: https://gitee.com/jin-xueling/cinematography/raw/master/json.txt
+2026-08-11 07:15:26,082 - ERROR - url: https://gitee.com/yimi321/tv/raw/master/tv.png 爬取失败❌, Error: 423 Client Error: Locked for url: https://gitee.com/yimi321/tv/raw/master/tv.png
+2026-08-11 07:15:26,419 - INFO - url: https://gh.927223.xyz/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt 获取成功，判断为txt格式
+2026-08-11 07:15:29,614 - INFO - url: http://rihou.cc:555/gggg.nzk 获取成功，判断为txt格式
+2026-08-11 07:15:29,619 - INFO - url: http://rihou.cc:555/gggg.nzk 爬取成功✅，包含频道分类: 猫TV影视, 欣赏港乐, 欣赏Pdtv, 赛事精锦, 女篮12赛, 央卫咪咕, 特区双音, 特区频晴, 欣赏频道, 网页音乐, 欣赏音乐, 特闽FYtv, 闽南4Gtv, 闽南回放, 抖音网页, 荔枝网页, 虎牙频道, 爱奇频道, 特区地波, 广州电信, 童年频道, 亮剑全集, 雪豹全集, 凡人修仙, 华山论剑, Q-三国粤, 大时代粤, 流星花园, 还珠格格, 甄嬛传国, 大地恩情, 粤经典剧, 射雕英雄, 神雕侠侣, 视觉效果
+2026-08-11 07:15:30,058 - INFO - url: https://d.kstore.dev/download/12441/ds9.txt 获取成功，判断为txt格式
+2026-08-11 07:15:30,065 - INFO - url: https://d.kstore.dev/download/12441/ds9.txt 爬取成功✅，包含频道分类: 『電視直播』, 央视频道A, 卫视频道A, 央视频道B, 卫视频道B, 央视频道C, 卫视频道C, 央视频道D, 卫视频道D, 北海联通, 太原联通, 移动高清, 联通酒店, 河南电信, 百事通线, 德州移动, 联通天津, 联通济南, 电信河北, 央卫网络, 体育综合, 凤凰频道, 国际频道, 四川频道, 吉林频道, 黑龙江频道, 山东频道, 山西频道, 陕西频道, 湖北频道, 湖南频道, 江苏频道, 浙江频道, 重庆频道, 安徽频道, 江西频道, 广东频道, 海南频道, 内蒙古, 广西频道, 新疆频道, 上海频道, 其他地方, 综合频道, 影视频道, 经典轮播, 👉下载地址
+2026-08-11 07:15:30,354 - ERROR - url: https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1.m3u 爬取失败❌, Error: 404 Client Error: Not Found for url: https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1.m3u
+2026-08-11 07:15:30,940 - INFO - url: http://1.94.31.214/live/live9/dgtv.txt 获取成功，判断为txt格式
+2026-08-11 07:15:30,943 - INFO - url: http://1.94.31.214/live/live9/dgtv.txt 爬取成功✅，包含频道分类: 央视, 卫视, 地方, 其他, 体育-昨天08-10, 体育-今天08-11, 体育-明天08-12, 代理央卫1, 代理央卫2, 数字频道, 咪咕体育全网, 移动咪咕体育, 虎牙轮播, 北京地区, 上海地区, 广东地区, 浙江地区, 江苏地区, 黑龙江地区, 江西地区, 陕西地区, 安徽地区, 重庆地区, 云南地区, 河北地区, 福建地区, 河南地区, 甘肃地区, 山东地区
+2026-08-11 07:15:31,340 - INFO - url: https://tvv.tw/github.com/fafa002/yf2025/blob/main/yiyifafa.txt 获取成功，判断为txt格式
+2026-08-11 07:15:31,364 - INFO - url: https://tvv.tw/github.com/fafa002/yf2025/blob/main/yiyifafa.txt 爬取成功✅，包含频道分类: 抖音K歌, 清风DJ, 欧美music, 加入易發群, AK电影, 极速港台, 极速港台2, 四季台湾, 四季台湾2, 今日影视, 美国UA(挂梯子), 英国UK(挂梯子), 韩国KR, 抖音直播, 广东荔枝网, 广东酒店, 揭阳IPTV, 深圳天威, 海南移动, 广东电信(内网), 广东联通(内网), 广东移动(内网), 咪咕央视, 咪咕央视2, 咪咕央视3, 咪咕央视4, 咪咕体育, 央视频, 央视频2, 央视频3, 央视频5, 央视频6, 安徽JD, 福建iptv, 虎牙轮播, 斗鱼轮播, YY轮播, 随机点播, 音乐电台, 私密频道_169169, 私密频道2_169169, 私密频道3_169169, JAV點播_169169
+2026-08-11 07:15:31,885 - INFO - url: https://ghfast.top/https://raw.githubusercontent.com/Supprise0901/TVBox_live/main/live.txt 获取成功，判断为txt格式
+2026-08-11 07:15:31,889 - INFO - url: https://ghfast.top/https://raw.githubusercontent.com/Supprise0901/TVBox_live/main/live.txt 爬取成功✅，包含频道分类: 🇨🇳河南地方, 🇨🇳IPV4线路, 🇨🇳组播线路, 🇨🇳电影在线, 🇨🇳影音剧场
+2026-08-11 07:15:32,142 - INFO - url: http://tvv.tw/github.com/fafa002/yf2025/blob/main/yiyifafa.txt 获取成功，判断为txt格式
+2026-08-11 07:15:32,167 - INFO - url: http://tvv.tw/github.com/fafa002/yf2025/blob/main/yiyifafa.txt 爬取成功✅，包含频道分类: 抖音K歌, 清风DJ, 欧美music, 加入易發群, AK电影, 极速港台, 极速港台2, 四季台湾, 四季台湾2, 今日影视, 美国UA(挂梯子), 英国UK(挂梯子), 韩国KR, 抖音直播, 广东荔枝网, 广东酒店, 揭阳IPTV, 深圳天威, 海南移动, 广东电信(内网), 广东联通(内网), 广东移动(内网), 咪咕央视, 咪咕央视2, 咪咕央视3, 咪咕央视4, 咪咕体育, 央视频, 央视频2, 央视频3, 央视频5, 央视频6, 安徽JD, 福建iptv, 虎牙轮播, 斗鱼轮播, YY轮播, 随机点播, 音乐电台, 私密频道_169169, 私密频道2_169169, 私密频道3_169169, JAV點播_169169
+2026-08-11 07:15:33,974 - INFO - url: http://210.245.166.84:1299/live/live1.txt 获取成功，判断为txt格式
+2026-08-11 07:15:33,982 - INFO - url: http://210.245.166.84:1299/live/live1.txt 爬取成功✅，包含频道分类: ﻿超清央卫, 甘肃咪咕, 湖北咪咕, 河北咪咕, 重庆咪咕, 西藏咪咕, 咪咕多线, 贵州移动, 阿里咪咕, 广东咪咕, 日后咪咕, 四川咪咕, 陕西移动, 西安移动, 辽宁移动, 移动咪咕, 咪咕体育, 轮播, 少量地方, 3D»短片, 春晚频道, 经典小品, 歌手音乐
+2026-08-11 07:15:35,321 - INFO - url: https://dsj-1312694395.cos.ap-guangzhou.myqcloud.com/dsj10.1.txt 获取成功，判断为txt格式
+2026-08-11 07:15:35,321 - INFO - url: https://dsj-1312694395.cos.ap-guangzhou.myqcloud.com/dsj10.1.txt 爬取成功✅，包含频道分类: 📢升级公告
+2026-08-11 07:15:35,399 - ERROR - url: https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1.m3u 爬取失败❌, Error: 404 Client Error: Not Found for url: https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1.m3u
+2026-08-11 07:15:37,240 - INFO - url: http://210.245.166.84:1299/live/live.txt 获取成功，判断为txt格式
+2026-08-11 07:15:37,247 - INFO - url: http://210.245.166.84:1299/live/live.txt 爬取成功✅，包含频道分类: ﻿超清央卫, 甘肃咪咕, 湖北咪咕, 河北咪咕, 重庆咪咕, 西藏咪咕, 咪咕多线, 贵州移动, 阿里咪咕, 广东咪咕, 日后咪咕, 四川咪咕, 陕西移动, 西安移动, 辽宁移动, 移动咪咕, 咪咕体育, 轮播, 少量地方, 3D»短片, 春晚频道, 经典小品, 歌手音乐
+2026-08-11 07:15:37,516 - INFO - IPTV 直播源处理完成 ✅
