@@ -1,6 +1,6 @@
-# 仓库最后更新时间: 2026-08-14 07:23:55
+# 仓库最后更新时间: 2026-08-15 06:58:04
 公   告,#genre#
-更新时间 2026-08-14 07:23:55,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
+更新时间 2026-08-15 06:58:04,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
 央视频道,#genre#
 CCTV1,http://221.7.175.154:8445/tsfile/live/1000_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路1』
 CCTV1,http://221.205.207.120:9003/hls/1/index.m3u8$LR•IPV4『线路2』
@@ -772,7 +772,7 @@ CHC动作电影,http://php.jdshipin.com/TVOD/iptv.php?id=chcdzdy$LR•IPV4『线
 CHC动作电影,http://27.17.111.252:8118/udp/239.69.1.242:11094$LR•IPV4『线路2』
 CHC动作电影,http://fxgm.fxjf.work:19901/tsfile/live/1015_1.m3u8$LR•IPV4『线路3』
 CHC动作电影,http://149.88.85.102:1354/cqyx.php?id=chcdz$LR•IPV4『线路4』
-CHC动作电影,http://47.100.80.251:50001/644368714$LR•IPV4『线路5』
+CHC动作电影,http://122.227.204.50:1905/644368714$LR•IPV4『线路5』
 CHC动作电影,http://go.bkpcp.top/mg/dzdy$LR•IPV4『线路6』
 CHC动作电影,http://k.061899.xyz/k.php?id=dzdy$LR•IPV4『线路7』
 CHC动作电影,http://wfenf.x3322.net:7788/644368714$LR•IPV4『线路8』
@@ -813,7 +813,7 @@ CHC家庭影院,http://php.jdshipin.com/TVOD/iptv.php?id=chcjtyy$LR•IPV4『线
 CHC家庭影院,http://27.17.111.252:8118/udp/239.69.1.243:11100$LR•IPV4『线路2』
 CHC家庭影院,http://fxgm.fxjf.work:19901/tsfile/live/1014_1.m3u8$LR•IPV4『线路3』
 CHC家庭影院,http://149.88.85.102:1354/cqyx.php?id=chcjt$LR•IPV4『线路4』
-CHC家庭影院,http://47.100.80.251:50001/644368373$LR•IPV4『线路5』
+CHC家庭影院,http://122.227.204.50:1905/644368373$LR•IPV4『线路5』
 CHC家庭影院,http://go.bkpcp.top/mg/jtyy$LR•IPV4『线路6』
 CHC家庭影院,http://k.061899.xyz/k.php?id=jtyy$LR•IPV4『线路7』
 CHC家庭影院,http://wfenf.x3322.net:7788/644368373$LR•IPV4『线路8』
