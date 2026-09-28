@@ -1,6 +1,8 @@
 ip_version_priority = "ipv4"
 
 source_urls = [
+      "http://fn.gcl.de5.net:1905/interface.m3u",
+      "https://gitee.com/gclgg/gcl/raw/master/tvdx.txt",
       "https://gongdian.top/tv/guovin",
        "https://gitee.com/jin-xueling/cinematography/raw/master/json.txt",
       "https://gitee.com/yimi321/tv/raw/master/tv.png",
@@ -54,15 +56,12 @@ announcements = [
         "channel": "公    告",
         "entries": [
             {"name": "更新日期", "url": "https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4", "logo": "https://gitee.com/gclgg/gcl/raw/master/16.jpg"},
-            {"name": None, "url": "https://gitlab.com/lr77/IPTV/-/raw/main/%E8%B5%B7%E9%A3%8E%E4%BA%86.mp4", "logo": "https://gitee.com/gclgg/gcl/raw/master/国旗.png"}
+            {"name": None, "url": "https://logo.gcl.de5.net/mp4/你看那远山.mp4", "logo": "https://gitee.com/gclgg/gcl/raw/master/国旗.png"}
         ]
     }
 ]
 
 
 epg_urls = [
-"https://iptv-sources2.pages.dev/epg/51zmt.xml",
-"https://iptv-sources2.pages.dev/epg/51zmt_cc.xml",
-"https://iptv-sources2.pages.dev/epg/51zmt_df.xml",
-"http://epg.51zmt.top:8000/e.xml"
+"https://epg.gcl.de5.net/epg/51zmt.xml"
 ]
