@@ -40,8 +40,7 @@ USER_AGENTS = [
 ]
 
 EPG_URLS = [
-    "http://epg.112114.xyz/pp.xml",
-    "https://epg.112114.free.hr/pp.xml",
+   https://epg.gcl.de5.net/epg/51zmt.xml,
 ]
 
 # 全局logo库
