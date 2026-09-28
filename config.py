@@ -62,5 +62,5 @@ announcements = [
 
 
 epg_urls = [
-"https://epg.gcl.de5.net/epg/51zmt.xml"
+"https://epg.gcl.de5.net/epg/51zmt.xml",
 ]
