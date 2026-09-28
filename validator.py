@@ -40,7 +40,7 @@ USER_AGENTS = [
 ]
 
 EPG_URLS = [
-   https://epg.gcl.de5.net/epg/51zmt.xml,
+   "https://epg.gcl.de5.net/epg/51zmt.xml",
 ]
 
 # 全局logo库
