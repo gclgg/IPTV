@@ -1,7 +1,6 @@
 ip_version_priority = "ipv4"
 
 source_urls = [
-      "http://fn.gcl.de5.net:1905/interface.m3u",
       "https://gitee.com/gclgg/gcl/raw/master/tvdx.txt",
       "https://gongdian.top/tv/guovin",
        "https://gitee.com/jin-xueling/cinematography/raw/master/json.txt",
