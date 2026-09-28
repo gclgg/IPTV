@@ -134,7 +134,7 @@ def updateChannelUrlsM3U(channels, template_channels):
                     f'tvg-logo="{announcement_logo}" '
                     f'group-title="公告",{update_channel_name}\n')
         # 使用第一个公告的URL
-        announcement_url = config.announcements[0]['entries'][0]['url'] if config.announcements else "https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4"
+        announcement_url = config.announcements[0]['entries'][0]['url'] if config.announcements else "https://logo.gcl.de5.net/mp4/你看那远山.mp4"
         f_m3u.write(f"{announcement_url}\n")
         f_txt.write(f"{update_channel_name},{announcement_url}\n")
 
@@ -160,7 +160,7 @@ def updateChannelUrlsM3U(channels, template_channels):
                     base = url.split('$')[0]
                     new_url = f"{base}{suffix}"
                     f_m3u.write(f"#EXTINF:-1 tvg-id=\"{idx}\" tvg-name=\"{ch_name}\" "
-                                f"tvg-logo=\"https://gcore.jsdelivr.net/gh/yuanzl77/TVlogo@master/png/{ch_name}.png\" "
+                                f"tvg-logo=\"https://logo.gcl.de5.net/tv/{ch_name}.png\" "
                                 f"group-title=\"{category}\",{ch_name}\n")
                     f_m3u.write(new_url + "\n")
                     f_txt.write(f"{ch_name},{new_url}\n")
