@@ -1,6 +1,6 @@
-# 仓库最后更新时间: 2026-09-28 15:36:08
+# 仓库最后更新时间: 2026-09-29 10:16:47
 公   告,#genre#
-更新时间 2026-09-28 15:36:08,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
+更新时间 2026-09-29 10:16:47,https://vdse.bdstatic.com//a499dfbec34060ce0f380ea789446f07.mp4
 央视频道,#genre#
 CCTV1,http://221.7.175.154:8445/tsfile/live/1000_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路1』
 CCTV1,http://221.205.207.120:9003/hls/1/index.m3u8$LR•IPV4『线路2』
@@ -554,15 +554,14 @@ CCTV13,http://dbiptv.sn.chinamobile.com/PLTV/88888888/224/3221225774/index.m3u8$
 凤凰资讯,https://cdn6.cc.cd/163189/fhzx$LR•IPV4『线路5』
 凤凰资讯,http://bobohome.ignorelist.com:20247/fengshows?id=1.m3u8$LR•IPV4『线路6』
 凤凰资讯,http://k.061899.xyz/k.php?id=fhzx$LR•IPV4『线路7』
-凤凰资讯,http://43.152.224.209/qctv.fengshows.cn/live/0701pin72.flv$LR•IPV4『线路8』
-凤凰资讯,http://221.7.175.154:8445/tsfile/live/1021_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路9』
+凤凰资讯,http://221.7.175.154:8445/tsfile/live/1021_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路8』
 凤凰香港,https://cdn6.cc.cd/163189/fhhk$LR•IPV4『线路1』
 凤凰香港,http://bobohome.ignorelist.com:20247/fengshows?id=3.m3u8$LR•IPV4『线路2』
 凤凰香港,http://k.061899.xyz/k.php?id=fhhk$LR•IPV4『线路3』
-凤凰香港,http://122.152.202.33/s/81a8a44f/index.m3u8?id=fhhk TVB$LR•IPV4『线路4』
-凤凰香港,http://122.152.202.33/s/81a8a44f/index.m3u8?id=fhhk$LR•IPV4『线路5』
-凤凰卫视,http://122.152.202.33/s/81a8a44f/index.m3u8?id=15$LR•IPV4『线路1』
-凤凰卫视,http://221.7.175.154:8445/tsfile/live/1020_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路2』
+凤凰香港,http://122.152.202.33/s/81a8a44f/index.m3u8?id=fhhk$LR•IPV4『线路4』
+凤凰香港,http://122.152.202.33/s/81a8a44f/index.m3u8?id=fhhk TVB$LR•IPV4『线路5』
+凤凰卫视,http://221.7.175.154:8445/tsfile/live/1020_1.m3u8?key=txiptv&playlive=1&authid=0$LR•IPV4『线路1』
+凤凰卫视,http://122.152.202.33/s/81a8a44f/index.m3u8?id=15$LR•IPV4『线路2』
 
 影视频道,#genre#
 CHC动作电影,http://php.jdshipin.com/TVOD/iptv.php?id=chcdzdy$LR•IPV4『线路1』
